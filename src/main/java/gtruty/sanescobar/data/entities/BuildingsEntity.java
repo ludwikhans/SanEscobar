@@ -24,8 +24,10 @@ public class BuildingsEntity {
     private BigDecimal moneyProfit2;
     @Column(name = "cost_of_buildings")
     private BigDecimal costOfBuilding;
-    @Column(name = "requirements")
-    private String requirements;
+    @Column(name = "requirements1")
+    private String requirements1;
+    @Column(name = "requirements2")
+    private String requirements2;
     @Column(name = "info")
     private String info;
     @Column(name = "number_of_animals")
@@ -40,12 +42,12 @@ public class BuildingsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BuildingsEntity that = (BuildingsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products1, that.products1) && Objects.equals(products2, that.products2) && Objects.equals(moneyProfit1, that.moneyProfit1) && Objects.equals(moneyProfit2, that.moneyProfit2) && Objects.equals(costOfBuilding, that.costOfBuilding) && Objects.equals(requirements, that.requirements) && Objects.equals(info, that.info) && Objects.equals(numberOfAnimal, that.numberOfAnimal) && Objects.equals(placeForGoods, that.placeForGoods) && Objects.equals(specialFor, that.specialFor);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products1, that.products1) && Objects.equals(products2, that.products2) && Objects.equals(moneyProfit1, that.moneyProfit1) && Objects.equals(moneyProfit2, that.moneyProfit2) && Objects.equals(costOfBuilding, that.costOfBuilding) && Objects.equals(requirements1, that.requirements1) && Objects.equals(requirements2, that.requirements2) && Objects.equals(info, that.info) && Objects.equals(numberOfAnimal, that.numberOfAnimal) && Objects.equals(placeForGoods, that.placeForGoods) && Objects.equals(specialFor, that.specialFor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, products1, products2, moneyProfit1, moneyProfit2, costOfBuilding, requirements, info, numberOfAnimal, placeForGoods, specialFor);
+        return Objects.hash(id, name, products1, products2, moneyProfit1, moneyProfit2, costOfBuilding, requirements1, requirements2, info, numberOfAnimal, placeForGoods, specialFor);
     }
 
     public Long getId() {
@@ -104,12 +106,20 @@ public class BuildingsEntity {
         this.costOfBuilding = costOfBuilding;
     }
 
-    public String getRequirements() {
-        return requirements;
+    public String getRequirements1() {
+        return requirements1;
     }
 
-    public void setRequirements(String requirements) {
-        this.requirements = requirements;
+    public void setRequirements1(String requirements1) {
+        this.requirements1 = requirements1;
+    }
+
+    public String getRequirements2() {
+        return requirements2;
+    }
+
+    public void setRequirements2(String requirements2) {
+        this.requirements2 = requirements2;
     }
 
     public String getInfo() {
