@@ -10,18 +10,6 @@ public abstract class BaseEntity {
     @Column(name = "id", nullable = false)
     protected Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "purchase_summary_entity_id")
-    private PurchaseSummaryEntity purchaseSummaryEntity;
-
-    public PurchaseSummaryEntity getPurchaseSummaryEntity() {
-        return purchaseSummaryEntity;
-    }
-
-    public void setPurchaseSummaryEntity(PurchaseSummaryEntity purchaseSummaryEntity) {
-        this.purchaseSummaryEntity = purchaseSummaryEntity;
-    }
-
     public Long getId() {
         return id;
     }
