@@ -1,3 +1,4 @@
+/*
 package gtruty.sanescobar.data.entities;
 
 import javax.persistence.*;
@@ -36,3 +37,4 @@ public class PurchaseEntity{
         this.fieldsEntities = fieldsEntities;
     }
 }
+*/
