@@ -4,12 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "event")
-public class EventEntity {
+public class EventEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private Long id;
     @Column(name = "name")
     private String name;
     @Column (name = "info")

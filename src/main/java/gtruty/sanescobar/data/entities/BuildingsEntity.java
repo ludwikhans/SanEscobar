@@ -6,12 +6,8 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "buildings")
-public class BuildingsEntity {
+public class BuildingsEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "product1")
@@ -28,6 +24,10 @@ public class BuildingsEntity {
     private String requirements1;
     @Column(name = "requirements2")
     private String requirements2;
+    @Column(name = "suistenance")
+    private String suistenance;
+    @Column(name = "value_of_suistenance")
+    private Double valueOfSuistenance;
     @Column(name = "info")
     private String info;
     @Column(name = "number_of_animals")
@@ -48,14 +48,6 @@ public class BuildingsEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, products1, products2, moneyProfit1, moneyProfit2, costOfBuilding, requirements1, requirements2, info, numberOfAnimal, placeForGoods, specialFor);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

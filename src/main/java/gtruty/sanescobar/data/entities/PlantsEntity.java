@@ -7,12 +7,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "plants")
-public class PlantsEntity {
+public class PlantsEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "products")
@@ -46,14 +42,6 @@ public class PlantsEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, products, moneyProfit, harvest, sowingCost, requirements, info, specialFor, buildings);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

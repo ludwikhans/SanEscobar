@@ -7,12 +7,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "animals")
-public class AnimalsEntity {
+public class AnimalsEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "products1")
@@ -47,14 +43,6 @@ public class AnimalsEntity {
     @JoinTable(name = "plants_for_animals",joinColumns = @JoinColumn (name = "animals_id" ),
             inverseJoinColumns = @JoinColumn(name = "plants_id"))
     private Set<PlantsEntity> plants;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
