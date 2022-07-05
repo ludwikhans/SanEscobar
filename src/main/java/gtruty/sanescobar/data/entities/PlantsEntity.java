@@ -23,7 +23,7 @@ public class PlantsEntity extends BaseEntity {
     private String requirements;
     @Column(name = "info")
     private String info;
-    @Column(name = "specialFor")
+    @Column(name = "special_for")
     private String specialFor;
 
     @ManyToMany

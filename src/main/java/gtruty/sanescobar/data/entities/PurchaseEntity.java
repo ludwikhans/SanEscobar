@@ -1,3 +1,4 @@
+/*
 package gtruty.sanescobar.data.entities;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ public class PurchaseEntity extends BaseEntity {
 
     @Column(name = "amount")
     private Long amount;
-    @Column(name = "purchasedEntityId")
+    @Column(name = "purchased_entity_id")
     private Long purchasedEntityId;
     @Column(name = "purchaseSummaryId")
     private Long purchaseSummaryId;
@@ -36,3 +37,4 @@ public class PurchaseEntity extends BaseEntity {
     }
 }
 
+*/

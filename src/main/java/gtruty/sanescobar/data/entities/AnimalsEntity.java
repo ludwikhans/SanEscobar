@@ -7,8 +7,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "animals")
-public class AnimalsEntity extends BaseEntity {
+public class AnimalsEntity {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "products1")
@@ -43,6 +47,27 @@ public class AnimalsEntity extends BaseEntity {
     @JoinTable(name = "plants_for_animals",joinColumns = @JoinColumn (name = "animals_id" ),
             inverseJoinColumns = @JoinColumn(name = "plants_id"))
     private Set<PlantsEntity> plants;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AnimalsEntity that = (AnimalsEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products1, that.products1) && Objects.equals(products2, that.products2) && Objects.equals(moneyProfit1, that.moneyProfit1) && Objects.equals(moneyProfit2, that.moneyProfit2) && Objects.equals(costOfBuying, that.costOfBuying) && Objects.equals(requirements, that.requirements) && Objects.equals(suistenance1, that.suistenance1) && Objects.equals(valueOfSuistenance1, that.valueOfSuistenance1) && Objects.equals(suistenance2, that.suistenance2) && Objects.equals(valueOfSuistenance2, that.valueOfSuistenance2) && Objects.equals(info, that.info) && Objects.equals(specialFor, that.specialFor) && Objects.equals(buldings, that.buldings) && Objects.equals(plants, that.plants);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, products1, products2, moneyProfit1, moneyProfit2, costOfBuying, requirements, suistenance1, valueOfSuistenance1, suistenance2, valueOfSuistenance2, info, specialFor, buldings, plants);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -162,18 +187,5 @@ public class AnimalsEntity extends BaseEntity {
 
     public void setPlants(Set<PlantsEntity> plants) {
         this.plants = plants;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AnimalsEntity that = (AnimalsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products1, that.products1) && Objects.equals(products2, that.products2) && Objects.equals(moneyProfit1, that.moneyProfit1) && Objects.equals(moneyProfit2, that.moneyProfit2) && Objects.equals(costOfBuying, that.costOfBuying) && Objects.equals(requirements, that.requirements) && Objects.equals(suistenance1, that.suistenance1) && Objects.equals(valueOfSuistenance1, that.valueOfSuistenance1) && Objects.equals(suistenance2, that.suistenance2) && Objects.equals(valueOfSuistenance2, that.valueOfSuistenance2) && Objects.equals(info, that.info) && Objects.equals(specialFor, that.specialFor) && Objects.equals(buldings, that.buldings) && Objects.equals(plants, that.plants);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, products1, products2, moneyProfit1, moneyProfit2, costOfBuying, requirements, suistenance1, valueOfSuistenance1, suistenance2, valueOfSuistenance2, info, specialFor, buldings, plants);
     }
 }

@@ -1,3 +1,4 @@
+/*
 package gtruty.sanescobar.data.entities;
 
 import javax.persistence.*;
@@ -9,3 +10,4 @@ public class PurchaseSummaryEntity extends BaseEntity {
     @OneToMany(mappedBy = "purchaseSummary")
     Set<BaseEntity> purchasedEntities;
 }
+*/

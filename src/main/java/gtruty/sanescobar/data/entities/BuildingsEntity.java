@@ -6,8 +6,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "buildings")
-public class BuildingsEntity extends BaseEntity {
+public class BuildingsEntity {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "product1")
@@ -42,12 +46,20 @@ public class BuildingsEntity extends BaseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BuildingsEntity that = (BuildingsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products1, that.products1) && Objects.equals(products2, that.products2) && Objects.equals(moneyProfit1, that.moneyProfit1) && Objects.equals(moneyProfit2, that.moneyProfit2) && Objects.equals(costOfBuilding, that.costOfBuilding) && Objects.equals(requirements1, that.requirements1) && Objects.equals(requirements2, that.requirements2) && Objects.equals(info, that.info) && Objects.equals(numberOfAnimal, that.numberOfAnimal) && Objects.equals(placeForGoods, that.placeForGoods) && Objects.equals(specialFor, that.specialFor);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products1, that.products1) && Objects.equals(products2, that.products2) && Objects.equals(moneyProfit1, that.moneyProfit1) && Objects.equals(moneyProfit2, that.moneyProfit2) && Objects.equals(costOfBuilding, that.costOfBuilding) && Objects.equals(requirements1, that.requirements1) && Objects.equals(requirements2, that.requirements2) && Objects.equals(suistenance, that.suistenance) && Objects.equals(valueOfSuistenance, that.valueOfSuistenance) && Objects.equals(info, that.info) && Objects.equals(numberOfAnimal, that.numberOfAnimal) && Objects.equals(placeForGoods, that.placeForGoods) && Objects.equals(specialFor, that.specialFor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, products1, products2, moneyProfit1, moneyProfit2, costOfBuilding, requirements1, requirements2, info, numberOfAnimal, placeForGoods, specialFor);
+        return Objects.hash(id, name, products1, products2, moneyProfit1, moneyProfit2, costOfBuilding, requirements1, requirements2, suistenance, valueOfSuistenance, info, numberOfAnimal, placeForGoods, specialFor);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -112,6 +124,22 @@ public class BuildingsEntity extends BaseEntity {
 
     public void setRequirements2(String requirements2) {
         this.requirements2 = requirements2;
+    }
+
+    public String getSuistenance() {
+        return suistenance;
+    }
+
+    public void setSuistenance(String suistenance) {
+        this.suistenance = suistenance;
+    }
+
+    public Double getValueOfSuistenance() {
+        return valueOfSuistenance;
+    }
+
+    public void setValueOfSuistenance(Double valueOfSuistenance) {
+        this.valueOfSuistenance = valueOfSuistenance;
     }
 
     public String getInfo() {
