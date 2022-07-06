@@ -1,5 +1,8 @@
 package gtruty.sanescobar.data.entities;
 
+import gtruty.sanescobar.service.PlantsCategory;
+
+import javax.naming.Name;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -7,8 +10,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "plants")
-public class PlantsEntity extends BaseEntity {
+public class PlantsEntity{
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "products")
@@ -16,7 +23,7 @@ public class PlantsEntity extends BaseEntity {
     @Column(name = "money_profit")
     private BigDecimal moneyProfit;
     @Column(name = "harvest")
-    private Long harvest;
+    private Double harvest;
     @Column(name = "sowing_cost")
     private BigDecimal sowingCost;
     @Column(name = "requirements")
@@ -25,6 +32,12 @@ public class PlantsEntity extends BaseEntity {
     private String info;
     @Column(name = "special_for")
     private String specialFor;
+    @Column(name = "years_old")
+    private Long yearsOld;
+    @Column(name = "category")
+    private String category;
+
+
 
     @ManyToMany
     @JoinTable(name = "buildings_for_plants",joinColumns = @JoinColumn (name = "plants_id" ),
@@ -36,12 +49,20 @@ public class PlantsEntity extends BaseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlantsEntity that = (PlantsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products, that.products) && Objects.equals(moneyProfit, that.moneyProfit) && Objects.equals(harvest, that.harvest) && Objects.equals(sowingCost, that.sowingCost) && Objects.equals(requirements, that.requirements) && Objects.equals(info, that.info) && Objects.equals(specialFor, that.specialFor) && Objects.equals(buildings, that.buildings);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products, that.products) && Objects.equals(moneyProfit, that.moneyProfit) && Objects.equals(harvest, that.harvest) && Objects.equals(sowingCost, that.sowingCost) && Objects.equals(requirements, that.requirements) && Objects.equals(info, that.info) && Objects.equals(specialFor, that.specialFor) && Objects.equals(yearsOld, that.yearsOld) && category == that.category && Objects.equals(buildings, that.buildings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, products, moneyProfit, harvest, sowingCost, requirements, info, specialFor, buildings);
+        return Objects.hash(id, name, products, moneyProfit, harvest, sowingCost, requirements, info, specialFor, yearsOld, category, buildings);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -68,11 +89,11 @@ public class PlantsEntity extends BaseEntity {
         this.moneyProfit = moneyProfit;
     }
 
-    public Long getHarvest() {
+    public Double getHarvest() {
         return harvest;
     }
 
-    public void setHarvest(Long harvest) {
+    public void setHarvest(Double harvest) {
         this.harvest = harvest;
     }
 
@@ -106,6 +127,22 @@ public class PlantsEntity extends BaseEntity {
 
     public void setSpecialFor(String specialFor) {
         this.specialFor = specialFor;
+    }
+
+    public Long getYearsOld() {
+        return yearsOld;
+    }
+
+    public void setYearsOld(Long yearsOld) {
+        this.yearsOld = yearsOld;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Set<BuildingsEntity> getBuildings() {
