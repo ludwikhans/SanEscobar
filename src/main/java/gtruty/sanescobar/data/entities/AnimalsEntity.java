@@ -41,7 +41,7 @@ public class AnimalsEntity {
     private String specialFor;
     @ManyToMany
     @JoinTable(name = "buildings_for_animals",joinColumns = @JoinColumn (name = "animals_id" ),
-            inverseJoinColumns = @JoinColumn(name = "plants_id"))
+            inverseJoinColumns = @JoinColumn(name = "buildings_id"))
     private Set<BuildingsEntity> buldings;
     @ManyToMany
     @JoinTable(name = "plants_for_animals",joinColumns = @JoinColumn (name = "animals_id" ),

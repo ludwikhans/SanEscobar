@@ -1,4 +1,4 @@
-package gtruty.sanescobar.service;
+package gtruty.sanescobar.data.model.plants;
 
 public enum PlantsCategory {
     GRAIN,

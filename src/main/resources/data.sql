@@ -156,3 +156,23 @@ VALUES (1, 'przymrozki', 'Tego roku były niepodziewane długie przymrozki, twoj
        (20, 'Dary od Króla', 'Król przejeżdząjąc przez wioskę daje 250 sztuk złota na rozbudowe wsi');
 
 
+---
+--- BUILDINGS FOR ANIMAL
+---
+
+INSERT INTO buildings_for_animals (animals_id,buildings_id)
+VALUES (1,1),
+       (2,1),
+       (4,2),
+       (3,3),
+       (5,4),
+       (6,4),
+       (13,4),
+       (7,5),
+       (8,6),
+       (9,7),
+       (10,8),
+       (11,22),
+       (12,53);
+
+

@@ -1,8 +1,5 @@
 package gtruty.sanescobar.data.entities;
 
-import gtruty.sanescobar.service.PlantsCategory;
-
-import javax.naming.Name;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
