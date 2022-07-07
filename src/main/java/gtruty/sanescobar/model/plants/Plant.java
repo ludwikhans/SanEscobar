@@ -5,6 +5,7 @@ public abstract class Plant implements PlantCategory {
     PlantsCategory plantsCategory;
     Integer area;
     Integer profit;
+    Integer income;
 
 
 

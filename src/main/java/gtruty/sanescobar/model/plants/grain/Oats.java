@@ -1,7 +1,5 @@
 package gtruty.sanescobar.model.plants.grain;
 
-import gtruty.sanescobar.model.plants.Grain;
-
 public class Oats extends Grain {
 
 
