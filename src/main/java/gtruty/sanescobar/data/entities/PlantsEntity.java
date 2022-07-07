@@ -7,12 +7,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "plants")
-public class PlantsEntity {
+public class PlantsEntity{
 
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "products")
@@ -20,39 +20,63 @@ public class PlantsEntity {
     @Column(name = "money_profit")
     private BigDecimal moneyProfit;
     @Column(name = "harvest")
-    private Long harvest;
+    private Double harvest;
     @Column(name = "sowing_cost")
     private BigDecimal sowingCost;
     @Column(name = "requirements")
     private String requirements;
     @Column(name = "info")
     private String info;
-    @Column(name = "specialFor")
+    @Column(name = "special_for")
     private String specialFor;
+    @Column(name = "years_old")
+    private Long yearsOld;
+    @Column(name = "category")
+    private String category;
+
+
 
     @ManyToMany
     @JoinTable(name = "buildings_for_plants",joinColumns = @JoinColumn (name = "plants_id" ),
             inverseJoinColumns = @JoinColumn(name = "buildings_id"))
     private Set<BuildingsEntity> buildings;
 
+    public PlantsEntity() {
+    }
+
+    public PlantsEntity(Integer id, String name, String products, BigDecimal moneyProfit, Double harvest, BigDecimal sowingCost, String requirements, String info, String specialFor, Long yearsOld, String category, Set<BuildingsEntity> buildings) {
+        this.id = id;
+        this.name = name;
+        this.products = products;
+        this.moneyProfit = moneyProfit;
+        this.harvest = harvest;
+        this.sowingCost = sowingCost;
+        this.requirements = requirements;
+        this.info = info;
+        this.specialFor = specialFor;
+        this.yearsOld = yearsOld;
+        this.category = category;
+        this.buildings = buildings;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlantsEntity that = (PlantsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products, that.products) && Objects.equals(moneyProfit, that.moneyProfit) && Objects.equals(harvest, that.harvest) && Objects.equals(sowingCost, that.sowingCost) && Objects.equals(requirements, that.requirements) && Objects.equals(info, that.info) && Objects.equals(specialFor, that.specialFor) && Objects.equals(buildings, that.buildings);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products, that.products) && Objects.equals(moneyProfit, that.moneyProfit) && Objects.equals(harvest, that.harvest) && Objects.equals(sowingCost, that.sowingCost) && Objects.equals(requirements, that.requirements) && Objects.equals(info, that.info) && Objects.equals(specialFor, that.specialFor) && Objects.equals(yearsOld, that.yearsOld) && category == that.category && Objects.equals(buildings, that.buildings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, products, moneyProfit, harvest, sowingCost, requirements, info, specialFor, buildings);
+        return Objects.hash(id, name, products, moneyProfit, harvest, sowingCost, requirements, info, specialFor, yearsOld, category, buildings);
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -80,11 +104,11 @@ public class PlantsEntity {
         this.moneyProfit = moneyProfit;
     }
 
-    public Long getHarvest() {
+    public Double getHarvest() {
         return harvest;
     }
 
-    public void setHarvest(Long harvest) {
+    public void setHarvest(Double harvest) {
         this.harvest = harvest;
     }
 
@@ -118,6 +142,22 @@ public class PlantsEntity {
 
     public void setSpecialFor(String specialFor) {
         this.specialFor = specialFor;
+    }
+
+    public Long getYearsOld() {
+        return yearsOld;
+    }
+
+    public void setYearsOld(Long yearsOld) {
+        this.yearsOld = yearsOld;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Set<BuildingsEntity> getBuildings() {

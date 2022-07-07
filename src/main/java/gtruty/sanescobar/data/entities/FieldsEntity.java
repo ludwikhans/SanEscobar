@@ -22,7 +22,7 @@ public class FieldsEntity {
     @Column(name = "info")
     private String info;
     @Column(name = "area_of_plought_fields")
-    private Long areaOfPloughtFields;
+    private Long areaOfPloughtFields = area;
     @Column(name = "area_of_meadow")
     private Long areaOfmeadow;
     @ManyToMany
