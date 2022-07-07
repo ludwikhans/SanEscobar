@@ -1,4 +1,4 @@
-package gtruty.sanescobar.data.model;
+package gtruty.sanescobar.model.animals;
 
 public abstract class  Animal {
 

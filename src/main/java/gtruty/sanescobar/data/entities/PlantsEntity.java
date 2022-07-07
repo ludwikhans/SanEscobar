@@ -12,7 +12,7 @@ public class PlantsEntity{
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "products")
@@ -41,6 +41,24 @@ public class PlantsEntity{
             inverseJoinColumns = @JoinColumn(name = "buildings_id"))
     private Set<BuildingsEntity> buildings;
 
+    public PlantsEntity() {
+    }
+
+    public PlantsEntity(Integer id, String name, String products, BigDecimal moneyProfit, Double harvest, BigDecimal sowingCost, String requirements, String info, String specialFor, Long yearsOld, String category, Set<BuildingsEntity> buildings) {
+        this.id = id;
+        this.name = name;
+        this.products = products;
+        this.moneyProfit = moneyProfit;
+        this.harvest = harvest;
+        this.sowingCost = sowingCost;
+        this.requirements = requirements;
+        this.info = info;
+        this.specialFor = specialFor;
+        this.yearsOld = yearsOld;
+        this.category = category;
+        this.buildings = buildings;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -54,11 +72,11 @@ public class PlantsEntity{
         return Objects.hash(id, name, products, moneyProfit, harvest, sowingCost, requirements, info, specialFor, yearsOld, category, buildings);
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
