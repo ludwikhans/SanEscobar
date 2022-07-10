@@ -3,7 +3,13 @@ package gtruty.sanescobar.model.plants.plantation;
 import gtruty.sanescobar.model.plants.Plant;
 import gtruty.sanescobar.model.plants.PlantsCategory;
 
+import java.math.BigDecimal;
+
 public abstract class Plantation extends Plant {
+
+    public Plantation(String name, Integer area, Integer profit, BigDecimal income) {
+        super(name,PlantsCategory.PLANTATION, area, profit, income);
+    }
 
     @Override
     public Enum category() {

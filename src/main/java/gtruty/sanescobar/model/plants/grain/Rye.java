@@ -1,13 +1,15 @@
 package gtruty.sanescobar.model.plants.grain;
 
+import java.math.BigDecimal;
+
 public class Rye extends Grain {
 
 
-    public static void main(String[] args) {
-        Rye oats = new Rye();
-        Enum category = oats.category();
-        System.out.println(category);
+    public Rye(String name, Integer area, Integer profit, BigDecimal income) {
+        super(name, area, profit, income);
     }
+
+
     }
 
 

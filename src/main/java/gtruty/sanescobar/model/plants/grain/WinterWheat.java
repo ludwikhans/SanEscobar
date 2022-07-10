@@ -1,12 +1,12 @@
 package gtruty.sanescobar.model.plants.grain;
 
+import java.math.BigDecimal;
+
 public class WinterWheat extends Grain {
 
 
-    public static void main(String[] args) {
-        WinterWheat oats = new WinterWheat();
-        Enum category = oats.category();
-        System.out.println(category);
+    public WinterWheat(String name, Integer area, Integer profit, BigDecimal income) {
+        super(name, area, profit, income);
     }
     }
 
