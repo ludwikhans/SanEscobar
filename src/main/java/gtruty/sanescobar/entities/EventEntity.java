@@ -1,4 +1,4 @@
-package gtruty.sanescobar.data.entities;
+package gtruty.sanescobar.entities;
 
 import javax.persistence.*;
 import java.util.Objects;
