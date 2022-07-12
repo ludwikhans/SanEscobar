@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:background-image="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <meta charset="UTF-8">
-    <title>Pizza Market</title>
+    <title>San Escobar</title>
     <link rel="stylesheet" th:href="@{/css/uikit.min.css}">
     <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
 
@@ -13,13 +11,10 @@
     <script th:src="@{/js/fontawesome.min.js}"></script>
 </head>
 <body>
-<img th:src="@{/img/pergamin.jpg}" alt="">
-<div class="uk-container uk-container-large">
-    <div class="uk-background-cover uk-background-image@s">
-        <img th:src="@{/img/pergamin.jpg}" alt="">
-    </div>
 
-    <div class="uk-section">
+
+
+    <div class="uk-section uk-background-cover uk-width-1-1" th:data-src="@{../static/img/pergamin.jpg}" uk-img>
         <div class="uk-container uk-container-xsmall uk-container">
             <article class="uk-article uk-margin-small uk-text-center">
                 <h1>Nazwa przysiółka</h1>
@@ -36,10 +31,10 @@
                 <input type="submit" class="uk-button uk-button-primary uk-width-1-1" value="Potwierdź">
             </div>
         </form>
+
     </div>
     </div>
 
-</div>
 
 </body>
 </html>
