@@ -9,7 +9,7 @@ public class GameViewController {
 
 
 
-    @GetMapping("GameView")
+    @GetMapping("gameView")
     public String startPage(){
 
 
