@@ -9,35 +9,45 @@
     <script th:src="@{/js/uikit.min.js}"></script>
     <script th:src="@{/js/uikit-icons.min.js}"></script>
     <script th:src="@{/js/fontawesome.min.js}"></script>
+    <style>
+        .uk-section {
+            background-image: url(static/img/pergamin.jpg);
+        }
+    </style>
 </head>
 <body>
 
 
 
-    <div class="uk-section uk-background-cover uk-width-1-1" th:data-src="@{../static/img/pergamin.jpg}" uk-img>
+    <div class="uk-section uk-background-cover uk-width-1-1 uk-section-default uk-padding-remove-top uk-margin-top">
         <div class="uk-container uk-container-xsmall uk-container">
-            <article class="uk-article uk-margin-small uk-text-center">
-                <h1>Nazwa przysiółka</h1>
-                <div class="uk-card uk-card-default uk-card-small uk-card-body">
-                    <p>Podaj nazwę przysiółka, który będziesz rozbudowywać aż zostanie pełnoprawną Marchią</p>
-                </div>
+            <article class="uk-article uk-margin-small uk-text-center uk-margin-auto">
+                <h1>Nazwa osady</h1>
             </article>
         <!--/*@thymesVar id="vilage" type="jdk"*/-->
         <form class="uk-grid-small" th:object="${vilage}" uk-grid>
             <div class="uk-width-1-1">
                 <!--/*@thymesVar id="name" type="gtruty"*/-->
-                <input class="uk-input" type="text" placeholder="Nazwa przysiółka" th:field="*{name}"  th:errorclass="uk-form-danger">
+                <input class="uk-input uk-text-center" type="text" placeholder="Podaj nazwę przysiółka, który będziesz rozbudowywać aż zostanie pełnoprawną Marchią" th:field="*{name}"  th:errorclass="uk-form-danger">
                 <span th:if="${#fields.hasErrors('name')}" class="uk-text-small uk-text-danger">
                     Nazwa wsi powinna mieć długość od 2 do 30 znaków
                 </span>
             </div>
-            <div class="uk-width-1-1">
-                <input type="submit" class="uk-button uk-button-primary uk-width-1-2 uk-position-relative uk-position-top-center" value="Potwierdź">
-
-            </div>
         </form>
 
     </div>
+        <div class="uk-container uk-container-small  uk-margin-top">
+            <div class="uk-card uk-card-default uk-card-small uk-card-body uk-text-center">
+                <p>Wybierz lokalizację swojej wioski</p>
+            </div>
+            <div class="uk-container uk-container-small uk-container uk-margin-top"style="background-color: #8a8a8a ;height: 400px">
+            <div class="uk-container-small" style=" border-bottom-left-radius: 10px ;background-color: #f0506e"></div>
+            </div>
+            <div class="uk-container uk-container-small ">
+                <a class="uk-position-bottom-center uk-button uk-button-primary uk-text-center uk-width-1-4 uk-margin-top" th:href="@{/gameView.html}">Potwierdź</a>
+            </div>
+        </div>
+
     </div>
 
 
