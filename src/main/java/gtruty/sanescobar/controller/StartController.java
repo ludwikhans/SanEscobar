@@ -2,6 +2,7 @@ package gtruty.sanescobar.controller;
 
 import gtruty.sanescobar.dao.VilageDao;
 import gtruty.sanescobar.model.VilageModel;
+import gtruty.sanescobar.model.parameters.PlaceOfStarts;
 import gtruty.sanescobar.service.VilageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,7 @@ public class StartController {
 
         return "start";
     }
+
 
     @PostMapping("/start")
     public String saveVilageName(
