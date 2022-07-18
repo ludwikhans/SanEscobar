@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:background-image="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>San Escobar</title>
@@ -9,30 +9,45 @@
     <script th:src="@{/js/uikit.min.js}"></script>
     <script th:src="@{/js/uikit-icons.min.js}"></script>
     <script th:src="@{/js/fontawesome.min.js}"></script>
+    <style>
+        .uk-section {
+            background-image: url(static/img/pergamin.jpg);
+        }
+    </style>
 </head>
 <body>
 
 
 
-    <div class="uk-section uk-background-cover uk-width-1-1" th:data-src="@{../static/img/pergamin.jpg}" uk-img>
-        <div class="uk-container uk-container-xsmall uk-container">
-            <article class="uk-article uk-margin-small uk-text-center">
-                <h1>Nazwa przysiółka</h1>
-                <div class="uk-card uk-card-default uk-card-small uk-card-body">
-                    <p>Podaj nazwę przysiółka, który będziesz rozbudowywać aż zostanie pełnoprawną Marchią</p>
-                </div>
+    <div class="uk-section uk-background-cover uk-width-1-1 uk-section-default uk-padding-remove-top uk-margin-xlarge-top uk-margin-remove" data-src="https://mh-1-agencja-fotograficzna.panthermedia.net/media/media_detail/0004000000/04299000/~stary-papier-lub-pergamin_04299727_detail.jpg" uk-img>
+        <div class="uk-container uk-container-xsmall uk-container uk-margin">
+            <article class="uk-article uk-margin-small uk-text-center uk-margin">
+                <h1>Nazwa osady</h1>
             </article>
-
-        <form class="uk-grid-small" th:object="${vilages}" uk-grid>
+        <!--/*@thymesVar id="vilage" type="jdk"*/-->
+        <form class="uk-grid-small" th:object="${vilage}" uk-grid>
             <div class="uk-width-1-1">
-                <input class="uk-input" type="text" placeholder="Nazwa przysiółka" th:field="*{name}">
-            </div>
-            <div class="uk-width-1-1">
-                <input type="submit" class="uk-button uk-button-primary uk-width-1-1" value="Potwierdź">
+                <!--/*@thymesVar id="name" type="gtruty"*/-->
+                <input class="uk-input uk-text-center" type="text" placeholder="Podaj nazwę przysiółka, który będziesz rozbudowywać aż zostanie pełnoprawną Marchią" th:field="*{name}"  th:errorclass="uk-form-danger">
+                <span th:if="${#fields.hasErrors('name')}" class="uk-text-small uk-text-danger">
+                    Nazwa wsi powinna mieć długość od 2 do 30 znaków
+                </span>
             </div>
         </form>
-
+            <article class="uk-article uk-margin-small uk-text-center uk-margin">
+                <h1>Wybierz lokalizacje swojej osady</h1>
+            </article>
     </div>
+        <div class="uk-container uk-container">
+
+            <div class="uk-container uk-background-contain" style="height: 470px" data-src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/415b4aee-0633-43e0-90a8-b4c4581b2aea/df9fmeq-808c5fc8-83a6-47cc-81f7-1c310a618d7b.jpg/v1/fill/w_1175,h_680,q_70,strp/san_escobar_bez_ta_by_loodwikhans_df9fmeq-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzQxIiwicGF0aCI6IlwvZlwvNDE1YjRhZWUtMDYzMy00M2UwLTkwYTgtYjRjNDU4MWIyYWVhXC9kZjlmbWVxLTgwOGM1ZmM4LTgzYTYtNDdjYy04MWY3LTFjMzEwYTYxOGQ3Yi5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.K93dAbrgiuwVevr49rHFAmTFCqIs5dbXbo5Gu2dgKGw" uk-img>
+            <div class="uk-container-small" style=" border-bottom-left-radius: 10px ;background-color: #f0506e"></div>
+            </div>
+            <div class="uk-container uk-container-small uk-flex ">
+                <a class="uk-position-bottom-center uk-button uk-button-primary uk-text-center uk-width-1-4 uk-margin-top uk-margin-bottom" th:href="@{/gameView.html}">Potwierdź</a>
+            </div>
+        </div>
+
     </div>
 
 
