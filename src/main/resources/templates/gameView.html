@@ -5,41 +5,131 @@
     <title>San Escobar</title>
     <link rel="stylesheet" th:href="@{/css/uikit.min.css}">
     <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
-
+    <link rel="stylesheet" th:href="@{../static/css/css.css}">
     <script th:src="@{/js/uikit.min.js}"></script>
     <script th:src="@{/js/uikit-icons.min.js}"></script>
     <script th:src="@{/js/fontawesome.min.js}"></script>
 </head>
 <body >
-<div class="uk-container uk-container-large uk-background-cover" data-src="https://mh-1-agencja-fotograficzna.panthermedia.net/media/media_detail/0004000000/04299000/~stary-papier-lub-pergamin_04299727_detail.jpg" uk-img>>
+<div class="uk-section uk-background-cover uk-width uk-section-default uk-margin-remove" data-src="https://mh-1-agencja-fotograficzna.panthermedia.net/media/media_detail/0004000000/04299000/~stary-papier-lub-pergamin_04299727_detail.jpg" uk-img>
 
 
+    <div class="uk-container uk-container-large uk-flex-row uk-margin-auto-left uk-margin-auto-right" uk-grid>
+        <div class="uk-container uk-width-1-6">
+            <h1 class="uk-card-title uk-heading-medium uk-position-center uk-position-relative"><i class="fa-brands fa-d-and-d fa-3x "></i> </h1>
+        </div>
 
-<nav th:fragment="nav" class="uk-navbar-container uk-navbar-transparent uk-background-muted" >
-    <div class="uk-navbar-left uk-margin-top uk-flex" style="background-color: #3399ff">
-        <ul class="uk-navbar-nav">
-            <h1 class="uk-card-title uk-heading-medium"><i class="fa-brands fa-d-and-d "></i> San Escobar</h1>
-        </ul>
-        <ul class="uk-navbar-nav">
-            <h3 class="uk-card-title uk-margin-left"><i class="fa-brands fa-fort-awesome"></i> Nazwa miejscowości: </h3>
-        </ul>
-        <ul class="uk-navbar-nav">
-            <h3 class="uk-card-title uk-margin-left"><i class="fa-solid fa-litecoin-sign"></i> Posiadane pieniądze: <i class="fa-solid fa-coins"></i></h3>
-        </ul>
-        <ul class="uk-navbar-nav">
-            <h3 class="uk-card-title uk-margin-left"><i class="fa-solid fa-hourglass-empty"></i> Tura </h3>
-        </ul>
-        <ul class="uk-navbar-nav">
-            <h3 class="uk-card-title uk-margin-left"> <i class="fa-solid fa-scale-balanced"></i> Posiadani kupcy </h3>
-        </ul>
+        <div class="uk-container uk-width-5-6 flex-box uk-text-center">
+            <h1>San Escobar</h1>
+        </div>
     </div>
-</nav>
 
-    <div class="uk-section">
+         <div class="uk-container uk-container-large uk-flex-row uk-margin-auto-left uk-margin-auto-right" style=" height: 160px"  uk-grid>
 
-</div>
+             <div class="uk-container uk-width flex-box">
+
+                 <div class="uk-container uk-container uk-flex-row" >
+                      <table class="uk-table" style="border-color: black;border-style: solid; height: 80px;">
+                         <tr>
+                             <td style="border-style: solid">
+                                 <h1>Nazwa osady:</h1>
+                             </td>
+                             <td style="border-style: solid">
+                                 <h2>Typ osady:</h2>
+                             </td>
+                             <td style="border-style: solid">
+                                 <h2>System agrarny:</h2>
+                             </td>
+                         </tr>
+                      </table>
+                </div>
+
+                 <div class="uk-container uk-container uk-flex-row" style="height: 80px">
+                     <table class="uk-table" style="border-color: black;border-style: solid; border-width: 1px; height: 80px;">
+                         <tr>
+                             <td style="border-style: solid">
+                                 <h4>Posiadane pieniądze:</h4>
+                             </td>
+                             <td style="border-style: solid">
+                                 <h4>Zysk na ture:</h4>
+                             </td>
+                             <td style="border-style: solid">
+                                 <h4>Dosępne wolne miejsca handlowe:</h4>
+                             </td>
+                             <td style="border-style: solid">
+                                 <h4>Tura:</h4>
+                             </td>
+                         </tr>
+                     </table>
+                 </div>
+             </div>
+        </div>
+
+
+    <div class="uk-container uk-height uk-margin-auto-left uk-margin-auto-right "uk-grid uk-height-match="target: > div > .uk-div">
+
+
+        <div class="uk-container uk-width-1-3 uk-flex-row" style=" border-style: hidden; border-left-color: black">
+            <div class="uk-container uk-flex-first uk-text-center">
+                <article class="uk-article uk-margin-small-bottom">
+                    <h1>Budynki</h1>
+                </article>
+            </div>
+            <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "style="background-color: whitesmoke; border-style: solid;border-color: black">
+                <article class="uk-article uk-margin-small-bottom uk-heading-divider">
+                    <h3>Posiadane</h3>
+                </article>
+            </div>
+            <div class="uk-container uk-height-max-small" >
+                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">Kup budynek</button>
+            </div>
+        </div>
+
+        <div class="uk-container uk-width-1-3 uk-flex-row" style=" border-style: hidden; border-left-color: black; border-right-color: black">
+            <div class="uk-container uk-flex-first uk-text-center">
+                <article class="uk-article uk-margin-small-bottom">
+                    <h1>Pola</h1>
+                </article>
+            </div>
+            <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "style="background-color: whitesmoke; border-style: solid;border-color: black" >
+                <article class="uk-article uk-margin-small-bottom uk-heading-divider">
+                    <h3>Obsiane</h3>
+                </article>
+            </div>
+            <div class="uk-container uk-height-max-small">
+                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">Kup budynek</button>
+            </div>
+        </div>
+
+
+        <div class="uk-container uk-width-1-3 uk-flex-row" style=" border-style: hidden; border-right-color: black">
+            <div class="uk-container uk-flex-first uk-text-center">
+                <article class="uk-article uk-margin-small-bottom">
+                    <h1>Budynki</h1>
+                </article>
+            </div>
+            <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "style="background-color: whitesmoke; border-style: solid;border-color: black">
+                <article class="uk-article uk-margin-small-bottom uk-heading-divider">
+                    <h3>Sprzedawane towary</h3>
+                </article>
+            </div>
+            <div class="uk-container uk-height-max-small" style="border-style: hidden">
+                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">Sprzedaj towary</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="uk-container uk-container-small uk-width-max-content uk-position-right uk-position-relative uk-margin">
+        <h1>Następna tura</h1>
+        <button class=" fa-regular fa-hourglass fa-3x uk-button uk-button-default uk-width-small uk-position-bottom-center uk-position-relative"></button>
+    </div>
+
 
 </div>
 
 </body>
 </html>
+
