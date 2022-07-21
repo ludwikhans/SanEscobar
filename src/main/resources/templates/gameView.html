@@ -35,10 +35,16 @@
                                  <h1>Nazwa osady:</h1>
                              </td>
                              <td style="border-style: solid">
-                                 <h2>Typ osady:</h2>
+                                <div>
+                                    <h2>Typ osady:
+                                    <span>Przysiółek</span></h2>
+                                </div>
                              </td>
                              <td style="border-style: solid">
-                                 <h2>System agrarny:</h2>
+                                 <div>
+                                     <h3>System agrarny:
+                                         <span>dwópolówka</span></h3>
+                                 </div>
                              </td>
                          </tr>
                       </table>
@@ -66,7 +72,7 @@
         </div>
 
 
-    <div class="uk-container uk-height uk-margin-auto-left uk-margin-auto-right "uk-grid uk-height-match="target: > div > .uk-div">
+    <div class="uk-container uk-height uk-margin-auto-left uk-margin-auto-right uk-margin-large-top" uk-grid uk-height-match="target: > div > .uk-div">
 
 
         <div class="uk-container uk-width-1-3 uk-flex-row" style=" border-style: hidden; border-left-color: black">
@@ -79,6 +85,19 @@
                 <article class="uk-article uk-margin-small-bottom uk-heading-divider">
                     <h3>Posiadane</h3>
                 </article>
+                <table class="uk-margin-auto-left uk-margin-auto-right">
+                    <tr>
+                        <td class="uk-width-1-3 ">
+                            <div>nazwa budynku</div>
+                        </td>
+                        <td class="uk-width-1-3 ">
+                            <div>ilość</div>
+                        </td>
+                        <td class="uk-width-1-3">
+                            <button class="uk-button uk-button-primary uk-button-small">zapełnione</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="uk-container uk-height-max-small" >
                 <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">Kup budynek</button>
@@ -93,11 +112,24 @@
             </div>
             <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "style="background-color: whitesmoke; border-style: solid;border-color: black" >
                 <article class="uk-article uk-margin-small-bottom uk-heading-divider">
-                    <h3>Obsiane</h3>
+                    <h3>Posiadane</h3>
                 </article>
+                <table>
+                    <tr>
+                        <td>
+                            <div>typ</div>
+                        </td>
+                        <td >
+                            <div>ilość ha</div>
+                        </td>
+                        <td class="uk-width-1-4">
+                            <button class="uk-button uk-button-primary uk-button-small">obsiane</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="uk-container uk-height-max-small">
-                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">Kup budynek</button>
+                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">Kup pole</button>
             </div>
         </div>
 
@@ -112,9 +144,19 @@
                 <article class="uk-article uk-margin-small-bottom uk-heading-divider">
                     <h3>Sprzedawane towary</h3>
                 </article>
+                <table class="uk-text-center uk-margin-auto-left uk-margin-auto-right">
+                    <tr>
+                        <td >
+                            <div>Nazwa sprzedawanego towaru</div>
+                        </td>
+                        <td class="uk-width-1-3">
+                            <button class="uk-button uk-button-primary uk-button-small">status</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="uk-container uk-height-max-small" style="border-style: hidden">
-                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">Sprzedaj towary</button>
+                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top" style="border-style: hidden">Sprzedaj towary</button>
             </div>
         </div>
 
