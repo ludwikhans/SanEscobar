@@ -26,10 +26,7 @@
             <form class="uk-grid-small" th:object="${vilage}" uk-grid>
                 <div class="uk-width-1-1">
                     <!--/*@thymesVar id="name" type="gtruty"*/-->
-                    <input class="uk-input uk-text-center" type="text" placeholder="Podaj nazwę przysiółka, który będziesz rozbudowywać aż zostanie pełnoprawną Marchią" th:field="*{name}"  th:errorclass="uk-form-danger">
-                    <span th:if="${#fields.hasErrors('name')}" class="uk-text-small uk-text-danger">
-                    Nazwa wsi powinna mieć długość od 2 do 30 znaków
-                </span>
+                    <input class="uk-input uk-text-center" type="text" placeholder="Podaj nazwę przysiółka, który będziesz rozbudowywać aż zostanie pełnoprawną Marchią" >
                 </div>
             </form>
             <article class="uk-article uk-margin-small uk-text-center uk-margin">

@@ -1,6 +1,7 @@
 package gtruty.sanescobar.controller;
 
 import gtruty.sanescobar.dao.VilageDao;
+import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.VilageModel;
 import gtruty.sanescobar.model.parameters.PlaceOfStarts;
 import gtruty.sanescobar.service.VilageService;
@@ -15,38 +16,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class StartController {
 
+
     @Autowired
-    VilageDao vilageDao;
-
-    private final VilageService vilageService;
-
-    public StartController(VilageService vilageService) {
-        this.vilageService = vilageService;
-    }
+    VilageService vilageService;
 
     @GetMapping("/start")
-    public String startPage(
-            @ModelAttribute("vilage") VilageModel vilage,
-            Model model){
+    public String startPage(String name,Model model){
 
-        model.addAttribute("vilage",vilage);
+        vilageService.save(new VilageEntity(name));
 
-        return "start";
+        return "gameView";
     }
 
-
-    @PostMapping("/start")
-    public String saveVilageName(
-            @ModelAttribute("vilage") VilageModel vilage,
-            BindingResult bindingResult,
-            Model model
-    ){
-        if (bindingResult.hasErrors()){
-            return "start";
-        }
-
-        vilageService.saveVilage(vilage);
-        return "start";
-    }
 
 }
