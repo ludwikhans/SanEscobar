@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface BuildingService {
     void save (BuildingsEntity buildingsEntity);
-    List<BuildingsEntity>getAllData();
+    List<BuildingsEntity> getAllData();
 }

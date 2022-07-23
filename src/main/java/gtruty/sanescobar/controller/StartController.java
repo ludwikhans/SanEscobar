@@ -9,23 +9,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @Controller
 public class StartController {
-
 
     @Autowired
     VilageService vilageService;
 
     @GetMapping("/start")
-    public String startPage(String name,Model model){
+    public String startPage(Model model) {
+        VilageModel vilage = new VilageModel("", 0L, new Date());
+        model.addAttribute("vilage", vilage);
+        return "start";
+    }
 
-        vilageService.save(new VilageEntity(name));
-
-        return "gameView";
+    @PostMapping("/start")
+    public String saveVilage(@ModelAttribute("vilage") VilageModel vilage) {
+        vilageService.save(vilage.getName());
+        return "redirect:/gameView";
     }
 
 

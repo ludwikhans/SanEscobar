@@ -46,7 +46,7 @@
                              <td style="border-style: solid">
                                  <div>
                                      <h3>System agrarny:
-                                         <span>dwópolówka</span></h3>
+                                         <span></span></h3>
                                  </div>
                              </td>
                          </tr>
@@ -101,15 +101,15 @@
                         </td>
                     </tr>
 
-                    <tr th:each="buildings : ${buildings}">
+                    <tr th:each="building : ${buildings}">
                         <td class="uk-width-1-3 ">
-                            <div th:text="${buildings.name}"></div>
+                            <div th:text="${building.name}"></div>
                         </td>
                         <td class="uk-width-1-3 ">
-                            <div th:text="${buildings.placeForGoods}"></div>
+                            <div th:text="${building.placeForGoods}"></div>
                         </td>
                         <td class="uk-width-1-3 ">
-                            <div th:text="${buildings.products1}"></div>
+                            <div th:text="${building.products1}"></div>
                         </td>
                     </tr>
 

@@ -21,6 +21,7 @@ buildingDao.save(buildingsEntity);
 
     @Override
     public List<BuildingsEntity> getAllData() {
-        return (List<BuildingsEntity>)buildingDao.findAll();
+        var building = buildingDao.findAll();
+        return (List<BuildingsEntity>) building;
     }
 }
