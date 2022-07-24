@@ -1,9 +1,12 @@
 package gtruty.sanescobar.controller;
 
 import gtruty.sanescobar.entities.BuildingsEntity;
+import gtruty.sanescobar.entities.PlaceOfStart.FieldsStartEntity;
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.GameModel;
 import gtruty.sanescobar.service.BuildingService;
+import gtruty.sanescobar.service.BuildingSouthService;
+import gtruty.sanescobar.service.FieldStartService;
 import gtruty.sanescobar.service.VilageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +17,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Controller
 public class GameViewController {
@@ -21,8 +27,15 @@ public class GameViewController {
 @Value("${Gorlice}")
     private String title;
 
-@Autowired
+    @Autowired
     BuildingService buildingService;
+
+    @Autowired
+    BuildingSouthService buildingSouthService;
+
+    @Autowired
+    FieldStartService fieldStartService;
+
     @Autowired
     VilageService vilageService;
     //GameService gameService;
@@ -30,8 +43,18 @@ public class GameViewController {
 
     @GetMapping("/gameView")
     public String startPage(Model model){
-        VilageEntity vilage = vilageService.getAnyVilage();
-        updateViewModel(model, vilage.getName());
+
+        List<FieldsStartEntity> startField = fieldStartService.getAllData();
+        Map<String,Long> startFieldMap = startField.stream().collect(Collectors.groupingBy(FieldsStartEntity::getName, Collectors.counting()));
+
+
+        model.addAttribute("buildings", buildingSouthService.getAllData());
+        model.addAttribute("startField",fieldStartService.getAllData());
+        model.addAttribute("fieldCategory",startFieldMap.keySet());
+        model.addAttribute("fieldCategoryValues",startFieldMap.values());
+
+       // VilageEntity vilage = vilageService.getAnyVilage();
+     //   updateViewModel(model, vilage.getName());
 
 
         return "gameView";
@@ -39,20 +62,21 @@ public class GameViewController {
 
     private void updateViewModel(Model model, String vilageName) {
         model.addAttribute("nazwa", vilageName);
-        model.addAttribute("buildings", buildingService.getAllData());
+        model.addAttribute("buildings", buildingSouthService.getAllData());
         model.addAttribute("gameModel", new GameModel());
-    }
 
-    @PostMapping("/gameView")
+
+   /* @PostMapping("/gameView")
     public String nextTurn(@ModelAttribute("gameModel") GameModel gameModel, @ModelAttribute("buildings") List<BuildingsEntity> buildings, @ModelAttribute("nazwa") String name, Model model) {
 //Logika odpowiadająca za obliczaie modyfikatorów
         gameModel.setAgrarsystem(gameModel.agrarSystem());
         //gameService.calculateIncome(gameModel);
         gameModel.setTurnNumber(gameModel.getTurnNumber() + 1);
         updateViewModel(model, name);
-        return "gameView";
+        return "gameView";*/
+    }
     }
 
 
 
-}
+

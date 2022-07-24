@@ -1,6 +1,7 @@
 package gtruty.sanescobar.service.imp;
 
 import gtruty.sanescobar.dao.VilageDao;
+import gtruty.sanescobar.entities.PlaceOfStart.FieldsStartEntity;
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.service.VilageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class VilageServiceImp implements VilageService {
 
     }
 
-    @Override
+@Override
     public VilageEntity getAnyVilage() {
-        return null;
+    return (VilageEntity) vilageDao.findAll();
     }
 }
