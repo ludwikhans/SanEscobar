@@ -21,7 +21,7 @@ public class StartController {
 
     @GetMapping("/start")
     public String startPage(Model model) {
-        VilageModel vilage = new VilageModel("", 0L, new Date());
+        VilageModel vilage = new VilageModel("", 0L);
         model.addAttribute("vilage", vilage);
         return "start";
     }

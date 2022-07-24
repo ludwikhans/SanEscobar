@@ -142,6 +142,21 @@
                             <button class="uk-button uk-button-primary uk-button-small">obsiane</button>
                         </td>
                     </tr>
+                    <tr >
+                        <td th:each="fieldsCategory : ${fieldCategory}">
+                            <div th:text="${fieldCategory}" ></div>
+                        </td>
+                        <td th:each="fieldsCategoryArea : ${fieldCategoryValues}">
+                            <div th:text="${fieldsCategoryArea}" ></div>
+                        </td>
+                        <td class="uk-width-1-4">
+                            <div></div>
+                        </td>
+                    </tr>
+
+
+
+
                 </table>
             </div>
             <div class="uk-container uk-height-max-small">
@@ -153,7 +168,7 @@
         <div class="uk-container uk-width-1-3 uk-flex-row" style=" border-style: hidden; border-right-color: black">
             <div class="uk-container uk-flex-first uk-text-center">
                 <article class="uk-article uk-margin-small-bottom">
-                    <h1>Budynki</h1>
+                    <h1>Towary</h1>
                 </article>
             </div>
             <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "style="background-color: whitesmoke; border-style: solid;border-color: black">

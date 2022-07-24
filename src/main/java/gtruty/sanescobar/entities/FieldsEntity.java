@@ -21,26 +21,13 @@ public class FieldsEntity {
     private Long area;
     @Column(name = "info")
     private String info;
-    @Column(name = "area_of_plought_fields")
-    private Long areaOfPloughtFields = area;
-    @Column(name = "area_of_meadow")
-    private Long areaOfmeadow;
+
     @ManyToMany
     @JoinTable(name = "plants_on_fields",joinColumns = @JoinColumn (name = "fiels_id" ),
             inverseJoinColumns = @JoinColumn(name = "plants_id"))
     private Set<PlantsEntity> plants;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FieldsEntity that = (FieldsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(costOfBuying, that.costOfBuying) && Objects.equals(area, that.area) && Objects.equals(info, that.info) && Objects.equals(areaOfPloughtFields, that.areaOfPloughtFields) && Objects.equals(areaOfmeadow, that.areaOfmeadow) && Objects.equals(plants, that.plants);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, costOfBuying, area, info, areaOfPloughtFields, areaOfmeadow, plants);
+    public FieldsEntity() {
     }
 
     public Long getId() {
@@ -51,11 +38,11 @@ public class FieldsEntity {
         this.id = id;
     }
 
-    public String getName() {
+    public String getTyp() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setTyp(String typ) {
         this.name = name;
     }
 
@@ -83,27 +70,20 @@ public class FieldsEntity {
         this.info = info;
     }
 
-    public Long getAreaOfPloughtFields() {
-        return areaOfPloughtFields;
-    }
-
-    public void setAreaOfPloughtFields(Long areaOfPloughtFields) {
-        this.areaOfPloughtFields = areaOfPloughtFields;
-    }
-
-    public Long getAreaOfmeadow() {
-        return areaOfmeadow;
-    }
-
-    public void setAreaOfmeadow(Long areaOfmeadow) {
-        this.areaOfmeadow = areaOfmeadow;
-    }
-
     public Set<PlantsEntity> getPlants() {
         return plants;
     }
 
     public void setPlants(Set<PlantsEntity> plants) {
+        this.plants = plants;
+    }
+
+    public FieldsEntity(Long id, String typ, BigDecimal costOfBuying, Long area, String info, Set<PlantsEntity> plants) {
+        this.id = id;
+        this.name = name;
+        this.costOfBuying = costOfBuying;
+        this.area = area;
+        this.info = info;
         this.plants = plants;
     }
 }

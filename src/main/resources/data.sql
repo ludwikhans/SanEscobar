@@ -127,8 +127,9 @@ VALUES (1, 'owies', 'owies', 0.125, 3.4, 0.1, null ,'Zboże służące jako pasz
 --- FIELD
 ---
 
-INSERT INTO fields (id, name, cost_of_buying, area, info, area_of_plought_fields, area_of_meadow)
-VALUES (1, 'pole', 100, 2, 'podstawa do hodowli zwierząt i uprawy roślin', 1, 1);
+INSERT INTO fields (id, name, cost_of_buying, area, info)
+VALUES (1, 'pole', 50, 1, 'Można je obsiać roślinami'),
+        (2, 'łąka', 50, 1, 'podstawa do hodowli zwierząt');
 
 ---
 --- EVENT
@@ -175,5 +176,64 @@ VALUES (1,1),
        (11,22),
        (12,53);
 
+INSERT INTO south_building (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods)
+VALUES  (1, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1);
+
+
+INSERT INTO fields_start (id, name, cost_of_buying, area, info)
+VALUES (1, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (2, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (3, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (4, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (5, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (6, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (7, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (8, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (9, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (10, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (11, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (12, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (13, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (14, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (15, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (16, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (17, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (18, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (19, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (20, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (21, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (22, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (23, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (24, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (25, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (26, 'pole', 50, 1, 'Można je obsiać roślinami'),
+       (27, 'pole', 50, 1, 'Można je obsiać roślinami'),
+        (28, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (29, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (30, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (31, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (32, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (33, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (34, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (35, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (36, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (37, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (38, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (39, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (40, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (41, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (42, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (43, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (44, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (45, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (46, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (47, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (48, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (49, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (50, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (51, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (52, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (53, 'łąka', 50, 1, 'podstawa do hodowli zwierząt'),
+       (54, 'łąka', 50, 1, 'podstawa do hodowli zwierząt');
 
 commit ;

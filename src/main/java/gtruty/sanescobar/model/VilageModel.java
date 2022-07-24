@@ -8,15 +8,13 @@ public class VilageModel {
     @Size(min = 2, max = 30)
     private String name;
     private Long locationId;
-    private Date ctime;
 
     public VilageModel() {
     }
 
-    public VilageModel(String name, Long locationId, Date ctime) {
+    public VilageModel(String name, Long locationId) {
         this.name = name;
         this.locationId = locationId;
-        this.ctime = ctime;
     }
 
     public String getName() {
@@ -27,13 +25,6 @@ public class VilageModel {
         this.name = name;
     }
 
-    public Date getCtime() {
-        return ctime;
-    }
-
-    public void setCtime(Date ctime) {
-        this.ctime = ctime;
-    }
 
     public Long getLocationId() {
         return locationId;
