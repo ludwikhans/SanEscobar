@@ -1,28 +1,13 @@
 package gtruty.sanescobar.service;
 
 import gtruty.sanescobar.entities.VilageEntity;
-import gtruty.sanescobar.mapper.VilageMapper;
-import gtruty.sanescobar.model.VilageModel;
-import gtruty.sanescobar.repository.VilageRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-@Service
-public class VilageService {
+import java.util.List;
 
-    private final VilageRepository vilageRepository;
-
-    public VilageService(VilageRepository vilageRepository) {
-        this.vilageRepository = vilageRepository;
-    }
-
-    @Transactional
-    public void saveVilage(VilageModel vilageModel){
-      VilageEntity vilageEntity = new VilageEntity();
-       vilageEntity.setName(vilageEntity.getName());
+public interface VilageService {
+    void save(String name);
+    void save (VilageEntity vilageEntity);
+    VilageEntity getAnyVilage();
 
 
-      vilageRepository.save(vilageEntity);
-
-    }
 }

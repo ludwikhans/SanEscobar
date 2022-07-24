@@ -16,7 +16,7 @@ public class PlantIncome extends Income implements IncomeModel {
 
     public BigDecimal calculateIncome(){
         BigDecimal income = new BigDecimal(0);
-        ownedPlants.stream().forEach(ownedPlant -> income.add(ownedPlant.getIncome()));
+        ownedPlants.forEach(ownedPlant -> income.add(ownedPlant.getIncome()));
         return income;
     }
 }
