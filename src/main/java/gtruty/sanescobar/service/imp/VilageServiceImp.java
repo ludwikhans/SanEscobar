@@ -28,6 +28,6 @@ public class VilageServiceImp implements VilageService {
 
     @Override
     public VilageEntity getAnyVilage() {
-        return vilageDao.findAll().iterator().next();
+        return vilageDao.findFirstByOrderByIdDesc();
     }
 }

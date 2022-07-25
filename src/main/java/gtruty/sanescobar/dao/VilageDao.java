@@ -9,8 +9,7 @@ import static org.hibernate.loader.Loader.SELECT;
 @Repository
 public interface VilageDao extends CrudRepository<VilageEntity,Integer> {
 
-  //@Query(nativeQuery = true, value = "select name from vilage where id=(select max (id) from vilage)")
-   // VilageEntity findTopById();
+ VilageEntity findFirstByOrderByIdDesc();
 
 
 

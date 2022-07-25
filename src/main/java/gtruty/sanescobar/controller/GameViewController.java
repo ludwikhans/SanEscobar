@@ -52,9 +52,8 @@ public class GameViewController {
         model.addAttribute("startField",fieldStartService.getAllData());
         model.addAttribute("fieldCategory",startFieldMap.keySet());
         model.addAttribute("fieldCategoryValues",startFieldMap.values());
-
-       // VilageEntity vilage = vilageService.getAnyVilage();
-     //   updateViewModel(model, vilage.getName());
+        VilageEntity vilage = vilageService.getAnyVilage();
+        updateViewModel(model, vilage.getName());
 
 
         return "gameView";
