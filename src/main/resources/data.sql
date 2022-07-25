@@ -100,7 +100,8 @@ VALUES (1, 'kurnik', null, null, null, null, 40.0 ,null, null, null, null,'umoż
        (73, 'kopalnia diamentów', 'diamenty', null, 1000.0, null, 4000.0 ,'złoże diamentów', null, null, null,'umożliwia wydobycie diamentów', null, null, null),
        (74, 'sklep z przyprawami', null, null, 1000.0, null, 4000.0 ,'przyprawy', null, null, null,'umożliwia sprzedaż przypraw', null, null, null),
        (75, 'mennica', 'złote monety', null, 2000.0, null, 6000.0 ,'zkopalnia złota', null, null, null,'umożliwia wybijanie monet', null, null, null),
-       (76, 'jubiler', 'biżuteria', null, 3000.0, null, 10000.0 ,'kopalnia złota', 'kopalnia diamentów', null, null,'umożliwia produkcje biżuterii', null, null, null);
+       (76, 'jubiler', 'biżuteria', null, 3000.0, null, 10000.0 ,'kopalnia złota', 'kopalnia diamentów', null, null,'umożliwia produkcje biżuterii', null, null, null),
+       (77, 'Mała stadnina', null, null, null, null, 150.0 ,null, null, null, null,'umożliwia hodowle koni', 'wschód', 10, null);
 
 ---
 --- PLANTS
@@ -174,10 +175,10 @@ VALUES (1,1),
        (9,7),
        (10,8),
        (11,22),
-       (12,53);
+       (12,53),
+       (9,77);
 
-INSERT INTO south_building (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods)
-VALUES  (1, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1);
+
 
 
 INSERT INTO fields_start (id, name, cost_of_buying, area, info)
