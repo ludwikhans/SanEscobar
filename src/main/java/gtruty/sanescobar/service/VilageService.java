@@ -10,4 +10,5 @@ public interface VilageService {
     VilageEntity getAnyVilage();
 
 
+
 }
