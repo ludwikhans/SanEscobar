@@ -1,4 +1,4 @@
-package gtruty.sanescobar.service.imp;
+package gtruty.sanescobar.service.imp.location;
 
 import gtruty.sanescobar.dao.startlocation.BuildingSouthDao;
 import gtruty.sanescobar.entities.PlaceOfStart.BuildingsEntitySouth;
@@ -16,7 +16,7 @@ public class BuildingSouthServiceImpl implements BuildingSouthService {
 
     @Override
     public void save(BuildingsEntitySouth buildingsEntitySouth) {
-buildingSouthDao.save(buildingsEntitySouth);
+        buildingSouthDao.save(buildingsEntitySouth);
     }
 
     @Override

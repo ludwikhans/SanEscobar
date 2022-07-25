@@ -13,13 +13,15 @@ public class VilageEntity {
     @GeneratedValue
     private Integer id;
     private String name;
-
-    public VilageEntity(String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private Long locationId;
 
     public VilageEntity() {
+    }
+
+    public VilageEntity(String name, Long locationId) {
+        this.id = id;
+        this.name = name;
+        this.locationId = locationId;
     }
 
     public Integer getId() {
@@ -36,5 +38,13 @@ public class VilageEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
     }
 }

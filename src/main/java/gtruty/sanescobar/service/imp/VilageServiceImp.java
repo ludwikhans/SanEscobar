@@ -17,8 +17,8 @@ public class VilageServiceImp implements VilageService {
 
 
     @Override
-    public void save(String name) {
-        vilageDao.save(new VilageEntity(name));
+    public void save(String name, Long locationId) {
+        vilageDao.save(new VilageEntity(name, locationId));
     }
 
     @Override

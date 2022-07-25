@@ -28,7 +28,7 @@ public class StartController {
 
     @PostMapping("/start")
     public String saveVilage(@ModelAttribute("vilage") VilageModel vilage) {
-        vilageService.save(vilage.getName());
+        vilageService.save(vilage.getName(),vilage.getLocationId());
         return "redirect:/gameView";
     }
 
