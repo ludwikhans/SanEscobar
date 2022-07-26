@@ -1,8 +1,8 @@
-package gtruty.sanescobar.service.imp;
+package gtruty.sanescobar.service.imp.location;
 
-import gtruty.sanescobar.dao.BuildingSouthDao;
+import gtruty.sanescobar.dao.startlocation.BuildingSouthDao;
 import gtruty.sanescobar.entities.PlaceOfStart.BuildingsEntitySouth;
-import gtruty.sanescobar.service.BuildingSouthService;
+import gtruty.sanescobar.service.location.BuildingSouthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class BuildingSouthServiceImpl implements BuildingSouthService {
 
     @Override
     public void save(BuildingsEntitySouth buildingsEntitySouth) {
-buildingSouthDao.save(buildingsEntitySouth);
+        buildingSouthDao.save(buildingsEntitySouth);
     }
 
     @Override

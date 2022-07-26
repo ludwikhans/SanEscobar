@@ -1,4 +1,4 @@
-package gtruty.sanescobar.dao;
+package gtruty.sanescobar.dao.startlocation;
 
 import gtruty.sanescobar.entities.PlaceOfStart.BuildingsEntitySouth;
 import org.springframework.data.repository.CrudRepository;

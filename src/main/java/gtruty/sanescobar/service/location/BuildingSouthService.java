@@ -1,4 +1,4 @@
-package gtruty.sanescobar.service;
+package gtruty.sanescobar.service.location;
 
 import gtruty.sanescobar.entities.PlaceOfStart.BuildingsEntitySouth;
 

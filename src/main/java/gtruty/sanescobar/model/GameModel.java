@@ -1,10 +1,24 @@
 package gtruty.sanescobar.model;
 
+import java.math.BigDecimal;
+
 public class GameModel {
     private int turnNumber;
+    private BigDecimal startMoney = BigDecimal.valueOf(100);
     private long money;
     private double area = 10;
     private String agrarsystem;
+
+    public GameModel() {
+    }
+
+    public BigDecimal getStartMoney() {
+        return startMoney;
+    }
+
+    public void setStartMoney(BigDecimal startMoney) {
+        this.startMoney = startMoney;
+    }
 
     public int getTurnNumber() {
         return turnNumber;

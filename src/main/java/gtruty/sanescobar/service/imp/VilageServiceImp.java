@@ -1,14 +1,13 @@
 package gtruty.sanescobar.service.imp;
 
 import gtruty.sanescobar.dao.VilageDao;
-import gtruty.sanescobar.entities.PlaceOfStart.FieldsStartEntity;
+
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.service.VilageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+
 
 @Service
 public class VilageServiceImp implements VilageService {
@@ -18,17 +17,17 @@ public class VilageServiceImp implements VilageService {
 
 
     @Override
-    public void save(String name) {
-
+    public void save(String name, Long locationId) {
+        vilageDao.save(new VilageEntity(name, locationId));
     }
 
     @Override
     public void save(VilageEntity vilageEntity) {
-
+        vilageDao.save(vilageEntity);
     }
 
-@Override
+    @Override
     public VilageEntity getAnyVilage() {
-    return (VilageEntity) vilageDao.findAll();
+        return vilageDao.findFirstByOrderByIdDesc();
     }
 }

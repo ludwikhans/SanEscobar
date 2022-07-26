@@ -12,7 +12,7 @@ public class VilageModel {
     public VilageModel() {
     }
 
-    public VilageModel(String name, Long locationId) {
+    public VilageModel(String name, long locationId) {
         this.name = name;
         this.locationId = locationId;
     }
