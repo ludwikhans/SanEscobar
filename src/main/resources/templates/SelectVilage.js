@@ -1,21 +1,21 @@
 function southVilage(){
-    console.log('Południowa wioska została kliknięta');
+      var locationId = 1;
 }
 
 function northVilage(){
-    console.log('Północna wioska została kliknięta');
+    var locationId = 2;
 }
 
 function easthVilage(){
-    console.log('Wschodnia wioska została kliknięta');
+    var locationId = 3;
 }
 
 function westVilage(){
-    console.log('Zachodnia wioska została kliknięta');
+    var locationId = 4;
 }
 
 function centralVilage(){
-    console.log('Centralna wioska została kliknięta');
+    var locationId = 5;
 }
 
 window.onload = function (){
