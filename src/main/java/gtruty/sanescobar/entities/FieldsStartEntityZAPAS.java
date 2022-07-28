@@ -1,7 +1,5 @@
-package gtruty.sanescobar.entities.PlaceOfStart;
-
-import gtruty.sanescobar.entities.PlantsEntity;
-import gtruty.sanescobar.model.field.TypeOfField;
+/*
+package gtruty.sanescobar.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,20 +8,24 @@ import java.util.Set;
 
 @Entity
 @Table(name = "fields_start")
-public class FieldsStartEntity {
+public class FieldsStartEntityZAPAS {
 
     @Id
     @GeneratedValue
     @Column(name = "id")
     private Long id;
     @Column(name = "name")
-    private TypeOfField type;
+    private String name;
     @Column(name = "cost_of_buying")
     private BigDecimal costOfBuying;
     @Column(name = "area")
     private Integer area;
     @Column(name = "info")
     private String info;
+    @Column(name = "area_of_plought_fields")
+    private Integer areaOfPloughtFields;
+    @Column(name = "area_of_meadow")
+    private Integer areaOfmeadow;
     @Column(name = "seed_of_field")
     private String seed;
     @ManyToMany
@@ -35,23 +37,25 @@ public class FieldsStartEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FieldsStartEntity that = (FieldsStartEntity) o;
-        return Objects.equals(id, that.id) && type == that.type && Objects.equals(costOfBuying, that.costOfBuying) && Objects.equals(area, that.area) && Objects.equals(info, that.info) && Objects.equals(seed, that.seed) && Objects.equals(plants, that.plants);
+        FieldsStartEntityZAPAS that = (FieldsStartEntityZAPAS) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(costOfBuying, that.costOfBuying) && Objects.equals(area, that.area) && Objects.equals(info, that.info) && Objects.equals(areaOfPloughtFields, that.areaOfPloughtFields) && Objects.equals(areaOfmeadow, that.areaOfmeadow) && Objects.equals(seed, that.seed) && Objects.equals(plants, that.plants);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, type, costOfBuying, area, info, seed, plants);
+        return Objects.hash(id, name, costOfBuying, area, info, areaOfPloughtFields, areaOfmeadow, seed, plants);
     }
 
     @Override
     public String toString() {
         return "FieldsStartEntity{" +
                 "id=" + id +
-                ", type=" + type +
+                ", name='" + name + '\'' +
                 ", costOfBuying=" + costOfBuying +
                 ", area=" + area +
                 ", info='" + info + '\'' +
+                ", areaOfPloughtFields=" + areaOfPloughtFields +
+                ", areaOfmeadow=" + areaOfmeadow +
                 ", seed='" + seed + '\'' +
                 ", plants=" + plants +
                 '}';
@@ -65,12 +69,12 @@ public class FieldsStartEntity {
         this.id = id;
     }
 
-    public TypeOfField getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(TypeOfField type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public BigDecimal getCostOfBuying() {
@@ -97,6 +101,22 @@ public class FieldsStartEntity {
         this.info = info;
     }
 
+    public Integer getAreaOfPloughtFields() {
+        return areaOfPloughtFields;
+    }
+
+    public void setAreaOfPloughtFields(Integer areaOfPloughtFields) {
+        this.areaOfPloughtFields = areaOfPloughtFields;
+    }
+
+    public Integer getAreaOfmeadow() {
+        return areaOfmeadow;
+    }
+
+    public void setAreaOfmeadow(Integer areaOfmeadow) {
+        this.areaOfmeadow = areaOfmeadow;
+    }
+
     public String getSeed() {
         return seed;
     }
@@ -113,3 +133,4 @@ public class FieldsStartEntity {
         this.plants = plants;
     }
 }
+*/

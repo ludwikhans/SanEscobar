@@ -3,6 +3,7 @@ package gtruty.sanescobar.controller;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldsStartEntity;
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.GameModel;
+import gtruty.sanescobar.model.VilageModel;
 import gtruty.sanescobar.service.BuildingService;
 import gtruty.sanescobar.service.location.BuildingSouthService;
 import gtruty.sanescobar.service.FieldStartService;
@@ -40,14 +41,20 @@ public class GameViewController {
     @GetMapping("/gameView")
     public String startPage(Model model){
 
+
+        switch (vilage.getLocationId()){
+            case 1:
+
+        }
+
+
         List<FieldsStartEntity> startField = fieldStartService.getAllData();
-        Map<String,Long> startFieldMap = startField.stream().collect(Collectors.groupingBy(FieldsStartEntity::getName, Collectors.counting()));
 
 
         model.addAttribute("buildings", buildingSouthService.getAllData());
         model.addAttribute("startField",fieldStartService.getAllData());
-        model.addAttribute("fieldCategory",startFieldMap.keySet());
-        model.addAttribute("fieldCategoryValues",startFieldMap.values());
+      //  model.addAttribute("fieldCategory",startFieldMap.keySet());
+      //  model.addAttribute("fieldCategoryValues",startFieldMap.values());
         VilageEntity vilage = vilageService.getAnyVilage();
         updateViewModel(model, vilage.getName());
 
@@ -78,5 +85,7 @@ public class GameViewController {
     }
 
 
-
+    VilageModel vilage = new VilageModel("", 0L);
+        model.addAttribute("vilage", vilage);
+                vilageService.save(vilage.getName(),vilage.getLocationId());
 
