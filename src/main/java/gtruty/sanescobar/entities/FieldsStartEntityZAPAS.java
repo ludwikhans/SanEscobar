@@ -48,7 +48,7 @@ public class FieldsStartEntityZAPAS {
 
     @Override
     public String toString() {
-        return "FieldsStartEntity{" +
+        return "FieldsOfMeadowEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", costOfBuying=" + costOfBuying +

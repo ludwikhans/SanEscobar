@@ -46,7 +46,7 @@
                              <td style="border-style: solid">
                                  <div>
                                      <h3>System agrarny:
-                                         <span></span></h3>
+                                         <span th:text="${lokalizacja}"></span></h3>
                                  </div>
                              </td>
                          </tr>
@@ -143,15 +143,15 @@
                             <button class="uk-button uk-button-primary uk-button-small">obsiane</button>
                         </td>
                     </tr>
-                    <tr >
-                        <td th:each="fieldsCategory : ${fieldCategory}">
-                            <div th:text="${fieldCategory}" ></div>
+                    <tr th:each="field : ${fields}" >
+                        <td >
+                            <div th:text="${field.name}" ></div>
                         </td>
-                        <td th:each="fieldsCategoryArea : ${fieldCategoryValues}">
-                            <div th:text="${fieldsCategoryArea}" ></div>
+                        <td>
+                            <div th:text="${field.area}" ></div>
                         </td>
                         <td class="uk-width-1-4">
-                            <div></div>
+                            <div th:text="${field.seed}"></div>
                         </td>
                     </tr>
 

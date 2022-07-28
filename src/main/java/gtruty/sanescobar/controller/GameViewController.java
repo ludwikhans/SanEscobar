@@ -1,12 +1,13 @@
 package gtruty.sanescobar.controller;
 
-import gtruty.sanescobar.entities.PlaceOfStart.FieldsStartEntity;
+import gtruty.sanescobar.entities.PlaceOfStart.StartFieldEntity;
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.GameModel;
-import gtruty.sanescobar.model.VilageModel;
+import gtruty.sanescobar.model.field.FieldsModelOfMeadow;
+import gtruty.sanescobar.model.field.FieldsModelOfPloughtFields;
 import gtruty.sanescobar.service.BuildingService;
-import gtruty.sanescobar.service.location.BuildingSouthService;
-import gtruty.sanescobar.service.FieldStartService;
+import gtruty.sanescobar.service.FieldsOfStartService;
+import gtruty.sanescobar.service.location.*;
 import gtruty.sanescobar.service.VilageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,8 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 public class GameViewController {
@@ -31,7 +30,19 @@ public class GameViewController {
     BuildingSouthService buildingSouthService;
 
     @Autowired
-    FieldStartService fieldStartService;
+    BuildingEastService buildingEastService;
+
+    @Autowired
+    BuildingCentralService buildingCentralService;
+
+    @Autowired
+    BuildingNorthService buildingNorthService;
+
+    @Autowired
+    BuildingWestService buildingWestService;
+
+    @Autowired
+    FieldsOfStartService fieldsOfStartService;
 
     @Autowired
     VilageService vilageService;
@@ -42,21 +53,89 @@ public class GameViewController {
     public String startPage(Model model){
 
 
-        switch (vilage.getLocationId()){
-            case 1:
+       // List<FieldsOfMeadowEntity> startField = fieldStartService.getAllData();
+       // Map<String,Long> startFieldMap = startField.stream().collect(Collectors.groupingBy(FieldsOfMeadowEntity::getName, Collectors.counting()));
 
+        VilageEntity vilage = vilageService.getAnyVilage();
+        updateViewModel(model, vilage.getName(),vilage.getLocationId());
+        model.addAttribute("lokalizacja",vilage.getLocationId());
+
+
+
+        if (vilage.getLocationId() == 1) {
+            model.addAttribute("buildings", buildingNorthService.getAllData());
+
+            for (int i = 0; i < 27; i++) {
+
+                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
+                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
+                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Ozima");
+                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
+            }
+            List<StartFieldEntity> startFieldEntity = fieldsOfStartService.getAllData();
+            model.addAttribute("fields",startFieldEntity);
+
+        } else if (vilage.getLocationId() == 2) {
+            model.addAttribute("buildings", buildingEastService.getAllData());
+
+            for (int i = 0; i < 27; i++) {
+
+                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
+                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
+                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Owies");
+                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
+            }
+            model.addAttribute("fields",fieldsOfStartService.getAllData());
+
+        } else if (vilage.getLocationId() == 3) {
+            model.addAttribute("buildings", buildingCentralService.getAllData());
+
+            for (int i = 0; i < 27; i++) {
+
+                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
+                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
+                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Jara");
+                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
+            }
+            model.addAttribute("fields",fieldsOfStartService.getAllData());
+
+        } else if (vilage.getLocationId() == 4) {
+            model.addAttribute("buildings", buildingSouthService.getAllData());
+
+            for (int i = 0; i < 27; i++) {
+
+                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
+                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
+                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Jęczmień");
+                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
+            }
+            model.addAttribute("fields",fieldsOfStartService.getAllData());
+
+        } else if (vilage.getLocationId() == 5) {
+            model.addAttribute("buildings", buildingWestService.getAllData());
+
+
+            for (int i = 0; i < 27; i++) {
+
+                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
+                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
+                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Żyto");
+                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
+            }
+            model.addAttribute("fields",fieldsOfStartService.getAllData());
         }
 
 
-        List<FieldsStartEntity> startField = fieldStartService.getAllData();
 
+         //  model.addAttribute("startField",fieldStartService.getAllData());
+        //model.addAttribute("totalArea",fieldStartService.total());
+        //  model.addAttribute("fieldCategory",startFieldMap.keySet());
+        //  model.addAttribute("fieldCategoryValues",startFieldMap.values());
 
         model.addAttribute("buildings", buildingSouthService.getAllData());
-        model.addAttribute("startField",fieldStartService.getAllData());
-      //  model.addAttribute("fieldCategory",startFieldMap.keySet());
-      //  model.addAttribute("fieldCategoryValues",startFieldMap.values());
-        VilageEntity vilage = vilageService.getAnyVilage();
-        updateViewModel(model, vilage.getName());
+        model.addAttribute("startField", fieldsOfStartService.getAllData());
+
+
 
         GameModel gameModel = new GameModel();
         model.addAttribute("game", gameModel);
@@ -67,9 +146,11 @@ public class GameViewController {
         return "gameView";
     }
 
-    private void updateViewModel(Model model, String vilageName) {
+    private void updateViewModel(Model model, String vilageName, Long locationId) {
         model.addAttribute("nazwa", vilageName);
+        model.addAttribute("lokalization" ,locationId);
         model.addAttribute("buildings", buildingSouthService.getAllData());
+        model.addAttribute("fields",fieldsOfStartService.getAllData());
         model.addAttribute("gameModel", new GameModel());
 
 
@@ -85,7 +166,7 @@ public class GameViewController {
     }
 
 
-    VilageModel vilage = new VilageModel("", 0L);
-        model.addAttribute("vilage", vilage);
-                vilageService.save(vilage.getName(),vilage.getLocationId());
+
+
+
 

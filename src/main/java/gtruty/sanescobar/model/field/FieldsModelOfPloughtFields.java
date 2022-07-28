@@ -5,10 +5,9 @@ import java.math.BigDecimal;
 public class FieldsModelOfPloughtFields {
 
 
-        private Integer areaOfmeadow = 1;
-        private Long id;
 
-        private TypeOfField typeOfField = TypeOfField.POLE;
+
+        private String name = "Pole";
 
         private BigDecimal costOfBuying = BigDecimal.valueOf(50);
 
@@ -20,27 +19,16 @@ public class FieldsModelOfPloughtFields {
 
         private String seed;
 
-        public FieldsModelOfPloughtFields() {
-        }
-
         public FieldsModelOfPloughtFields(String seed) {
                 this.seed = seed;
         }
 
-        public Long getId() {
-                return id;
+        public String getName() {
+                return name;
         }
 
-        public void setId(Long id) {
-                this.id = id;
-        }
-
-        public TypeOfField getTypeOfField() {
-                return typeOfField;
-        }
-
-        public void setTypeOfField(TypeOfField typeOfField) {
-                this.typeOfField = typeOfField;
+        public void setName(String name) {
+                this.name = name;
         }
 
         public BigDecimal getCostOfBuying() {
