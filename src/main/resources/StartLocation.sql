@@ -24,3 +24,24 @@ VALUES  (1, 'skład', null, null, null, null, 50.0 , null,null, null, null,'doda
         (2, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1),
         (3, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1);
 
+
+INSERT INTO fields_central (id, name, cost_of_buying, area, info,seed_of_field)
+VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Pszenica jara'),
+       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
+
+
+INSERT INTO fields_east (id, name, cost_of_buying, area, info,seed_of_field)
+VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Owies'),
+       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
+
+INSERT INTO fields_north (id, name, cost_of_buying, area, info,seed_of_field)
+VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Pszenica ozima'),
+       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
+
+INSERT INTO fields_south (id, name, cost_of_buying, area, info,seed_of_field)
+VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Jęczmień'),
+       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
+
+INSERT INTO fields_west (id, name, cost_of_buying, area, info,seed_of_field)
+VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Żyto'),
+       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);

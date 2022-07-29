@@ -59,71 +59,13 @@ public class GameViewController {
         VilageEntity vilage = vilageService.getAnyVilage();
         updateViewModel(model, vilage.getName(),vilage.getLocationId());
         model.addAttribute("lokalizacja",vilage.getLocationId());
+        GameModel gameModel = new GameModel();
+        model.addAttribute("game", gameModel);
 
 
 
-        if (vilage.getLocationId() == 1) {
-            model.addAttribute("buildings", buildingNorthService.getAllData());
+        gameModel.startVilage(vilage,model,fieldsOfStartService,buildingWestService,buildingEastService,buildingNorthService,buildingSouthService ,buildingCentralService);
 
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Ozima");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            List<StartFieldEntity> startFieldEntity = fieldsOfStartService.getAllData();
-            model.addAttribute("fields",startFieldEntity);
-
-        } else if (vilage.getLocationId() == 2) {
-            model.addAttribute("buildings", buildingEastService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Owies");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-
-        } else if (vilage.getLocationId() == 3) {
-            model.addAttribute("buildings", buildingCentralService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Jara");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-
-        } else if (vilage.getLocationId() == 4) {
-            model.addAttribute("buildings", buildingSouthService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Jęczmień");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-
-        } else if (vilage.getLocationId() == 5) {
-            model.addAttribute("buildings", buildingWestService.getAllData());
-
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Żyto");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-        }
 
 
 
@@ -137,8 +79,7 @@ public class GameViewController {
 
 
 
-        GameModel gameModel = new GameModel();
-        model.addAttribute("game", gameModel);
+
 
 
 

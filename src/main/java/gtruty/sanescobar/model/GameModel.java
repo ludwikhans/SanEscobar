@@ -2,7 +2,7 @@ package gtruty.sanescobar.model;
 
 import java.math.BigDecimal;
 
-public class GameModel {
+public class GameModel extends Game {
     private int turnNumber;
     private BigDecimal startMoney = BigDecimal.valueOf(100);
     private long money;
@@ -35,6 +35,7 @@ public class GameModel {
     public void setMoney(long money) {
         this.money = money;
     }
+
     public String agrarSystem(){
         if (area > 50){
             return "Trójpolówka" ;
