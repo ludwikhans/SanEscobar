@@ -45,8 +45,24 @@ public class GameViewController {
     FieldsOfStartService fieldsOfStartService;
 
     @Autowired
+    FieldCentralService fieldCentralService;
+
+    @Autowired
+    FieldEastService fieldEastService;
+
+    @Autowired
+    FieldNorthService fieldNorthService;
+
+    @Autowired
+    FieldSouthService fieldSouthService;
+
+    @Autowired
+    FieldWestService fieldWestService;
+
+    @Autowired
     VilageService vilageService;
     //GameService gameService;
+
 
 
     @GetMapping("/gameView")
@@ -64,7 +80,7 @@ public class GameViewController {
 
 
 
-        gameModel.startVilage(vilage,model,fieldsOfStartService,buildingWestService,buildingEastService,buildingNorthService,buildingSouthService ,buildingCentralService);
+        gameModel.startVilageLoaded(vilage,model,buildingWestService,buildingEastService,buildingNorthService,buildingSouthService ,buildingCentralService, fieldWestService, fieldEastService,fieldNorthService,fieldSouthService,fieldCentralService);
 
 
 
@@ -73,16 +89,6 @@ public class GameViewController {
         //model.addAttribute("totalArea",fieldStartService.total());
         //  model.addAttribute("fieldCategory",startFieldMap.keySet());
         //  model.addAttribute("fieldCategoryValues",startFieldMap.values());
-
-        model.addAttribute("buildings", buildingSouthService.getAllData());
-        model.addAttribute("startField", fieldsOfStartService.getAllData());
-
-
-
-
-
-
-
 
         return "gameView";
     }

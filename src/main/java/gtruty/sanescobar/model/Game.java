@@ -119,69 +119,27 @@ public class Game implements GameMetod{
     }
 
     @Override
-    public void startVilageloaded(VilageEntity vilage, Model model, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService, FieldWestService fieldWestService, FieldEastService fieldEastService, FieldNorthService fieldNorthService, FieldSouthService fieldSouthService, FieldCentralService fieldCentralService) {
+    public void startVilageLoaded(VilageEntity vilage, Model model, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService, FieldWestService fieldWestService, FieldEastService fieldEastService, FieldNorthService fieldNorthService, FieldSouthService fieldSouthService, FieldCentralService fieldCentralService) {
         if (vilage.getLocationId() == 1) {
             model.addAttribute("buildings", buildingNorthService.getAllData());
-
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Ozima");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            List<StartFieldEntity> startFieldEntity = fieldsOfStartService.getAllData();
-            model.addAttribute("fields",startFieldEntity);
+            model.addAttribute("fields", fieldNorthService.getAllData());
 
         } else if (vilage.getLocationId() == 2) {
             model.addAttribute("buildings", buildingEastService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Owies");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
+            model.addAttribute("fields", fieldEastService.getAllData());
 
         } else if (vilage.getLocationId() == 3) {
             model.addAttribute("buildings", buildingCentralService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Jara");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
+            model.addAttribute("fields", fieldCentralService.getAllData());
 
         } else if (vilage.getLocationId() == 4) {
             model.addAttribute("buildings", buildingSouthService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Jęczmień");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
+            model.addAttribute("fields", fieldSouthService.getAllData());
 
         } else if (vilage.getLocationId() == 5) {
             model.addAttribute("buildings", buildingWestService.getAllData());
-
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Żyto");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
+            model.addAttribute("fields", fieldWestService.getAllData());
+        }
     }
 
 
