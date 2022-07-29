@@ -1,0 +1,10 @@
+package gtruty.sanescobar.dao.startlocation;
+
+import gtruty.sanescobar.entities.PlaceOfStart.GoodsEastEntities;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface GoodsEastDao extends CrudRepository<GoodsEastEntities,Integer> {
+
+}

@@ -41,8 +41,6 @@ public class GameViewController {
     @Autowired
     BuildingWestService buildingWestService;
 
-    @Autowired
-    FieldsOfStartService fieldsOfStartService;
 
     @Autowired
     FieldCentralService fieldCentralService;
@@ -76,6 +74,7 @@ public class GameViewController {
         model.addAttribute("lokalizacja",vilage.getLocationId());
         GameModel gameModel = new GameModel();
         model.addAttribute("game", gameModel);
+
         gameModel.startVilageLoaded(vilage,model,buildingWestService,buildingEastService,buildingNorthService,buildingSouthService ,buildingCentralService, fieldWestService, fieldEastService,fieldNorthService,fieldSouthService,fieldCentralService);
         updateViewModel(model, vilage.getName(),vilage.getLocationId());
 
@@ -93,7 +92,6 @@ public class GameViewController {
         model.addAttribute("nazwa", vilageName);
         model.addAttribute("lokalization" ,locationId);
         model.addAttribute("buildings", buildingSouthService.getAllData());
-        model.addAttribute("fields",fieldsOfStartService.getAllData());
         model.addAttribute("gameModel", new GameModel());
 
 
