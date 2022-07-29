@@ -73,15 +73,11 @@ public class GameViewController {
        // Map<String,Long> startFieldMap = startField.stream().collect(Collectors.groupingBy(FieldsOfMeadowEntity::getName, Collectors.counting()));
 
         VilageEntity vilage = vilageService.getAnyVilage();
-        updateViewModel(model, vilage.getName(),vilage.getLocationId());
         model.addAttribute("lokalizacja",vilage.getLocationId());
         GameModel gameModel = new GameModel();
         model.addAttribute("game", gameModel);
-
-
-
         gameModel.startVilageLoaded(vilage,model,buildingWestService,buildingEastService,buildingNorthService,buildingSouthService ,buildingCentralService, fieldWestService, fieldEastService,fieldNorthService,fieldSouthService,fieldCentralService);
-
+        updateViewModel(model, vilage.getName(),vilage.getLocationId());
 
 
 

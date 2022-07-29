@@ -39,6 +39,10 @@ public class BuildingsEntityEast {
     private Long placeForGoods;
     @Column(name = "special_for")
     private String specialFor;
+    @Column (name = "amaount")
+    private Integer amount;
+    @Column (name = "animal_in_building")
+    private String animalInBuilding;
 
     public Long getId() {
         return id;
@@ -160,24 +164,19 @@ public class BuildingsEntityEast {
         this.specialFor = specialFor;
     }
 
-    public BuildingsEntityEast() {
+    public Integer getAmount() {
+        return amount;
     }
 
-    public BuildingsEntityEast(Long id, String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuilding, String requirements1, String requirements2, String suistenance, Double valueOfSuistenance, String info, Long numberOfAnimal, Long placeForGoods, String specialFor) {
-        this.id = id;
-        this.name = name;
-        this.products1 = products1;
-        this.products2 = products2;
-        this.moneyProfit1 = moneyProfit1;
-        this.moneyProfit2 = moneyProfit2;
-        this.costOfBuilding = costOfBuilding;
-        this.requirements1 = requirements1;
-        this.requirements2 = requirements2;
-        this.suistenance = suistenance;
-        this.valueOfSuistenance = valueOfSuistenance;
-        this.info = info;
-        this.numberOfAnimal = numberOfAnimal;
-        this.placeForGoods = placeForGoods;
-        this.specialFor = specialFor;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public String getAnimalInBuilding() {
+        return animalInBuilding;
+    }
+
+    public void setAnimalInBuilding(String animalInBuilding) {
+        this.animalInBuilding = animalInBuilding;
     }
 }

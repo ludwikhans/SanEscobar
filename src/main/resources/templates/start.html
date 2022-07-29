@@ -10,10 +10,18 @@
     <script th:src="@{/js/uikit-icons.min.js}"></script>
     <script th:src="@{/js/fontawesome.min.js}"></script>
 
+    <style>
+        html {
+            height: 100%;
+            background: url('/img/pergamin.jpg') no-repeat;
+            background-size: cover;
+        }
+    </style>
+
 </head>
 <body>
 
-<div class="uk-section uk-background-cover uk-width-1-1 uk-section-default uk-padding-remove-top uk-margin-xlarge-top uk-margin-remove" data-src="https://mh-1-agencja-fotograficzna.panthermedia.net/media/media_detail/0004000000/04299000/~stary-papier-lub-pergamin_04299727_detail.jpg" uk-img>
+<div class="uk-width-1-1 uk-padding-remove-top uk-margin-xlarge-top uk-margin-remove">
     <form  th:object="${vilage}"  method="post">
 
         <div class="uk-container uk-container-xsmall uk-container uk-margin">
@@ -22,6 +30,7 @@
             </article>
             <div class="uk-width-1-1">
                 <input class="uk-input uk-text-center" type="text" placeholder="Podaj nazwę przysiółka, który będziesz rozbudowywać aż zostanie pełnoprawną Marchią" th:field="*{name}">
+                <input hidden id="locationId" type="text" th:field="*{locationId}">
             </div>
             <article class="uk-article uk-margin-small uk-text-center uk-margin">
                 <h1>Wybierz lokalizację swojej osady</h1>
@@ -33,33 +42,38 @@
 
                 <div class="uk-overflow-auto uk-height-medium" >
                     <div>
-                    <div id="1" class="uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute; right: 525px;top: 214px"></div>
-                    <div class="uk-dropbar uk-dropbar-left uk-background-muted"  uk-drop="mode: hover; pos:left; stretch: x ">
-                        <input class="uk-input" value="1" th:field="*{locationId}"> Najzimniejsza część kraju jednak to tu występuje najwięcej dzikiej zwierzyny oraz lasów.</div>
+                        <div id="1" class="location-button uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute; right: 525px;top: 214px"></div>
+                        <div class="uk-dropbar uk-dropbar-left uk-background-muted"  uk-drop="mode: hover; pos:left; stretch: x ">
+                            Najzimniejsza część kraju jednak to tu występuje najwięcej dzikiej zwierzyny oraz lasów.
+                        </div>
                     </div>
 
                     <div>
-                    <div id="2" class="uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute;  right: 400px;top: 362px"></div>
-                    <div class="uk-dropbar uk-dropbar-left uk-background-muted" uk-drop="mode: hover; pos:left; stretch: x">
-                        <input class="uk-input" value="2" th:field="*{locationId}"> Występują tu największe różnice temperatur przez co w krajobrazie dominują stepy. Występują tu także rudy metali.</div>
+                        <div id="2" class="location-button uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute;  right: 400px;top: 362px"></div>
+                        <div class="uk-dropbar uk-dropbar-left uk-background-muted" uk-drop="mode: hover; pos:left; stretch: x">
+                            Występują tu największe różnice temperatur przez co w krajobrazie dominują stepy. Występują tu także rudy metali.
+                        </div>
                     </div>
 
                     <div>
-                    <div id="3" class="uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute; right: 810px;top: 455px"></div>
-                    <div class="uk-dropbar uk-dropbar-right uk-background-muted" uk-drop="mode: hover; pos:right; stretch: x">
-                        <input class="uk-input" value="3" th:field="*{locationId}"> Bliskość wielkich jezior sprawia że obszar ten jest najlepiej nawodniony</div>
+                        <div id="3" class="location-button uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute; right: 810px;top: 455px"></div>
+                        <div class="uk-dropbar uk-dropbar-right uk-background-muted" uk-drop="mode: hover; pos:right; stretch: x">
+                            Bliskość wielkich jezior sprawia że obszar ten jest najlepiej nawodniony
+                        </div>
                     </div>
 
                     <div>
-                    <div id="4" class="uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute; right: 820px;top: 605px"></div>
-                    <div class="uk-dropbar uk-dropbar-top-right uk-background-muted" uk-drop="mode: hover; pos:top-right; stretch: x">
-                        <input class="uk-input" value="4" th:field="*{locationId}"> Najdalsze południe. Jest tu wystarczająco wilgotno i ciepło żeby uprawiać winorośl.</div>
-                     </div>
+                        <div id="4" class="location-button uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute; right: 820px;top: 605px"></div>
+                        <div class="uk-dropbar uk-dropbar-top-right uk-background-muted" uk-drop="mode: hover; pos:top-right; stretch: x">
+                            Najdalsze południe. Jest tu wystarczająco wilgotno i ciepło żeby uprawiać winorośl.
+                        </div>
+                    </div>
 
                     <div>
-                    <div id="5" class="uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute; right: 1105px;top: 450px"></div>
-                    <div class=" uk-background-muted uk-dropbar-right-top" style="width: 200px" uk-drop="pos:right-top; mode: hover;stretch: x">
-                        <input class="uk-input" value="5" th:field="*{locationId}">Stąd najbliższy transport do morza. Większość towarów przepływa tędy</div>
+                        <div id="5" class="location-button uk-border-circle uk-button uk-button-small"  style="background-color: red; height: 30px;width: 30px ; position: absolute; right: 1105px;top: 450px"></div>
+                        <div class=" uk-background-muted uk-dropbar-right-top" style="width: 200px" uk-drop="pos:right-top; mode: hover;stretch: x">
+                            Stąd najbliższy transport do morza. Większość towarów przepływa tędy
+                        </div>
                     </div>
 
                 </div>
@@ -74,52 +88,22 @@
         </div>
 
         <script >
-
-
-
-            var numericArray = [1,2,3,4,5];
-
-            function southVilage(){
-                console.log(numericArray[0]);
-                return numericArray[0];
-
-            }
-
-            function northVilage(){
-                console.log(numericArray[1]);
-                return numericArray[1];
-            }
-
-            function easthVilage(){
-                console.log(numericArray[2]);
-                return numericArray[2];
-            }
-
-            function westVilage(){
-                console.log(numericArray[3]);
-                return numericArray[3];
-            }
-
-            function centralVilage(){
-                console.log(numericArray[4]);
-                return numericArray[4];
+            function setLocationId (e) {
+                document.getElementById('locationId').value = e.target.id;
             }
 
             window.onload = function (){
-                document.getElementById('1').onclick = northVilage;
-                document.getElementById('2').onclick = easthVilage;
-                document.getElementById('3').onclick = centralVilage;
-                document.getElementById('4').onclick = southVilage;
-                document.getElementById('5').onclick = westVilage;
+                let locationButtons = document.getElementsByClassName('location-button');
+                for (let b of locationButtons) {
+                    b.addEventListener('click', setLocationId)
+                }
             }
-
         </script>
 
     </form>
 </div>
 
-<!--SELECT MAX(Id)
-FROM vilage-->
+
 
 </body>
 </html>
