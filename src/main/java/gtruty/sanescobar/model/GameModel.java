@@ -1,16 +1,29 @@
 package gtruty.sanescobar.model;
 
+import gtruty.sanescobar.dao.startlocation.FieldCentralDao;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.math.BigDecimal;
 
+
+
 public class GameModel extends Game {
+
+    @Autowired
+    FieldCentralDao fieldCentralDao;
+
     private int turnNumber;
     private BigDecimal startMoney = BigDecimal.valueOf(100);
     private long money;
-    private double area = 10;
+    private int area;
     private String agrarsystem;
 
     public GameModel() {
     }
+
+
+
+
 
     public BigDecimal getStartMoney() {
         return startMoney;
@@ -36,19 +49,6 @@ public class GameModel extends Game {
         this.money = money;
     }
 
-    public String agrarSystem(){
-        if (area > 50){
-            return "Trójpolówka" ;
-        }return "dwópolówla";
-    }
-
-    public double getArea() {
-        return area;
-    }
-
-    public void setArea(double area) {
-        this.area = area;
-    }
 
     public String getAgrarsystem() {
         return agrarsystem;
@@ -57,4 +57,15 @@ public class GameModel extends Game {
     public void setAgrarsystem(String agrarsystem) {
         this.agrarsystem = agrarsystem;
     }
+
+    public Integer getArea() {
+        return area;
+    }
+
+    public void setArea(Integer area) {
+        this.area = area;
+
+    }
+
+
 }

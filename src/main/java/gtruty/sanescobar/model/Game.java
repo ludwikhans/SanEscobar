@@ -1,5 +1,6 @@
 package gtruty.sanescobar.model;
 
+import gtruty.sanescobar.dao.startlocation.*;
 import gtruty.sanescobar.entities.PlaceOfStart.StartFieldEntity;
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.field.FieldsModelOfMeadow;
@@ -49,6 +50,36 @@ public class Game implements GameMetod{
 
     @Autowired
     FieldWestService fieldWestService;
+
+    @Autowired
+    GoodsCentralService goodsCentralService;
+
+    @Autowired
+    GoodsEastService goodsEastService;
+
+    @Autowired
+    GoodsNorthService goodsNorthService;
+
+    @Autowired
+    GoodsSouthService goodsSouthService;
+
+    @Autowired
+    GoodsWestService goodsWestService;
+
+    @Autowired
+    FieldCentralDao fieldCentralDao;
+
+    @Autowired
+    FieldEastDao fieldEastDao;
+
+    @Autowired
+    FieldNorthDao fieldNorthDao;
+
+    @Autowired
+    FieldSouthDao fieldSouthDao;
+
+    @Autowired
+    FieldWestDao fieldWestDao;
 
     @Override
     public void startVilage(VilageEntity vilage, Model model, FieldsOfStartService fieldsOfStartService, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService) {
@@ -119,28 +150,73 @@ public class Game implements GameMetod{
     }
 
     @Override
-    public void startVilageLoaded(VilageEntity vilage, Model model, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService, FieldWestService fieldWestService, FieldEastService fieldEastService, FieldNorthService fieldNorthService, FieldSouthService fieldSouthService, FieldCentralService fieldCentralService) {
+    public void startVilageLoaded(VilageEntity vilage, Model model, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService, FieldWestService fieldWestService, FieldEastService fieldEastService, FieldNorthService fieldNorthService, FieldSouthService fieldSouthService, FieldCentralService fieldCentralService, GoodsCentralService goodsCentralService, GoodsEastService goodsEastService, GoodsNorthService goodsNorthService, GoodsSouthService goodsSouthService, GoodsWestService goodsWestService) {
         if (vilage.getLocationId() == 1) {
             model.addAttribute("buildings", buildingNorthService.getAllData());
             model.addAttribute("fields", fieldNorthService.getAllData());
+            model.addAttribute("goods",goodsNorthService.getAllData());
 
         } else if (vilage.getLocationId() == 2) {
             model.addAttribute("buildings", buildingEastService.getAllData());
             model.addAttribute("fields", fieldEastService.getAllData());
+            model.addAttribute("goods",goodsEastService.getAllData());
 
         } else if (vilage.getLocationId() == 3) {
             model.addAttribute("buildings", buildingCentralService.getAllData());
             model.addAttribute("fields", fieldCentralService.getAllData());
+            model.addAttribute("goods",goodsCentralService.getAllData());
 
         } else if (vilage.getLocationId() == 4) {
             model.addAttribute("buildings", buildingSouthService.getAllData());
             model.addAttribute("fields", fieldSouthService.getAllData());
+            model.addAttribute("goods",goodsSouthService.getAllData());
 
         } else if (vilage.getLocationId() == 5) {
             model.addAttribute("buildings", buildingWestService.getAllData());
             model.addAttribute("fields", fieldWestService.getAllData());
+            model.addAttribute("goods",goodsWestService.getAllData());
         }
     }
 
+
+
+    @Override
+    public void totalArea(VilageEntity vilage, GameModel gameModel, FieldNorthDao fieldNorthDao, FieldEastDao fieldEastDao, FieldCentralDao fieldCentralDao,FieldSouthDao fieldSouthDao, FieldWestDao fieldWestDao) {
+
+        if (vilage.getLocationId() == 1) {
+            int areaSum = fieldNorthDao.sumCreditAmount();
+            gameModel.setArea(areaSum);
+
+
+        } else if (vilage.getLocationId() == 2) {
+            int areaSum = fieldEastDao.sumCreditAmount();
+            gameModel.setArea(areaSum);
+
+        } else if (vilage.getLocationId() == 3) {
+            int areaSum = fieldCentralDao.sumCreditAmount();
+            gameModel.setArea(areaSum);
+
+        } else if (vilage.getLocationId() == 4) {
+            int areaSum = fieldSouthDao.sumCreditAmount();
+            gameModel.setArea(areaSum);
+
+        } else if (vilage.getLocationId() == 5) {
+            int areaSum = fieldWestDao.sumCreditAmount();
+            gameModel.setArea(areaSum);
+        }
+    }
+
+    @Override
+    public void agrarSystem(GameModel gameModel) {
+
+        int area = gameModel.getArea();
+        String system;
+        if (area > 228){
+            system = "Trójpolówka";
+        }
+        system = "Dwópolówka";
+        gameModel.setAgrarsystem(system);
+
+    }
 
 }

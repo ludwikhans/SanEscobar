@@ -13,8 +13,17 @@ public class GoodsWestEntities {
     @GeneratedValue
     private Integer id;
     private String name;
+    private Integer usingMerchant;
 
     public GoodsWestEntities() {
+    }
+
+    public Integer getUsingMerchant() {
+        return usingMerchant;
+    }
+
+    public void setUsingMerchant(Integer usingMerchant) {
+        this.usingMerchant = usingMerchant;
     }
 
     public Integer getId() {

@@ -13,11 +13,7 @@ public class GoodsCentralEntities {
     @GeneratedValue
     private Integer id;
     private String name;
-
-    public GoodsCentralEntities(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private Integer usingMerchant;
 
     public GoodsCentralEntities() {
     }
@@ -36,5 +32,21 @@ public class GoodsCentralEntities {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getUsingMerchant() {
+        return usingMerchant;
+    }
+
+    public void setUsingMerchant(Integer usingMerchant) {
+        this.usingMerchant = usingMerchant;
+    }
+
+    public GoodsCentralEntities(Integer id, String name, Integer usingMerchant) {
+        this.id = id;
+        this.name = name;
+        this.usingMerchant = usingMerchant;
+
+
     }
 }

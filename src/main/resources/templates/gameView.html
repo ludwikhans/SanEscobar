@@ -46,7 +46,7 @@
                              <td style="border-style: solid">
                                  <div>
                                      <h3>System agrarny:
-                                         <span th:text="${lokalizacja}"></span></h3>
+                                         <span th:text="${game.agrarsystem}"></span></h3>
                                  </div>
                              </td>
                          </tr>
@@ -61,10 +61,10 @@
 
                              </td>
                              <td style="border-style: solid">
-                                 <h4>Zysk na ture:</h4>
+                                 <h4>Zysk na ture: </h4>
                              </td>
                              <td style="border-style: solid">
-                                 <h4>Dosępne wolne miejsca handlowe:</h4>
+                                 <h4>Dosępne wolne miejsca handlowe: <span th:text="${game.area}"></span></h4>
                              </td>
                              <td style="border-style: solid">
                                  <h4>Tura:<span th:text="${game.turnNumber}"></span></h4>
@@ -157,7 +157,6 @@
 
 
 
-
                 </table>
             </div>
             <div class="uk-container uk-height-max-small">
@@ -183,6 +182,14 @@
                         </td>
                         <td class="uk-width-1-3">
                             <button class="uk-button uk-button-primary uk-button-small">status</button>
+                        </td>
+                    </tr>
+                    <tr th:each="towary : ${goods}">
+                        <td >
+                            <div th:text="${towary.name}" ></div>
+                        </td>
+                        <td class="uk-width-1-3">
+                            <div th:text="${towary.usingMerchant}" ></div>
                         </td>
                     </tr>
                 </table>
