@@ -15,72 +15,6 @@ import java.util.List;
 
 public class Game implements GameMetod{
 
-    @Autowired
-    VilageService vilageService;
-
-    @Autowired
-    BuildingSouthService buildingSouthService;
-
-    @Autowired
-    BuildingEastService buildingEastService;
-
-    @Autowired
-    BuildingCentralService buildingCentralService;
-
-    @Autowired
-    BuildingNorthService buildingNorthService;
-
-    @Autowired
-    BuildingWestService buildingWestService;
-
-    @Autowired
-    FieldsOfStartService fieldsOfStartService;
-
-    @Autowired
-    FieldCentralService fieldCentralService;
-
-    @Autowired
-    FieldEastService fieldEastService;
-
-    @Autowired
-    FieldNorthService fieldNorthService;
-
-    @Autowired
-    FieldSouthService fieldSouthService;
-
-    @Autowired
-    FieldWestService fieldWestService;
-
-    @Autowired
-    GoodsCentralService goodsCentralService;
-
-    @Autowired
-    GoodsEastService goodsEastService;
-
-    @Autowired
-    GoodsNorthService goodsNorthService;
-
-    @Autowired
-    GoodsSouthService goodsSouthService;
-
-    @Autowired
-    GoodsWestService goodsWestService;
-
-    @Autowired
-    FieldCentralDao fieldCentralDao;
-
-    @Autowired
-    FieldEastDao fieldEastDao;
-
-    @Autowired
-    FieldNorthDao fieldNorthDao;
-
-    @Autowired
-    FieldSouthDao fieldSouthDao;
-
-    @Autowired
-    FieldWestDao fieldWestDao;
-
     @Override
     public void startVilage(VilageEntity vilage, Model model, FieldsOfStartService fieldsOfStartService, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService) {
 
@@ -216,6 +150,57 @@ public class Game implements GameMetod{
         }
         system = "Dwópolówka";
         gameModel.setAgrarsystem(system);
+
+    }
+
+    @Override
+    public void totalMerchant(VilageEntity vilage,GameModel gameModel,BuildingCentralDao buildingCentralDao,BuildingEastDao buildingEastDao, BuildingNorthDao buildingNorthDao, BuildingSouthDao buildingSouthDao, BuildingWestDao buildingWestDao, GoodsCentralDao goodsCentralDao, GoodsEastDao goodsEastDao, GoodsNorthDao goodsNorthDao, GoodsSouthDao goodsSouthDao, GoodsWestDao goodsWestDao ) {
+
+
+        if (vilage.getLocationId() == 1) {
+            int merchant = buildingNorthDao.sumCreditAmount();
+            gameModel.setMerchant(merchant);
+            int usingMerchant = goodsNorthDao.sumCreditAmount();
+            gameModel.setUsingMerchant(usingMerchant);
+            int unoccupiedMerchant = (merchant - usingMerchant);
+            gameModel.setUnoccupiedMerchant(unoccupiedMerchant);
+
+
+        } else if (vilage.getLocationId() == 2) {
+            int merchant = buildingEastDao.sumCreditAmount();
+            gameModel.setMerchant(merchant);
+            int usingMerchant = goodsEastDao.sumCreditAmount();
+            gameModel.setUsingMerchant(usingMerchant);
+            int unoccupiedMerchant = (merchant - usingMerchant);
+            gameModel.setUnoccupiedMerchant(unoccupiedMerchant);
+
+        } else if (vilage.getLocationId() == 3) {
+            int merchant = buildingCentralDao.sumCreditAmount();
+            gameModel.setMerchant(merchant);
+            int usingMerchant = goodsCentralDao.sumCreditAmount();
+            gameModel.setUsingMerchant(usingMerchant);
+            int unoccupiedMerchant = (merchant - usingMerchant);
+            gameModel.setUnoccupiedMerchant(unoccupiedMerchant);
+
+        } else if (vilage.getLocationId() == 4) {
+            int merchant = buildingSouthDao.sumCreditAmount();
+            gameModel.setMerchant(merchant);
+            int usingMerchant = goodsSouthDao.sumCreditAmount();
+            gameModel.setUsingMerchant(usingMerchant);
+            int unoccupiedMerchant = (merchant - usingMerchant);
+            gameModel.setUnoccupiedMerchant(unoccupiedMerchant);
+
+        } else if (vilage.getLocationId() == 5) {
+            int merchant = buildingWestDao.sumCreditAmount();
+            gameModel.setMerchant(merchant);
+            int usingMerchant = goodsWestDao.sumCreditAmount();
+            gameModel.setUsingMerchant(usingMerchant);
+            int unoccupiedMerchant = (merchant - usingMerchant);
+            gameModel.setUnoccupiedMerchant(unoccupiedMerchant);
+        }
+
+
+
 
     }
 
