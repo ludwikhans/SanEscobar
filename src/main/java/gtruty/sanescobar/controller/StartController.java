@@ -1,17 +1,14 @@
 package gtruty.sanescobar.controller;
 
-import gtruty.sanescobar.dao.VilageDao;
-import gtruty.sanescobar.entities.VilageEntity;
+
 import gtruty.sanescobar.model.VilageModel;
-import gtruty.sanescobar.model.parameters.PlaceOfStarts;
 import gtruty.sanescobar.service.VilageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class StartController {
@@ -28,7 +25,7 @@ public class StartController {
 
     @PostMapping("/start")
     public String saveVilage(@ModelAttribute("vilage") VilageModel vilage) {
-        vilageService.save(vilage.getName(),vilage.getLocationId());
+        vilageService.save(vilage.getName(), vilage.getLocationId());
         return "redirect:/gameView";
     }
 

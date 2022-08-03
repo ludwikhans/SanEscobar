@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>San Escobar</title>
+    <link rel="stylesheet" th:href="@{/css/uikit.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+
+    <script th:src="@{/js/uikit.min.js}"></script>
+    <script th:src="@{/js/uikit-icons.min.js}"></script>
+    <script th:src="@{/js/fontawesome.min.js}"></script>
+
+    <style>
+        html {
+            height: 100%;
+            background: url('/img/pergamin.jpg') no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<div class="uk-container uk-container-small uk-height uk-margin-auto-left uk-margin-auto-right uk-margin-auto-top uk-margin-auto-bottom uk-position-center"  >
+
+    <div class="uk-container uk-text-center uk-text-bold" style="background-color: black; border: 5px; border-style: solid; color: black ">
+        <h1><span th:style="#{event.name} != 0 ? 'color: white;' : 'color: white;'"  th:text="${event.name } "></span> </h1>
+
+
+    </div>
+    <div class="uk-container uk-text-center uk-text-justify uk-text-break" style="background-color: whitesmoke ; color: black;  border: 5px; border-style: solid;">
+        <h6><span></span> </h6>
+        <h2><span  th:text="${event.info}"></span> </h2>
+        <h6><span></span> </h6>
+    </div>
+
+    <div class="uk-container uk-container-small uk-flex uk-margin-large-top">
+        <a class="uk-position-bottom-center uk-button uk-text-center uk-width-1-2  uk-margin-bottom" style="background-color: whitesmoke ; color: black" th:href="@{/gameView}">Potwierdź</a>
+<!--       <a class= "uk-position-bottom-center uk-button uk-text-center uk-width-1-2  uk-margin-bottom"  style="background-color: whitesmoke ; color: black" th:href="@{/gameView}">Zatwierdź</a>-->
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+

@@ -1,7 +1,6 @@
 package gtruty.sanescobar.dao;
 
 import gtruty.sanescobar.entities.BuildingsEntity;
-import gtruty.sanescobar.entities.PlantsEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
