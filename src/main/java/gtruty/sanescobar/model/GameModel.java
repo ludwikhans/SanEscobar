@@ -16,9 +16,54 @@ public class GameModel extends Game {
     private  int merchant;
     private int usingMerchant;
     private int unoccupiedMerchant;
+    private BigDecimal incomFromFields;
+    private BigDecimal incomFromBuilding;
+    private BigDecimal incomFromAnimal;
+    private BigDecimal incomFromOwnedBuilding;
+    private BigDecimal totalIncome;
 
 
     public GameModel() {
+    }
+
+    public BigDecimal getTotalIncome() {
+        return totalIncome;
+    }
+
+    public void setTotalIncome(BigDecimal totalIncome) {
+        this.totalIncome = totalIncome;
+    }
+
+    public BigDecimal getIncomFromOwnedBuilding() {
+        return incomFromOwnedBuilding;
+    }
+
+    public void setIncomFromOwnedBuilding(BigDecimal incomFromOwnedBuilding) {
+        this.incomFromOwnedBuilding = incomFromOwnedBuilding;
+    }
+
+    public BigDecimal getIncomFromAnimal() {
+        return incomFromAnimal;
+    }
+
+    public void setIncomFromAnimal(BigDecimal incomFromAnimal) {
+        this.incomFromAnimal = incomFromAnimal;
+    }
+
+    public BigDecimal getIncomFromBuilding() {
+        return incomFromBuilding;
+    }
+
+    public void setIncomFromBuilding(BigDecimal incomFromBuilding) {
+        this.incomFromBuilding = incomFromBuilding;
+    }
+
+    public BigDecimal getIncomFromFields() {
+        return incomFromFields;
+    }
+
+    public void setIncomFromFields(BigDecimal incomFromFields) {
+        this.incomFromFields = incomFromFields;
     }
 
     public int getUsingMerchant() {

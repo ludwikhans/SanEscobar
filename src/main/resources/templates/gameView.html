@@ -9,14 +9,26 @@
     <script th:src="@{/js/uikit.min.js}"></script>
     <script th:src="@{/js/uikit-icons.min.js}"></script>
     <script th:src="@{/js/fontawesome.min.js}"></script>
-</head>
-<body >
-<div class="uk-section uk-background-cover uk-width uk-section-default uk-margin-remove" data-src="https://mh-1-agencja-fotograficzna.panthermedia.net/media/media_detail/0004000000/04299000/~stary-papier-lub-pergamin_04299727_detail.jpg" uk-img>
 
+    <style>
+        html {
+            height: 100%;
+            background: url('/img/pergamin.jpg') no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+<div class="uk-width-1-1 uk-padding-remove-top uk-margin-xlarge-top uk-margin-remove">
 
     <div class="uk-container uk-container-large uk-flex-row uk-margin-auto-left uk-margin-auto-right" uk-grid>
         <div class="uk-container uk-width-1-6">
-            <h1 class="uk-card-title uk-heading-medium uk-position-center uk-position-relative"><i class="fa-brands fa-d-and-d fa-3x "></i> </h1>
+            <h1 class="uk-card-title uk-heading-medium uk-position-center uk-position-relative"><i
+                    class="fa-brands fa-d-and-d fa-3x "></i></h1>
         </div>
 
         <div class="uk-container uk-width-5-6 flex-box uk-text-center">
@@ -24,59 +36,62 @@
         </div>
     </div>
 
-         <div class="uk-container uk-container-large uk-flex-row uk-margin-auto-left uk-margin-auto-right" style=" height: 160px"  uk-grid>
+    <div class="uk-container uk-container-large uk-flex-row uk-margin-auto-left uk-margin-auto-right"
+         style=" height: 160px" uk-grid>
 
-             <div class="uk-container uk-width flex-box">
+        <div class="uk-container uk-width flex-box">
 
-                 <div class="uk-container uk-container uk-flex-row" >
-                      <table class="uk-table" style="border-color: black;border-style: solid; height: 80px;">
-                         <tr>
-                             <td style="border-style: solid">
-                                 <div>
-                                     <h1>Nazwa osady:
-                                         <span th:text="${nazwa}"></span></h1>
-                                 </div>
-                             </td>
-                             <td style="border-style: solid">
-                                <div>
-                                    <h2>Typ osady:
+            <div class="uk-container uk-container uk-flex-row">
+                <table class="uk-table" style="border-color: black;border-style: solid; height: 80px;">
+                    <tr>
+                        <td style="border-style: solid">
+                            <div>
+                                <h1>Nazwa osady:
+                                    <span th:text="${nazwa}"></span></h1>
+                            </div>
+                        </td>
+                        <td style="border-style: solid">
+                            <div>
+                                <h2>Typ osady:
                                     <span>Przysiółek</span></h2>
-                                </div>
-                             </td>
-                             <td style="border-style: solid">
-                                 <div>
-                                     <h3>System agrarny:
-                                         <span th:text="${game.agrarsystem}"></span></h3>
-                                 </div>
-                             </td>
-                         </tr>
-                      </table>
-                </div>
+                            </div>
+                        </td>
+                        <td style="border-style: solid">
+                            <div>
+                                <h3>System agrarny:
+                                    <span th:text="${game.agrarsystem}"></span></h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
-                 <div class="uk-container uk-container uk-flex-row" style="height: 80px">
-                     <table class="uk-table" style="border-color: black;border-style: solid; border-width: 1px; height: 80px;">
-                         <tr>
-                             <td style="border-style: solid">
-                                 <h4>Posiadane pieniądze:    <span th:text="${game.startMoney}"></span></h4>
+            <div class="uk-container uk-container uk-flex-row" style="height: 80px">
+                <table class="uk-table"
+                       style="border-color: black;border-style: solid; border-width: 1px; height: 80px;">
+                    <tr>
+                        <td style="border-style: solid">
+                            <h4>Posiadane pieniądze: <span th:text="${game.startMoney}"></span></h4>
 
-                             </td>
-                             <td style="border-style: solid">
-                                 <h4>Zysk na ture: </h4>
-                             </td>
-                             <td style="border-style: solid">
-                                 <h4>Dosępne wolne miejsca handlowe: <span th:text="${game.unoccupiedMerchant}"></span></h4>
-                             </td>
-                             <td style="border-style: solid">
-                                 <h4>Tura:<span th:text="${game.turnNumber}"></span></h4>
-                             </td>
-                         </tr>
-                     </table>
-                 </div>
-             </div>
+                        </td>
+                        <td style="border-style: solid">
+                            <h4>Zysk na ture: <span th:text="${game.totalIncome}"></span> </h4>
+                        </td>
+                        <td style="border-style: solid">
+                            <h4>Dosępne wolne miejsca handlowe: <span th:text="${game.unoccupiedMerchant}"></span></h4>
+                        </td>
+                        <td style="border-style: solid">
+                            <h4>Tura:<span th:text="${game.turnNumber}"></span></h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
+    </div>
 
 
-    <div class="uk-container uk-height uk-margin-auto-left uk-margin-auto-right uk-margin-large-top" uk-grid uk-height-match="target: > div > .uk-div">
+    <div class="uk-container uk-height uk-margin-auto-left uk-margin-auto-right uk-margin-large-top" uk-grid
+         uk-height-match="target: > div > .uk-div">
 
 
         <div class="uk-container uk-width-1-3 uk-flex-row" style=" border-style: hidden; border-left-color: black">
@@ -85,13 +100,14 @@
                     <h1>Budynki</h1>
                 </article>
             </div>
-            <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "style="background-color: whitesmoke; border-style: solid;border-color: black">
+            <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "
+                 style="background-color: whitesmoke; border-style: solid;border-color: black">
                 <article class="uk-article uk-margin-small-bottom uk-heading-divider">
                     <h3>Posiadane</h3>
                 </article>
-                <table class="uk-margin-auto-left uk-margin-auto-right">
-                    <tr>
-                        <td class="uk-width-1-3 ">
+                <table id="table-building" class="uk-margin-auto-left uk-margin-auto-right">
+                    <tr id="row-building">
+                        <td id="row" class="uk-width-1-3 ">
                             <div>nazwa budynku</div>
                         </td>
                         <td class="uk-width-1-3 ">
@@ -116,18 +132,24 @@
 
                 </table>
             </div>
-            <div class="uk-container uk-height-max-small" >
-                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">Kup budynek</button>
+            <div class="uk-container uk-height-max-small">
+
+                <button id="budynki" onclick="fun1()"
+                        class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">
+                    Kup budynek
+                </button>
             </div>
         </div>
 
-        <div class="uk-container uk-width-1-3 uk-flex-row" style=" border-style: hidden; border-left-color: black; border-right-color: black">
+        <div class="uk-container uk-width-1-3 uk-flex-row"
+             style=" border-style: hidden; border-left-color: black; border-right-color: black">
             <div class="uk-container uk-flex-first uk-text-center">
                 <article class="uk-article uk-margin-small-bottom">
                     <h1>Pola</h1>
                 </article>
             </div>
-            <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "style="background-color: whitesmoke; border-style: solid;border-color: black" >
+            <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "
+                 style="background-color: whitesmoke; border-style: solid;border-color: black">
                 <article class="uk-article uk-margin-small-bottom uk-heading-divider">
                     <h3>Posiadane</h3>
                 </article>
@@ -136,19 +158,19 @@
                         <td>
                             <div>typ</div>
                         </td>
-                        <td >
+                        <td>
                             <div>ilość ha</div>
                         </td>
                         <td class="uk-width-1-4">
                             <button class="uk-button uk-button-primary uk-button-small">obsiane</button>
                         </td>
                     </tr>
-                    <tr th:each="field : ${fields}" >
-                        <td >
-                            <div th:text="${field.name}" ></div>
+                    <tr th:each="field : ${fields}">
+                        <td>
+                            <div th:text="${field.name}"></div>
                         </td>
                         <td>
-                            <div th:text="${field.area}" ></div>
+                            <div th:text="${field.area}"></div>
                         </td>
                         <td class="uk-width-1-4">
                             <div th:text="${field.seed}"></div>
@@ -156,11 +178,13 @@
                     </tr>
 
 
-
                 </table>
             </div>
             <div class="uk-container uk-height-max-small">
-                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">Kup pole</button>
+                <button id="pola" onclick="fun2()"
+                        class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top">
+                    Kup pole
+                </button>
             </div>
         </div>
 
@@ -171,13 +195,14 @@
                     <h1>Towary</h1>
                 </article>
             </div>
-            <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "style="background-color: whitesmoke; border-style: solid;border-color: black">
+            <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "
+                 style="background-color: whitesmoke; border-style: solid;border-color: black">
                 <article class="uk-article uk-margin-small-bottom uk-heading-divider">
                     <h3>Sprzedawane towary</h3>
                 </article>
                 <table class="uk-text-center uk-margin-auto-left uk-margin-auto-right">
                     <tr>
-                        <td >
+                        <td>
                             <div>Nazwa sprzedawanego towaru</div>
                         </td>
                         <td class="uk-width-1-3">
@@ -185,28 +210,68 @@
                         </td>
                     </tr>
                     <tr th:each="towary : ${goods}">
-                        <td >
-                            <div th:text="${towary.name}" ></div>
+                        <td>
+                            <div th:text="${towary.name}"></div>
                         </td>
                         <td class="uk-width-1-3">
-                            <div th:text="${towary.usingMerchant}" ></div>
+                            <div th:text="${towary.usingMerchant}"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div th:text="${mleko}"></div>
+                        </td>
+                        <td class="uk-width-1-3">
+                            <div></div>
                         </td>
                     </tr>
                 </table>
             </div>
             <div class="uk-container uk-height-max-small" style="border-style: hidden">
-                <button class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top" style="border-style: hidden">Sprzedaj towary</button>
+                <button id="towary" onclick="fun3()"
+                        class="uk-button uk-button-primary uk-width-small uk-position-bottom-center uk-position-relative uk-margin-top"
+                        style="border-style: hidden">Sprzedaj towary
+                </button>
             </div>
         </div>
 
     </div>
 
 
-
     <div class="uk-container uk-container-small uk-width-max-content uk-position-right uk-position-relative uk-margin">
         <h1>Następna tura</h1>
         <button class=" fa-regular fa-hourglass fa-3x uk-button uk-button-default uk-width-small uk-position-bottom-center uk-position-relative"></button>
     </div>
+
+    <script>
+        function fun1() {
+            console.log('Przycisk został kliknięty')
+        }
+
+        function fun2() {
+            console.log('Przycisk 2 został kliknięty')
+        }
+
+        function fun3() {
+            console.log('Przycisk 3 został kliknięty')
+        }
+
+
+        window.onload = function () {
+            document.getElementById('budynki').addEventListener('click', function () {
+                let newElement = document.createElement('tr');
+                let newRow1 = document.createElement('td');
+                let newRow2 = document.createElement('td');
+                let newRow3 = document.createElement('td');
+                newElement.classList.add('row-building');
+                document.getElementById('table-building').appendChild(newElement.appendChild(newRow1,newRow2,newRow3));
+
+
+
+
+            });
+        }
+    </script>
 
 
 </div>

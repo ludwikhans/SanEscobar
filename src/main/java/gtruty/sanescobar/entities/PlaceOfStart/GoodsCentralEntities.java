@@ -14,8 +14,18 @@ public class GoodsCentralEntities {
     private Integer id;
     private String name;
     private Integer usingMerchant;
+    // 1 to rośliny 2 to budynki
+    private int typ;
 
     public GoodsCentralEntities() {
+    }
+
+    public int getTyp() {
+        return typ;
+    }
+
+    public void setTyp(int typ) {
+        this.typ = typ;
     }
 
     public Integer getId() {

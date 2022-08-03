@@ -9,4 +9,6 @@ public interface BuildingCentralDao extends CrudRepository<BuildingsEntityCentra
 
     @Query("SELECT sum(placeForGoods) from BuildingsEntityCentral ")
     int sumCreditAmount();
+
+    BuildingsEntityCentral findById(int id);
 }

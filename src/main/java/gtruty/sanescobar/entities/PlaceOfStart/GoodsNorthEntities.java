@@ -14,9 +14,16 @@ public class GoodsNorthEntities {
     private Integer id;
     private String name;
     private Integer usingMerchant;
-
+    private int typ;
 
     public GoodsNorthEntities() {
+    }
+    public int getTyp() {
+        return typ;
+    }
+
+    public void setTyp(int typ) {
+        this.typ = typ;
     }
 
     public Integer getUsingMerchant() {

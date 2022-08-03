@@ -46,19 +46,19 @@ INSERT INTO fields_west (id, name, cost_of_buying, area, info,seed_of_field)
 VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Żyto'),
        (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
 
-INSERT INTO goods_central (id, name, usingMerchant)
-VALUES (1, 'Pszenica jara', 1);
+INSERT INTO goods_central (id, name, usingMerchant,typ)
+VALUES (1, 'Pszenica jara', 1,1);
 
-INSERT INTO goods_east (id, name, usingMerchant)
-VALUES (1, 'Owies', 1),
-       (2, 'Koń', 1);
+INSERT INTO goods_east (id, name, usingMerchant,typ)
+VALUES (1, 'Owies', 1,1),
+       (2, 'Mustang', 1,2);
 
-INSERT INTO goods_north (id, name, usingMerchant)
-VALUES (1, 'Pszenica ozima', 1);
+INSERT INTO goods_north (id, name, usingMerchant,typ)
+VALUES (1, 'Pszenica ozima', 1,1);
 
-INSERT INTO goods_south (id, name, usingMerchant)
-VALUES (1, 'Jęczmień', 1);
+INSERT INTO goods_south (id, name, usingMerchant,typ)
+VALUES (1, 'Jęczmień', 1,1);
 
-INSERT INTO goods_west (id, name, usingMerchant)
-VALUES (1, 'Żyto', 1);
+INSERT INTO goods_west (id, name, usingMerchant,typ)
+VALUES (1, 'Żyto', 1,1);
 

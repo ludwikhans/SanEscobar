@@ -14,8 +14,17 @@ public class GoodsSouthEntities {
     private Integer id;
     private String name;
     private Integer usingMerchant;
+    private int typ;
 
     public GoodsSouthEntities() {
+    }
+
+    public int getTyp() {
+        return typ;
+    }
+
+    public void setTyp(int typ) {
+        this.typ = typ;
     }
 
     public Integer getUsingMerchant() {
