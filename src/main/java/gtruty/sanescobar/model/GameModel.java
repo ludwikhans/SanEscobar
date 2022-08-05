@@ -1,13 +1,13 @@
 package gtruty.sanescobar.model;
 
-import gtruty.sanescobar.dao.startlocation.FieldCentralDao;
-import org.springframework.beans.factory.annotation.Autowired;
+import gtruty.sanescobar.entities.BuildingsEntity;
+import gtruty.sanescobar.model.buildings.AvailableBuilding;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 
-
-public class GameModel extends Game {
+public class GameModel {
     private int turnNumber;
     private BigDecimal startMoney = BigDecimal.valueOf(100);
     private long money;
@@ -21,7 +21,30 @@ public class GameModel extends Game {
     private BigDecimal incomFromAnimal;
     private BigDecimal incomFromOwnedBuilding;
     private BigDecimal totalIncome;
+    private String buildingName;
+    private int fieldArea;
+    private String vilageName;
+    private Long locationId;
 
+
+
+
+
+    public int getFieldArea() {
+        return fieldArea;
+    }
+
+    public void setFieldArea(int fieldArea) {
+        this.fieldArea = fieldArea;
+    }
+
+    public String getBuildingName() {
+        return buildingName;
+    }
+
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
+    }
 
     public GameModel() {
     }
@@ -137,4 +160,19 @@ public class GameModel extends Game {
     }
 
 
+    public void setVilageName(String vilageName) {
+        this.vilageName = vilageName;
+    }
+
+    public String getVilageName() {
+        return vilageName;
+    }
+
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
+    }
+
+    public Long getLocationId() {
+        return locationId;
+    }
 }

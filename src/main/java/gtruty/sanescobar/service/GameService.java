@@ -1,127 +1,148 @@
-package gtruty.sanescobar.model;
+package gtruty.sanescobar.service;
 
 import gtruty.sanescobar.dao.AnimalDao;
+import gtruty.sanescobar.dao.AvailableBuildingDao;
 import gtruty.sanescobar.dao.BuildingDao;
 import gtruty.sanescobar.dao.PlantsDao;
 import gtruty.sanescobar.dao.startlocation.*;
-import gtruty.sanescobar.entities.AnimalsEntity;
-import gtruty.sanescobar.entities.BuildingsEntity;
+import gtruty.sanescobar.entities.*;
 import gtruty.sanescobar.entities.PlaceOfStart.*;
-import gtruty.sanescobar.entities.PlantsEntity;
-import gtruty.sanescobar.entities.VilageEntity;
-import gtruty.sanescobar.model.field.FieldsModelOfMeadow;
-import gtruty.sanescobar.model.field.FieldsModelOfPloughtFields;
-import gtruty.sanescobar.service.FieldsOfStartService;
+import gtruty.sanescobar.model.GameMetod;
+import gtruty.sanescobar.model.GameModel;
 import gtruty.sanescobar.service.location.*;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-public class Game implements GameMetod{
+@Service
+public class GameService implements GameMetod {
 
-    @Override
-    public void startVilage(VilageEntity vilage, Model model, FieldsOfStartService fieldsOfStartService, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService) {
+    final BuildingNorthService buildingNorthService;
+    final FieldNorthService fieldNorthService;
+    final GoodsNorthService goodsNorthService;
 
-        if (vilage.getLocationId() == 1) {
-            model.addAttribute("buildings", buildingNorthService.getAllData());
+    final BuildingEastService buildingEastService;
+    final FieldEastService fieldEastService;
+    final GoodsEastService goodsEastService;
 
+    final BuildingWestService buildingWestService;
+    final FieldWestService fieldWestService;
+    final GoodsWestService goodsWestService;
 
-            for (int i = 0; i < 27; i++) {
+    final BuildingSouthService buildingSouthService;
+    final FieldSouthService fieldSouthService;
+    final GoodsSouthService goodsSouthService;
 
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Ozima");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            List<StartFieldEntity> startFieldEntity = fieldsOfStartService.getAllData();
-            model.addAttribute("fields",startFieldEntity);
+    final BuildingCentralService buildingCentralService;
+    final FieldCentralService fieldCentralService;
+    final GoodsCentralService goodsCentralService;
 
-        } else if (vilage.getLocationId() == 2) {
-            model.addAttribute("buildings", buildingEastService.getAllData());
+    final FieldNorthDao fieldNorthDao;
+    final FieldEastDao fieldEastDao;
+    final FieldCentralDao fieldCentralDao;
+    final FieldSouthDao fieldSouthDao;
+    final FieldWestDao fieldWestDao;
 
-            for (int i = 0; i < 27; i++) {
+    final BuildingCentralDao buildingCentralDao;
+    final BuildingEastDao buildingEastDao;
+    final BuildingNorthDao buildingNorthDao;
+    final BuildingSouthDao buildingSouthDao;
+    final BuildingWestDao buildingWestDao;
 
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Owies");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
+    final GoodsCentralDao goodsCentralDao;
+    final GoodsEastDao goodsEastDao;
+    final GoodsNorthDao goodsNorthDao;
+    final GoodsSouthDao goodsSouthDao;
+    final GoodsWestDao goodsWestDao;
 
-        } else if (vilage.getLocationId() == 3) {
-            model.addAttribute("buildings", buildingCentralService.getAllData());
+    final PlantsDao plantsDao;
+    final BuildingDao buildingDao;
+    final AnimalDao animalDao;
 
-            for (int i = 0; i < 27; i++) {
+    final BuildingService buildingService;
+    final BuildingAvailableService availableBuildingService;
+    final AvailableBuildingDao availableBuildingDao;
 
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Jara");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
+    final VilageService vilageService;
 
-        } else if (vilage.getLocationId() == 4) {
-            model.addAttribute("buildings", buildingSouthService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Jęczmień");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-
-        } else if (vilage.getLocationId() == 5) {
-            model.addAttribute("buildings", buildingWestService.getAllData());
-
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Żyto");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-        }
+    public GameService(BuildingNorthService buildingNorthService, FieldNorthService fieldNorthService, GoodsNorthService goodsNorthService, BuildingEastService buildingEastService, FieldEastService fieldEastService, GoodsEastService goodsEastService, BuildingWestService buildingWestService, FieldWestService fieldWestService, GoodsWestService goodsWestService, BuildingSouthService buildingSouthService, FieldSouthService fieldSouthService, GoodsSouthService goodsSouthService, BuildingCentralService buildingCentralService, FieldCentralService fieldCentralService, GoodsCentralService goodsCentralService, FieldNorthDao fieldNorthDao, FieldEastDao fieldEastDao, FieldCentralDao fieldCentralDao, FieldSouthDao fieldSouthDao, FieldWestDao fieldWestDao, BuildingCentralDao buildingCentralDao, BuildingEastDao buildingEastDao, BuildingNorthDao buildingNorthDao, BuildingSouthDao buildingSouthDao, BuildingWestDao buildingWestDao, GoodsCentralDao goodsCentralDao, GoodsEastDao goodsEastDao, GoodsNorthDao goodsNorthDao, GoodsSouthDao goodsSouthDao, GoodsWestDao goodsWestDao, PlantsDao plantsDao, BuildingDao buildingDao, AnimalDao animalDao, BuildingService buildingService, BuildingAvailableService availableBuildingService, AvailableBuildingDao availableBuildingDao, VilageService vilageService) {
+        this.buildingNorthService = buildingNorthService;
+        this.fieldNorthService = fieldNorthService;
+        this.goodsNorthService = goodsNorthService;
+        this.buildingEastService = buildingEastService;
+        this.fieldEastService = fieldEastService;
+        this.goodsEastService = goodsEastService;
+        this.buildingWestService = buildingWestService;
+        this.fieldWestService = fieldWestService;
+        this.goodsWestService = goodsWestService;
+        this.buildingSouthService = buildingSouthService;
+        this.fieldSouthService = fieldSouthService;
+        this.goodsSouthService = goodsSouthService;
+        this.buildingCentralService = buildingCentralService;
+        this.fieldCentralService = fieldCentralService;
+        this.goodsCentralService = goodsCentralService;
+        this.fieldNorthDao = fieldNorthDao;
+        this.fieldEastDao = fieldEastDao;
+        this.fieldCentralDao = fieldCentralDao;
+        this.fieldSouthDao = fieldSouthDao;
+        this.fieldWestDao = fieldWestDao;
+        this.buildingCentralDao = buildingCentralDao;
+        this.buildingEastDao = buildingEastDao;
+        this.buildingNorthDao = buildingNorthDao;
+        this.buildingSouthDao = buildingSouthDao;
+        this.buildingWestDao = buildingWestDao;
+        this.goodsCentralDao = goodsCentralDao;
+        this.goodsEastDao = goodsEastDao;
+        this.goodsNorthDao = goodsNorthDao;
+        this.goodsSouthDao = goodsSouthDao;
+        this.goodsWestDao = goodsWestDao;
+        this.plantsDao = plantsDao;
+        this.buildingDao = buildingDao;
+        this.animalDao = animalDao;
+        this.buildingService = buildingService;
+        this.availableBuildingService = availableBuildingService;
+        this.availableBuildingDao = availableBuildingDao;
+        this.vilageService = vilageService;
     }
 
+    GameModel model;
+
+
     @Override
-    public void startVilageLoaded(VilageEntity vilage, Model model, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService, FieldWestService fieldWestService, FieldEastService fieldEastService, FieldNorthService fieldNorthService, FieldSouthService fieldSouthService, FieldCentralService fieldCentralService, GoodsCentralService goodsCentralService, GoodsEastService goodsEastService, GoodsNorthService goodsNorthService, GoodsSouthService goodsSouthService, GoodsWestService goodsWestService) {
+    public void startVilageLoaded(VilageEntity vilage, Model model) {
         if (vilage.getLocationId() == 1) {
             model.addAttribute("buildings", buildingNorthService.getAllData());
             model.addAttribute("fields", fieldNorthService.getAllData());
-            model.addAttribute("goods",goodsNorthService.getAllData());
+            model.addAttribute("goods", goodsNorthService.getAllData());
 
         } else if (vilage.getLocationId() == 2) {
             model.addAttribute("buildings", buildingEastService.getAllData());
             model.addAttribute("fields", fieldEastService.getAllData());
-            model.addAttribute("goods",goodsEastService.getAllData());
+            model.addAttribute("goods", goodsEastService.getAllData());
 
         } else if (vilage.getLocationId() == 3) {
             model.addAttribute("buildings", buildingCentralService.getAllData());
             model.addAttribute("fields", fieldCentralService.getAllData());
-            model.addAttribute("goods",goodsCentralService.getAllData());
+            model.addAttribute("goods", goodsCentralService.getAllData());
 
         } else if (vilage.getLocationId() == 4) {
             model.addAttribute("buildings", buildingSouthService.getAllData());
             model.addAttribute("fields", fieldSouthService.getAllData());
-            model.addAttribute("goods",goodsSouthService.getAllData());
+            model.addAttribute("goods", goodsSouthService.getAllData());
 
         } else if (vilage.getLocationId() == 5) {
             model.addAttribute("buildings", buildingWestService.getAllData());
             model.addAttribute("fields", fieldWestService.getAllData());
-            model.addAttribute("goods",goodsWestService.getAllData());
+            model.addAttribute("goods", goodsWestService.getAllData());
         }
     }
 
 
-
     @Override
-    public void totalArea(VilageEntity vilage, GameModel gameModel, FieldNorthDao fieldNorthDao, FieldEastDao fieldEastDao, FieldCentralDao fieldCentralDao,FieldSouthDao fieldSouthDao, FieldWestDao fieldWestDao) {
+    public void totalArea(VilageEntity vilage, GameModel gameModel) {
 
         if (vilage.getLocationId() == 1) {
             int areaSum = fieldNorthDao.sumCreditAmount();
@@ -151,7 +172,7 @@ public class Game implements GameMetod{
 
         int area = gameModel.getArea();
         String system;
-        if (area > 228){
+        if (area > 228) {
             system = "Trójpolówka";
         }
         system = "Dwópolówka";
@@ -160,7 +181,7 @@ public class Game implements GameMetod{
     }
 
     @Override
-    public void totalMerchant(VilageEntity vilage,GameModel gameModel,BuildingCentralDao buildingCentralDao,BuildingEastDao buildingEastDao, BuildingNorthDao buildingNorthDao, BuildingSouthDao buildingSouthDao, BuildingWestDao buildingWestDao, GoodsCentralDao goodsCentralDao, GoodsEastDao goodsEastDao, GoodsNorthDao goodsNorthDao, GoodsSouthDao goodsSouthDao, GoodsWestDao goodsWestDao ) {
+    public void totalMerchant(VilageEntity vilage, GameModel gameModel) {
 
 
         if (vilage.getLocationId() == 1) {
@@ -210,18 +231,14 @@ public class Game implements GameMetod{
 
     @Override
     public BigDecimal toZero(BigDecimal bigDecimal) {
-        if (bigDecimal == null){
+        if (bigDecimal == null) {
             return new BigDecimal(0);
         }
         return bigDecimal;
     }
 
     @Override
-    public void gameIncome(FieldCentralDao fieldCentralDao, FieldEastDao fieldEastDao, FieldNorthDao fieldNorthDao, FieldSouthDao fieldSouthDao, FieldWestDao fieldWestDao,
-                           GoodsCentralDao goodsCentralDao, GoodsEastDao goodsEastDao, GoodsNorthDao goodsNorthDao, GoodsSouthDao goodsSouthDao, GoodsWestDao goodsWestDao,
-                           GoodsCentralService goodsCentralService, GoodsEastService goodsEastService, GoodsNorthService goodsNorthService, GoodsSouthService goodsSouthService, GoodsWestService goodsWestService,
-                           PlantsDao plantsDao, BuildingDao buildingDao, AnimalDao animalDao, GameModel gameModel, VilageEntity vilage) {
-
+    public void gameIncome(GameModel gameModel, VilageEntity vilage) {
 
 
         if (vilage.getLocationId() == 1) {
@@ -277,10 +294,10 @@ public class Game implements GameMetod{
                         }
                     }
                 }
-                BigDecimal field = gameModel.toZero(gameModel.getIncomFromFields());
-                BigDecimal building = gameModel.toZero(gameModel.getIncomFromBuilding());
-                BigDecimal animal = gameModel.toZero(gameModel.getIncomFromAnimal());
-                BigDecimal totalIncome = gameModel.toZero(gameModel.getTotalIncome());
+                BigDecimal field = toZero(gameModel.getIncomFromFields());
+                BigDecimal building = toZero(gameModel.getIncomFromBuilding());
+                BigDecimal animal = toZero(gameModel.getIncomFromAnimal());
+                BigDecimal totalIncome = toZero(gameModel.getTotalIncome());
                 totalIncome = totalIncome.add(field.add(building.add(animal))).setScale(2, RoundingMode.HALF_UP);
                 gameModel.setTotalIncome(totalIncome);
             }
@@ -339,10 +356,10 @@ public class Game implements GameMetod{
                         }
                     }
                 }
-                BigDecimal field = gameModel.toZero(gameModel.getIncomFromFields());
-                BigDecimal building = gameModel.toZero(gameModel.getIncomFromBuilding());
-                BigDecimal animal = gameModel.toZero(gameModel.getIncomFromAnimal());
-                BigDecimal totalIncome = gameModel.toZero(gameModel.getTotalIncome());
+                BigDecimal field = toZero(gameModel.getIncomFromFields());
+                BigDecimal building = toZero(gameModel.getIncomFromBuilding());
+                BigDecimal animal = toZero(gameModel.getIncomFromAnimal());
+                BigDecimal totalIncome = toZero(gameModel.getTotalIncome());
                 totalIncome = totalIncome.add(field.add(building.add(animal))).setScale(2, RoundingMode.HALF_UP);
                 gameModel.setTotalIncome(totalIncome);
             }
@@ -401,10 +418,10 @@ public class Game implements GameMetod{
                         }
                     }
                 }
-                BigDecimal field = gameModel.toZero(gameModel.getIncomFromFields());
-                BigDecimal building = gameModel.toZero(gameModel.getIncomFromBuilding());
-                BigDecimal animal = gameModel.toZero(gameModel.getIncomFromAnimal());
-                BigDecimal totalIncome = gameModel.toZero(gameModel.getTotalIncome());
+                BigDecimal field = toZero(gameModel.getIncomFromFields());
+                BigDecimal building = toZero(gameModel.getIncomFromBuilding());
+                BigDecimal animal = toZero(gameModel.getIncomFromAnimal());
+                BigDecimal totalIncome = toZero(gameModel.getTotalIncome());
                 totalIncome = totalIncome.add(field.add(building.add(animal))).setScale(2, RoundingMode.HALF_UP);
                 gameModel.setTotalIncome(totalIncome);
             }
@@ -463,10 +480,10 @@ public class Game implements GameMetod{
                         }
                     }
                 }
-                BigDecimal field = gameModel.toZero(gameModel.getIncomFromFields());
-                BigDecimal building = gameModel.toZero(gameModel.getIncomFromBuilding());
-                BigDecimal animal = gameModel.toZero(gameModel.getIncomFromAnimal());
-                BigDecimal totalIncome = gameModel.toZero(gameModel.getTotalIncome());
+                BigDecimal field = toZero(gameModel.getIncomFromFields());
+                BigDecimal building = toZero(gameModel.getIncomFromBuilding());
+                BigDecimal animal = toZero(gameModel.getIncomFromAnimal());
+                BigDecimal totalIncome = toZero(gameModel.getTotalIncome());
                 totalIncome = totalIncome.add(field.add(building.add(animal))).setScale(2, RoundingMode.HALF_UP);
                 gameModel.setTotalIncome(totalIncome);
             }
@@ -525,22 +542,56 @@ public class Game implements GameMetod{
                         }
                     }
                 }
-                BigDecimal field = gameModel.toZero(gameModel.getIncomFromFields());
-                BigDecimal building = gameModel.toZero(gameModel.getIncomFromBuilding());
-                BigDecimal animal = gameModel.toZero(gameModel.getIncomFromAnimal());
-                BigDecimal totalIncome = gameModel.toZero(gameModel.getTotalIncome());
+                BigDecimal field = toZero(gameModel.getIncomFromFields());
+                BigDecimal building = toZero(gameModel.getIncomFromBuilding());
+                BigDecimal animal = toZero(gameModel.getIncomFromAnimal());
+                BigDecimal totalIncome = toZero(gameModel.getTotalIncome());
                 totalIncome = totalIncome.add(field.add(building.add(animal))).setScale(2, RoundingMode.HALF_UP);
                 gameModel.setTotalIncome(totalIncome);
             }
         }
 
 
+    }
 
+    @Override
+    public void availableToBuyBuilding(GameModel gameModel, Model model) {
+      List<BuildingsAvailableEntity>  existBuilding = availableBuildingService.getAllData();
+      if (existBuilding != null){
+          availableBuildingDao.deleteAll();
+      }
 
+        BigDecimal money = gameModel.getStartMoney();
+        int moneyInInt = money.intValue();
+        List<BuildingsEntity> allBuildings = buildingService.getAllData();
+        availableBuildingService.save("Brak nowego budynku");
+        for (int j = 1; j <=allBuildings.size(); j++) {
+            BuildingsEntity budynki = buildingDao.findById(j);
+            BigDecimal cost = budynki.getCostOfBuilding();
+            int costOf = cost.intValue();
+            if (costOf < moneyInInt) {
+                availableBuildingService.save(budynki.getName(), budynki.getCostOfBuilding(), budynki.getInfo(), budynki.getType());
+            }
+        }
+        model.addAttribute("available", availableBuildingService.getAllData());
+    }
 
-
-
+    @Override
+    public void saveVilage(GameModel gameModel) {
+        VilageEntity vilage = vilageService.getAnyVilage();
+        gameModel.setVilageName(vilage.getName());
+        gameModel.setLocationId(vilage.getLocationId());
     }
 
 
+    public void saveIntoTabela(String buildingName) {
+    }
+
+    public GameModel getModel() {
+        return model;
+    }
+
+    public void setModel(GameModel model) {
+        this.model = model;
+    }
 }

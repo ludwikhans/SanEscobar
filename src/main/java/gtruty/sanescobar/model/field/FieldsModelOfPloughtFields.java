@@ -9,18 +9,16 @@ public class FieldsModelOfPloughtFields {
 
         private String name = "Pole";
 
-        private BigDecimal costOfBuying = BigDecimal.valueOf(50);
-
-        private Integer area = 1;
+        private Integer area;
 
         private String info = "Można je obsiać roślinami";
 
-        private Integer areaOfPloughtFields = 1;
+        private Integer areaOfPloughtFields;
 
         private String seed;
 
-        public FieldsModelOfPloughtFields(String seed) {
-                this.seed = seed;
+        public FieldsModelOfPloughtFields(Integer area) {
+                this.area = area;
         }
 
         public String getName() {
@@ -29,14 +27,6 @@ public class FieldsModelOfPloughtFields {
 
         public void setName(String name) {
                 this.name = name;
-        }
-
-        public BigDecimal getCostOfBuying() {
-                return costOfBuying;
-        }
-
-        public void setCostOfBuying(BigDecimal costOfBuying) {
-                this.costOfBuying = costOfBuying;
         }
 
         public Integer getArea() {

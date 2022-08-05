@@ -12,13 +12,12 @@ public class FieldsModelOfMeadow {
 
         private Long id;
         private String name = "Łąka";
-        private BigDecimal costOfBuying = BigDecimal.valueOf(50);
-        private Integer area = 1;
+        private Integer area;
         private String info  = "podstawa do hodowli zwierząt";
         private String seed;
 
-
-        public FieldsModelOfMeadow() {
+        public FieldsModelOfMeadow(Integer area) {
+                this.area = area;
         }
 
         public Long getId() {
@@ -35,14 +34,6 @@ public class FieldsModelOfMeadow {
 
         public void setName(String name) {
                 this.name = name;
-        }
-
-        public BigDecimal getCostOfBuying() {
-                return costOfBuying;
-        }
-
-        public void setCostOfBuying(BigDecimal costOfBuying) {
-                this.costOfBuying = costOfBuying;
         }
 
         public Integer getArea() {
@@ -69,3 +60,4 @@ public class FieldsModelOfMeadow {
                 this.seed = seed;
         }
 }
+

@@ -44,6 +44,8 @@ public class BuildingsEntityEast {
     @Column (name = "animal_in_building")
     private String animalInBuilding;
 
+
+
     public Long getId() {
         return id;
     }

@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BuildingDao extends CrudRepository<BuildingsEntity,Long> {
+public interface BuildingDao extends CrudRepository<BuildingsEntity,Integer> {
     BuildingsEntity findByProducts1(String name);
+    BuildingsEntity findById(int id);
 
 }

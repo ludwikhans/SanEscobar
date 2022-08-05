@@ -16,23 +16,21 @@ import java.math.BigDecimal;
 
 public interface GameMetod {
 
-    void startVilage(VilageEntity vilage, Model model, FieldsOfStartService fieldsOfStartService, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService) ;
+  /*  void startVilage(VilageEntity vilage, Model model, FieldsOfStartService fieldsOfStartService, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService) ;
+*/
+    void startVilageLoaded(VilageEntity vilage, Model model) ;
 
-    void startVilageLoaded(VilageEntity vilage, Model model,BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService,FieldWestService fieldWestService, FieldEastService fieldEastService, FieldNorthService fieldNorthService, FieldSouthService fieldSouthService, FieldCentralService fieldCentralService, GoodsCentralService goodsCentralService, GoodsEastService goodsEastService, GoodsNorthService goodsNorthService, GoodsSouthService goodsSouthService, GoodsWestService goodsWestService) ;
-
-    void totalArea(VilageEntity vilage, GameModel gameModel, FieldNorthDao fieldNorthDao, FieldEastDao fieldEastDao, FieldCentralDao fieldCentralDao, FieldSouthDao fieldSouthDao, FieldWestDao fieldWestDao);
+    void totalArea(VilageEntity vilage, GameModel gameModel);
 
     void agrarSystem(GameModel gameModel);
 
-    void totalMerchant(VilageEntity vilage,GameModel gameModel,BuildingCentralDao buildingCentralDao,BuildingEastDao buildingEastDao, BuildingNorthDao buildingNorthDao, BuildingSouthDao buildingSouthDao, BuildingWestDao buildingWestDao, GoodsCentralDao goodsCentralDao, GoodsEastDao goodsEastDao, GoodsNorthDao goodsNorthDao, GoodsSouthDao goodsSouthDao, GoodsWestDao goodsWestDao );
+    void totalMerchant(VilageEntity vilage,GameModel gameModel);
 
     BigDecimal toZero (BigDecimal bigDecimal);
 
-    void gameIncome (FieldCentralDao fieldCentralDao, FieldEastDao fieldEastDao, FieldNorthDao fieldNorthDao, FieldSouthDao fieldSouthDao, FieldWestDao fieldWestDao,
-                     GoodsCentralDao goodsCentralDao, GoodsEastDao goodsEastDao, GoodsNorthDao goodsNorthDao, GoodsSouthDao goodsSouthDao, GoodsWestDao goodsWestDao,
-                     GoodsCentralService goodsCentralService, GoodsEastService goodsEastService, GoodsNorthService goodsNorthService, GoodsSouthService goodsSouthService, GoodsWestService goodsWestService,
-                     PlantsDao plantsDao, BuildingDao buildingDao, AnimalDao animalDao, GameModel gameModel, VilageEntity vilage);
+    void gameIncome(GameModel gameModel, VilageEntity vilage);
 
+    void availableToBuyBuilding(GameModel gameModel, Model model);
 
-
+    void saveVilage(GameModel gameModel);
 }
