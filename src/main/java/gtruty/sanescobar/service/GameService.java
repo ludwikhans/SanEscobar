@@ -9,12 +9,14 @@ import gtruty.sanescobar.entities.*;
 import gtruty.sanescobar.entities.PlaceOfStart.*;
 import gtruty.sanescobar.model.GameMetod;
 import gtruty.sanescobar.model.GameModel;
+import gtruty.sanescobar.model.field.NumberOfField;
 import gtruty.sanescobar.service.location.*;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -555,7 +557,7 @@ public class GameService implements GameMetod {
     }
 
     @Override
-    public void availableToBuyBuilding(GameModel gameModel, Model model) {
+    public void availableToBuyFirstBuilding(GameModel gameModel, Model model) {
       List<BuildingsAvailableEntity>  existBuilding = availableBuildingService.getAllData();
       if (existBuilding != null){
           availableBuildingDao.deleteAll();
@@ -574,6 +576,20 @@ public class GameService implements GameMetod {
             }
         }
         model.addAttribute("available", availableBuildingService.getAllData());
+    }
+
+    @Override
+    public void availableToBuyFirstField(GameModel gameModel,Model model) {
+        BigDecimal starMoney = gameModel.getStartMoney();
+        int moneyOfStart = starMoney.intValue();
+        int priceOfField = 100;
+        int rest = moneyOfStart % priceOfField;
+        int availableToBuyFields = (moneyOfStart-rest)/priceOfField;
+        List<NumberOfField> amontOfField = new ArrayList<>();
+        for (int i = 0; i <= availableToBuyFields ; i++) {
+            amontOfField.add(new NumberOfField(i));
+        }
+        model.addAttribute("availableToBuy",amontOfField);
     }
 
     @Override

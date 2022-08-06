@@ -25,10 +25,15 @@ public class GameModel {
     private int fieldArea;
     private String vilageName;
     private Long locationId;
+    private int fieldsToBuy;
 
+    public int getFieldsToBuy() {
+        return fieldsToBuy;
+    }
 
-
-
+    public void setFieldsToBuy(int fieldsToBuy) {
+        this.fieldsToBuy = fieldsToBuy;
+    }
 
     public int getFieldArea() {
         return fieldArea;

@@ -5,11 +5,9 @@ import gtruty.sanescobar.dao.AvailableBuildingDao;
 import gtruty.sanescobar.dao.BuildingDao;
 import gtruty.sanescobar.dao.PlantsDao;
 import gtruty.sanescobar.dao.startlocation.*;
-import gtruty.sanescobar.entities.BuildingsAvailableEntity;
-import gtruty.sanescobar.entities.BuildingsEntity;
-import gtruty.sanescobar.entities.PlaceOfStart.StartFieldEntity;
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.GameModel;
+import gtruty.sanescobar.model.field.NumberOfField;
 import gtruty.sanescobar.service.*;
 import gtruty.sanescobar.service.location.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -162,10 +161,9 @@ public class GameViewController {
         gameService.agrarSystem(gameModel);
         gameService.totalMerchant(vilage, gameModel);
         gameService.gameIncome(gameModel, vilage);
-        gameService.availableToBuyBuilding(gameModel,model);
+        gameService.availableToBuyFirstBuilding(gameModel, model);
+        gameService.availableToBuyFirstField(gameModel,model);
 
-       BigDecimal starMoney = gameModel.getStartMoney();
-       int moneyOfStart = starMoney.intValue();
 
 
 

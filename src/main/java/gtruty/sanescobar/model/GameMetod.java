@@ -30,7 +30,9 @@ public interface GameMetod {
 
     void gameIncome(GameModel gameModel, VilageEntity vilage);
 
-    void availableToBuyBuilding(GameModel gameModel, Model model);
+    void availableToBuyFirstBuilding(GameModel gameModel, Model model);
+
+    void availableToBuyFirstField (GameModel gameModel, Model model);
 
     void saveVilage(GameModel gameModel);
 }
