@@ -68,6 +68,24 @@ public class PlantsEntity{
     }
 
     @Override
+    public String toString() {
+        return "PlantsEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", products='" + products + '\'' +
+                ", moneyProfit=" + moneyProfit +
+                ", harvest=" + harvest +
+                ", sowingCost=" + sowingCost +
+                ", requirements='" + requirements + '\'' +
+                ", info='" + info + '\'' +
+                ", specialFor='" + specialFor + '\'' +
+                ", yearsOld=" + yearsOld +
+                ", category='" + category + '\'' +
+                ", buildings=" + buildings +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(id, name, products, moneyProfit, harvest, sowingCost, requirements, info, specialFor, yearsOld, category, buildings);
     }

@@ -1,30 +1,50 @@
 package gtruty.sanescobar.controller;
 
-import gtruty.sanescobar.entities.PlaceOfStart.StartFieldEntity;
+import gtruty.sanescobar.dao.AnimalDao;
+import gtruty.sanescobar.dao.AvailableBuildingDao;
+import gtruty.sanescobar.dao.BuildingDao;
+import gtruty.sanescobar.dao.PlantsDao;
+import gtruty.sanescobar.dao.startlocation.*;
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.GameModel;
-import gtruty.sanescobar.model.field.FieldsModelOfMeadow;
-import gtruty.sanescobar.model.field.FieldsModelOfPloughtFields;
-import gtruty.sanescobar.service.BuildingService;
-import gtruty.sanescobar.service.FieldsOfStartService;
+import gtruty.sanescobar.model.field.NumberOfField;
+import gtruty.sanescobar.service.*;
 import gtruty.sanescobar.service.location.*;
-import gtruty.sanescobar.service.VilageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class GameViewController {
 
-@Value("${Gorlice}")
+    @Value("${Gorlice}")
     private String title;
 
     @Autowired
+    GameService gameService;
+
+    @Autowired
     BuildingService buildingService;
+
+    @Autowired
+    PlantService plantService;
+
+    @Autowired
+    PlantsDao plantsDao;
+
+    @Autowired
+    BuildingDao buildingDao;
+
+    @Autowired
+    AnimalDao animalDao;
 
     @Autowired
     BuildingSouthService buildingSouthService;
@@ -41,6 +61,82 @@ public class GameViewController {
     @Autowired
     BuildingWestService buildingWestService;
 
+
+    @Autowired
+    FieldCentralService fieldCentralService;
+
+    @Autowired
+    FieldEastService fieldEastService;
+
+    @Autowired
+    FieldNorthService fieldNorthService;
+
+    @Autowired
+    FieldSouthService fieldSouthService;
+
+    @Autowired
+    FieldWestService fieldWestService;
+
+    @Autowired
+    GoodsCentralService goodsCentralService;
+
+    @Autowired
+    GoodsEastService goodsEastService;
+
+    @Autowired
+    GoodsNorthService goodsNorthService;
+
+    @Autowired
+    GoodsSouthService goodsSouthService;
+
+    @Autowired
+    GoodsWestService goodsWestService;
+
+    @Autowired
+    FieldCentralDao fieldCentralDao;
+
+    @Autowired
+    FieldEastDao fieldEastDao;
+
+    @Autowired
+    FieldNorthDao fieldNorthDao;
+
+    @Autowired
+    FieldSouthDao fieldSouthDao;
+
+    @Autowired
+    FieldWestDao fieldWestDao;
+
+    @Autowired
+    BuildingCentralDao buildingCentralDao;
+
+    @Autowired
+    BuildingEastDao buildingEastDao;
+
+    @Autowired
+    BuildingNorthDao buildingNorthDao;
+
+    @Autowired
+    BuildingSouthDao buildingSouthDao;
+
+    @Autowired
+    BuildingWestDao buildingWestDao;
+
+    @Autowired
+    GoodsCentralDao goodsCentralDao;
+
+    @Autowired
+    GoodsEastDao goodsEastDao;
+
+    @Autowired
+    GoodsNorthDao goodsNorthDao;
+
+    @Autowired
+    GoodsSouthDao goodsSouthDao;
+
+    @Autowired
+    GoodsWestDao goodsWestDao;
+
     @Autowired
     FieldsOfStartService fieldsOfStartService;
 
@@ -48,110 +144,41 @@ public class GameViewController {
     VilageService vilageService;
     //GameService gameService;
 
+    @Autowired
+    BuildingAvailableService availableBuildingService;
+
+    @Autowired
+    AvailableBuildingDao availableBuildingDao;
 
     @GetMapping("/gameView")
-    public String startPage(Model model){
-
-
-       // List<FieldsOfMeadowEntity> startField = fieldStartService.getAllData();
-       // Map<String,Long> startFieldMap = startField.stream().collect(Collectors.groupingBy(FieldsOfMeadowEntity::getName, Collectors.counting()));
-
-        VilageEntity vilage = vilageService.getAnyVilage();
-        updateViewModel(model, vilage.getName(),vilage.getLocationId());
-        model.addAttribute("lokalizacja",vilage.getLocationId());
-
-
-
-        if (vilage.getLocationId() == 1) {
-            model.addAttribute("buildings", buildingNorthService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Ozima");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            List<StartFieldEntity> startFieldEntity = fieldsOfStartService.getAllData();
-            model.addAttribute("fields",startFieldEntity);
-
-        } else if (vilage.getLocationId() == 2) {
-            model.addAttribute("buildings", buildingEastService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Owies");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-
-        } else if (vilage.getLocationId() == 3) {
-            model.addAttribute("buildings", buildingCentralService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Pszenica Jara");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-
-        } else if (vilage.getLocationId() == 4) {
-            model.addAttribute("buildings", buildingSouthService.getAllData());
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Jęczmień");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-
-        } else if (vilage.getLocationId() == 5) {
-            model.addAttribute("buildings", buildingWestService.getAllData());
-
-
-            for (int i = 0; i < 27; i++) {
-
-                FieldsModelOfMeadow meadow = new FieldsModelOfMeadow();
-                fieldsOfStartService.save(meadow.getName(),meadow.getCostOfBuying(),meadow.getArea(),meadow.getInfo(),meadow.getSeed());
-                FieldsModelOfPloughtFields ploughtFields = new FieldsModelOfPloughtFields("Żyto");
-                fieldsOfStartService.save(ploughtFields.getName(),ploughtFields.getCostOfBuying(),ploughtFields.getArea(),ploughtFields.getInfo(),ploughtFields.getSeed());
-            }
-            model.addAttribute("fields",fieldsOfStartService.getAllData());
-        }
-
-
-
-         //  model.addAttribute("startField",fieldStartService.getAllData());
-        //model.addAttribute("totalArea",fieldStartService.total());
-        //  model.addAttribute("fieldCategory",startFieldMap.keySet());
-        //  model.addAttribute("fieldCategoryValues",startFieldMap.values());
-
-        model.addAttribute("buildings", buildingSouthService.getAllData());
-        model.addAttribute("startField", fieldsOfStartService.getAllData());
-
-
+    public String startPage(Model model) {
 
         GameModel gameModel = new GameModel();
-        model.addAttribute("game", gameModel);
+        VilageEntity vilage = vilageService.getAnyVilage();
+        gameService.saveVilage(gameModel);
+        gameService.startVilageLoaded(vilage, model);
+        gameService.totalArea(vilage, gameModel);
+        gameService.agrarSystem(gameModel);
+        gameService.totalMerchant(vilage, gameModel);
+        gameService.gameIncome(gameModel, vilage);
+        gameService.availableToBuyFirstBuilding(gameModel, model);
+        gameService.availableToBuyFirstField(gameModel,model);
 
 
+
+
+        if (gameService.getModel() == null)
+            gameService.setModel(gameModel);
+        updateViewModel(model, gameService.getModel());
 
 
         return "gameView";
     }
 
-    private void updateViewModel(Model model, String vilageName, Long locationId) {
-        model.addAttribute("nazwa", vilageName);
-        model.addAttribute("lokalization" ,locationId);
-        model.addAttribute("buildings", buildingSouthService.getAllData());
-        model.addAttribute("fields",fieldsOfStartService.getAllData());
-        model.addAttribute("gameModel", new GameModel());
+    private void updateViewModel(Model model/*, String vilageName, Long locationId*/, GameModel gameModel) {
+        // model.addAttribute("nazwa", vilageName);
+        // model.addAttribute("lokalization", locationId);
+        model.addAttribute("game", gameModel);
 
 
    /* @PostMapping("/gameView")
@@ -163,7 +190,17 @@ public class GameViewController {
         updateViewModel(model, name);
         return "gameView";*/
     }
+
+    @PostMapping("/gameView")
+    public String nextTurn(@ModelAttribute("game") GameModel gameModel,
+                           Model model) {
+        gameModel.setTurnNumber(gameModel.getTurnNumber() + 1);
+        gameService.saveIntoTabela(gameModel.getBuildingName());
+        gameService.setModel(gameModel);
+        updateViewModel(model, gameService.getModel());
+        return "redirect:/event";
     }
+}
 
 
 

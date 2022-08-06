@@ -5,12 +5,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "event")
-public class EventEntity{
+public class GameEventEntity {
 
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    private int id;
     @Column(name = "name")
     private String name;
     @Column (name = "info")
@@ -20,7 +20,7 @@ public class EventEntity{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EventEntity that = (EventEntity) o;
+        GameEventEntity that = (GameEventEntity) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(info, that.info);
     }
 
@@ -29,11 +29,11 @@ public class EventEntity{
         return Objects.hash(id, name, info);
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -11,7 +11,7 @@ public class BuildingsEntity {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "product1")
@@ -40,6 +40,8 @@ public class BuildingsEntity {
     private Long placeForGoods;
     @Column(name = "special_for")
     private String specialFor;
+    @Column(name = "type")
+    private Integer type;
 
     @Override
     public boolean equals(Object o) {
@@ -49,16 +51,24 @@ public class BuildingsEntity {
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products1, that.products1) && Objects.equals(products2, that.products2) && Objects.equals(moneyProfit1, that.moneyProfit1) && Objects.equals(moneyProfit2, that.moneyProfit2) && Objects.equals(costOfBuilding, that.costOfBuilding) && Objects.equals(requirements1, that.requirements1) && Objects.equals(requirements2, that.requirements2) && Objects.equals(suistenance, that.suistenance) && Objects.equals(valueOfSuistenance, that.valueOfSuistenance) && Objects.equals(info, that.info) && Objects.equals(numberOfAnimal, that.numberOfAnimal) && Objects.equals(placeForGoods, that.placeForGoods) && Objects.equals(specialFor, that.specialFor);
     }
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, name, products1, products2, moneyProfit1, moneyProfit2, costOfBuilding, requirements1, requirements2, suistenance, valueOfSuistenance, info, numberOfAnimal, placeForGoods, specialFor);
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
