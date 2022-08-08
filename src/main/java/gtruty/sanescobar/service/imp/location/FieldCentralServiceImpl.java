@@ -3,6 +3,7 @@ package gtruty.sanescobar.service.imp.location;
 import gtruty.sanescobar.dao.startlocation.FieldCentralDao;
 import gtruty.sanescobar.dao.startlocation.StartFieldDao;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldCentralEntity;
+import gtruty.sanescobar.entities.PlaceOfStart.FieldEastEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.StartFieldEntity;
 import gtruty.sanescobar.service.FieldsOfStartService;
 import gtruty.sanescobar.service.location.FieldCentralService;
@@ -21,6 +22,11 @@ public class FieldCentralServiceImpl implements FieldCentralService {
     @Override
     public void save(FieldCentralEntity fieldCentralEntity) {
         fieldCentralDao.save(fieldCentralEntity);
+    }
+
+    @Override
+    public void save(String name, BigDecimal costOfBuying, Integer area, String info, String seed) {
+        fieldCentralDao.save(new FieldCentralEntity(name, costOfBuying,area,info,seed));
     }
 
     @Override

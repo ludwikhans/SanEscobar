@@ -5,59 +5,56 @@ import java.math.BigDecimal;
 public class FieldsModelOfPloughtFields {
 
 
+    private String name = "Pole";
+    private BigDecimal costOfBuying;
+    private Integer area;
+    private String info = "Można je obsiać roślinami";
+    private String seed;
+
+    public FieldsModelOfPloughtFields(Integer area) {
+        this.area = area;
+    }
 
 
-        private String name = "Pole";
+    public BigDecimal getCostOfBuying() {
+        return costOfBuying;
+    }
 
-        private Integer area;
+    public void setCostOfBuying(BigDecimal costOfBuying) {
+        this.costOfBuying = costOfBuying;
+    }
 
-        private String info = "Można je obsiać roślinami";
+    public String getName() {
+        return name;
+    }
 
-        private Integer areaOfPloughtFields;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        private String seed;
+    public Integer getArea() {
+        return area;
+    }
 
-        public FieldsModelOfPloughtFields(Integer area) {
-                this.area = area;
-        }
+    public void setArea(Integer area) {
+        this.area = area;
+    }
 
-        public String getName() {
-                return name;
-        }
+    public String getInfo() {
+        return info;
+    }
 
-        public void setName(String name) {
-                this.name = name;
-        }
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
-        public Integer getArea() {
-                return area;
-        }
 
-        public void setArea(Integer area) {
-                this.area = area;
-        }
 
-        public String getInfo() {
-                return info;
-        }
+    public String getSeed() {
+        return seed;
+    }
 
-        public void setInfo(String info) {
-                this.info = info;
-        }
-
-        public Integer getAreaOfPloughtFields() {
-                return areaOfPloughtFields;
-        }
-
-        public void setAreaOfPloughtFields(Integer areaOfPloughtFields) {
-                this.areaOfPloughtFields = areaOfPloughtFields;
-        }
-
-        public String getSeed() {
-                return seed;
-        }
-
-        public void setSeed(String seed) {
-                this.seed = seed;
-        }
+    public void setSeed(String seed) {
+        this.seed = seed;
+    }
 }

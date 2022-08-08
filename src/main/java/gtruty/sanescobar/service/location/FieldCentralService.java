@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface FieldCentralService {
      void save (FieldCentralEntity fieldCentralEntity);
-
+     void save(String name, BigDecimal costOfBuying, Integer area, String info, String seed);
      List<FieldCentralEntity> getAllData();
 
 

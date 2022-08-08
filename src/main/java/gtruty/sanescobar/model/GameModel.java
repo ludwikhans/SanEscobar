@@ -10,7 +10,7 @@ import java.util.List;
 public class GameModel {
     private int turnNumber;
     private BigDecimal startMoney = BigDecimal.valueOf(100);
-    private long money;
+    private BigDecimal availableMoney;
     private int area;
     private String agrarsystem;
     private  int merchant;
@@ -21,11 +21,64 @@ public class GameModel {
     private BigDecimal incomFromAnimal;
     private BigDecimal incomFromOwnedBuilding;
     private BigDecimal totalIncome;
-    private String buildingName;
+    private String typeOfVilage;
     private int fieldArea;
     private String vilageName;
     private Long locationId;
-    private int fieldsToBuy;
+    private String goodsName;
+    private String buildingName = "Brak nowego budynku" ;
+    private int fieldsToBuy = 0;
+    private  BigDecimal costOfFields;
+    private  BigDecimal costOfBuilding;
+    private BigDecimal sumOfCost;
+
+    public String getTypeOfVilage() {
+        return typeOfVilage;
+    }
+
+    public void setTypeOfVilage(String typeOfVilage) {
+        this.typeOfVilage = typeOfVilage;
+    }
+
+    public BigDecimal getSumOfCost() {
+        return sumOfCost;
+    }
+
+    public void setSumOfCost(BigDecimal sumOfCost) {
+        this.sumOfCost = sumOfCost;
+    }
+
+    public BigDecimal getCostOfFields() {
+        return costOfFields;
+    }
+
+    public void setCostOfFields(BigDecimal costOfFields) {
+        this.costOfFields = costOfFields;
+    }
+
+    public BigDecimal getCostOfBuilding() {
+        return costOfBuilding;
+    }
+
+    public void setCostOfBuilding(BigDecimal costOfBuilding) {
+        this.costOfBuilding = costOfBuilding;
+    }
+
+    public BigDecimal getAvailableMoney() {
+        return availableMoney;
+    }
+
+    public void setAvailableMoney(BigDecimal availableMoney) {
+        this.availableMoney = availableMoney;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
 
     public int getFieldsToBuy() {
         return fieldsToBuy;
@@ -138,13 +191,7 @@ public class GameModel {
         this.turnNumber = turnNumber;
     }
 
-    public long getMoney() {
-        return money;
-    }
 
-    public void setMoney(long money) {
-        this.money = money;
-    }
 
 
     public String getAgrarsystem() {

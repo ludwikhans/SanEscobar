@@ -51,7 +51,7 @@
                         <td style="border-style: solid">
                             <div>
                                 <h2>Typ osady:
-                                    <span th:text="${kurczak}"></span></h2>
+                                    <span th:text="${game.typeOfVilage}"></span></h2>
                             </div>
                         </td>
                         <td style="border-style: solid">
@@ -69,7 +69,7 @@
                        style="border-color: black;border-style: solid; border-width: 1px; height: 80px;">
                     <tr>
                         <td style="border-style: solid">
-                            <h4>Posiadane pieniądze: <span th:text="${game.startMoney}"></span></h4>
+                            <h4>Posiadane pieniądze: <span th:text="${game.availableMoney}"></span></h4>
 
                         </td>
                         <td style="border-style: solid">
@@ -247,6 +247,27 @@
                                 <div></div>
                             </td>
                         </tr>
+
+                        <tr>
+                            <td>
+                                <div>Sprzedaj nowy towar</div>
+                            </td>
+                            <td>
+                                <div>
+                                    <select th:field="*{goodsName}" class="uk-select" style="background-color: whitesmoke">
+                                        <option th:each="sells : ${goodsToSell}"
+                                                th:text="${sells.name}"
+                                                th:value="${sells.name}"></option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="uk-width-1-4">
+                                <div> Obsiej</div>
+                            </td>
+                        </tr>
+
+
+
                     </table>
                 </div>
             </div>

@@ -13,5 +13,6 @@ public interface GoodsEastDao extends CrudRepository<GoodsEastEntities,Integer> 
     int sumCreditAmount();
 
     GoodsEastEntities findById(int id);
+    GoodsEastEntities findByName(String name);
 
 }

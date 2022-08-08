@@ -1,30 +1,30 @@
 
 
-INSERT INTO building_central (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount, animal_in_building)
-VALUES  (1, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (2, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (3, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null);
+INSERT INTO building_central (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount,type, animal_in_building)
+VALUES  (1, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (2, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (3, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null);
 
-INSERT INTO building_east (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount, animal_in_building)
-VALUES  (1, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (2, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (3, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (4, 'Mała stadnina', null, null, null, null, 150.0 ,null, null, null, null,'umożliwia hodowle koni', 'wschód', 10, null, 1, 'Koń');
+INSERT INTO building_east (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount,type, animal_in_building)
+VALUES  (1, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (2, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (3, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (4, 'Mała stadnina', null, null, null, null, 150.0 ,null, null, null, null,'umożliwia hodowle koni', 'wschód', 10, null, 1, 2, 'Koń');
 
-INSERT INTO building_north (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount, animal_in_building)
-VALUES  (1, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (2, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (3, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null);
+INSERT INTO building_north (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount,type, animal_in_building)
+VALUES  (1, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (2, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (3, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null);
 
-INSERT INTO building_south (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount, animal_in_building)
-VALUES  (1, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (2, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (3, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null);
+INSERT INTO building_south (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount,type, animal_in_building)
+VALUES  (1, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (2, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (3, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null);
 
-INSERT INTO building_west (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount, animal_in_building)
-VALUES  (1, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (2, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null),
-        (3, 'skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, null);
+INSERT INTO building_west (id, name, product1, product2, money_profit1, money_profit2, cost_of_buildings, requirements1, requirements2,suistenance, value_of_suistenance, info, special_for, number_of_animals, place_for_goods, amaount,type, animal_in_building)
+VALUES  (1, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (2, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null),
+        (3, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null);
 
 INSERT INTO fields_central (id, name, cost_of_buying, area, info,seed_of_field)
 VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Pszenica jara'),

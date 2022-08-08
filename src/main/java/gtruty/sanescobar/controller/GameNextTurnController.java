@@ -42,6 +42,9 @@ public class GameNextTurnController {
         gameService.availableToBuyFirstField(gameModel, model);
 
 
+        model.addAttribute("kurczak",gameModel.getBuildingName());
+
+
         if (gameService.getModel() == null)
             gameService.setModel(gameModel);
         updateViewModel(model, gameService.getModel());

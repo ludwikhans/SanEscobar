@@ -1,4 +1,4 @@
-package gtruty.sanescobar.entities.PlaceOfStart;
+package gtruty.sanescobar.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,29 +6,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "goods_east")
-public class GoodsEastEntities {
+@Table(name = "goods_available")
+public class GoodsAvailableEntities {
 
     @Id
     @GeneratedValue
     private Integer id;
     private String name;
     private Integer usingMerchant;
+    // 1 to rośliny 2 to budynki
     private int typ;
 
-
-    public Integer getUsingMerchant() {
-        return usingMerchant;
+    public GoodsAvailableEntities() {
     }
 
-    public void setUsingMerchant(Integer usingMerchant) {
-        this.usingMerchant = usingMerchant;
-    }
-
-    public GoodsEastEntities() {
-    }
-
-    public GoodsEastEntities(String name, Integer usingMerchant, int typ) {
+    public GoodsAvailableEntities(String name, Integer usingMerchant, int typ) {
         this.name = name;
         this.usingMerchant = usingMerchant;
         this.typ = typ;
@@ -41,7 +33,6 @@ public class GoodsEastEntities {
     public void setTyp(int typ) {
         this.typ = typ;
     }
-
 
     public Integer getId() {
         return id;
@@ -57,5 +48,21 @@ public class GoodsEastEntities {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getUsingMerchant() {
+        return usingMerchant;
+    }
+
+    public void setUsingMerchant(Integer usingMerchant) {
+        this.usingMerchant = usingMerchant;
+    }
+
+    public GoodsAvailableEntities(Integer id, String name, Integer usingMerchant) {
+        this.id = id;
+        this.name = name;
+        this.usingMerchant = usingMerchant;
+
+
     }
 }

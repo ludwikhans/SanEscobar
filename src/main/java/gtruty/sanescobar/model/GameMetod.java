@@ -35,4 +35,22 @@ public interface GameMetod {
     void availableToBuyFirstField (GameModel gameModel, Model model);
 
     void saveVilage(GameModel gameModel);
+
+    void deleteDoubleGoods(VilageEntity vilage);
+
+    void addFields(GameModel gameModel, VilageEntity vilage);
+
+    void addAvailableGoods (Model model);
+
+    void addNewGoods(GameModel gameModel, VilageEntity vilage);
+
+    void addNewBuilding (VilageEntity vilage,GameModel gameModel );
+
+    void saveGoods(VilageEntity vilage, GameModel gameModel);
+
+    void  sumBuying(GameModel gameModel);
+
+    void  nextTurnMoney(GameModel gameModel);
+
+    void typeOfVilage(GameModel gameModel, VilageEntity vilage);
 }

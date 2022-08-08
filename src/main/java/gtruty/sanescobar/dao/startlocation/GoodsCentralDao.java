@@ -13,5 +13,6 @@ public interface GoodsCentralDao extends CrudRepository<GoodsCentralEntities,Int
     int sumCreditAmount();
 
     GoodsCentralEntities findById(int id);
+    GoodsCentralEntities findByName(String name);
 
 }

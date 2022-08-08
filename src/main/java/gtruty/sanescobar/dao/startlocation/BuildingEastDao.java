@@ -12,6 +12,7 @@ public interface BuildingEastDao extends CrudRepository<BuildingsEntityEast, Lon
     int sumCreditAmount();
 
     BuildingsEntityEast findById(int id);
+    BuildingsEntityEast findByName(String name);
 
 
 }

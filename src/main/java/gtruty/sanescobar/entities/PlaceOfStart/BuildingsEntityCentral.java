@@ -10,7 +10,7 @@ public class BuildingsEntityCentral {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "product1")
@@ -41,16 +41,53 @@ public class BuildingsEntityCentral {
     private String specialFor;
     @Column (name = "amaount")
     private Integer amount;
+    @Column(name = "type")
+    private Integer type;
     @Column (name = "animal_in_building")
     private String animalInBuilding;
 
 
+    public BuildingsEntityCentral(String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuilding, String requirements1, String requirements2, String suistenance, Double valueOfSuistenance, String info, Long numberOfAnimal, Long placeForGoods, String specialFor, Integer amount, Integer type) {
+        this.name = name;
+        this.products1 = products1;
+        this.products2 = products2;
+        this.moneyProfit1 = moneyProfit1;
+        this.moneyProfit2 = moneyProfit2;
+        this.costOfBuilding = costOfBuilding;
+        this.requirements1 = requirements1;
+        this.requirements2 = requirements2;
+        this.suistenance = suistenance;
+        this.valueOfSuistenance = valueOfSuistenance;
+        this.info = info;
+        this.numberOfAnimal = numberOfAnimal;
+        this.placeForGoods = placeForGoods;
+        this.specialFor = specialFor;
+        this.amount = amount;
+        this.type = type;
+    }
 
-    public Long getId() {
+    public BuildingsEntityCentral() {
+
+    }
+
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public BuildingsEntityCentral(String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuilding, String requirements1, String requirements2, String suistenance, Double valueOfSuistenance, String info, Long numberOfAnimal, Long placeForGoods, String specialFor, Integer type) {
+    }
+
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -1,13 +1,10 @@
 package gtruty.sanescobar.controller;
 
-import gtruty.sanescobar.dao.AnimalDao;
-import gtruty.sanescobar.dao.AvailableBuildingDao;
-import gtruty.sanescobar.dao.BuildingDao;
-import gtruty.sanescobar.dao.PlantsDao;
+import gtruty.sanescobar.dao.*;
 import gtruty.sanescobar.dao.startlocation.*;
+import gtruty.sanescobar.entities.PlaceOfStart.BuildingsEntityNorth;
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.GameModel;
-import gtruty.sanescobar.model.field.NumberOfField;
 import gtruty.sanescobar.service.*;
 import gtruty.sanescobar.service.location.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class GameViewController {
@@ -150,21 +143,42 @@ public class GameViewController {
     @Autowired
     AvailableBuildingDao availableBuildingDao;
 
+    @Autowired
+    GoodsAvailableService goodsAvailableService;
+
+    @Autowired
+    GoodsAvailableDao goodsAvailableDao;
+
     @GetMapping("/gameView")
     public String startPage(Model model) {
 
         GameModel gameModel = new GameModel();
         VilageEntity vilage = vilageService.getAnyVilage();
+        gameService.gameIncome(gameModel, vilage);
+
+        // gameService.addNewBuilding(vilage,gameModel);
+        //  gameService.saveGoods(vilage,gameModel);
+        //gameService.deleteDoubleGoods(vilage);
+        // gameService.addFields(gameModel, vilage);
+        //  gameService.addAvailableGoods(model);
+        // gameService.addNewGoods(gameModel,vilage);
+        gameService.sumBuying(gameModel);
+        gameService.nextTurnMoney(gameModel);
+
+
+
+
+
+
         gameService.saveVilage(gameModel);
         gameService.startVilageLoaded(vilage, model);
         gameService.totalArea(vilage, gameModel);
         gameService.agrarSystem(gameModel);
         gameService.totalMerchant(vilage, gameModel);
-        gameService.gameIncome(gameModel, vilage);
+        gameService.typeOfVilage(gameModel,vilage);
+
         gameService.availableToBuyFirstBuilding(gameModel, model);
-        gameService.availableToBuyFirstField(gameModel,model);
-
-
+        gameService.availableToBuyFirstField(gameModel, model);
 
 
         if (gameService.getModel() == null)
