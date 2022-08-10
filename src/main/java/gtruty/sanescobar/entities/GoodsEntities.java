@@ -20,6 +20,10 @@ public class GoodsEntities {
     public GoodsEntities() {
     }
 
+    public GoodsEntities(String name) {
+        this.name = name;
+    }
+
     public int getTyp() {
         return typ;
     }

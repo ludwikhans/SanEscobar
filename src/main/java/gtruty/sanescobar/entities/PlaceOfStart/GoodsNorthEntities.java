@@ -22,6 +22,10 @@ public class GoodsNorthEntities {
         this.typ = typ;
     }
 
+    public GoodsNorthEntities(String name) {
+        this.name = name;
+    }
+
     public GoodsNorthEntities() {
     }
     public int getTyp() {

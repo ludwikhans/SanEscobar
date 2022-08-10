@@ -11,5 +11,7 @@ public interface BuildingDao extends CrudRepository<BuildingsEntity,Integer> {
     BuildingsEntity findByProducts1(String name);
     BuildingsEntity findById(int id);
     BuildingsEntity findByName(String name);
+    BuildingsEntity findFirstByName(String name);
+
 
 }

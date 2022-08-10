@@ -15,5 +15,6 @@ public interface GoodsWestDao extends CrudRepository<GoodsWestEntities,Integer> 
 
     GoodsWestEntities findById(int id);
     GoodsWestEntities findByName(String name);
+    GoodsWestEntities findFirstByName(String name);
 
 }

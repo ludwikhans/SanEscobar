@@ -2,7 +2,7 @@ package gtruty.sanescobar.dao.startlocation;
 
 import gtruty.sanescobar.entities.PlaceOfStart.FieldCentralEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldEastEntity;
-import gtruty.sanescobar.entities.PlaceOfStart.StartFieldEntity;
+
 import gtruty.sanescobar.entities.PlantsEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,4 +17,6 @@ public interface FieldCentralDao extends CrudRepository<FieldCentralEntity,Long>
     int sumCreditAmount();
 
     List<FieldCentralEntity> findAllBySeed(String name);
+    FieldCentralEntity findFirstByName(String name);
+
 }

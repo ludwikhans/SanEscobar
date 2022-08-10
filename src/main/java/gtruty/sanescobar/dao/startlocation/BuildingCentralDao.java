@@ -13,4 +13,5 @@ public interface BuildingCentralDao extends CrudRepository<BuildingsEntityCentra
 
     BuildingsEntityCentral findById(int id);
     BuildingsEntityCentral findByName(String name);
+    BuildingsEntityCentral findFirstByName(String name);
 }

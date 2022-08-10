@@ -1,7 +1,6 @@
 package gtruty.sanescobar.service;
 
 import gtruty.sanescobar.entities.BuildingsAvailableEntity;
-import gtruty.sanescobar.entities.PlaceOfStart.StartFieldEntity;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,5 +1,6 @@
 package gtruty.sanescobar.dao.startlocation;
 
+import gtruty.sanescobar.entities.PlaceOfStart.FieldCentralEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldNorthEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldSouthEntity;
 import org.springframework.data.jpa.repository.Query;
@@ -15,4 +16,5 @@ public interface FieldSouthDao extends CrudRepository<FieldSouthEntity,Long> {
     int sumCreditAmount();
 
     List< FieldSouthEntity> findAllBySeed(String name);
+    FieldSouthEntity findFirstByName(String name);
 }

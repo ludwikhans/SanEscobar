@@ -31,6 +31,12 @@ public class BuildingCentralServiceImpl implements BuildingCentralService {
     }
 
     @Override
+    public void save(String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuilding, String requirements1, String requirements2, String suistenance, Double valueOfSuistenance, String info, Long numberOfAnimal, Long placeForGoods, String specialFor, Integer amount, Integer type, String animalInBuilding) {
+        buildingCentralDao.save(new BuildingsEntityCentral(name,products1,products2,moneyProfit1,moneyProfit2,costOfBuilding,requirements1,requirements2,suistenance,valueOfSuistenance,info,numberOfAnimal,placeForGoods,specialFor,amount, type,animalInBuilding));
+
+    }
+
+    @Override
     public List<BuildingsEntityCentral> getAllData() {
         var buildingCentral = buildingCentralDao.findAll();
         return (List<BuildingsEntityCentral>) buildingCentral;

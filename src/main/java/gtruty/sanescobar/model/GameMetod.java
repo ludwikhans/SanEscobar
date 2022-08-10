@@ -7,7 +7,7 @@ import gtruty.sanescobar.dao.PlantsDao;
 import gtruty.sanescobar.dao.startlocation.*;
 import gtruty.sanescobar.entities.VilageEntity;
 
-import gtruty.sanescobar.service.FieldsOfStartService;
+
 import gtruty.sanescobar.service.location.*;
 import org.springframework.ui.Model;
 
@@ -44,7 +44,7 @@ public interface GameMetod {
 
     void addNewGoods(GameModel gameModel, VilageEntity vilage);
 
-    void addNewBuilding (VilageEntity vilage,GameModel gameModel );
+    void addNewBuilding (VilageEntity vilage,GameModel gameModel, Model model );
 
     void saveGoods(VilageEntity vilage, GameModel gameModel);
 
@@ -53,4 +53,12 @@ public interface GameMetod {
     void  nextTurnMoney(GameModel gameModel);
 
     void typeOfVilage(GameModel gameModel, VilageEntity vilage);
+
+    void startMoney(GameModel gameModel);
+
+    void addSupplyedBuilding (GameModel gameModel);
+
+    void supplyedField(Model model);
+
+    void addSypplyedField (GameModel gameModel);
 }

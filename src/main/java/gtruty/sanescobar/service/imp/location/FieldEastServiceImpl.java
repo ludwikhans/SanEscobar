@@ -4,7 +4,7 @@ import gtruty.sanescobar.dao.startlocation.FieldEastDao;
 import gtruty.sanescobar.dao.startlocation.FieldNorthDao;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldEastEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldNorthEntity;
-import gtruty.sanescobar.entities.PlaceOfStart.StartFieldEntity;
+
 import gtruty.sanescobar.service.location.FieldEastService;
 import gtruty.sanescobar.service.location.FieldNorthService;
 import org.springframework.beans.factory.annotation.Autowired;

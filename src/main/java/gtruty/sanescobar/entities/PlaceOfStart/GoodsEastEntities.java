@@ -16,6 +16,9 @@ public class GoodsEastEntities {
     private Integer usingMerchant;
     private int typ;
 
+    public GoodsEastEntities(String name) {
+        this.name = name;
+    }
 
     public Integer getUsingMerchant() {
         return usingMerchant;

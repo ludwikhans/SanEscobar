@@ -44,6 +44,10 @@ public class PlantsEntity{
     public PlantsEntity() {
     }
 
+    public PlantsEntity(String name) {
+        this.name = name;
+    }
+
     public PlantsEntity(Integer id, String name, String products, BigDecimal moneyProfit, Double harvest, BigDecimal sowingCost, String requirements, String info, String specialFor, Long yearsOld, String category, Set<BuildingsEntity> buildings) {
         this.id = id;
         this.name = name;

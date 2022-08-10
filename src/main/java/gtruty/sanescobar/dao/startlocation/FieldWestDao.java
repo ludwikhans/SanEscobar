@@ -1,5 +1,6 @@
 package gtruty.sanescobar.dao.startlocation;
 
+import gtruty.sanescobar.entities.PlaceOfStart.FieldCentralEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldNorthEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldSouthEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldWestEntity;
@@ -16,4 +17,5 @@ public interface FieldWestDao extends CrudRepository<FieldWestEntity,Long> {
     int sumCreditAmount();
 
     List<FieldWestEntity> findAllBySeed(String name);
+    FieldWestEntity findFirstByName(String name);
 }

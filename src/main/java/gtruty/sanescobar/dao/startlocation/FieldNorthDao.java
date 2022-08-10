@@ -1,5 +1,6 @@
 package gtruty.sanescobar.dao.startlocation;
 
+import gtruty.sanescobar.entities.PlaceOfStart.FieldCentralEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldEastEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldNorthEntity;
 import gtruty.sanescobar.entities.VilageEntity;
@@ -19,4 +20,6 @@ public interface FieldNorthDao extends CrudRepository<FieldNorthEntity,Long> {
 
 
    List < FieldNorthEntity> findAllBySeed(String name);
+
+    FieldNorthEntity findFirstByName(String name);
 }

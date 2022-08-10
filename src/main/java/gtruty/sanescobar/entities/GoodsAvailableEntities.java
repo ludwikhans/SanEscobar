@@ -20,6 +20,10 @@ public class GoodsAvailableEntities {
     public GoodsAvailableEntities() {
     }
 
+    public GoodsAvailableEntities(String name) {
+        this.name = name;
+    }
+
     public GoodsAvailableEntities(String name, Integer usingMerchant, int typ) {
         this.name = name;
         this.usingMerchant = usingMerchant;

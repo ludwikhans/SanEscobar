@@ -14,12 +14,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Random;
 
 
 @Controller
+@SessionAttributes("game")
 public class GameNextTurnController {
 
     @Autowired
@@ -29,7 +32,7 @@ public class GameNextTurnController {
     VilageService vilageService;
 
     @GetMapping("/gameNextTurn")
-    public String nextTurnPage(Model model, GameModel gameModel) {
+    public String nextTurnPage(Model model, @ModelAttribute("game") GameModel gameModel) {
 
         VilageEntity vilage = vilageService.getAnyVilage();
         gameService.saveVilage(gameModel);
@@ -61,11 +64,13 @@ public class GameNextTurnController {
 
     @PostMapping("/gameNextTurn")
     public String nextTurn(@ModelAttribute("game") GameModel gameModel,
+                           RedirectAttributes redirect,
                            Model model) {
         gameModel.setTurnNumber(gameModel.getTurnNumber() + 1);
         gameService.saveIntoTabela(gameModel.getBuildingName());
         gameService.setModel(gameModel);
         updateViewModel(model, gameService.getModel());
+        redirect.addFlashAttribute("game", gameModel);
         return "redirect:/event";
     }
 }

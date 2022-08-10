@@ -25,6 +25,10 @@ public class FieldCentralEntity {
     public FieldCentralEntity() {
     }
 
+    public FieldCentralEntity(String name) {
+        this.name = name;
+    }
+
     public FieldCentralEntity(String name, BigDecimal costOfBuying, Integer area, String info, String seed) {
 
         this.name = name;

@@ -30,6 +30,10 @@ public class FieldsEntity {
     public FieldsEntity() {
     }
 
+    public FieldsEntity(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

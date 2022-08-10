@@ -16,6 +16,14 @@ public class GameEventEntity {
     @Column (name = "info")
     private String info;
 
+    public GameEventEntity(String name) {
+        this.name = name;
+    }
+
+    public GameEventEntity() {
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

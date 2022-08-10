@@ -25,6 +25,10 @@ public class FieldSouthEntity {
     public FieldSouthEntity() {
     }
 
+    public FieldSouthEntity(String name) {
+        this.name = name;
+    }
+
     public FieldSouthEntity(String name, BigDecimal costOfBuying, Integer area, String info, String seed) {
 
         this.name = name;

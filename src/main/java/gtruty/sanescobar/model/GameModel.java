@@ -1,10 +1,8 @@
 package gtruty.sanescobar.model;
 
-import gtruty.sanescobar.entities.BuildingsEntity;
-import gtruty.sanescobar.model.buildings.AvailableBuilding;
+import gtruty.sanescobar.entities.GameEventEntity;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 
 public class GameModel {
@@ -26,11 +24,42 @@ public class GameModel {
     private String vilageName;
     private Long locationId;
     private String goodsName;
-    private String buildingName = "Brak nowego budynku" ;
-    private int fieldsToBuy = 0;
+    private String buildingName ;
+    private int fieldsToBuy = 5;
     private  BigDecimal costOfFields;
     private  BigDecimal costOfBuilding;
     private BigDecimal sumOfCost;
+    private String eventInfo;
+    private String animalInBuilding ;
+    private String plantInFields;
+
+    public void setIncomFromFields(BigDecimal incomFromFields) {
+        this.incomFromFields = incomFromFields;
+    }
+
+    public String getPlantInFields() {
+        return plantInFields;
+    }
+
+    public void setPlantInFields(String plantInFields) {
+        this.plantInFields = plantInFields;
+    }
+
+    public String getAnimalInBuilding() {
+        return animalInBuilding;
+    }
+
+    public void setAnimalInBuilding(String animalInBuilding) {
+        this.animalInBuilding = animalInBuilding;
+    }
+
+    public String getEventInfo() {
+        return eventInfo;
+    }
+
+    public void setEventInfo(String eventInfo) {
+        this.eventInfo = eventInfo;
+    }
 
     public String getTypeOfVilage() {
         return typeOfVilage;
@@ -143,9 +172,7 @@ public class GameModel {
         return incomFromFields;
     }
 
-    public void setIncomFromFields(BigDecimal incomFromFields) {
-        this.incomFromFields = incomFromFields;
-    }
+
 
     public int getUsingMerchant() {
         return usingMerchant;
@@ -226,5 +253,9 @@ public class GameModel {
 
     public Long getLocationId() {
         return locationId;
+    }
+
+    public void processEvent(GameEventEntity gameEvent) {
+        //TODO
     }
 }

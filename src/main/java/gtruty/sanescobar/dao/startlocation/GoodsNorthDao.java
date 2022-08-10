@@ -15,6 +15,7 @@ public interface GoodsNorthDao extends CrudRepository<GoodsNorthEntities,Integer
 
 
     GoodsNorthEntities findById(int id);
+    GoodsNorthEntities findFirstByName(String name);
     GoodsNorthEntities findByName(String name);
 
 }

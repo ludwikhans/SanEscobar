@@ -40,6 +40,8 @@ public class BuildingsEntity {
     private Long placeForGoods;
     @Column(name = "special_for")
     private String specialFor;
+    @Column (name = "available_Animal") // 1 to tak, 0 to nie
+    private Integer availableAnimal;
     @Column(name = "type")
     private Integer type;
 
@@ -49,6 +51,21 @@ public class BuildingsEntity {
         if (o == null || getClass() != o.getClass()) return false;
         BuildingsEntity that = (BuildingsEntity) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products1, that.products1) && Objects.equals(products2, that.products2) && Objects.equals(moneyProfit1, that.moneyProfit1) && Objects.equals(moneyProfit2, that.moneyProfit2) && Objects.equals(costOfBuilding, that.costOfBuilding) && Objects.equals(requirements1, that.requirements1) && Objects.equals(requirements2, that.requirements2) && Objects.equals(suistenance, that.suistenance) && Objects.equals(valueOfSuistenance, that.valueOfSuistenance) && Objects.equals(info, that.info) && Objects.equals(numberOfAnimal, that.numberOfAnimal) && Objects.equals(placeForGoods, that.placeForGoods) && Objects.equals(specialFor, that.specialFor);
+    }
+
+    public BuildingsEntity() {
+    }
+
+    public Integer getAvailableAnimal() {
+        return availableAnimal;
+    }
+
+    public void setAvailableAnimal(Integer availableAnimal) {
+        this.availableAnimal = availableAnimal;
+    }
+
+    public BuildingsEntity(String name) {
+        this.name = name;
     }
 
     public Integer getType() {

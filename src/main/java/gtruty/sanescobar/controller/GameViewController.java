@@ -2,7 +2,8 @@ package gtruty.sanescobar.controller;
 
 import gtruty.sanescobar.dao.*;
 import gtruty.sanescobar.dao.startlocation.*;
-import gtruty.sanescobar.entities.PlaceOfStart.BuildingsEntityNorth;
+import gtruty.sanescobar.entities.BuildingsEntity;
+import gtruty.sanescobar.entities.BuildingsSupplyEntity;
 import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.GameModel;
 import gtruty.sanescobar.service.*;
@@ -14,8 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@SessionAttributes("game")
 public class GameViewController {
 
     @Value("${Gorlice}")
@@ -131,11 +135,7 @@ public class GameViewController {
     GoodsWestDao goodsWestDao;
 
     @Autowired
-    FieldsOfStartService fieldsOfStartService;
-
-    @Autowired
     VilageService vilageService;
-    //GameService gameService;
 
     @Autowired
     BuildingAvailableService availableBuildingService;
@@ -149,36 +149,40 @@ public class GameViewController {
     @Autowired
     GoodsAvailableDao goodsAvailableDao;
 
+    @Autowired
+    BuildingSupplyService buildingSupplyService;
+
+    @ModelAttribute("game")
+    public GameModel initiateGameModel() {
+        return new GameModel();
+    }
+
     @GetMapping("/gameView")
-    public String startPage(Model model) {
-
-        GameModel gameModel = new GameModel();
+    public String startPage(Model model, @ModelAttribute("game") GameModel gameModel) {
         VilageEntity vilage = vilageService.getAnyVilage();
-        gameService.gameIncome(gameModel, vilage);
-
-        // gameService.addNewBuilding(vilage,gameModel);
-        //  gameService.saveGoods(vilage,gameModel);
-        //gameService.deleteDoubleGoods(vilage);
-        // gameService.addFields(gameModel, vilage);
-        //  gameService.addAvailableGoods(model);
-        // gameService.addNewGoods(gameModel,vilage);
-        gameService.sumBuying(gameModel);
-        gameService.nextTurnMoney(gameModel);
-
-
-
-
-
 
         gameService.saveVilage(gameModel);
         gameService.startVilageLoaded(vilage, model);
         gameService.totalArea(vilage, gameModel);
+        gameService.gameIncome(gameModel, vilage);
         gameService.agrarSystem(gameModel);
         gameService.totalMerchant(vilage, gameModel);
-        gameService.typeOfVilage(gameModel,vilage);
-
+        gameService.typeOfVilage(gameModel, vilage);
+        gameService.startMoney(gameModel);
         gameService.availableToBuyFirstBuilding(gameModel, model);
         gameService.availableToBuyFirstField(gameModel, model);
+
+
+      //  gameService.addNewBuilding(vilage,gameModel,model);
+        // gameService.addSupplyedBuilding(gameModel);
+       // gameService.addFields(gameModel, vilage);
+      //  gameService.supplyedField(model);
+        //  gameService.saveGoods(vilage,gameModel);
+        //gameService.deleteDoubleGoods(vilage);
+        //  gameService.addAvailableGoods(model);
+        // gameService.addNewGoods(gameModel,vilage);
+        //  gameService.sumBuying(gameModel);
+        // gameService.nextTurnMoney(gameModel);
 
 
         if (gameService.getModel() == null)
@@ -189,29 +193,21 @@ public class GameViewController {
         return "gameView";
     }
 
-    private void updateViewModel(Model model/*, String vilageName, Long locationId*/, GameModel gameModel) {
-        // model.addAttribute("nazwa", vilageName);
-        // model.addAttribute("lokalization", locationId);
+    private void updateViewModel(Model model, GameModel gameModel) {
         model.addAttribute("game", gameModel);
 
 
-   /* @PostMapping("/gameView")
-    public String nextTurn(@ModelAttribute("gameModel") GameModel gameModel, @ModelAttribute("buildings") List<BuildingsEntity> buildings, @ModelAttribute("nazwa") String name, Model model) {
-//Logika odpowiadająca za obliczaie modyfikatorów
-        gameModel.setAgrarsystem(gameModel.agrarSystem());
-        //gameService.calculateIncome(gameModel);
-        gameModel.setTurnNumber(gameModel.getTurnNumber() + 1);
-        updateViewModel(model, name);
-        return "gameView";*/
     }
 
     @PostMapping("/gameView")
     public String nextTurn(@ModelAttribute("game") GameModel gameModel,
-                           Model model) {
+                           RedirectAttributes redirect/*,
+                           Model model*/) {
         gameModel.setTurnNumber(gameModel.getTurnNumber() + 1);
         gameService.saveIntoTabela(gameModel.getBuildingName());
         gameService.setModel(gameModel);
-        updateViewModel(model, gameService.getModel());
+//        updateViewModel(model, gameService.getModel());
+        redirect.addFlashAttribute("game", gameModel);
         return "redirect:/event";
     }
 }

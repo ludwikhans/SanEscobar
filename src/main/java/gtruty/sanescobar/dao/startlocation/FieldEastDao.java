@@ -16,6 +16,7 @@ public interface FieldEastDao extends CrudRepository<FieldEastEntity,Long> {
     int sumCreditAmount();
 
     List<FieldEastEntity> findAllBySeed(String name);
+    FieldEastEntity findFirstByName(String name);
 
 
 

@@ -19,6 +19,10 @@ public class GoodsWestEntities {
     public GoodsWestEntities() {
     }
 
+    public GoodsWestEntities(String name) {
+        this.name = name;
+    }
+
     public GoodsWestEntities(String name, Integer usingMerchant, int typ) {
         this.name = name;
         this.usingMerchant = usingMerchant;

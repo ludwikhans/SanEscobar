@@ -56,6 +56,13 @@ public class AnimalsEntity {
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products1, that.products1) && Objects.equals(products2, that.products2) && Objects.equals(moneyProfit1, that.moneyProfit1) && Objects.equals(moneyProfit2, that.moneyProfit2) && Objects.equals(costOfBuying, that.costOfBuying) && Objects.equals(requirements, that.requirements) && Objects.equals(suistenance1, that.suistenance1) && Objects.equals(valueOfSuistenance1, that.valueOfSuistenance1) && Objects.equals(suistenance2, that.suistenance2) && Objects.equals(valueOfSuistenance2, that.valueOfSuistenance2) && Objects.equals(info, that.info) && Objects.equals(specialFor, that.specialFor) && Objects.equals(buldings, that.buldings) && Objects.equals(plants, that.plants);
     }
 
+    public AnimalsEntity(String name) {
+        this.name = name;
+    }
+
+    public AnimalsEntity() {
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, name, products1, products2, moneyProfit1, moneyProfit2, costOfBuying, requirements, suistenance1, valueOfSuistenance1, suistenance2, valueOfSuistenance2, info, specialFor, buldings, plants);

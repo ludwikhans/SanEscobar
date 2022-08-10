@@ -12,7 +12,8 @@ public interface GoodsAvailableDao extends CrudRepository<GoodsAvailableEntities
     @Query("SELECT sum(usingMerchant) from GoodsSouthEntities")
     int sumCreditAmount();
 
-    GoodsSouthEntities findById(int id);
     GoodsAvailableEntities findByName(String name);
+    GoodsSouthEntities findById(int id);
+    GoodsAvailableEntities findFirstByName(String name);
 
 }

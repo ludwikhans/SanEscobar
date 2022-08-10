@@ -12,5 +12,6 @@ public interface BuildingNorthDao extends CrudRepository<BuildingsEntityNorth, L
     int sumCreditAmount();
 
     BuildingsEntityNorth findById(int id);
+    BuildingsEntityNorth findFirstByName(String name);
     BuildingsEntityNorth findByName(String name);
 }

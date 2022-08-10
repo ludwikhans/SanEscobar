@@ -26,6 +26,10 @@ public class GoodsCentralEntities {
         this.typ = typ;
     }
 
+    public GoodsCentralEntities(String name) {
+        this.name = name;
+    }
+
     public int getTyp() {
         return typ;
     }
