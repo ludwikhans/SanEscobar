@@ -173,21 +173,6 @@ public class GameViewController {
         gameService.availableToBuyFirstField(gameModel, model);
 
 
-      //  gameService.addNewBuilding(vilage,gameModel,model);
-        // gameService.addSupplyedBuilding(gameModel);
-       // gameService.addFields(gameModel, vilage);
-      //  gameService.supplyedField(model);
-        //  gameService.saveGoods(vilage,gameModel);
-        //gameService.deleteDoubleGoods(vilage);
-        //  gameService.addAvailableGoods(model);
-        // gameService.addNewGoods(gameModel,vilage);
-        //  gameService.sumBuying(gameModel);
-        // gameService.nextTurnMoney(gameModel);
-
-
-        if (gameService.getModel() == null)
-            gameService.setModel(gameModel);
-        updateViewModel(model, gameService.getModel());
 
 
         return "gameView";
@@ -201,12 +186,11 @@ public class GameViewController {
 
     @PostMapping("/gameView")
     public String nextTurn(@ModelAttribute("game") GameModel gameModel,
-                           RedirectAttributes redirect/*,
-                           Model model*/) {
+                           RedirectAttributes redirect
+                       ) {
         gameModel.setTurnNumber(gameModel.getTurnNumber() + 1);
-        gameService.saveIntoTabela(gameModel.getBuildingName());
+        gameService.saveIntoTabela(gameModel.getBuildingName(), gameModel);
         gameService.setModel(gameModel);
-//        updateViewModel(model, gameService.getModel());
         redirect.addFlashAttribute("game", gameModel);
         return "redirect:/event";
     }

@@ -604,13 +604,11 @@ public class GameService implements GameMetod {
         if (existBuilding != null) {
             availableBuildingDao.deleteAll();
         }
-
         BigDecimal money = toZero(gameModel.getAvailableMoney());
         int moneyInInt = money.intValue();
         List<BuildingsEntity> allBuildings = buildingService.getAllData();
-        availableBuildingService.save("Brak nowego budynku");
-        for (int j = 1; j <= allBuildings.size(); j++) {
-            BuildingsEntity budynki = buildingDao.findById(j);
+        for (BuildingsEntity budynki :
+                allBuildings) {
             BigDecimal cost = budynki.getCostOfBuilding();
             int costOf = cost.intValue();
             if (costOf < moneyInInt) {
@@ -761,68 +759,76 @@ public class GameService implements GameMetod {
         }
     }
 
-    @Override
-    public void addAvailableGoods(Model model) {
-        List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
-        model.addAttribute("goodsToSell", availableGoods);
-    }
+
 
     @Override
     public void addNewGoods(GameModel gameModel, VilageEntity vilage) {
 
         if (vilage.getLocationId() == 1) {
             String nameOfNewGoods = gameModel.getGoodsName();
-            if (nameOfNewGoods != "Brak nowego towaru") {
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
-                GoodsNorthEntities goodsNorthEntities = goodsNorthDao.findByName(nameOfNewGoods);
-                if (goodsNorthEntities == null) {
-                    goodsNorthService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+            if (nameOfNewGoods != null) {
+                if (nameOfNewGoods != "Brak nowego towaru") {
+                    GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
+                    GoodsNorthEntities goodsNorthEntities = goodsNorthDao.findByName(nameOfNewGoods);
+                    if (goodsNorthEntities == null) {
+                        goodsNorthService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+                    }
                 }
             }
 
 
         } else if (vilage.getLocationId() == 2) {
             String nameOfNewGoods = gameModel.getGoodsName();
-            if (nameOfNewGoods != "Brak nowego towaru") {
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
-                GoodsEastEntities goodsEastEntities = goodsEastDao.findByName(nameOfNewGoods);
-                if (goodsEastEntities == null) {
-                    goodsEastService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+            if (nameOfNewGoods != null) {
+                if (nameOfNewGoods != "Brak nowego towaru") {
+                    GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
+                    GoodsEastEntities goodsEastEntities = goodsEastDao.findByName(nameOfNewGoods);
+                    if (goodsEastEntities == null) {
+                        goodsEastService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+                    }
                 }
             }
 
 
         } else if (vilage.getLocationId() == 3) {
             String nameOfNewGoods = gameModel.getGoodsName();
-            if (nameOfNewGoods != "Brak nowego towaru") {
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
-                GoodsCentralEntities goodsCentralEntities = goodsCentralDao.findByName(nameOfNewGoods);
-                if (goodsCentralEntities == null) {
-                    goodsCentralService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+            if (nameOfNewGoods != null) {
+                if ((nameOfNewGoods != "Brak nowego towaru") || (nameOfNewGoods != null)) {
+                    GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
+                    GoodsCentralEntities goodsCentralEntities = goodsCentralDao.findByName(nameOfNewGoods);
+                    if (goodsCentralEntities == null) {
+                        goodsCentralService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+                    }
                 }
             }
 
 
         } else if (vilage.getLocationId() == 4) {
             String nameOfNewGoods = gameModel.getGoodsName();
-            if (nameOfNewGoods != "Brak nowego towaru") {
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
-                GoodsSouthEntities goodsSouthEntities = goodsSouthDao.findByName(nameOfNewGoods);
-                if (goodsSouthEntities == null) {
-                    goodsSouthService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+            if (nameOfNewGoods != null) {
+                if (nameOfNewGoods != "Brak nowego towaru") {
+                    GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
+                    GoodsSouthEntities goodsSouthEntities = goodsSouthDao.findByName(nameOfNewGoods);
+                    if (goodsSouthEntities == null) {
+                        goodsSouthService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+                    }
                 }
+
             }
 
 
         } else if (vilage.getLocationId() == 5) {
             String nameOfNewGoods = gameModel.getGoodsName();
-            if (nameOfNewGoods != "Brak nowego towaru") {
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
-                GoodsWestEntities goodsWestEntities = goodsWestDao.findByName(nameOfNewGoods);
-                if (goodsWestEntities == null) {
-                    goodsWestService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+            if (nameOfNewGoods != null) {
+                if (nameOfNewGoods != "Brak nowego towaru") {
+                    GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
+                    GoodsWestEntities goodsWestEntities = goodsWestDao.findByName(nameOfNewGoods);
+                    if (goodsWestEntities == null) {
+                        goodsWestService.save(goodsAvailableEntities.getName(), goodsAvailableEntities.getUsingMerchant(), goodsAvailableEntities.getTyp());
+                    }
                 }
             }
+
         }
     }
 
@@ -831,8 +837,8 @@ public class GameService implements GameMetod {
 
         if (vilage.getLocationId() == 1) {
             String name = gameModel.getBuildingName();
-            if (name != "Brak nowego budynku") {
-                BuildingsEntity buildings = buildingDao.findByName(name);
+            BuildingsEntity buildings = buildingDao.findByName(name);
+            if (!buildings.getName().equals("Brak nowego budynku")) {
                 if (buildings.getAvailableAnimal() == 0) {
                     buildingNorthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
                 } else {
@@ -868,187 +874,214 @@ public class GameService implements GameMetod {
                         case "Stadnina":
                             nameOfAnimals.add("Konie");
                             break;
+                        case "Mała stadnina":
+                            nameOfAnimals.add("Mustang");
+                            break;
                     }
                     model.addAttribute("nameOfAnimal", nameOfAnimals);
 
                 }
             }
 
+
         } else if (vilage.getLocationId() == 2) {
             String name = gameModel.getBuildingName();
-            if (name != "Brak nowego budynku") {
-                BuildingsEntity buildings = buildingDao.findByName(name);
-                if (buildings.getAvailableAnimal() == 0) {
-                    buildingEastService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
-                } else {
-                    if (buildingSupplyService.getAllData() != null) {
-                        buildingSupplyDao.deleteAll();
-                    }
-                    buildingSupplyService.save(buildings.getName(), buildings.getCostOfBuilding(), buildings.getInfo(), buildings.getType());
-                    model.addAttribute("animalInBuildings", buildingSupplyService.getAllData());
+            if (name != null) {
+                if (!name.equals("Brak nowego budynku")) {
+                    BuildingsEntity buildings = buildingDao.findByName(name);
+                    if (buildings.getAvailableAnimal() == 0) {
+                        buildingEastService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
+                    } else {
+                        if (buildingSupplyService.getAllData() != null) {
+                            buildingSupplyDao.deleteAll();
+                        }
+                        buildingSupplyService.save(buildings.getName(), buildings.getCostOfBuilding(), buildings.getInfo(), buildings.getType());
+                        model.addAttribute("animalInBuildings", buildingSupplyService.getAllData());
 
-                    String animalsName = buildings.getName();
-                    List<String> nameOfAnimals = new ArrayList<>();
-                    switch (animalsName) {
-                        case "Chlew":
-                            nameOfAnimals.add("Świnie");
-                            break;
-                        case "Gęsiarnia":
-                            nameOfAnimals.add("Gęsi");
-                            break;
-                        case "Kurnik":
-                            nameOfAnimals.add("Kury");
-                            nameOfAnimals.add("Kaczki");
-                            break;
-                        case "Królikarnia":
-                            nameOfAnimals.add("Króliki");
-                            break;
-                        case "Zagroda":
-                            nameOfAnimals.add("Kozy");
-                            nameOfAnimals.add("Owce");
-                            break;
-                        case "Stajnia":
-                            nameOfAnimals.add("Krowy");
-                            break;
-                        case "Stadnina":
-                            nameOfAnimals.add("Konie");
-                            break;
+                        String animalsName = buildings.getName();
+                        List<String> nameOfAnimals = new ArrayList<>();
+                        switch (animalsName) {
+                            case "Chlew":
+                                nameOfAnimals.add("Świnie");
+                                break;
+                            case "Gęsiarnia":
+                                nameOfAnimals.add("Gęsi");
+                                break;
+                            case "Kurnik":
+                                nameOfAnimals.add("Kury");
+                                nameOfAnimals.add("Kaczki");
+                                break;
+                            case "Królikarnia":
+                                nameOfAnimals.add("Króliki");
+                                break;
+                            case "Zagroda":
+                                nameOfAnimals.add("Kozy");
+                                nameOfAnimals.add("Owce");
+                                break;
+                            case "Stajnia":
+                                nameOfAnimals.add("Krowy");
+                                break;
+                            case "Stadnina":
+                                nameOfAnimals.add("Konie");
+                                break;
+                            case "Mała stadnina":
+                                nameOfAnimals.add("Mustang");
+                                break;
+                        }
+                        model.addAttribute("nameOfAnimal", nameOfAnimals);
                     }
-                    model.addAttribute("nameOfAnimal", nameOfAnimals);
                 }
             }
 
         } else if (vilage.getLocationId() == 3) {
             String name = gameModel.getBuildingName();
-            if (name != "Brak nowego budynku") {
-                BuildingsEntity buildings = buildingDao.findByName(name);
-                if (buildings.getAvailableAnimal() == 0) {
-                    buildingCentralService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
-                } else {
-                    if (buildingSupplyService.getAllData() != null) {
-                        buildingSupplyDao.deleteAll();
-                    }
-                    buildingSupplyService.save(buildings.getName(), buildings.getCostOfBuilding(), buildings.getInfo(), buildings.getType());
-                    model.addAttribute("animalInBuildings", buildingSupplyService.getAllData());
+            if (name != null) {
+                if (!name.equals("Brak nowego budynku")) {
+                    BuildingsEntity buildings = buildingDao.findByName(name);
+                    if (buildings.getAvailableAnimal() == 0) {
+                        buildingCentralService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
+                    } else {
+                        if (buildingSupplyService.getAllData() != null) {
+                            buildingSupplyDao.deleteAll();
+                        }
+                        buildingSupplyService.save(buildings.getName(), buildings.getCostOfBuilding(), buildings.getInfo(), buildings.getType());
+                        model.addAttribute("animalInBuildings", buildingSupplyService.getAllData());
 
-                    String animalsName = buildings.getName();
-                    List<String> nameOfAnimals = new ArrayList<>();
-                    switch (animalsName) {
-                        case "Chlew":
-                            nameOfAnimals.add("Świnie");
-                            break;
-                        case "Gęsiarnia":
-                            nameOfAnimals.add("Gęsi");
-                            break;
-                        case "Kurnik":
-                            nameOfAnimals.add("Kury");
-                            nameOfAnimals.add("Kaczki");
-                            break;
-                        case "Królikarnia":
-                            nameOfAnimals.add("Króliki");
-                            break;
-                        case "Zagroda":
-                            nameOfAnimals.add("Kozy");
-                            nameOfAnimals.add("Owce");
-                            break;
-                        case "Stajnia":
-                            nameOfAnimals.add("Krowy");
-                            break;
-                        case "Stadnina":
-                            nameOfAnimals.add("Konie");
-                            break;
+                        String animalsName = buildings.getName();
+                        List<String> nameOfAnimals = new ArrayList<>();
+                        switch (animalsName) {
+                            case "Chlew":
+                                nameOfAnimals.add("Świnie");
+                                break;
+                            case "Gęsiarnia":
+                                nameOfAnimals.add("Gęsi");
+                                break;
+                            case "Kurnik":
+                                nameOfAnimals.add("Kury");
+                                nameOfAnimals.add("Kaczki");
+                                break;
+                            case "Królikarnia":
+                                nameOfAnimals.add("Króliki");
+                                break;
+                            case "Zagroda":
+                                nameOfAnimals.add("Kozy");
+                                nameOfAnimals.add("Owce");
+                                break;
+                            case "Stajnia":
+                                nameOfAnimals.add("Krowy");
+                                break;
+                            case "Stadnina":
+                                nameOfAnimals.add("Konie");
+                                break;
+                            case "Mała stadnina":
+                                nameOfAnimals.add("Mustang");
+                                break;
+                        }
+                        model.addAttribute("nameOfAnimal", nameOfAnimals);
                     }
-                    model.addAttribute("nameOfAnimal", nameOfAnimals);
                 }
             }
+
 
         } else if (vilage.getLocationId() == 4) {
             String name = gameModel.getBuildingName();
-            if (name != "Brak nowego budynku") {
-                BuildingsEntity buildings = buildingDao.findByName(name);
-                if (buildings.getAvailableAnimal() == 0) {
-                    buildingSouthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
-                } else {
-                    if (buildingSupplyService.getAllData() != null) {
-                        buildingSupplyDao.deleteAll();
-                    }
-                    buildingSupplyService.save(buildings.getName(), buildings.getCostOfBuilding(), buildings.getInfo(), buildings.getType());
-                    model.addAttribute("animalInBuildings", buildingSupplyService.getAllData());
+            if (name != null) {
+                if (!name.equals("Brak nowego budynku")) {
+                    BuildingsEntity buildings = buildingDao.findByName(name);
+                    if (buildings.getAvailableAnimal() == 0) {
+                        buildingSouthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
+                    } else {
+                        if (buildingSupplyService.getAllData() != null) {
+                            buildingSupplyDao.deleteAll();
+                        }
+                        buildingSupplyService.save(buildings.getName(), buildings.getCostOfBuilding(), buildings.getInfo(), buildings.getType());
+                        model.addAttribute("animalInBuildings", buildingSupplyService.getAllData());
 
-                    String animalsName = buildings.getName();
-                    List<String> nameOfAnimals = new ArrayList<>();
-                    switch (animalsName) {
-                        case "Chlew":
-                            nameOfAnimals.add("Świnie");
-                            break;
-                        case "Gęsiarnia":
-                            nameOfAnimals.add("Gęsi");
-                            break;
-                        case "Kurnik":
-                            nameOfAnimals.add("Kury");
-                            nameOfAnimals.add("Kaczki");
-                            break;
-                        case "Królikarnia":
-                            nameOfAnimals.add("Króliki");
-                            break;
-                        case "Zagroda":
-                            nameOfAnimals.add("Kozy");
-                            nameOfAnimals.add("Owce");
-                            break;
-                        case "Stajnia":
-                            nameOfAnimals.add("Krowy");
-                            break;
-                        case "Stadnina":
-                            nameOfAnimals.add("Konie");
-                            break;
+                        String animalsName = buildings.getName();
+                        List<String> nameOfAnimals = new ArrayList<>();
+                        switch (animalsName) {
+                            case "Chlew":
+                                nameOfAnimals.add("Świnie");
+                                break;
+                            case "Gęsiarnia":
+                                nameOfAnimals.add("Gęsi");
+                                break;
+                            case "Kurnik":
+                                nameOfAnimals.add("Kury");
+                                nameOfAnimals.add("Kaczki");
+                                break;
+                            case "Królikarnia":
+                                nameOfAnimals.add("Króliki");
+                                break;
+                            case "Zagroda":
+                                nameOfAnimals.add("Kozy");
+                                nameOfAnimals.add("Owce");
+                                break;
+                            case "Stajnia":
+                                nameOfAnimals.add("Krowy");
+                                break;
+                            case "Stadnina":
+                                nameOfAnimals.add("Konie");
+                                break;
+                            case "Mała stadnina":
+                                nameOfAnimals.add("Mustang");
+                                break;
+                        }
+                        model.addAttribute("nameOfAnimal", nameOfAnimals);
                     }
-                    model.addAttribute("nameOfAnimal", nameOfAnimals);
                 }
             }
+
 
         } else if (vilage.getLocationId() == 5) {
             String name = gameModel.getBuildingName();
-            if (name != "Brak nowego budynku") {
-                BuildingsEntity buildings = buildingDao.findByName(name);
-                if (buildings.getAvailableAnimal() == 0) {
-                    buildingWestService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
-                } else {
-                    if (buildingSupplyService.getAllData() != null) {
-                        buildingSupplyDao.deleteAll();
-                    }
-                    buildingSupplyService.save(buildings.getName(), buildings.getCostOfBuilding(), buildings.getInfo(), buildings.getType());
-                    model.addAttribute("animalInBuildings", buildingSupplyService.getAllData());
+            if (name != null) {
+                if (!name.equals("Brak nowego budynku")) {
+                    BuildingsEntity buildings = buildingDao.findByName(name);
+                    if (buildings.getAvailableAnimal() == 0) {
+                        buildingWestService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
+                    } else {
+                        if (buildingSupplyService.getAllData() != null) {
+                            buildingSupplyDao.deleteAll();
+                        }
+                        buildingSupplyService.save(buildings.getName(), buildings.getCostOfBuilding(), buildings.getInfo(), buildings.getType());
+                        model.addAttribute("animalInBuildings", buildingSupplyService.getAllData());
 
-                    String animalsName = buildings.getName();
-                    List<String> nameOfAnimals = new ArrayList<>();
-                    switch (animalsName) {
-                        case "Chlew":
-                            nameOfAnimals.add("Świnie");
-                            break;
-                        case "Gęsiarnia":
-                            nameOfAnimals.add("Gęsi");
-                            break;
-                        case "Kurnik":
-                            nameOfAnimals.add("Kury");
-                            nameOfAnimals.add("Kaczki");
-                            break;
-                        case "Królikarnia":
-                            nameOfAnimals.add("Króliki");
-                            break;
-                        case "Zagroda":
-                            nameOfAnimals.add("Kozy");
-                            nameOfAnimals.add("Owce");
-                            break;
-                        case "Stajnia":
-                            nameOfAnimals.add("Krowy");
-                            break;
-                        case "Stadnina":
-                            nameOfAnimals.add("Konie");
-                            break;
+                        String animalsName = buildings.getName();
+                        List<String> nameOfAnimals = new ArrayList<>();
+                        switch (animalsName) {
+                            case "Chlew":
+                                nameOfAnimals.add("Świnie");
+                                break;
+                            case "Gęsiarnia":
+                                nameOfAnimals.add("Gęsi");
+                                break;
+                            case "Kurnik":
+                                nameOfAnimals.add("Kury");
+                                nameOfAnimals.add("Kaczki");
+                                break;
+                            case "Królikarnia":
+                                nameOfAnimals.add("Króliki");
+                                break;
+                            case "Zagroda":
+                                nameOfAnimals.add("Kozy");
+                                nameOfAnimals.add("Owce");
+                                break;
+                            case "Stajnia":
+                                nameOfAnimals.add("Krowy");
+                                break;
+                            case "Stadnina":
+                                nameOfAnimals.add("Konie");
+                                break;
+                            case "Mała stadnina":
+                                nameOfAnimals.add("Mustang");
+                                break;
+                        }
+                        model.addAttribute("nameOfAnimal", nameOfAnimals);
                     }
-                    model.addAttribute("nameOfAnimal", nameOfAnimals);
                 }
             }
+
         }
 
     }
@@ -1078,11 +1111,11 @@ public class GameService implements GameMetod {
     public void sumBuying(GameModel gameModel) {
         String nameOfbuilding = gameModel.getBuildingName();
         BigDecimal costOfBuilding = null;
-        if (nameOfbuilding == "Brak nowego budynku") {
+        if ((nameOfbuilding == "Brak nowego budynku")) {
             costOfBuilding = BigDecimal.valueOf(0);
         } else {
             BuildingsEntity buildings = buildingDao.findByName(nameOfbuilding);
-            costOfBuilding = buildings.getCostOfBuilding();
+            costOfBuilding = toZero(buildings.getCostOfBuilding());
         }
         gameModel.setCostOfBuilding(costOfBuilding);
 
@@ -1101,13 +1134,16 @@ public class GameService implements GameMetod {
 
     @Override
     public void nextTurnMoney(GameModel gameModel) {
-        BigDecimal startMoney = gameModel.getStartMoney();
-        BigDecimal costOfShoping = toZero(gameModel.getSumOfCost());
-        BigDecimal moneyForNextTurn = toZero(gameModel.getAvailableMoney());
-        BigDecimal incomFromTurn = gameModel.getTotalIncome();
-        BigDecimal balance = incomFromTurn.subtract(costOfShoping);
-        BigDecimal startBalance = startMoney.add(balance);
-        moneyForNextTurn = moneyForNextTurn.add(startBalance);
+        BigDecimal startMoney = gameModel.getStartMoney(); // 100
+        BigDecimal costOfShoping = toZero(gameModel.getSumOfCost()); //0
+        BigDecimal moneyForNextTurn = toZero(gameModel.getAvailableMoney()); //0
+        if (gameModel.getTurnNumber() == 1) {
+            moneyForNextTurn = BigDecimal.valueOf(0);
+        }
+        BigDecimal incomFromTurn = gameModel.getTotalIncome(); //84
+        BigDecimal balance = incomFromTurn.subtract(costOfShoping);//84
+        BigDecimal startBalance = startMoney.add(balance); // 184
+        moneyForNextTurn = moneyForNextTurn.add(startBalance); //00
         gameModel.setStartMoney(BigDecimal.valueOf(0));
         gameModel.setAvailableMoney(moneyForNextTurn);
     }
@@ -1115,9 +1151,9 @@ public class GameService implements GameMetod {
     @Override
     public void typeOfVilage(GameModel gameModel, VilageEntity vilage) {
         if (vilage.getLocationId() == 1) {
-            BuildingsEntityNorth palisada = buildingNorthDao.findByName("Palisada");
-            BuildingsEntityNorth studnia = buildingNorthDao.findByName("Studnia");
-            BuildingsEntityNorth droga = buildingNorthDao.findByName("Droga");
+            BuildingsEntityNorth palisada = buildingNorthDao.findFirstByName("Palisada");
+            BuildingsEntityNorth studnia = buildingNorthDao.findFirstByName("Studnia");
+            BuildingsEntityNorth droga = buildingNorthDao.findFirstByName("Droga");
             String typeOfVilage = null;
             if ((palisada != null) & (studnia != null) & (droga != null)) {
                 typeOfVilage = "Wioska";
@@ -1128,9 +1164,9 @@ public class GameService implements GameMetod {
             }
 
         } else if (vilage.getLocationId() == 2) {
-            BuildingsEntityEast palisada = buildingEastDao.findByName("Palisada");
-            BuildingsEntityEast studnia = buildingEastDao.findByName("Studnia");
-            BuildingsEntityEast droga = buildingEastDao.findByName("Droga");
+            BuildingsEntityEast palisada = buildingEastDao.findFirstByName("Palisada");
+            BuildingsEntityEast studnia = buildingEastDao.findFirstByName("Studnia");
+            BuildingsEntityEast droga = buildingEastDao.findFirstByName("Droga");
             String typeOfVilage = null;
             if ((palisada != null) & (studnia != null) & (droga != null)) {
                 typeOfVilage = "Wioska";
@@ -1141,9 +1177,9 @@ public class GameService implements GameMetod {
             }
 
         } else if (vilage.getLocationId() == 3) {
-            BuildingsEntityCentral palisada = buildingCentralDao.findByName("Palisada");
-            BuildingsEntityCentral studnia = buildingCentralDao.findByName("Studnia");
-            BuildingsEntityCentral droga = buildingCentralDao.findByName("Droga");
+            BuildingsEntityCentral palisada = buildingCentralDao.findFirstByName("Palisada");
+            BuildingsEntityCentral studnia = buildingCentralDao.findFirstByName("Studnia");
+            BuildingsEntityCentral droga = buildingCentralDao.findFirstByName("Droga");
             String typeOfVilage = null;
             if ((palisada != null) & (studnia != null) & (droga != null)) {
                 typeOfVilage = "Wioska";
@@ -1154,9 +1190,9 @@ public class GameService implements GameMetod {
             }
 
         } else if (vilage.getLocationId() == 4) {
-            BuildingsEntitySouth palisada = buildingSouthDao.findByName("Palisada");
-            BuildingsEntitySouth studnia = buildingSouthDao.findByName("Studnia");
-            BuildingsEntitySouth droga = buildingSouthDao.findByName("Droga");
+            BuildingsEntitySouth palisada = buildingSouthDao.findFirstByName("Palisada");
+            BuildingsEntitySouth studnia = buildingSouthDao.findFirstByName("Studnia");
+            BuildingsEntitySouth droga = buildingSouthDao.findFirstByName("Droga");
             String typeOfVilage = null;
             if ((palisada != null) & (studnia != null) & (droga != null)) {
                 typeOfVilage = "Wioska";
@@ -1167,9 +1203,9 @@ public class GameService implements GameMetod {
             }
 
         } else if (vilage.getLocationId() == 5) {
-            BuildingsEntityWest palisada = buildingWestDao.findByName("Palisada");
-            BuildingsEntityWest studnia = buildingWestDao.findByName("Studnia");
-            BuildingsEntityWest droga = buildingWestDao.findByName("Droga");
+            BuildingsEntityWest palisada = buildingWestDao.findFirstByName("Palisada");
+            BuildingsEntityWest studnia = buildingWestDao.findFirstByName("Studnia");
+            BuildingsEntityWest droga = buildingWestDao.findFirstByName("Droga");
             String typeOfVilage = null;
             if ((palisada != null) & (studnia != null) & (droga != null)) {
                 typeOfVilage = "Wioska";
@@ -1247,24 +1283,201 @@ public class GameService implements GameMetod {
 
     @Override
     public void supplyedField(Model model) {
-        FieldsSupplyEntity fieldsSupplyEntity = fieldSupplyService.getAllData().get(0);
-        model.addAttribute("fieldsSupplyEntity", fieldsSupplyEntity);
-        List<String> nameOfPlants = new ArrayList<>();
-        nameOfPlants.add("Owies");
-        nameOfPlants.add("Jęczmień");
-        nameOfPlants.add("Żyto");
-        nameOfPlants.add("Pszenica jara");
-        nameOfPlants.add("Pszenica ozima");
-        model.addAttribute("supplyedField", nameOfPlants);
+
+        FieldsSupplyEntity fieldsSupplyEntity =  fieldSupplyDao.findFirstByOrderByIdDesc();
+        if (fieldsSupplyEntity != null) {
+
+
+            model.addAttribute("fieldsSupplyEntity", fieldsSupplyEntity);
+            List<String> nameOfPlants = new ArrayList<>();
+            nameOfPlants.add("Owies");
+            nameOfPlants.add("Jęczmień");
+            nameOfPlants.add("Żyto");
+            nameOfPlants.add("Pszenica jara");
+            nameOfPlants.add("Pszenica ozima");
+            model.addAttribute("supplyedField", nameOfPlants);
+        }
+    }
+
+    public void addSupplyedField(GameModel gameModel) {
+
+        if (gameModel.getLocationId() == 1) {
+            String nameOfPlant = gameModel.getPlantInFields();
+            FieldsSupplyEntity fieldsSupplyEntity = fieldSupplyDao.findFirstByOrderByIdDesc();
+            if (fieldsSupplyEntity != null){
+                fieldNorthService.save(fieldsSupplyEntity.getName(), fieldsSupplyEntity.getCostOfBuying(), fieldsSupplyEntity.getArea(), fieldsSupplyEntity.getInfo(),nameOfPlant);
+            }
+
+
+        } else if (gameModel.getLocationId() == 2) {
+            String nameOfPlant = gameModel.getPlantInFields();
+            FieldsSupplyEntity fieldsSupplyEntity = fieldSupplyDao.findFirstByOrderByIdDesc();
+            if (fieldsSupplyEntity != null) {
+                fieldEastService.save(fieldsSupplyEntity.getName(), fieldsSupplyEntity.getCostOfBuying(), fieldsSupplyEntity.getArea(), fieldsSupplyEntity.getInfo(), nameOfPlant);
+            }
+
+        } else if (gameModel.getLocationId() == 3) {
+            String nameOfPlant = gameModel.getPlantInFields();
+            FieldsSupplyEntity fieldsSupplyEntity = fieldSupplyDao.findFirstByOrderByIdDesc();
+            if (fieldsSupplyEntity != null) {
+                fieldCentralService.save(fieldsSupplyEntity.getName(), fieldsSupplyEntity.getCostOfBuying(), fieldsSupplyEntity.getArea(), fieldsSupplyEntity.getInfo(), nameOfPlant);
+            }
+
+        } else if (gameModel.getLocationId() == 4) {
+            String nameOfPlant = gameModel.getPlantInFields();
+            FieldsSupplyEntity fieldsSupplyEntity = fieldSupplyDao.findFirstByOrderByIdDesc();
+            if (fieldsSupplyEntity != null) {
+                fieldSouthService.save(fieldsSupplyEntity.getName(), fieldsSupplyEntity.getCostOfBuying(), fieldsSupplyEntity.getArea(), fieldsSupplyEntity.getInfo(), nameOfPlant);
+            }
+
+        } else if (gameModel.getLocationId() == 5) {
+            String nameOfPlant = gameModel.getPlantInFields();
+            FieldsSupplyEntity fieldsSupplyEntity = fieldSupplyDao.findFirstByOrderByIdDesc();
+            if (fieldsSupplyEntity != null) {
+                fieldWestService.save(fieldsSupplyEntity.getName(), fieldsSupplyEntity.getCostOfBuying(), fieldsSupplyEntity.getArea(), fieldsSupplyEntity.getInfo(), nameOfPlant);
+            }
+        }
+        List<FieldsSupplyEntity> field = fieldSupplyService.getAllData();
+        if (field != null){
+            fieldSupplyDao.deleteAll();
+        }
+
     }
 
     @Override
-    public void addSypplyedField(GameModel gameModel) {
+    public void availableGoodsToSell(GameModel gameModel, Model model) {
+
+        goodsAvailableService.save("Brak nowego towaru", 0, 0);
+
+        if (gameModel.getLocationId() == 1) {
+            List<BuildingsEntityNorth> northEntities = buildingNorthService.getAllData();
+            for (BuildingsEntityNorth north :
+                    northEntities) {
+                String animal = north.getAnimalInBuilding();
+                AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                if (north.getProducts1() != null) {
+                    goodsAvailableService.save(north.getProducts1(), 1, north.getType());
+                } else if (animalsEntity != null) {
+                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
+                }
+            }
+            List<FieldNorthEntity> northFieldEntities = fieldNorthService.getAllData();
+            for (FieldNorthEntity northField :
+                    northFieldEntities) {
+                String plant = northField.getSeed();
+                if (plant != null){
+                    goodsAvailableService.save(northField.getSeed(), 1, 1);
+                }
+            }
+
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
+
+        } else if (gameModel.getLocationId() == 2) {
+            List<BuildingsEntityEast> eastEntities = buildingEastService.getAllData();
+            for (BuildingsEntityEast east :
+                    eastEntities) {
+                String animal = east.getAnimalInBuilding();
+                AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                if (east.getProducts1() != null) {
+                    goodsAvailableService.save(east.getProducts1(), 1, east.getType());
+                } else if (animalsEntity != null) {
+                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
+                }
+            }
+            List<FieldEastEntity> eastFieldEntities = fieldEastService.getAllData();
+            for (FieldEastEntity eastField :
+                    eastFieldEntities) {
+                String plant = eastField.getSeed();
+                if (plant != null){
+                    goodsAvailableService.save(eastField.getSeed(), 1, 1);
+                }
+            }
+
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
+
+        } else if (gameModel.getLocationId() == 3) {
+            List<BuildingsEntityCentral> centralEntities = buildingCentralService.getAllData();
+            for (BuildingsEntityCentral central :
+                    centralEntities) {
+                String animal = central.getAnimalInBuilding();
+                AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                if (central.getProducts1() != null) {
+                    goodsAvailableService.save(central.getProducts1(), 1, central.getType());
+                } else if (animalsEntity != null) {
+                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
+                }
+            }
+            List<FieldCentralEntity> centralFieldEntities = fieldCentralService.getAllData();
+            for (FieldCentralEntity centralField :
+                    centralFieldEntities) {
+                String plant = centralField.getSeed();
+                if (plant != null){
+                    goodsAvailableService.save(centralField.getSeed(), 1, 1);
+                }
+            }
+
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
+
+        } else if (gameModel.getLocationId() == 4) {
+            List<BuildingsEntitySouth> southEntities = buildingSouthService.getAllData();
+            for (BuildingsEntitySouth south :
+                    southEntities) {
+                String animal = south.getAnimalInBuilding();
+                AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                if (south.getProducts1() != null) {
+                    goodsAvailableService.save(south.getProducts1(), 1, south.getType());
+                } else if (animalsEntity != null) {
+                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
+                }
+            }
+            List<FieldSouthEntity> southFieldEntities = fieldSouthService.getAllData();
+            for (FieldSouthEntity southField :
+                    southFieldEntities) {
+                String plant = southField.getSeed();
+                if (plant != null){
+                    goodsAvailableService.save(southField.getSeed(), 1, 1);
+                }
+            }
+
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
+
+        } else if (gameModel.getLocationId() == 5) {
+            List<BuildingsEntityWest> westEntities = buildingWestService.getAllData();
+            for (BuildingsEntityWest west :
+                    westEntities) {
+                String animal = west.getAnimalInBuilding();
+                AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                if (west.getProducts1() != null) {
+                    goodsAvailableService.save(west.getProducts1(), 1, west.getType());
+                } else if (animalsEntity != null) {
+                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
+                }
+            }
+            List<FieldWestEntity> westFieldEntities = fieldWestService.getAllData();
+            for (FieldWestEntity westField :
+                    westFieldEntities) {
+                String plant = westField.getSeed();
+                if (plant != null){
+                    goodsAvailableService.save(westField.getSeed(), 1, 1);
+                }
+            }
+
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
+        }
+
 
     }
 
 
-    public void saveIntoTabela(String buildingName) {
+
+
+    public void saveIntoTabela(String buildingName, GameModel gameModel) {
+        gameModel.setBuildingName(buildingName);
     }
 
     public GameModel getModel() {
@@ -1274,4 +1487,6 @@ public class GameService implements GameMetod {
     public void setModel(GameModel model) {
         this.model = model;
     }
+
+
 }

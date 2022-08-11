@@ -40,8 +40,6 @@ public interface GameMetod {
 
     void addFields(GameModel gameModel, VilageEntity vilage);
 
-    void addAvailableGoods (Model model);
-
     void addNewGoods(GameModel gameModel, VilageEntity vilage);
 
     void addNewBuilding (VilageEntity vilage,GameModel gameModel, Model model );
@@ -60,5 +58,7 @@ public interface GameMetod {
 
     void supplyedField(Model model);
 
-    void addSypplyedField (GameModel gameModel);
+    void addSupplyedField (GameModel gameModel);
+
+    void availableGoodsToSell(GameModel gameModel,Model model);
 }

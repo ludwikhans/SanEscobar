@@ -2,6 +2,7 @@ package gtruty.sanescobar.dao;
 
 import gtruty.sanescobar.entities.FieldsSupplyEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldWestEntity;
+import gtruty.sanescobar.entities.VilageEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,6 @@ public interface FieldSupplyDao extends CrudRepository<FieldsSupplyEntity,Long> 
     int sumCreditAmount();
 
     List<FieldsSupplyEntity> findAllBySeed(String name);
+    FieldsSupplyEntity findFirstByOrderByIdDesc();
     FieldsSupplyEntity findFirstByName(String name);
 }

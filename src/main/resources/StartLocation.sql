@@ -27,24 +27,24 @@ VALUES  (1, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'doda
         (3, 'Skład', null, null, null, null, 50.0 , null,null, null, null,'dodaje jedno miejsce handlowe', null, null, 1, 1, 2, null);
 
 INSERT INTO fields_central (id, name, cost_of_buying, area, info,seed_of_field)
-VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Pszenica jara'),
-       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
+VALUES (1, 'Pole', 50*27, 27, 'Można je obsiać roślinami','Pszenica jara'),
+       (2, 'Łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
 
 INSERT INTO fields_east (id, name, cost_of_buying, area, info,seed_of_field)
-VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Owies'),
-       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
+VALUES (1, 'Pole', 50*27, 27, 'Można je obsiać roślinami','Owies'),
+       (2, 'Łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
 
 INSERT INTO fields_north (id, name, cost_of_buying, area, info,seed_of_field)
-VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Pszenica ozima'),
-       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
+VALUES (1, 'Pole', 50*27, 27, 'Można je obsiać roślinami','Pszenica ozima'),
+       (2, 'Łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
 
 INSERT INTO fields_south (id, name, cost_of_buying, area, info,seed_of_field)
-VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Jęczmień'),
-       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
+VALUES (1, 'Pole', 50*27, 27, 'Można je obsiać roślinami','Jęczmień'),
+       (2, 'Łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
 
 INSERT INTO fields_west (id, name, cost_of_buying, area, info,seed_of_field)
-VALUES (1, 'pole', 50*27, 27, 'Można je obsiać roślinami','Żyto'),
-       (2, 'łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
+VALUES (1, 'Pole', 50*27, 27, 'Można je obsiać roślinami','Żyto'),
+       (2, 'Łąka', 50*27, 27, 'podstawa do hodowli zwierząt',null);
 
 INSERT INTO goods_central (id, name, usingMerchant,typ)
 VALUES (1, 'Pszenica jara', 1,1);

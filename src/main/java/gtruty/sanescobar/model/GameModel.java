@@ -24,14 +24,16 @@ public class GameModel {
     private String vilageName;
     private Long locationId;
     private String goodsName;
-    private String buildingName ;
-    private int fieldsToBuy = 5;
+    private String buildingName  ;
+    private int fieldsToBuy;
     private  BigDecimal costOfFields;
     private  BigDecimal costOfBuilding;
     private BigDecimal sumOfCost;
     private String eventInfo;
     private String animalInBuilding ;
     private String plantInFields;
+
+
 
     public void setIncomFromFields(BigDecimal incomFromFields) {
         this.incomFromFields = incomFromFields;

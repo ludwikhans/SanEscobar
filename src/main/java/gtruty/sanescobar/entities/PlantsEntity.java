@@ -36,10 +36,7 @@ public class PlantsEntity{
 
 
 
-    @ManyToMany
-    @JoinTable(name = "buildings_for_plants",joinColumns = @JoinColumn (name = "plants_id" ),
-            inverseJoinColumns = @JoinColumn(name = "buildings_id"))
-    private Set<BuildingsEntity> buildings;
+
 
     public PlantsEntity() {
     }
@@ -48,27 +45,14 @@ public class PlantsEntity{
         this.name = name;
     }
 
-    public PlantsEntity(Integer id, String name, String products, BigDecimal moneyProfit, Double harvest, BigDecimal sowingCost, String requirements, String info, String specialFor, Long yearsOld, String category, Set<BuildingsEntity> buildings) {
-        this.id = id;
-        this.name = name;
-        this.products = products;
-        this.moneyProfit = moneyProfit;
-        this.harvest = harvest;
-        this.sowingCost = sowingCost;
-        this.requirements = requirements;
-        this.info = info;
-        this.specialFor = specialFor;
-        this.yearsOld = yearsOld;
-        this.category = category;
-        this.buildings = buildings;
-    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlantsEntity that = (PlantsEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products, that.products) && Objects.equals(moneyProfit, that.moneyProfit) && Objects.equals(harvest, that.harvest) && Objects.equals(sowingCost, that.sowingCost) && Objects.equals(requirements, that.requirements) && Objects.equals(info, that.info) && Objects.equals(specialFor, that.specialFor) && Objects.equals(yearsOld, that.yearsOld) && category == that.category && Objects.equals(buildings, that.buildings);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(products, that.products) && Objects.equals(moneyProfit, that.moneyProfit) && Objects.equals(harvest, that.harvest) && Objects.equals(sowingCost, that.sowingCost) && Objects.equals(requirements, that.requirements) && Objects.equals(info, that.info) && Objects.equals(specialFor, that.specialFor) && Objects.equals(yearsOld, that.yearsOld);
     }
 
     @Override
@@ -85,13 +69,13 @@ public class PlantsEntity{
                 ", specialFor='" + specialFor + '\'' +
                 ", yearsOld=" + yearsOld +
                 ", category='" + category + '\'' +
-                ", buildings=" + buildings +
+
                 '}';
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, products, moneyProfit, harvest, sowingCost, requirements, info, specialFor, yearsOld, category, buildings);
+        return Objects.hash(id, name, products, moneyProfit, harvest, sowingCost, requirements, info, specialFor, yearsOld, category);
     }
 
     public Integer getId() {
@@ -182,11 +166,5 @@ public class PlantsEntity{
         this.category = category;
     }
 
-    public Set<BuildingsEntity> getBuildings() {
-        return buildings;
-    }
 
-    public void setBuildings(Set<BuildingsEntity> buildings) {
-        this.buildings = buildings;
-    }
 }

@@ -22,10 +22,7 @@ public class FieldsEntity {
     @Column(name = "info")
     private String info;
 
-    @ManyToMany
-    @JoinTable(name = "plants_on_fields",joinColumns = @JoinColumn (name = "fiels_id" ),
-            inverseJoinColumns = @JoinColumn(name = "plants_id"))
-    private Set<PlantsEntity> plants;
+
 
     public FieldsEntity() {
     }
@@ -74,13 +71,7 @@ public class FieldsEntity {
         this.info = info;
     }
 
-    public Set<PlantsEntity> getPlants() {
-        return plants;
-    }
 
-    public void setPlants(Set<PlantsEntity> plants) {
-        this.plants = plants;
-    }
 
     public FieldsEntity(Long id, String typ, BigDecimal costOfBuying, Long area, String info, Set<PlantsEntity> plants) {
         this.id = id;
@@ -88,6 +79,6 @@ public class FieldsEntity {
         this.costOfBuying = costOfBuying;
         this.area = area;
         this.info = info;
-        this.plants = plants;
+
     }
 }
