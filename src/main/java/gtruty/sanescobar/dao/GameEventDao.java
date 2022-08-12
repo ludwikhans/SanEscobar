@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GameEventDao extends CrudRepository<GameEventEntity, Integer> {
     GameEventEntity findById(int id);
+   GameEventEntity findFirstByName(String name);
 }

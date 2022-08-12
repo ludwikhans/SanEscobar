@@ -1,8 +1,6 @@
 package gtruty.sanescobar.dao.startlocation;
 
-import gtruty.sanescobar.entities.PlaceOfStart.FieldEastEntity;
 import gtruty.sanescobar.entities.PlaceOfStart.FieldNorthEntity;
-import gtruty.sanescobar.entities.VilageEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -10,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FieldNorthDao extends CrudRepository<FieldNorthEntity,Long> {
+public interface FieldNorthDao extends CrudRepository<FieldNorthEntity, Long> {
     @Query("SELECT sum(area) from FieldNorthEntity ")
     int sumCreditAmount();
 
@@ -18,5 +16,9 @@ public interface FieldNorthDao extends CrudRepository<FieldNorthEntity,Long> {
     int areaByName(String name);
 
 
-   List < FieldNorthEntity> findAllBySeed(String name);
+    List<FieldNorthEntity> findAllBySeed(String name);
+
+    FieldNorthEntity findFirstByName(String name);
+
+    FieldNorthEntity findFirstBySeed(String name);
 }

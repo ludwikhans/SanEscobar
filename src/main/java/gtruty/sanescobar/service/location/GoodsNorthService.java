@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface GoodsNorthService {
      void save (GoodsNorthEntities goodsNorthEntities);
-
+     void save(String name,Integer usingMerchant, Integer type);
      List<GoodsNorthEntities> getAllData();
 
 

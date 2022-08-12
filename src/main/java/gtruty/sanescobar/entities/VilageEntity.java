@@ -18,6 +18,10 @@ public class VilageEntity {
     public VilageEntity() {
     }
 
+    public VilageEntity(String name) {
+        this.name = name;
+    }
+
     public VilageEntity(String name, Long locationId) {
         this.id = id;
         this.name = name;

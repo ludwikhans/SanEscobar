@@ -25,6 +25,10 @@ public class FieldWestEntity {
     public FieldWestEntity() {
     }
 
+    public FieldWestEntity(String name) {
+        this.name = name;
+    }
+
     public FieldWestEntity(String name, BigDecimal costOfBuying, Integer area, String info, String seed) {
 
         this.name = name;

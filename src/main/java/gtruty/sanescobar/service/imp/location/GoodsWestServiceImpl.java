@@ -24,6 +24,11 @@ public class GoodsWestServiceImpl implements GoodsWestService {
     }
 
     @Override
+    public void save(String name, Integer usingMerchant, Integer type) {
+        goodsWestDao.save(new GoodsWestEntities(name,usingMerchant, type));
+    }
+
+    @Override
     public List<GoodsWestEntities> getAllData() {
         var goodsWest = goodsWestDao.findAll();
         return (List<GoodsWestEntities>) goodsWest;

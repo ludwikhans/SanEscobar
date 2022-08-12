@@ -9,6 +9,7 @@ import gtruty.sanescobar.service.location.FieldWestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -20,6 +21,11 @@ public class FieldWestServiceImpl implements FieldWestService {
     @Override
     public void save(FieldWestEntity fieldWestEntity) {
         fieldWestDao.save(fieldWestEntity);
+    }
+
+    @Override
+    public void save(String name, BigDecimal costOfBuying, Integer area, String info, String seed) {
+        fieldWestDao.save(new FieldWestEntity(name, costOfBuying,area,info,seed));
     }
 
     @Override

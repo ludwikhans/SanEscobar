@@ -1,16 +1,14 @@
 package gtruty.sanescobar.model;
 
-import gtruty.sanescobar.entities.BuildingsEntity;
-import gtruty.sanescobar.model.buildings.AvailableBuilding;
+import gtruty.sanescobar.entities.GameEventEntity;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 
 public class GameModel {
     private int turnNumber;
     private BigDecimal startMoney = BigDecimal.valueOf(100);
-    private long money;
+    private BigDecimal availableMoney;
     private int area;
     private String agrarsystem;
     private  int merchant;
@@ -21,11 +19,97 @@ public class GameModel {
     private BigDecimal incomFromAnimal;
     private BigDecimal incomFromOwnedBuilding;
     private BigDecimal totalIncome;
-    private String buildingName;
+    private String typeOfVilage;
     private int fieldArea;
     private String vilageName;
     private Long locationId;
+    private String goodsName;
+    private String buildingName  ;
     private int fieldsToBuy;
+    private  BigDecimal costOfFields;
+    private  BigDecimal costOfBuilding;
+    private BigDecimal sumOfCost;
+    private String eventInfo;
+    private String animalInBuilding ;
+    private String plantInFields;
+
+
+
+    public void setIncomFromFields(BigDecimal incomFromFields) {
+        this.incomFromFields = incomFromFields;
+    }
+
+    public String getPlantInFields() {
+        return plantInFields;
+    }
+
+    public void setPlantInFields(String plantInFields) {
+        this.plantInFields = plantInFields;
+    }
+
+    public String getAnimalInBuilding() {
+        return animalInBuilding;
+    }
+
+    public void setAnimalInBuilding(String animalInBuilding) {
+        this.animalInBuilding = animalInBuilding;
+    }
+
+    public String getEventInfo() {
+        return eventInfo;
+    }
+
+    public void setEventInfo(String eventInfo) {
+        this.eventInfo = eventInfo;
+    }
+
+    public String getTypeOfVilage() {
+        return typeOfVilage;
+    }
+
+    public void setTypeOfVilage(String typeOfVilage) {
+        this.typeOfVilage = typeOfVilage;
+    }
+
+    public BigDecimal getSumOfCost() {
+        return sumOfCost;
+    }
+
+    public void setSumOfCost(BigDecimal sumOfCost) {
+        this.sumOfCost = sumOfCost;
+    }
+
+    public BigDecimal getCostOfFields() {
+        return costOfFields;
+    }
+
+    public void setCostOfFields(BigDecimal costOfFields) {
+        this.costOfFields = costOfFields;
+    }
+
+    public BigDecimal getCostOfBuilding() {
+        return costOfBuilding;
+    }
+
+    public void setCostOfBuilding(BigDecimal costOfBuilding) {
+        this.costOfBuilding = costOfBuilding;
+    }
+
+    public BigDecimal getAvailableMoney() {
+        return availableMoney;
+    }
+
+    public void setAvailableMoney(BigDecimal availableMoney) {
+        this.availableMoney = availableMoney;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
 
     public int getFieldsToBuy() {
         return fieldsToBuy;
@@ -90,9 +174,7 @@ public class GameModel {
         return incomFromFields;
     }
 
-    public void setIncomFromFields(BigDecimal incomFromFields) {
-        this.incomFromFields = incomFromFields;
-    }
+
 
     public int getUsingMerchant() {
         return usingMerchant;
@@ -138,13 +220,7 @@ public class GameModel {
         this.turnNumber = turnNumber;
     }
 
-    public long getMoney() {
-        return money;
-    }
 
-    public void setMoney(long money) {
-        this.money = money;
-    }
 
 
     public String getAgrarsystem() {
@@ -179,5 +255,9 @@ public class GameModel {
 
     public Long getLocationId() {
         return locationId;
+    }
+
+    public void processEvent(GameEventEntity gameEvent) {
+        //TODO
     }
 }

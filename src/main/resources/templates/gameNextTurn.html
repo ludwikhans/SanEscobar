@@ -51,7 +51,7 @@
                         <td style="border-style: solid">
                             <div>
                                 <h2>Typ osady:
-                                    <span th:text="${game.buildingName}" ></span></h2>
+                                    <span th:text="${game.typeOfVilage}"></span></h2>
                             </div>
                         </td>
                         <td style="border-style: solid">
@@ -69,7 +69,7 @@
                        style="border-color: black;border-style: solid; border-width: 1px; height: 80px;">
                     <tr>
                         <td style="border-style: solid">
-                            <h4>Posiadane pieniądze: <span th:text="${game.startMoney}"></span></h4>
+                            <h4>Posiadane pieniądze: <span th:text="${game.availableMoney}"></span></h4>
 
                         </td>
                         <td style="border-style: solid">
@@ -79,7 +79,7 @@
                             <h4>Dosępne wolne miejsca handlowe: <span th:text="${game.unoccupiedMerchant}"></span></h4>
                         </td>
                         <td style="border-style: solid">
-                            <h4>Tura:<span th:text="${game.turnNumber}"></span></h4>
+                            <h4>Tura: <span th:text="${game.turnNumber}"></span></h4>
                         </td>
                     </tr>
                 </table>
@@ -106,44 +106,53 @@
                     </article>
                     <table id="table-building" class="uk-margin-auto-left uk-margin-auto-right">
                         <tr id="row-building">
-                            <td id="row" class="uk-width-1-3 ">
-                                <div>nazwa budynku</div>
+                            <td id="row" class="uk-width-1-2 ">
+                                <div class="uk-heading-divider">nazwa budynku</div>
                             </td>
-                            <td class="uk-width-1-3 ">
-                                <div>ilość</div>
-                            </td>
-                            <td class="uk-width-1-3">
-                                <button class="uk-button uk-button-primary uk-button-small">zapełnione</button>
+                            <td class="uk-width-1-2 uk-heading-divider">
+                                <div>Zwierzę w budynku</div>
                             </td>
                         </tr>
 
                         <tr th:each="building : ${buildings}">
-                            <td class="uk-width-1-3 ">
+                            <td class="uk-width-1-2 ">
                                 <div th:text="${building.name}"></div>
                             </td>
-                            <td class="uk-width-1-3 ">
-                                <div th:text="${building.amount}"></div>
-                            </td>
-                            <td class="uk-width-1-3 ">
+
+                            <td class="uk-width-1-2 ">
                                 <div th:text="${building.animalInBuilding}"></div>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="uk-width-1-3 ">
+
+                        <tr th:each="animalBuilding : ${animalInBuildings}" >
+                            <td class="uk-width-1-2 ">
+                                <div th:text="${animalBuilding.name}"></div>
+                            </td>
+                            <td class="uk-width-1-2 ">
                                 <div class="uk-margin">
-                                    <select th:field="*{buildingName}" class="uk-select" style="background-color: whitesmoke">
+                                    <select th:field="*{animalInBuilding}" class="uk-select"
+                                            style="background-color: whitesmoke">
+                                        <option th:each="animals : ${nameOfAnimal}"
+                                                th:text="${animals}"
+                                                th:value="${animals}"></option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="uk-width-1-2">
+                                <div class="uk-margin-bottom">Kup budynek</div>
+                            </td>
+                            <td class="uk-width-1-2 ">
+                                <div class="uk-margin">
+                                    <select th:field="*{buildingName}" class="uk-select"
+                                            style="background-color: whitesmoke">
                                         <option th:each="buildingToBuy : ${available}"
                                                 th:text="${buildingToBuy.name} +' - ' + ${buildingToBuy.costOfBuilding}"
                                                 th:value="${buildingToBuy.name}"></option>
                                     </select>
                                 </div>
-                            </td>
-                            <td class=" uk-width-1-3
-                                            ">
-                                <div></div>
-                            </td>
-                            <td class="uk-width-1-3">
-                                <div></div>
                             </td>
                         </tr>
 
@@ -165,14 +174,14 @@
                     </article>
                     <table>
                         <tr>
-                            <td>
+                            <td class="uk-heading-divider">
                                 <div>typ</div>
                             </td>
-                            <td>
+                            <td class="uk-heading-divider">
                                 <div>ilość ha</div>
                             </td>
-                            <td class="uk-width-1-4">
-                                <button class="uk-button uk-button-primary uk-button-small">obsiane</button>
+                            <td class="uk-width-1-4 uk-heading-divider">
+                                <div>obsiane</div>
                             </td>
                         </tr>
                         <tr th:each="field : ${fields}">
@@ -187,25 +196,39 @@
                             </td>
                         </tr>
 
+                        <tr th:each="fieldtoSupply : ${fieldsSupplyEntity}">
+                            <td >
+                                <div>Obsiej nowe Pole</div>
+                            </td>
+                            <td >
+                                <div th:text="${fieldtoSupply.area}" ></div>
+                            </td>
+                            <td class="uk-width-1-4">
+                                <select th:field="*{plantInFields}" class="uk-select"
+                                        style="background-color: whitesmoke">
+                                    <option th:each="plantSup : ${supplyedField}"
+                                            th:text="${plantSup}"
+                                            th:value="${plantSup}"></option>
+                                </select>
+                            </td>
+                        </tr>
+
                         <tr>
                             <td>
-                                <div>Nowe Pole</div>
+                                <div>Kup nowe Pole</div>
                             </td>
                             <td>
                                 <div>
-                                    <select class="uk-select" th:field="*{fieldArea}" style="background-color: whitesmoke">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
+                                    <select th:field="*{fieldsToBuy}" class="uk-select"
+                                            style="background-color: whitesmoke">
+                                        <option th:each="fieldToBuy : ${availableToBuy}"
+                                                th:text="${fieldToBuy.numberOfNewField}"
+                                                th:value="${fieldToBuy.numberOfNewField}"></option>
                                     </select>
                                 </div>
                             </td>
                             <td class="uk-width-1-4">
-                                <div> Obsiej</div>
+                                <div></div>
                             </td>
                         </tr>
 
@@ -227,30 +250,39 @@
                         <h3>Sprzedawane towary</h3>
                     </article>
                     <table class="uk-text-center uk-margin-auto-left uk-margin-auto-right">
-                        <tr>
-                            <td>
+                        <tr >
+                            <td class="uk-heading-divider">
                                 <div>Nazwa sprzedawanego towaru</div>
                             </td>
-                            <td class="uk-width-1-3">
-                                <button class="uk-button uk-button-primary uk-button-small">status</button>
+                            <td class="uk-width-1-2 uk-heading-divider">
+                                <div>status</div>
                             </td>
                         </tr>
                         <tr th:each="towary : ${goods}">
                             <td>
                                 <div th:text="${towary.name}"></div>
                             </td>
-                            <td class="uk-width-1-3">
-                                <div th:text="${towary.usingMerchant}"></div>
+                            <td class="uk-width-1-2">
+                                <div> sprzedawane</div>
                             </td>
                         </tr>
+
                         <tr>
                             <td>
-                                <div th:text="${mleko}"></div>
+                                <div>Sprzedaj nowy towar</div>
                             </td>
-                            <td class="uk-width-1-3">
-                                <div></div>
+                            <td>
+                                <div>
+                                    <select th:field="*{goodsName}" class="uk-select"
+                                            style="background-color: whitesmoke">
+                                        <option th:each="sells : ${goodsToSell}"
+                                                th:text="${sells.name}"
+                                                th:value="${sells.name}"></option>
+                                    </select>
+                                </div>
                             </td>
                         </tr>
+
                     </table>
                 </div>
             </div>
@@ -258,9 +290,12 @@
         </div>
 
 
-        <div class="uk-container uk-container-small uk-width-max-content uk-position-right uk-position-relative uk-margin">
+        <div class="uk-container uk-container-small uk-width-max-content uk-position-right uk-position-relative uk-margin uk-margin-bottom">
             <h1>Następna tura</h1>
-            <input type="submit" class="uk-button uk-button-default uk-width-small uk-position-bottom-center uk-position-relative uk-input" value="Koniec tury">
+            <input type="submit"
+                   class="uk-button uk-button-default uk-width-small uk-position-bottom-center uk-margin-bottom uk-position-relative uk-input"
+                   style="background-color: whitesmoke"
+                   value="Koniec tury">
         </div>
     </form>
     <!--    <button class="fa-regular fa-hourglass fa-3x uk-button uk-position-bottom-center uk-position-relative" type="submit" form="gameForm" formaction="/gameView" value="Submit"></button>-->

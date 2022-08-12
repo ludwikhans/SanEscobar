@@ -16,6 +16,16 @@ public class GoodsNorthEntities {
     private Integer usingMerchant;
     private int typ;
 
+    public GoodsNorthEntities(String name, Integer usingMerchant, int typ) {
+        this.name = name;
+        this.usingMerchant = usingMerchant;
+        this.typ = typ;
+    }
+
+    public GoodsNorthEntities(String name) {
+        this.name = name;
+    }
+
     public GoodsNorthEntities() {
     }
     public int getTyp() {

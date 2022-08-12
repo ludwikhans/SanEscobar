@@ -1,63 +1,58 @@
 package gtruty.sanescobar.model.field;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.math.BigDecimal;
 
 public class FieldsModelOfMeadow {
 
 
+    private String name = "Łąka";
+    private BigDecimal costOfBuying;
+    private Integer area;
+    private String info = "podstawa do hodowli zwierząt";
+    private String seed;
 
+    public FieldsModelOfMeadow(Integer area) {
+        this.area = area;
+    }
 
-        private Long id;
-        private String name = "Łąka";
-        private Integer area;
-        private String info  = "podstawa do hodowli zwierząt";
-        private String seed;
+    public BigDecimal getCostOfBuying() {
+        return costOfBuying;
+    }
 
-        public FieldsModelOfMeadow(Integer area) {
-                this.area = area;
-        }
+    public void setCostOfBuying(BigDecimal costOfBuying) {
+        this.costOfBuying = costOfBuying;
+    }
 
-        public Long getId() {
-                return id;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public void setId(Long id) {
-                this.id = id;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public String getName() {
-                return name;
-        }
+    public Integer getArea() {
+        return area;
+    }
 
-        public void setName(String name) {
-                this.name = name;
-        }
+    public void setArea(Integer area) {
+        this.area = area;
+    }
 
-        public Integer getArea() {
-                return area;
-        }
+    public String getInfo() {
+        return info;
+    }
 
-        public void setArea(Integer area) {
-                this.area = area;
-        }
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
-        public String getInfo() {
-                return info;
-        }
+    public String getSeed() {
+        return seed;
+    }
 
-        public void setInfo(String info) {
-                this.info = info;
-        }
-
-        public String getSeed() {
-                return seed;
-        }
-
-        public void setSeed(String seed) {
-                this.seed = seed;
-        }
+    public void setSeed(String seed) {
+        this.seed = seed;
+    }
 }
 

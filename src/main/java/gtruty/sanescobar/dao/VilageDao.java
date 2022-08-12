@@ -10,6 +10,7 @@ import static org.hibernate.loader.Loader.SELECT;
 public interface VilageDao extends CrudRepository<VilageEntity,Integer> {
 
  VilageEntity findFirstByOrderByIdDesc();
+ VilageEntity findFirstByName(String name);
 
 
 

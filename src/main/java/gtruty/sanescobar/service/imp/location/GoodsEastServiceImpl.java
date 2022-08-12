@@ -24,6 +24,11 @@ public class GoodsEastServiceImpl implements GoodsEastService {
     }
 
     @Override
+    public void save(String name, Integer usingMerchant, Integer type) {
+        goodsEastDao.save(new GoodsEastEntities(name,usingMerchant, type));
+    }
+
+    @Override
     public List<GoodsEastEntities> getAllData() {
         var goodsEast = goodsEastDao.findAll();
         return (List<GoodsEastEntities>) goodsEast;

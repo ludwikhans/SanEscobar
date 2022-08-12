@@ -28,6 +28,8 @@ public class BuildingsAvailableEntity {
         this.type = type;
     }
 
+
+
     public BuildingsAvailableEntity(String name) {
         this.name = name;
     }

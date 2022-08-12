@@ -1,5 +1,6 @@
 package gtruty.sanescobar.dao.startlocation;
 
+import gtruty.sanescobar.entities.PlaceOfStart.GoodsCentralEntities;
 import gtruty.sanescobar.entities.PlaceOfStart.GoodsEastEntities;
 import gtruty.sanescobar.entities.PlaceOfStart.GoodsNorthEntities;
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +15,7 @@ public interface GoodsNorthDao extends CrudRepository<GoodsNorthEntities,Integer
 
 
     GoodsNorthEntities findById(int id);
+    GoodsNorthEntities findFirstByName(String name);
+    GoodsNorthEntities findByName(String name);
 
 }
