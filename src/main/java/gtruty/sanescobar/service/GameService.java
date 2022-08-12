@@ -254,7 +254,7 @@ public class GameService implements GameMetod {
     }
 
     @Override
-    public void gameIncome(GameModel gameModel, VilageEntity vilage) {
+    public void gameIncome(GameModel gameModel) {
         BigDecimal restartIncomFromFields = BigDecimal.valueOf(0);
         gameModel.setIncomFromFields(restartIncomFromFields);
         BigDecimal restartIncomFromBuilding = BigDecimal.valueOf(0);
@@ -263,12 +263,14 @@ public class GameService implements GameMetod {
         gameModel.setIncomFromAnimal(restartIncomFromAnimal);
 
 
-        if (vilage.getLocationId() == 1) {
+        if (gameModel.getLocationId() == 1) {
+
+
             List<GoodsNorthEntities> theGoods = goodsNorthService.getAllData();
-            for (int j = 1; j <= theGoods.size(); j++) {
-                GoodsNorthEntities goodsNorthEntities = goodsNorthDao.findById(j);
-                String nameOfProduct = goodsNorthEntities.getName();
-                if (goodsNorthEntities.getTyp() == 1) {
+            for (GoodsNorthEntities product :
+                    theGoods) {
+                String nameOfProduct = product.getName();
+                if (product.getTyp() == 1) {
                     PlantsEntity plantsEntity = plantsDao.findByName(nameOfProduct);
                     BigDecimal profitPerHectar = plantsEntity.getMoneyProfit();
                     Double harvest = plantsEntity.getHarvest();
@@ -328,13 +330,13 @@ public class GameService implements GameMetod {
                 }
             }
 
-        } else if (vilage.getLocationId() == 2) {
+        } else if (gameModel.getLocationId() == 2) {
 
             List<GoodsEastEntities> theGoods = goodsEastService.getAllData();
-            for (int j = 1; j <= theGoods.size(); j++) {
-                GoodsEastEntities goodsEastEntities = goodsEastDao.findById(j);
-                String nameOfProduct = goodsEastEntities.getName();
-                if (goodsEastEntities.getTyp() == 1) {
+            for (GoodsEastEntities product :
+                    theGoods) {
+                String nameOfProduct = product.getName();
+                if (product.getTyp() == 1) {
                     PlantsEntity plantsEntity = plantsDao.findByName(nameOfProduct);
                     BigDecimal profitPerHectar = plantsEntity.getMoneyProfit();
                     Double harvest = plantsEntity.getHarvest();
@@ -394,13 +396,13 @@ public class GameService implements GameMetod {
                 }
             }
 
-        } else if (vilage.getLocationId() == 3) {
+        } else if (gameModel.getLocationId() == 3) {
 
             List<GoodsCentralEntities> theGoods = goodsCentralService.getAllData();
-            for (int j = 1; j <= theGoods.size(); j++) {
-                GoodsCentralEntities goodsCentralEntities = goodsCentralDao.findById(j);
-                String nameOfProduct = goodsCentralEntities.getName();
-                if (goodsCentralEntities.getTyp() == 1) {
+            for (GoodsCentralEntities product :
+                    theGoods) {
+                String nameOfProduct = product.getName();
+                if (product.getTyp() == 1) {
                     PlantsEntity plantsEntity = plantsDao.findByName(nameOfProduct);
                     BigDecimal profitPerHectar = plantsEntity.getMoneyProfit();
                     Double harvest = plantsEntity.getHarvest();
@@ -460,13 +462,13 @@ public class GameService implements GameMetod {
                 }
             }
 
-        } else if (vilage.getLocationId() == 4) {
+        } else if (gameModel.getLocationId() == 4) {
 
             List<GoodsSouthEntities> theGoods = goodsSouthService.getAllData();
-            for (int j = 1; j <= theGoods.size(); j++) {
-                GoodsSouthEntities goodsSouthEntities = goodsSouthDao.findById(j);
-                String nameOfProduct = goodsSouthEntities.getName();
-                if (goodsSouthEntities.getTyp() == 1) {
+            for (GoodsSouthEntities product :
+                    theGoods) {
+                String nameOfProduct = product.getName();
+                if (product.getTyp() == 1) {
                     PlantsEntity plantsEntity = plantsDao.findByName(nameOfProduct);
                     BigDecimal profitPerHectar = plantsEntity.getMoneyProfit();
                     Double harvest = plantsEntity.getHarvest();
@@ -526,21 +528,21 @@ public class GameService implements GameMetod {
                 }
             }
 
-        } else if (vilage.getLocationId() == 5) {
+        } else if (gameModel.getLocationId() == 5) {
 
             List<GoodsWestEntities> theGoods = goodsWestService.getAllData();
-            for (int j = 1; j <= theGoods.size(); j++) {
-                GoodsWestEntities goodsWestEntities = goodsWestDao.findById(j);
-                String nameOfProduct = goodsWestEntities.getName();
-                if (goodsWestEntities.getTyp() == 1) {
+            for (GoodsWestEntities product :
+                    theGoods) {
+                String nameOfProduct = product.getName();
+                if (product.getTyp() == 1) {
                     PlantsEntity plantsEntity = plantsDao.findByName(nameOfProduct);
                     BigDecimal profitPerHectar = plantsEntity.getMoneyProfit();
                     Double harvest = plantsEntity.getHarvest();
                     BigDecimal harvestPerHectar = BigDecimal.valueOf(harvest);
                     List<FieldWestEntity> fieldWestEntity = fieldWestDao.findAllBySeed(nameOfProduct);
                     int area = 0;
-                    for (int i = 0; i < fieldWestEntity.size(); i++) {
-                        int partOfArea = fieldWestEntity.get(i).getArea();
+                    for (FieldWestEntity westEntity : fieldWestEntity) {
+                        int partOfArea = westEntity.getArea();
                         area += partOfArea;
                     }
                     BigDecimal plantArea = BigDecimal.valueOf(area);
@@ -641,66 +643,76 @@ public class GameService implements GameMetod {
 
 
     @Override
-    public void deleteDoubleGoods(VilageEntity vilage) {
-        if (vilage.getLocationId() == 1) {
+    public void deleteDoubleGoods(GameModel gameModel, Model model) {
+        if (gameModel.getLocationId() == 1) {
             List<String> namaGoods = new ArrayList<>();
             List<GoodsNorthEntities> northEntities = goodsNorthService.getAllData();
             for (GoodsNorthEntities cos :
                     northEntities) {
                 String nameOfGoods = cos.getName();
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfGoods);
+                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findFirstByName(nameOfGoods);
                 if (goodsAvailableEntities != null) {
                     goodsAvailableDao.delete(goodsAvailableEntities);
                 }
             }
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
 
-        } else if (vilage.getLocationId() == 2) {
+        } else if (gameModel.getLocationId() == 2) {
             List<String> namaGoods = new ArrayList<>();
             List<GoodsEastEntities> northEntities = goodsEastService.getAllData();
             for (GoodsEastEntities cos :
                     northEntities) {
                 String nameOfGoods = cos.getName();
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfGoods);
+                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findFirstByName(nameOfGoods);
                 if (goodsAvailableEntities != null) {
                     goodsAvailableDao.delete(goodsAvailableEntities);
                 }
             }
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
 
-        } else if (vilage.getLocationId() == 3) {
+        } else if (gameModel.getLocationId() == 3) {
             List<String> namaGoods = new ArrayList<>();
             List<GoodsCentralEntities> northEntities = goodsCentralService.getAllData();
             for (GoodsCentralEntities cos :
                     northEntities) {
                 String nameOfGoods = cos.getName();
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfGoods);
+                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findFirstByName(nameOfGoods);
                 if (goodsAvailableEntities != null) {
                     goodsAvailableDao.delete(goodsAvailableEntities);
                 }
             }
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
 
-        } else if (vilage.getLocationId() == 4) {
+        } else if (gameModel.getLocationId() == 4) {
             List<String> namaGoods = new ArrayList<>();
             List<GoodsSouthEntities> northEntities = goodsSouthService.getAllData();
             for (GoodsSouthEntities cos :
                     northEntities) {
                 String nameOfGoods = cos.getName();
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfGoods);
+                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findFirstByName(nameOfGoods);
                 if (goodsAvailableEntities != null) {
                     goodsAvailableDao.delete(goodsAvailableEntities);
                 }
             }
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
 
-        } else if (vilage.getLocationId() == 5) {
+        } else if (gameModel.getLocationId() == 5) {
             List<String> namaGoods = new ArrayList<>();
             List<GoodsWestEntities> northEntities = goodsWestService.getAllData();
             for (GoodsWestEntities cos :
                     northEntities) {
                 String nameOfGoods = cos.getName();
-                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfGoods);
+                GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findFirstByName(nameOfGoods);
                 if (goodsAvailableEntities != null) {
                     goodsAvailableDao.delete(goodsAvailableEntities);
                 }
             }
+            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
+            model.addAttribute("goodsToSell", availableGoods);
         }
     }
 
@@ -760,14 +772,13 @@ public class GameService implements GameMetod {
     }
 
 
-
     @Override
-    public void addNewGoods(GameModel gameModel, VilageEntity vilage) {
+    public void addNewGoods(GameModel gameModel) {
 
-        if (vilage.getLocationId() == 1) {
+        if (gameModel.getLocationId() == 1) {
             String nameOfNewGoods = gameModel.getGoodsName();
             if (nameOfNewGoods != null) {
-                if (nameOfNewGoods != "Brak nowego towaru") {
+                if (!nameOfNewGoods.equals("Brak nowego towaru")) {
                     GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
                     GoodsNorthEntities goodsNorthEntities = goodsNorthDao.findByName(nameOfNewGoods);
                     if (goodsNorthEntities == null) {
@@ -777,10 +788,10 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 2) {
+        } else if (gameModel.getLocationId() == 2) {
             String nameOfNewGoods = gameModel.getGoodsName();
             if (nameOfNewGoods != null) {
-                if (nameOfNewGoods != "Brak nowego towaru") {
+                if (!nameOfNewGoods.equals("Brak nowego towaru")) {
                     GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
                     GoodsEastEntities goodsEastEntities = goodsEastDao.findByName(nameOfNewGoods);
                     if (goodsEastEntities == null) {
@@ -790,10 +801,10 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 3) {
+        } else if (gameModel.getLocationId() == 3) {
             String nameOfNewGoods = gameModel.getGoodsName();
             if (nameOfNewGoods != null) {
-                if ((nameOfNewGoods != "Brak nowego towaru") || (nameOfNewGoods != null)) {
+                if (!nameOfNewGoods.equals("Brak nowego towaru")) {
                     GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
                     GoodsCentralEntities goodsCentralEntities = goodsCentralDao.findByName(nameOfNewGoods);
                     if (goodsCentralEntities == null) {
@@ -803,10 +814,10 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 4) {
+        } else if (gameModel.getLocationId() == 4) {
             String nameOfNewGoods = gameModel.getGoodsName();
             if (nameOfNewGoods != null) {
-                if (nameOfNewGoods != "Brak nowego towaru") {
+                if (!nameOfNewGoods.equals("Brak nowego towaru")) {
                     GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
                     GoodsSouthEntities goodsSouthEntities = goodsSouthDao.findByName(nameOfNewGoods);
                     if (goodsSouthEntities == null) {
@@ -817,10 +828,10 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 5) {
+        } else if (gameModel.getLocationId() == 5) {
             String nameOfNewGoods = gameModel.getGoodsName();
             if (nameOfNewGoods != null) {
-                if (nameOfNewGoods != "Brak nowego towaru") {
+                if (!nameOfNewGoods.equals("Brak nowego towaru")) {
                     GoodsAvailableEntities goodsAvailableEntities = goodsAvailableDao.findByName(nameOfNewGoods);
                     GoodsWestEntities goodsWestEntities = goodsWestDao.findByName(nameOfNewGoods);
                     if (goodsWestEntities == null) {
@@ -1284,7 +1295,7 @@ public class GameService implements GameMetod {
     @Override
     public void supplyedField(Model model) {
 
-        FieldsSupplyEntity fieldsSupplyEntity =  fieldSupplyDao.findFirstByOrderByIdDesc();
+        FieldsSupplyEntity fieldsSupplyEntity = fieldSupplyDao.findFirstByOrderByIdDesc();
         if (fieldsSupplyEntity != null) {
 
 
@@ -1304,8 +1315,8 @@ public class GameService implements GameMetod {
         if (gameModel.getLocationId() == 1) {
             String nameOfPlant = gameModel.getPlantInFields();
             FieldsSupplyEntity fieldsSupplyEntity = fieldSupplyDao.findFirstByOrderByIdDesc();
-            if (fieldsSupplyEntity != null){
-                fieldNorthService.save(fieldsSupplyEntity.getName(), fieldsSupplyEntity.getCostOfBuying(), fieldsSupplyEntity.getArea(), fieldsSupplyEntity.getInfo(),nameOfPlant);
+            if (fieldsSupplyEntity != null) {
+                fieldNorthService.save(fieldsSupplyEntity.getName(), fieldsSupplyEntity.getCostOfBuying(), fieldsSupplyEntity.getArea(), fieldsSupplyEntity.getInfo(), nameOfPlant);
             }
 
 
@@ -1338,142 +1349,136 @@ public class GameService implements GameMetod {
             }
         }
         List<FieldsSupplyEntity> field = fieldSupplyService.getAllData();
-        if (field != null){
+        if (field != null) {
             fieldSupplyDao.deleteAll();
         }
 
     }
 
     @Override
-    public void availableGoodsToSell(GameModel gameModel, Model model) {
+    public void availableGoodsToSell(GameModel gameModel) {
 
-        goodsAvailableService.save("Brak nowego towaru", 0, 0);
-
-        if (gameModel.getLocationId() == 1) {
-            List<BuildingsEntityNorth> northEntities = buildingNorthService.getAllData();
-            for (BuildingsEntityNorth north :
-                    northEntities) {
-                String animal = north.getAnimalInBuilding();
-                AnimalsEntity animalsEntity = animalDao.findByName(animal);
-                if (north.getProducts1() != null) {
-                    goodsAvailableService.save(north.getProducts1(), 1, north.getType());
-                } else if (animalsEntity != null) {
-                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
-                }
-            }
-            List<FieldNorthEntity> northFieldEntities = fieldNorthService.getAllData();
-            for (FieldNorthEntity northField :
-                    northFieldEntities) {
-                String plant = northField.getSeed();
-                if (plant != null){
-                    goodsAvailableService.save(northField.getSeed(), 1, 1);
-                }
-            }
-
-            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
-            model.addAttribute("goodsToSell", availableGoods);
-
-        } else if (gameModel.getLocationId() == 2) {
-            List<BuildingsEntityEast> eastEntities = buildingEastService.getAllData();
-            for (BuildingsEntityEast east :
-                    eastEntities) {
-                String animal = east.getAnimalInBuilding();
-                AnimalsEntity animalsEntity = animalDao.findByName(animal);
-                if (east.getProducts1() != null) {
-                    goodsAvailableService.save(east.getProducts1(), 1, east.getType());
-                } else if (animalsEntity != null) {
-                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
-                }
-            }
-            List<FieldEastEntity> eastFieldEntities = fieldEastService.getAllData();
-            for (FieldEastEntity eastField :
-                    eastFieldEntities) {
-                String plant = eastField.getSeed();
-                if (plant != null){
-                    goodsAvailableService.save(eastField.getSeed(), 1, 1);
-                }
-            }
-
-            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
-            model.addAttribute("goodsToSell", availableGoods);
-
-        } else if (gameModel.getLocationId() == 3) {
-            List<BuildingsEntityCentral> centralEntities = buildingCentralService.getAllData();
-            for (BuildingsEntityCentral central :
-                    centralEntities) {
-                String animal = central.getAnimalInBuilding();
-                AnimalsEntity animalsEntity = animalDao.findByName(animal);
-                if (central.getProducts1() != null) {
-                    goodsAvailableService.save(central.getProducts1(), 1, central.getType());
-                } else if (animalsEntity != null) {
-                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
-                }
-            }
-            List<FieldCentralEntity> centralFieldEntities = fieldCentralService.getAllData();
-            for (FieldCentralEntity centralField :
-                    centralFieldEntities) {
-                String plant = centralField.getSeed();
-                if (plant != null){
-                    goodsAvailableService.save(centralField.getSeed(), 1, 1);
-                }
-            }
-
-            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
-            model.addAttribute("goodsToSell", availableGoods);
-
-        } else if (gameModel.getLocationId() == 4) {
-            List<BuildingsEntitySouth> southEntities = buildingSouthService.getAllData();
-            for (BuildingsEntitySouth south :
-                    southEntities) {
-                String animal = south.getAnimalInBuilding();
-                AnimalsEntity animalsEntity = animalDao.findByName(animal);
-                if (south.getProducts1() != null) {
-                    goodsAvailableService.save(south.getProducts1(), 1, south.getType());
-                } else if (animalsEntity != null) {
-                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
-                }
-            }
-            List<FieldSouthEntity> southFieldEntities = fieldSouthService.getAllData();
-            for (FieldSouthEntity southField :
-                    southFieldEntities) {
-                String plant = southField.getSeed();
-                if (plant != null){
-                    goodsAvailableService.save(southField.getSeed(), 1, 1);
-                }
-            }
-
-            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
-            model.addAttribute("goodsToSell", availableGoods);
-
-        } else if (gameModel.getLocationId() == 5) {
-            List<BuildingsEntityWest> westEntities = buildingWestService.getAllData();
-            for (BuildingsEntityWest west :
-                    westEntities) {
-                String animal = west.getAnimalInBuilding();
-                AnimalsEntity animalsEntity = animalDao.findByName(animal);
-                if (west.getProducts1() != null) {
-                    goodsAvailableService.save(west.getProducts1(), 1, west.getType());
-                } else if (animalsEntity != null) {
-                    goodsAvailableService.save(animalsEntity.getProducts1(), 1, animalsEntity.getTyp());
-                }
-            }
-            List<FieldWestEntity> westFieldEntities = fieldWestService.getAllData();
-            for (FieldWestEntity westField :
-                    westFieldEntities) {
-                String plant = westField.getSeed();
-                if (plant != null){
-                    goodsAvailableService.save(westField.getSeed(), 1, 1);
-                }
-            }
-
-            List<GoodsAvailableEntities> availableGoods = goodsAvailableService.getAllData();
-            model.addAttribute("goodsToSell", availableGoods);
+        List<GoodsAvailableEntities> goodsAvailableEntities = goodsAvailableService.getAllData();
+        if (goodsAvailableEntities != null) {
+            goodsAvailableDao.deleteAll();
         }
+        goodsAvailableService.save("Brak nowego towaru", 0, 0);
+        if (gameModel.getUnoccupiedMerchant() > 0) {
+            if (gameModel.getLocationId() == 1) {
+                List<BuildingsEntityNorth> northEntities = buildingNorthService.getAllData();
+                for (BuildingsEntityNorth north :
+                        northEntities) {
+                    String animal = north.getAnimalInBuilding();
+                    AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                    if (north.getProducts1() != null) {
+                        goodsAvailableService.save(north.getProducts1(), 1, north.getType());
+                    } else if (animalsEntity != null) {
+                        goodsAvailableService.save(animalsEntity.getName(), 1, animalsEntity.getTyp());
+                    }
+                }
+
+                List<FieldNorthEntity> northFieldEntities = fieldNorthService.getAllData();
+                for (FieldNorthEntity northField :
+                        northFieldEntities) {
+                    String plant = northField.getSeed();
+                    if (plant != null) {
+                        goodsAvailableService.save(northField.getSeed(), 1, 1);
+                    }
+                }
 
 
+            } else if (gameModel.getLocationId() == 2) {
+                List<BuildingsEntityEast> eastEntities = buildingEastService.getAllData();
+                for (BuildingsEntityEast east :
+                        eastEntities) {
+                    String animal = east.getAnimalInBuilding();
+                    AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                    if (east.getProducts1() != null) {
+                        goodsAvailableService.save(east.getProducts1(), 1, east.getType());
+                    } else if (animalsEntity != null) {
+                        goodsAvailableService.save(animalsEntity.getName(), 1, animalsEntity.getTyp());
+                    }
+                }
+                List<FieldEastEntity> eastFieldEntities = fieldEastService.getAllData();
+                for (FieldEastEntity eastField :
+                        eastFieldEntities) {
+                    String plant = eastField.getSeed();
+                    if (plant != null) {
+                        goodsAvailableService.save(eastField.getSeed(), 1, 1);
+                    }
+                }
+
+
+            } else if (gameModel.getLocationId() == 3) {
+                List<BuildingsEntityCentral> centralEntities = buildingCentralService.getAllData();
+                for (BuildingsEntityCentral central :
+                        centralEntities) {
+                    String animal = central.getAnimalInBuilding();
+                    AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                    if (central.getProducts1() != null) {
+                        goodsAvailableService.save(central.getProducts1(), 1, central.getType());
+                    } else if (animalsEntity != null) {
+                        goodsAvailableService.save(animalsEntity.getName(), 1, animalsEntity.getTyp());
+                    }
+                }
+                List<FieldCentralEntity> centralFieldEntities = fieldCentralService.getAllData();
+                for (FieldCentralEntity centralField :
+                        centralFieldEntities) {
+                    String plant = centralField.getSeed();
+                    if (plant != null) {
+                        goodsAvailableService.save(centralField.getSeed(), 1, 1);
+                    }
+                }
+
+
+            } else if (gameModel.getLocationId() == 4) {
+                List<BuildingsEntitySouth> southEntities = buildingSouthService.getAllData();
+                for (BuildingsEntitySouth south :
+                        southEntities) {
+                    String animal = south.getAnimalInBuilding();
+                    AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                    if (south.getProducts1() != null) {
+                        goodsAvailableService.save(south.getProducts1(), 1, south.getType());
+                    } else if (animalsEntity != null) {
+                        goodsAvailableService.save(animalsEntity.getName(), 1, animalsEntity.getTyp());
+                    }
+                }
+                List<FieldSouthEntity> southFieldEntities = fieldSouthService.getAllData();
+                for (FieldSouthEntity southField :
+                        southFieldEntities) {
+                    String plant = southField.getSeed();
+                    if (plant != null) {
+                        goodsAvailableService.save(southField.getSeed(), 1, 1);
+                    }
+                }
+
+
+            } else if (gameModel.getLocationId() == 5) {
+                List<BuildingsEntityWest> westEntities = buildingWestService.getAllData();
+                for (BuildingsEntityWest west :
+                        westEntities) {
+                    String animal = west.getAnimalInBuilding();
+                    AnimalsEntity animalsEntity = animalDao.findByName(animal);
+                    if (west.getProducts1() != null) {
+                        goodsAvailableService.save(west.getProducts1(), 1, west.getType());
+                    } else if (animalsEntity != null) {
+                        goodsAvailableService.save(animalsEntity.getName(), 1, animalsEntity.getTyp());
+                    }
+                }
+                List<FieldWestEntity> westFieldEntities = fieldWestService.getAllData();
+                for (FieldWestEntity westField :
+                        westFieldEntities) {
+                    String plant = westField.getSeed();
+                    if (plant != null) {
+                        goodsAvailableService.save(westField.getSeed(), 1, 1);
+                    }
+                }
+
+            }
+
+
+        }
     }
-
-
 
 
     public void saveIntoTabela(String buildingName, GameModel gameModel) {

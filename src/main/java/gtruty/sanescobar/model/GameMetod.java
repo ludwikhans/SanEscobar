@@ -28,7 +28,7 @@ public interface GameMetod {
 
     BigDecimal toZero (BigDecimal bigDecimal);
 
-    void gameIncome(GameModel gameModel, VilageEntity vilage);
+    void gameIncome(GameModel gameModel);
 
     void availableToBuyFirstBuilding(GameModel gameModel, Model model);
 
@@ -36,11 +36,11 @@ public interface GameMetod {
 
     void saveVilage(GameModel gameModel);
 
-    void deleteDoubleGoods(VilageEntity vilage);
+    void deleteDoubleGoods(GameModel gameModel,Model model);
 
     void addFields(GameModel gameModel, VilageEntity vilage);
 
-    void addNewGoods(GameModel gameModel, VilageEntity vilage);
+    void addNewGoods(GameModel gameModel);
 
     void addNewBuilding (VilageEntity vilage,GameModel gameModel, Model model );
 
@@ -60,5 +60,5 @@ public interface GameMetod {
 
     void addSupplyedField (GameModel gameModel);
 
-    void availableGoodsToSell(GameModel gameModel,Model model);
+    void availableGoodsToSell(GameModel gameModel);
 }

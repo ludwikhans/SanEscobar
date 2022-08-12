@@ -164,7 +164,7 @@ public class GameViewController {
         gameService.saveVilage(gameModel);
         gameService.startVilageLoaded(vilage, model);
         gameService.totalArea(vilage, gameModel);
-        gameService.gameIncome(gameModel, vilage);
+        gameService.gameIncome(gameModel);
         gameService.agrarSystem(gameModel);
         gameService.totalMerchant(vilage, gameModel);
         gameService.typeOfVilage(gameModel, vilage);

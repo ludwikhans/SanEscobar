@@ -42,30 +42,11 @@ public class AnimalsEntity {
     @Column(name = "typ")
     private int typ;
 
-
-
-
-    public AnimalsEntity(String name) {
-        this.name = name;
-    }
-
     public AnimalsEntity() {
     }
 
-    public int getTyp() {
-        return typ;
-    }
-
-    public void setTyp(int typ) {
-        this.typ = typ;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public AnimalsEntity(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -172,5 +153,19 @@ public class AnimalsEntity {
         this.specialFor = specialFor;
     }
 
+    public int getTyp() {
+        return typ;
+    }
 
+    public void setTyp(int typ) {
+        this.typ = typ;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
