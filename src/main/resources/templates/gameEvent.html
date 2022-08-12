@@ -27,8 +27,7 @@
     <form th:object="${game}" method="post">
         <div class="uk-container uk-text-center uk-text-bold"
              style="background-color: black; border: 5px; border-style: solid; color: black ">
-            <h1><span th:field="*{eventInfo}" th:style="${event.name} != null ? 'color: white;' : 'color: white;'" th:text="${event.name} " th:if="${#fields.hasErrors('event.name')}" class="uk-text-small uk-text-danger">
-                    Nazwisko powinno mieć długość od 2 do 30 znaków></span>
+            <h1><span th:field="*{eventInfo}" th:style="${event.name} != null ? 'color: white;' : 'color: white;'" th:text="${event.name} "></span>
             </h1>
 
 
@@ -40,10 +39,10 @@
             <h6><span></span></h6>
         </div>
         <div class="uk-container uk-container-small uk-flex uk-margin-large-top">
-            <!--h1>Potwierdź</h1-->
+
             <input type="submit"
                    class="uk-button uk-button-default uk-width-small uk-position-bottom-center uk-margin-bottom uk-position-relative uk-input"
-                   style="background-color: whitesmoke"
+
                    value="Potwierdź">
         </div>
     </form>
