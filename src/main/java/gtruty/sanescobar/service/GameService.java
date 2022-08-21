@@ -1238,58 +1238,62 @@ public class GameService implements GameMetod {
     @Override
     public void addSupplyedBuilding(GameModel gameModel) {
 
-        if (gameModel.getLocationId() == 1) {
-            String name = gameModel.getAnimalInBuilding();
-            BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyService.getAllData().get(0);
-            if (name != null) {
-                String nameOfBuilding = buildingsSupplyEntity.getName();
-                BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
-                buildingNorthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
-                gameModel.setAnimalInBuilding(null);
+        List<BuildingsSupplyEntity> supplyEntityList = buildingSupplyService.getAllData();
+        if (supplyEntityList != null) {
+
+
+            if (gameModel.getLocationId() == 1) {
+                String name = gameModel.getAnimalInBuilding();
+                BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyService.getAllData().get(0);
+                if (name != null & buildingsSupplyEntity!=null) {
+                    String nameOfBuilding = buildingsSupplyEntity.getName();
+                    BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
+                    buildingNorthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
+                    gameModel.setAnimalInBuilding(null);
+                }
+
+            } else if (gameModel.getLocationId() == 2) {
+                String name = gameModel.getAnimalInBuilding();
+                BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyDao.findFirstByOrderByIdDesc();
+                if (name != null & buildingsSupplyEntity!=null) {
+                    String nameOfBuilding = buildingsSupplyEntity.getName();
+                    BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
+                    buildingEastService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
+                    gameModel.setAnimalInBuilding(null);
+                }
+
+            } else if (gameModel.getLocationId() == 3) {
+                String name = gameModel.getAnimalInBuilding();
+                BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyDao.findFirstByOrderByIdDesc();
+                if (name != null & buildingsSupplyEntity!=null) {
+                    String nameOfBuilding = buildingsSupplyEntity.getName();
+                    BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
+                    buildingCentralService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
+                    gameModel.setAnimalInBuilding(null);
+                }
+
+            } else if (gameModel.getLocationId() == 4) {
+                String name = gameModel.getAnimalInBuilding();
+                BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyDao.findFirstByOrderByIdDesc();
+                if (name != null & buildingsSupplyEntity!=null) {
+                    String nameOfBuilding = buildingsSupplyEntity.getName();
+                    BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
+                    buildingSouthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
+                    gameModel.setAnimalInBuilding(null);
+                }
+
+            } else if (gameModel.getLocationId() == 5) {
+                String name = gameModel.getAnimalInBuilding();
+                BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyDao.findFirstByOrderByIdDesc();
+                if (name != null & buildingsSupplyEntity!=null ) {
+                    String nameOfBuilding = buildingsSupplyEntity.getName();
+                    BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
+                    buildingWestService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
+                    gameModel.setAnimalInBuilding(null);
+                }
             }
 
-        } else if (gameModel.getLocationId() == 2) {
-            String name = gameModel.getAnimalInBuilding();
-            BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyService.getAllData().get(0);
-            if (name != null) {
-                String nameOfBuilding = buildingsSupplyEntity.getName();
-                BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
-                buildingEastService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
-                gameModel.setAnimalInBuilding(null);
-            }
-
-        } else if (gameModel.getLocationId() == 3) {
-            String name = gameModel.getAnimalInBuilding();
-            BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyService.getAllData().get(0);
-            if (name != null) {
-                String nameOfBuilding = buildingsSupplyEntity.getName();
-                BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
-                buildingCentralService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
-                gameModel.setAnimalInBuilding(null);
-            }
-
-        } else if (gameModel.getLocationId() == 4) {
-            String name = gameModel.getAnimalInBuilding();
-            BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyService.getAllData().get(0);
-            if (name != null) {
-                String nameOfBuilding = buildingsSupplyEntity.getName();
-                BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
-                buildingSouthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
-                gameModel.setAnimalInBuilding(null);
-            }
-
-        } else if (gameModel.getLocationId() == 5) {
-            String name = gameModel.getAnimalInBuilding();
-            BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyService.getAllData().get(0);
-            if (name != null) {
-                String nameOfBuilding = buildingsSupplyEntity.getName();
-                BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
-                buildingWestService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
-                gameModel.setAnimalInBuilding(null);
-            }
         }
-
-
     }
 
     @Override
