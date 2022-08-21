@@ -1,0 +1,5 @@
+.tlo{
+    background-image: url(../img/pergamin.jpg);
+    display: flex;
+    flex-direction: column;
+}

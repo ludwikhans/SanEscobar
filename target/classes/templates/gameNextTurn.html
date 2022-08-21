@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>San Escobar</title>
+    <link rel="stylesheet" th:href="@{/css/uikit.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{../static/css/css.css}">
+    <script th:src="@{/js/uikit.min.js}"></script>
+    <script th:src="@{/js/uikit-icons.min.js}"></script>
+    <script th:src="@{/js/fontawesome.min.js}"></script>
+
+    <style>
+        html {
+            height: 100%;
+            background: url('/img/pergamin.jpg') no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="uk-width-1-1 uk-padding-remove-top uk-margin-xlarge-top uk-margin-remove">
+
+    <div class="uk-container uk-container-large uk-flex-row uk-margin-auto-left uk-margin-auto-right" uk-grid>
+        <div class="uk-container uk-width-1-6">
+            <h1 class="uk-card-title uk-heading-medium uk-position-center uk-position-relative"><i
+                    class="fa-brands fa-d-and-d fa-3x "></i></h1>
+        </div>
+
+        <div class="uk-container uk-width-5-6 flex-box uk-text-center">
+            <h1>San Escobar</h1>
+        </div>
+    </div>
+
+    <div class="uk-container uk-container-large uk-flex-row uk-margin-auto-left uk-margin-auto-right"
+         style=" height: 160px" uk-grid>
+
+        <div class="uk-container uk-width flex-box">
+
+            <div class="uk-container uk-container uk-flex-row">
+                <table class="uk-table" style="border-color: black;border-style: solid; height: 80px;">
+                    <tr>
+                        <td style="border-style: solid">
+                            <div>
+                                <h1>Nazwa osady:
+                                    <span th:text="${game.vilageName}"></span></h1>
+                            </div>
+                        </td>
+                        <td style="border-style: solid">
+                            <div>
+                                <h2>Typ osady:
+                                    <span th:text="${game.typeOfVilage}"></span></h2>
+                            </div>
+                        </td>
+                        <td style="border-style: solid">
+                            <div>
+                                <h3>System agrarny:
+                                    <span th:text="${game.agrarsystem}"></span></h3>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="uk-container uk-container uk-flex-row" style="height: 80px">
+                <table class="uk-table"
+                       style="border-color: black;border-style: solid; border-width: 1px; height: 80px;">
+                    <tr>
+                        <td style="border-style: solid">
+                            <h4>Posiadane pieniądze: <span th:text="${game.availableMoney}"></span></h4>
+
+                        </td>
+                        <td style="border-style: solid">
+                            <h4>Zysk na ture: <span th:text="${game.totalIncome}"></span></h4>
+                        </td>
+                        <td style="border-style: solid">
+                            <h4>Dosępne wolne miejsca handlowe: <span th:text="${game.unoccupiedMerchant}"></span></h4>
+                        </td>
+                        <td style="border-style: solid">
+                            <h4>Tura: <span th:text="${game.turnNumber}"></span></h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <form id="gameForm" th:object="${game}" method="post">
+        <div class="uk-container uk-height uk-margin-auto-left uk-margin-auto-right uk-margin-large-top" uk-grid
+             uk-height-match="target: > div > .uk-div">
+
+
+            <div class="uk-container uk-width-1-3 uk-flex-row" style=" border-style: hidden; border-left-color: black">
+                <div class="uk-container uk-flex-first uk-text-center">
+                    <article class="uk-article uk-margin-small-bottom">
+                        <h1>Budynki</h1>
+                    </article>
+                </div>
+                <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "
+                     style="background-color: whitesmoke; border-style: solid;border-color: black">
+                    <article class="uk-article uk-margin-small-bottom uk-heading-divider">
+                        <h3>Posiadane</h3>
+                    </article>
+                    <table id="table-building" class="uk-margin-auto-left uk-margin-auto-right">
+                        <tr id="row-building">
+                            <td id="row" class="uk-width-1-2 ">
+                                <div class="uk-heading-divider">nazwa budynku</div>
+                            </td>
+                            <td class="uk-width-1-2 uk-heading-divider">
+                                <div>Zwierzę w budynku</div>
+                            </td>
+                        </tr>
+
+                        <tr th:each="building : ${buildings}">
+                            <td class="uk-width-1-2 ">
+                                <div th:text="${building.name}"></div>
+                            </td>
+
+                            <td class="uk-width-1-2 ">
+                                <div th:text="${building.animalInBuilding}"></div>
+                            </td>
+                        </tr>
+
+                        <tr th:each="animalBuilding : ${animalInBuildings}" >
+                            <td class="uk-width-1-2 ">
+                                <div th:text="${animalBuilding.name}"></div>
+                            </td>
+                            <td class="uk-width-1-2 ">
+                                <div class="uk-margin">
+                                    <select th:field="*{animalInBuilding}" class="uk-select"
+                                            style="background-color: whitesmoke">
+                                        <option th:each="animals : ${nameOfAnimal}"
+                                                th:text="${animals}"
+                                                th:value="${animals}"></option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="uk-width-1-2">
+                                <div class="uk-margin-bottom">Kup budynek</div>
+                            </td>
+                            <td class="uk-width-1-2 ">
+                                <div class="uk-margin">
+                                    <select th:field="*{buildingName}" class="uk-select"
+                                            style="background-color: whitesmoke">
+                                        <option th:each="buildingToBuy : ${available}"
+                                                th:text="${buildingToBuy.name} +' - ' + ${buildingToBuy.costOfBuilding}"
+                                                th:value="${buildingToBuy.name}"></option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="uk-container uk-width-1-3 uk-flex-row"
+                 style=" border-style: hidden; border-left-color: black; border-right-color: black">
+                <div class="uk-container uk-flex-first uk-text-center">
+                    <article class="uk-article uk-margin-small-bottom">
+                        <h1>Pola</h1>
+                    </article>
+                </div>
+                <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "
+                     style="background-color: whitesmoke; border-style: solid;border-color: black">
+                    <article class="uk-article uk-margin-small-bottom uk-heading-divider">
+                        <h3>Posiadane</h3>
+                    </article>
+                    <table>
+                        <tr>
+                            <td class="uk-heading-divider">
+                                <div>typ</div>
+                            </td>
+                            <td class="uk-heading-divider">
+                                <div>ilość ha</div>
+                            </td>
+                            <td class="uk-width-1-4 uk-heading-divider">
+                                <div>obsiane</div>
+                            </td>
+                        </tr>
+                        <tr th:each="field : ${fields}">
+                            <td>
+                                <div th:text="${field.name}"></div>
+                            </td>
+                            <td>
+                                <div th:text="${field.area}"></div>
+                            </td>
+                            <td class="uk-width-1-4">
+                                <div th:text="${field.seed}"></div>
+                            </td>
+                        </tr>
+
+                        <tr th:each="fieldtoSupply : ${fieldsSupplyEntity}">
+                            <td >
+                                <div>Obsiej nowe Pole</div>
+                            </td>
+                            <td >
+                                <div th:text="${fieldtoSupply.area}" ></div>
+                            </td>
+                            <td class="uk-width-1-4">
+                                <select th:field="*{plantInFields}" class="uk-select"
+                                        style="background-color: whitesmoke">
+                                    <option th:each="plantSup : ${supplyedField}"
+                                            th:text="${plantSup}"
+                                            th:value="${plantSup}"></option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div>Kup nowe Pole</div>
+                            </td>
+                            <td>
+                                <div>
+                                    <select th:field="*{fieldsToBuy}" class="uk-select"
+                                            style="background-color: whitesmoke">
+                                        <option th:each="fieldToBuy : ${availableToBuy}"
+                                                th:text="${fieldToBuy.numberOfNewField}"
+                                                th:value="${fieldToBuy.numberOfNewField}"></option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="uk-width-1-4">
+                                <div></div>
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="uk-container uk-width-1-3 uk-flex-row" style=" border-style: hidden; border-right-color: black">
+                <div class="uk-container uk-flex-first uk-text-center">
+                    <article class="uk-article uk-margin-small-bottom">
+                        <h1>Towary</h1>
+                    </article>
+                </div>
+                <div class="uk-container uk-flex-first uk-height uk-text-center uk-heading-divider "
+                     style="background-color: whitesmoke; border-style: solid;border-color: black">
+                    <article class="uk-article uk-margin-small-bottom uk-heading-divider">
+                        <h3>Sprzedawane towary</h3>
+                    </article>
+                    <table class="uk-text-center uk-margin-auto-left uk-margin-auto-right">
+                        <tr >
+                            <td class="uk-heading-divider">
+                                <div>Nazwa sprzedawanego towaru</div>
+                            </td>
+                            <td class="uk-width-1-2 uk-heading-divider">
+                                <div>status</div>
+                            </td>
+                        </tr>
+                        <tr th:each="towary : ${goods}">
+                            <td>
+                                <div th:text="${towary.name}"></div>
+                            </td>
+                            <td class="uk-width-1-2">
+                                <div> sprzedawane</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div>Sprzedaj nowy towar</div>
+                            </td>
+                            <td>
+                                <div>
+                                    <select th:field="*{goodsName}" class="uk-select"
+                                            style="background-color: whitesmoke">
+                                        <option th:each="sells : ${goodsToSell}"
+                                                th:text="${sells.name}"
+                                                th:value="${sells.name}"></option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="uk-container uk-container-small uk-width-max-content uk-position-right uk-position-relative uk-margin uk-margin-bottom">
+            <h1>Następna tura</h1>
+            <input type="submit"
+                   class="uk-button uk-button-default uk-width-small uk-position-bottom-center uk-margin-bottom uk-position-relative uk-input"
+                   style="background-color: whitesmoke"
+                   value="Koniec tury">
+        </div>
+    </form>
+    <!--    <button class="fa-regular fa-hourglass fa-3x uk-button uk-position-bottom-center uk-position-relative" type="submit" form="gameForm" formaction="/gameView" value="Submit"></button>-->
+</div>
+
+
+</body>
+</html>
+
