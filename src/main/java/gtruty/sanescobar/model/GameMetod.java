@@ -18,13 +18,13 @@ public interface GameMetod {
 
   /*  void startVilage(VilageEntity vilage, Model model, FieldsOfStartService fieldsOfStartService, BuildingWestService buildingWestService, BuildingEastService buildingEastService, BuildingNorthService buildingNorthService, BuildingSouthService buildingSouthService, BuildingCentralService buildingCentralService) ;
 */
-    void startVilageLoaded(VilageEntity vilage, Model model) ;
+    void startVilageLoaded(GameModel gameModel, Model model) ;
 
-    void totalArea(VilageEntity vilage, GameModel gameModel);
+    void totalArea(GameModel gameModel);
 
     void agrarSystem(GameModel gameModel);
 
-    void totalMerchant(VilageEntity vilage,GameModel gameModel);
+    void totalMerchant(GameModel gameModel);
 
     BigDecimal toZero (BigDecimal bigDecimal);
 
@@ -38,11 +38,11 @@ public interface GameMetod {
 
     void deleteDoubleGoods(GameModel gameModel,Model model);
 
-    void addFields(GameModel gameModel, VilageEntity vilage);
+    void addFields(GameModel gameModel);
 
     void addNewGoods(GameModel gameModel);
 
-    void addNewBuilding (VilageEntity vilage,GameModel gameModel, Model model );
+    void addNewBuilding (GameModel gameModel, Model model );
 
     void saveGoods(VilageEntity vilage, GameModel gameModel);
 
@@ -50,7 +50,7 @@ public interface GameMetod {
 
     void  nextTurnMoney(GameModel gameModel);
 
-    void typeOfVilage(GameModel gameModel, VilageEntity vilage);
+    void typeOfVilage(GameModel gameModel);
 
     void startMoney(GameModel gameModel);
 

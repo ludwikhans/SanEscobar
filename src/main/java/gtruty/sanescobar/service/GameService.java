@@ -128,28 +128,28 @@ public class GameService implements GameMetod {
 
 
     @Override
-    public void startVilageLoaded(VilageEntity vilage, Model model) {
-        if (vilage.getLocationId() == 1) {
+    public void startVilageLoaded(GameModel gameModel, Model model) {
+        if (gameModel.getLocationId() == 1) {
             model.addAttribute("buildings", buildingNorthService.getAllData());
             model.addAttribute("fields", fieldNorthService.getAllData());
             model.addAttribute("goods", goodsNorthService.getAllData());
 
-        } else if (vilage.getLocationId() == 2) {
+        } else if (gameModel.getLocationId() == 2) {
             model.addAttribute("buildings", buildingEastService.getAllData());
             model.addAttribute("fields", fieldEastService.getAllData());
             model.addAttribute("goods", goodsEastService.getAllData());
 
-        } else if (vilage.getLocationId() == 3) {
+        } else if (gameModel.getLocationId() == 3) {
             model.addAttribute("buildings", buildingCentralService.getAllData());
             model.addAttribute("fields", fieldCentralService.getAllData());
             model.addAttribute("goods", goodsCentralService.getAllData());
 
-        } else if (vilage.getLocationId() == 4) {
+        } else if (gameModel.getLocationId() == 4) {
             model.addAttribute("buildings", buildingSouthService.getAllData());
             model.addAttribute("fields", fieldSouthService.getAllData());
             model.addAttribute("goods", goodsSouthService.getAllData());
 
-        } else if (vilage.getLocationId() == 5) {
+        } else if (gameModel.getLocationId() == 5) {
             model.addAttribute("buildings", buildingWestService.getAllData());
             model.addAttribute("fields", fieldWestService.getAllData());
             model.addAttribute("goods", goodsWestService.getAllData());
@@ -158,26 +158,26 @@ public class GameService implements GameMetod {
 
 
     @Override
-    public void totalArea(VilageEntity vilage, GameModel gameModel) {
+    public void totalArea(GameModel gameModel) {
 
-        if (vilage.getLocationId() == 1) {
+        if (gameModel.getLocationId() == 1) {
             int areaSum = fieldNorthDao.sumCreditAmount();
             gameModel.setArea(areaSum);
 
 
-        } else if (vilage.getLocationId() == 2) {
+        } else if (gameModel.getLocationId() == 2) {
             int areaSum = fieldEastDao.sumCreditAmount();
             gameModel.setArea(areaSum);
 
-        } else if (vilage.getLocationId() == 3) {
+        } else if (gameModel.getLocationId() == 3) {
             int areaSum = fieldCentralDao.sumCreditAmount();
             gameModel.setArea(areaSum);
 
-        } else if (vilage.getLocationId() == 4) {
+        } else if (gameModel.getLocationId() == 4) {
             int areaSum = fieldSouthDao.sumCreditAmount();
             gameModel.setArea(areaSum);
 
-        } else if (vilage.getLocationId() == 5) {
+        } else if (gameModel.getLocationId() == 5) {
             int areaSum = fieldWestDao.sumCreditAmount();
             gameModel.setArea(areaSum);
         }
@@ -197,10 +197,10 @@ public class GameService implements GameMetod {
     }
 
     @Override
-    public void totalMerchant(VilageEntity vilage, GameModel gameModel) {
+    public void totalMerchant(GameModel gameModel) {
 
 
-        if (vilage.getLocationId() == 1) {
+        if (gameModel.getLocationId() == 1) {
             int merchant = buildingNorthDao.sumCreditAmount();
             gameModel.setMerchant(merchant);
             int usingMerchant = goodsNorthDao.sumCreditAmount();
@@ -209,7 +209,7 @@ public class GameService implements GameMetod {
             gameModel.setUnoccupiedMerchant(unoccupiedMerchant);
 
 
-        } else if (vilage.getLocationId() == 2) {
+        } else if (gameModel.getLocationId() == 2) {
             int merchant = buildingEastDao.sumCreditAmount();
             gameModel.setMerchant(merchant);
             int usingMerchant = goodsEastDao.sumCreditAmount();
@@ -217,7 +217,7 @@ public class GameService implements GameMetod {
             int unoccupiedMerchant = (merchant - usingMerchant);
             gameModel.setUnoccupiedMerchant(unoccupiedMerchant);
 
-        } else if (vilage.getLocationId() == 3) {
+        } else if (gameModel.getLocationId() == 3) {
             int merchant = buildingCentralDao.sumCreditAmount();
             gameModel.setMerchant(merchant);
             int usingMerchant = goodsCentralDao.sumCreditAmount();
@@ -225,7 +225,7 @@ public class GameService implements GameMetod {
             int unoccupiedMerchant = (merchant - usingMerchant);
             gameModel.setUnoccupiedMerchant(unoccupiedMerchant);
 
-        } else if (vilage.getLocationId() == 4) {
+        } else if (gameModel.getLocationId() == 4) {
             int merchant = buildingSouthDao.sumCreditAmount();
             gameModel.setMerchant(merchant);
             int usingMerchant = goodsSouthDao.sumCreditAmount();
@@ -233,7 +233,7 @@ public class GameService implements GameMetod {
             int unoccupiedMerchant = (merchant - usingMerchant);
             gameModel.setUnoccupiedMerchant(unoccupiedMerchant);
 
-        } else if (vilage.getLocationId() == 5) {
+        } else if (gameModel.getLocationId() == 5) {
             int merchant = buildingWestDao.sumCreditAmount();
             gameModel.setMerchant(merchant);
             int usingMerchant = goodsWestDao.sumCreditAmount();
@@ -717,9 +717,9 @@ public class GameService implements GameMetod {
     }
 
     @Override
-    public void addFields(GameModel gameModel, VilageEntity vilage) {
+    public void addFields(GameModel gameModel) {
 
-        if (vilage.getLocationId() == 1) {
+        if (gameModel.getLocationId() == 1) {
             int howManyToFieldBuy = gameModel.getFieldsToBuy();
             if (howManyToFieldBuy != 0) {
                 FieldsModelOfMeadow meadow = new FieldsModelOfMeadow(howManyToFieldBuy);
@@ -730,7 +730,7 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 2) {
+        } else if (gameModel.getLocationId() == 2) {
             int howManyToFieldBuy = gameModel.getFieldsToBuy();
             if (howManyToFieldBuy != 0) {
                 FieldsModelOfMeadow meadow = new FieldsModelOfMeadow(howManyToFieldBuy);
@@ -740,7 +740,7 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 3) {
+        } else if (gameModel.getLocationId() == 3) {
             int howManyToFieldBuy = gameModel.getFieldsToBuy();
             if (howManyToFieldBuy != 0) {
                 FieldsModelOfMeadow meadow = new FieldsModelOfMeadow(howManyToFieldBuy);
@@ -750,7 +750,7 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 4) {
+        } else if (gameModel.getLocationId() == 4) {
             int howManyToFieldBuy = gameModel.getFieldsToBuy();
             if (howManyToFieldBuy != 0) {
                 FieldsModelOfMeadow meadow = new FieldsModelOfMeadow(howManyToFieldBuy);
@@ -760,7 +760,7 @@ public class GameService implements GameMetod {
 
             }
 
-        } else if (vilage.getLocationId() == 5) {
+        } else if (gameModel.getLocationId() == 5) {
             int howManyToFieldBuy = gameModel.getFieldsToBuy();
             if (howManyToFieldBuy != 0) {
                 FieldsModelOfMeadow meadow = new FieldsModelOfMeadow(howManyToFieldBuy);
@@ -844,9 +844,9 @@ public class GameService implements GameMetod {
     }
 
     @Override
-    public void addNewBuilding(VilageEntity vilage, GameModel gameModel, Model model) {
+    public void addNewBuilding(GameModel gameModel, Model model) {
 
-        if (vilage.getLocationId() == 1) {
+        if (gameModel.getLocationId() == 1) {
             String name = gameModel.getBuildingName();
             BuildingsEntity buildings = buildingDao.findByName(name);
             if (!buildings.getName().equals("Brak nowego budynku")) {
@@ -895,7 +895,7 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 2) {
+        } else if (gameModel.getLocationId() == 2) {
             String name = gameModel.getBuildingName();
             if (name != null) {
                 if (!name.equals("Brak nowego budynku")) {
@@ -944,7 +944,7 @@ public class GameService implements GameMetod {
                 }
             }
 
-        } else if (vilage.getLocationId() == 3) {
+        } else if (gameModel.getLocationId() == 3) {
             String name = gameModel.getBuildingName();
             if (name != null) {
                 if (!name.equals("Brak nowego budynku")) {
@@ -994,7 +994,7 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 4) {
+        } else if (gameModel.getLocationId() == 4) {
             String name = gameModel.getBuildingName();
             if (name != null) {
                 if (!name.equals("Brak nowego budynku")) {
@@ -1044,7 +1044,7 @@ public class GameService implements GameMetod {
             }
 
 
-        } else if (vilage.getLocationId() == 5) {
+        } else if (gameModel.getLocationId() == 5) {
             String name = gameModel.getBuildingName();
             if (name != null) {
                 if (!name.equals("Brak nowego budynku")) {
@@ -1160,8 +1160,8 @@ public class GameService implements GameMetod {
     }
 
     @Override
-    public void typeOfVilage(GameModel gameModel, VilageEntity vilage) {
-        if (vilage.getLocationId() == 1) {
+    public void typeOfVilage(GameModel gameModel) {
+        if (gameModel.getLocationId() == 1) {
             BuildingsEntityNorth palisada = buildingNorthDao.findFirstByName("Palisada");
             BuildingsEntityNorth studnia = buildingNorthDao.findFirstByName("Studnia");
             BuildingsEntityNorth droga = buildingNorthDao.findFirstByName("Droga");
@@ -1174,7 +1174,7 @@ public class GameService implements GameMetod {
                 gameModel.setTypeOfVilage(typeOfVilage);
             }
 
-        } else if (vilage.getLocationId() == 2) {
+        } else if (gameModel.getLocationId() == 2) {
             BuildingsEntityEast palisada = buildingEastDao.findFirstByName("Palisada");
             BuildingsEntityEast studnia = buildingEastDao.findFirstByName("Studnia");
             BuildingsEntityEast droga = buildingEastDao.findFirstByName("Droga");
@@ -1187,7 +1187,7 @@ public class GameService implements GameMetod {
                 gameModel.setTypeOfVilage(typeOfVilage);
             }
 
-        } else if (vilage.getLocationId() == 3) {
+        } else if (gameModel.getLocationId() == 3) {
             BuildingsEntityCentral palisada = buildingCentralDao.findFirstByName("Palisada");
             BuildingsEntityCentral studnia = buildingCentralDao.findFirstByName("Studnia");
             BuildingsEntityCentral droga = buildingCentralDao.findFirstByName("Droga");
@@ -1200,7 +1200,7 @@ public class GameService implements GameMetod {
                 gameModel.setTypeOfVilage(typeOfVilage);
             }
 
-        } else if (vilage.getLocationId() == 4) {
+        } else if (gameModel.getLocationId() == 4) {
             BuildingsEntitySouth palisada = buildingSouthDao.findFirstByName("Palisada");
             BuildingsEntitySouth studnia = buildingSouthDao.findFirstByName("Studnia");
             BuildingsEntitySouth droga = buildingSouthDao.findFirstByName("Droga");
@@ -1213,7 +1213,7 @@ public class GameService implements GameMetod {
                 gameModel.setTypeOfVilage(typeOfVilage);
             }
 
-        } else if (vilage.getLocationId() == 5) {
+        } else if (gameModel.getLocationId() == 5) {
             BuildingsEntityWest palisada = buildingWestDao.findFirstByName("Palisada");
             BuildingsEntityWest studnia = buildingWestDao.findFirstByName("Studnia");
             BuildingsEntityWest droga = buildingWestDao.findFirstByName("Droga");
