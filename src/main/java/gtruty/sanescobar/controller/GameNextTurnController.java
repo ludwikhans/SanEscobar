@@ -37,78 +37,28 @@ public class GameNextTurnController {
     @Autowired
     VilageService vilageService;
 
-    @Autowired
-    BuildingDao buildingDao;
-
-    @Autowired
-    BuildingNorthService buildingNorthService;
-
-    @Autowired
-    BuildingSupplyService buildingSupplyService;
-
-    @Autowired
-    BuildingSupplyDao buildingSupplyDao;
-
-    @Autowired
-    FieldSupplyService fieldSupplyService;
-
-    @Autowired
-    FieldNorthService fieldNorthService;
-
-    @Autowired
-    GoodsNorthService goodsNorthService;
-
-    @Autowired
-    GoodsAvailableDao goodsAvailableDao;
-
-    @Autowired
-    GoodsAvailableService goodsAvailableService;
-
-    @Autowired
-    BuildingNorthDao buildingNorthDao;
-
-    @Autowired
-    FieldNorthDao fieldNorthDao;
 
     @GetMapping("/gameNextTurn")
     public String nextTurnPage(Model model, @ModelAttribute("game") GameModel gameModel) {
 
-        VilageEntity vilage = vilageService.getAnyVilage();
-        gameService.saveVilage(gameModel);
-        gameService.addNewBuilding(vilage, gameModel, model);
+        gameService.addNewBuilding(gameModel, model);
         gameService.addSupplyedBuilding(gameModel);
-        gameService.addFields(gameModel, vilage);
+        gameService.addFields(gameModel);
         gameService.sumBuying(gameModel);
         gameService.supplyedField(model);
         gameService.addSupplyedField(gameModel);
         gameService.addNewGoods(gameModel);
-        gameService.startVilageLoaded(vilage, model);
-        gameService.totalArea(vilage, gameModel);
+        gameService.startVilageLoaded(gameModel, model);
+        gameService.totalArea(gameModel);
         gameService.gameIncome(gameModel);
         gameService.agrarSystem(gameModel);
-        gameService.totalMerchant(vilage, gameModel);
-        gameService.typeOfVilage(gameModel, vilage);
+        gameService.totalMerchant(gameModel);
+        gameService.typeOfVilage(gameModel);
         gameService.nextTurnMoney(gameModel);
         gameService.availableToBuyFirstBuilding(gameModel, model);
         gameService.availableToBuyFirstField(gameModel, model);
         gameService.availableGoodsToSell(gameModel);
         gameService.deleteDoubleGoods(gameModel, model);
-
-
-
-         model.addAttribute("kurczak", gameModel.getGoodsName());
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -120,9 +70,7 @@ public class GameNextTurnController {
         return "gameNextTurn";
     }
 
-    private void updateViewModel(Model model/*, String vilageName, Long locationId*/, GameModel gameModel) {
-        // model.addAttribute("nazwa", vilageName);
-        // model.addAttribute("lokalization", locationId);
+    private void updateViewModel(Model model, GameModel gameModel) {
         model.addAttribute("game", gameModel);
     }
 

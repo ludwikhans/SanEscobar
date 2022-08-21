@@ -22,135 +22,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @SessionAttributes("game")
 public class GameViewController {
 
-    @Value("${Gorlice}")
-    private String title;
-
     @Autowired
     GameService gameService;
 
     @Autowired
-    BuildingService buildingService;
-
-    @Autowired
-    PlantService plantService;
-
-    @Autowired
-    PlantsDao plantsDao;
-
-    @Autowired
-    BuildingDao buildingDao;
-
-    @Autowired
-    AnimalDao animalDao;
-
-    @Autowired
-    BuildingSouthService buildingSouthService;
-
-    @Autowired
-    BuildingEastService buildingEastService;
-
-    @Autowired
-    BuildingCentralService buildingCentralService;
-
-    @Autowired
-    BuildingNorthService buildingNorthService;
-
-    @Autowired
-    BuildingWestService buildingWestService;
-
-
-    @Autowired
-    FieldCentralService fieldCentralService;
-
-    @Autowired
-    FieldEastService fieldEastService;
-
-    @Autowired
-    FieldNorthService fieldNorthService;
-
-    @Autowired
-    FieldSouthService fieldSouthService;
-
-    @Autowired
-    FieldWestService fieldWestService;
-
-    @Autowired
-    GoodsCentralService goodsCentralService;
-
-    @Autowired
-    GoodsEastService goodsEastService;
-
-    @Autowired
-    GoodsNorthService goodsNorthService;
-
-    @Autowired
-    GoodsSouthService goodsSouthService;
-
-    @Autowired
-    GoodsWestService goodsWestService;
-
-    @Autowired
-    FieldCentralDao fieldCentralDao;
-
-    @Autowired
-    FieldEastDao fieldEastDao;
-
-    @Autowired
-    FieldNorthDao fieldNorthDao;
-
-    @Autowired
-    FieldSouthDao fieldSouthDao;
-
-    @Autowired
-    FieldWestDao fieldWestDao;
-
-    @Autowired
-    BuildingCentralDao buildingCentralDao;
-
-    @Autowired
-    BuildingEastDao buildingEastDao;
-
-    @Autowired
-    BuildingNorthDao buildingNorthDao;
-
-    @Autowired
-    BuildingSouthDao buildingSouthDao;
-
-    @Autowired
-    BuildingWestDao buildingWestDao;
-
-    @Autowired
-    GoodsCentralDao goodsCentralDao;
-
-    @Autowired
-    GoodsEastDao goodsEastDao;
-
-    @Autowired
-    GoodsNorthDao goodsNorthDao;
-
-    @Autowired
-    GoodsSouthDao goodsSouthDao;
-
-    @Autowired
-    GoodsWestDao goodsWestDao;
-
-    @Autowired
     VilageService vilageService;
 
-    @Autowired
-    BuildingAvailableService availableBuildingService;
-
-    @Autowired
-    AvailableBuildingDao availableBuildingDao;
-
-    @Autowired
-    GoodsAvailableService goodsAvailableService;
-
-    @Autowired
-    GoodsAvailableDao goodsAvailableDao;
-
-    @Autowired
-    BuildingSupplyService buildingSupplyService;
 
     @ModelAttribute("game")
     public GameModel initiateGameModel() {
@@ -162,12 +39,12 @@ public class GameViewController {
         VilageEntity vilage = vilageService.getAnyVilage();
 
         gameService.saveVilage(gameModel);
-        gameService.startVilageLoaded(vilage, model);
-        gameService.totalArea(vilage, gameModel);
+        gameService.startVilageLoaded(gameModel, model);
+        gameService.totalArea(gameModel);
         gameService.gameIncome(gameModel);
         gameService.agrarSystem(gameModel);
-        gameService.totalMerchant(vilage, gameModel);
-        gameService.typeOfVilage(gameModel, vilage);
+        gameService.totalMerchant(gameModel);
+        gameService.typeOfVilage(gameModel);
         gameService.startMoney(gameModel);
         gameService.availableToBuyFirstBuilding(gameModel, model);
         gameService.availableToBuyFirstField(gameModel, model);
