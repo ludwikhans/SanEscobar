@@ -30,6 +30,11 @@ public class GameEventEntity {
         this.info = info;
     }
 
+    public GameEventEntity(String name, String info) {
+        this.name = name;
+        this.info = info;
+    }
+
     public int getId() {
         return id;
     }

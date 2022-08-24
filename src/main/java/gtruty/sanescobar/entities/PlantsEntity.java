@@ -41,6 +41,19 @@ public class PlantsEntity{
     public PlantsEntity() {
     }
 
+    public PlantsEntity(String name, String products, BigDecimal moneyProfit, Double harvest, BigDecimal sowingCost, String requirements, String info, String specialFor, Long yearsOld, String category) {
+        this.name = name;
+        this.products = products;
+        this.moneyProfit = moneyProfit;
+        this.harvest = harvest;
+        this.sowingCost = sowingCost;
+        this.requirements = requirements;
+        this.info = info;
+        this.specialFor = specialFor;
+        this.yearsOld = yearsOld;
+        this.category = category;
+    }
+
     public PlantsEntity(String name) {
         this.name = name;
     }

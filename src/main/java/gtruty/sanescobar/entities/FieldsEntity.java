@@ -12,38 +12,38 @@ public class FieldsEntity {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "cost_of_buying")
     private BigDecimal costOfBuying;
     @Column(name = "area")
-    private Long area;
+    private Integer area;
     @Column(name = "info")
     private String info;
+
 
 
 
     public FieldsEntity() {
     }
 
+    public FieldsEntity(String name, BigDecimal costOfBuying, Integer area, String info) {
+        this.name = name;
+        this.costOfBuying = costOfBuying;
+        this.area = area;
+        this.info = info;
+    }
+
     public FieldsEntity(String name) {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTyp() {
+    public String getName() {
         return name;
     }
 
-    public void setTyp(String typ) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -55,11 +55,11 @@ public class FieldsEntity {
         this.costOfBuying = costOfBuying;
     }
 
-    public Long getArea() {
+    public Integer getArea() {
         return area;
     }
 
-    public void setArea(Long area) {
+    public void setArea(Integer area) {
         this.area = area;
     }
 
@@ -69,16 +69,5 @@ public class FieldsEntity {
 
     public void setInfo(String info) {
         this.info = info;
-    }
-
-
-
-    public FieldsEntity(Long id, String typ, BigDecimal costOfBuying, Long area, String info, Set<PlantsEntity> plants) {
-        this.id = id;
-        this.name = name;
-        this.costOfBuying = costOfBuying;
-        this.area = area;
-        this.info = info;
-
     }
 }

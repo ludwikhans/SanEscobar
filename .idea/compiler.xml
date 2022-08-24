@@ -12,7 +12,6 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SanEscobar" options="-parameters --add-modules java.base" />
-    </option>
+      <module name="SanEscobar" options="-parameters --add-modules java.base" /> </option>
   </component>
 </project>

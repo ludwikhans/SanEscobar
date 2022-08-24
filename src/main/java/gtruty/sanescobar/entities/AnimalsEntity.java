@@ -40,7 +40,24 @@ public class AnimalsEntity {
     @Column(name = "special_for")
     private String specialFor;
     @Column(name = "typ")
-    private int typ;
+    private Integer typ;
+
+    public AnimalsEntity(String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuying, String requirements, String suistenance1, Double valueOfSuistenance1, String suistenance2, Double valueOfSuistenance2, String info, String specialFor, Integer typ) {
+        this.name = name;
+        this.products1 = products1;
+        this.products2 = products2;
+        this.moneyProfit1 = moneyProfit1;
+        this.moneyProfit2 = moneyProfit2;
+        this.costOfBuying = costOfBuying;
+        this.requirements = requirements;
+        this.suistenance1 = suistenance1;
+        this.valueOfSuistenance1 = valueOfSuistenance1;
+        this.suistenance2 = suistenance2;
+        this.valueOfSuistenance2 = valueOfSuistenance2;
+        this.info = info;
+        this.specialFor = specialFor;
+        this.typ = typ;
+    }
 
     public AnimalsEntity() {
     }
@@ -153,11 +170,11 @@ public class AnimalsEntity {
         this.specialFor = specialFor;
     }
 
-    public int getTyp() {
+    public Integer getTyp() {
         return typ;
     }
 
-    public void setTyp(int typ) {
+    public void setTyp(Integer typ) {
         this.typ = typ;
     }
 

@@ -35,9 +35,9 @@ public class BuildingsEntity {
     @Column(name = "info")
     private String info;
     @Column(name = "number_of_animals")
-    private Long numberOfAnimal;
+    private Integer numberOfAnimal;
     @Column(name = "place_for_goods")
-    private Long placeForGoods;
+    private Integer placeForGoods;
     @Column(name = "special_for")
     private String specialFor;
     @Column (name = "available_Animal") // 1 to tak, 0 to nie
@@ -54,6 +54,25 @@ public class BuildingsEntity {
     }
 
     public BuildingsEntity() {
+    }
+
+    public BuildingsEntity(String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuilding, String requirements1, String requirements2, String suistenance, Double valueOfSuistenance, String info, Integer numberOfAnimal, Integer placeForGoods, String specialFor, Integer availableAnimal, Integer type) {
+        this.name = name;
+        this.products1 = products1;
+        this.products2 = products2;
+        this.moneyProfit1 = moneyProfit1;
+        this.moneyProfit2 = moneyProfit2;
+        this.costOfBuilding = costOfBuilding;
+        this.requirements1 = requirements1;
+        this.requirements2 = requirements2;
+        this.suistenance = suistenance;
+        this.valueOfSuistenance = valueOfSuistenance;
+        this.info = info;
+        this.numberOfAnimal = numberOfAnimal;
+        this.placeForGoods = placeForGoods;
+        this.specialFor = specialFor;
+        this.availableAnimal = availableAnimal;
+        this.type = type;
     }
 
     public Integer getAvailableAnimal() {
@@ -177,19 +196,19 @@ public class BuildingsEntity {
         this.info = info;
     }
 
-    public Long getNumberOfAnimal() {
+    public Integer getNumberOfAnimal() {
         return numberOfAnimal;
     }
 
-    public void setNumberOfAnimal(Long numberOfAnimal) {
+    public void setNumberOfAnimal(Integer numberOfAnimal) {
         this.numberOfAnimal = numberOfAnimal;
     }
 
-    public Long getPlaceForGoods() {
+    public Integer getPlaceForGoods() {
         return placeForGoods;
     }
 
-    public void setPlaceForGoods(Long placeForGoods) {
+    public void setPlaceForGoods(Integer placeForGoods) {
         this.placeForGoods = placeForGoods;
     }
 

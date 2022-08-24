@@ -34,9 +34,9 @@ public class BuildingsEntityCentral {
     @Column(name = "info")
     private String info;
     @Column(name = "number_of_animals")
-    private Long numberOfAnimal;
+    private Integer numberOfAnimal;
     @Column(name = "place_for_goods")
-    private Long placeForGoods;
+    private Integer placeForGoods;
     @Column(name = "special_for")
     private String specialFor;
     @Column (name = "amaount")
@@ -47,7 +47,7 @@ public class BuildingsEntityCentral {
     private String animalInBuilding;
 
 
-    public BuildingsEntityCentral(String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuilding, String requirements1, String requirements2, String suistenance, Double valueOfSuistenance, String info, Long numberOfAnimal, Long placeForGoods, String specialFor, Integer amount, Integer type) {
+    public BuildingsEntityCentral(String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuilding, String requirements1, String requirements2, String suistenance, Double valueOfSuistenance, String info, Integer numberOfAnimal, Integer placeForGoods, String specialFor, Integer amount, Integer type) {
         this.name = name;
         this.products1 = products1;
         this.products2 = products2;
@@ -66,7 +66,7 @@ public class BuildingsEntityCentral {
         this.type = type;
     }
 
-    public BuildingsEntityCentral(String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuilding, String requirements1, String requirements2, String suistenance, Double valueOfSuistenance, String info, Long numberOfAnimal, Long placeForGoods, String specialFor, Integer amount, Integer type, String animalInBuilding) {
+    public BuildingsEntityCentral(String name, String products1, String products2, BigDecimal moneyProfit1, BigDecimal moneyProfit2, BigDecimal costOfBuilding, String requirements1, String requirements2, String suistenance, Double valueOfSuistenance, String info, Integer numberOfAnimal, Integer placeForGoods, String specialFor, Integer amount, Integer type, String animalInBuilding) {
         this.name = name;
         this.products1 = products1;
         this.products2 = products2;
@@ -202,19 +202,19 @@ public class BuildingsEntityCentral {
         this.info = info;
     }
 
-    public Long getNumberOfAnimal() {
+    public Integer getNumberOfAnimal() {
         return numberOfAnimal;
     }
 
-    public void setNumberOfAnimal(Long numberOfAnimal) {
+    public void setNumberOfAnimal(Integer numberOfAnimal) {
         this.numberOfAnimal = numberOfAnimal;
     }
 
-    public Long getPlaceForGoods() {
+    public Integer getPlaceForGoods() {
         return placeForGoods;
     }
 
-    public void setPlaceForGoods(Long placeForGoods) {
+    public void setPlaceForGoods(Integer placeForGoods) {
         this.placeForGoods = placeForGoods;
     }
 

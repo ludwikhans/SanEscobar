@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface GameEventService {
     void save (GameEventEntity eventEntity);
+    void save(String name, String info);
     List<GameEventEntity> getAllData();
 }

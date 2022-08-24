@@ -37,8 +37,15 @@ public class GameViewController {
     @GetMapping("/gameView")
     public String startPage(Model model, @ModelAttribute("game") GameModel gameModel) {
         VilageEntity vilage = vilageService.getAnyVilage();
-
         gameService.saveVilage(gameModel);
+        gameService.createBuildingTable();
+        gameService.createLocationBuildingTable();
+        gameService.createAnimalTable();
+        gameService.createFieldTable();
+        gameService.createLocationFieldTable();
+        gameService.createPlantTable();
+        gameService.createLocationGoods();
+        gameService.createEventTable();
         gameService.startVilageLoaded(gameModel, model);
         gameService.totalArea(gameModel);
         gameService.gameIncome(gameModel);

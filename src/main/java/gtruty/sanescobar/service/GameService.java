@@ -62,12 +62,16 @@ public class GameService implements GameMetod {
     final PlantsDao plantsDao;
     final BuildingDao buildingDao;
     final AnimalDao animalDao;
+    final FieldDao fieldDao;
 
     final BuildingService buildingService;
     final BuildingAvailableService availableBuildingService;
     final AvailableBuildingDao availableBuildingDao;
 
     final VilageService vilageService;
+    final AnimalsService animalsService;
+    final FieldService fieldService;
+    final PlantService plantService;
 
     final GoodsAvailableService goodsAvailableService;
     final GoodsAvailableDao goodsAvailableDao;
@@ -78,7 +82,10 @@ public class GameService implements GameMetod {
     final FieldSupplyService fieldSupplyService;
     final FieldSupplyDao fieldSupplyDao;
 
-    public GameService(BuildingNorthService buildingNorthService, FieldNorthService fieldNorthService, GoodsNorthService goodsNorthService, BuildingEastService buildingEastService, FieldEastService fieldEastService, GoodsEastService goodsEastService, BuildingWestService buildingWestService, FieldWestService fieldWestService, GoodsWestService goodsWestService, BuildingSouthService buildingSouthService, FieldSouthService fieldSouthService, GoodsSouthService goodsSouthService, BuildingCentralService buildingCentralService, FieldCentralService fieldCentralService, GoodsCentralService goodsCentralService, FieldNorthDao fieldNorthDao, FieldEastDao fieldEastDao, FieldCentralDao fieldCentralDao, FieldSouthDao fieldSouthDao, FieldWestDao fieldWestDao, BuildingCentralDao buildingCentralDao, BuildingEastDao buildingEastDao, BuildingNorthDao buildingNorthDao, BuildingSouthDao buildingSouthDao, BuildingWestDao buildingWestDao, GoodsCentralDao goodsCentralDao, GoodsEastDao goodsEastDao, GoodsNorthDao goodsNorthDao, GoodsSouthDao goodsSouthDao, GoodsWestDao goodsWestDao, PlantsDao plantsDao, BuildingDao buildingDao, AnimalDao animalDao, BuildingService buildingService, BuildingAvailableService availableBuildingService, AvailableBuildingDao availableBuildingDao, VilageService vilageService, GoodsAvailableService goodsAvailableService, GoodsAvailableDao goodsAvailableDao, BuildingSupplyDao buildingSupplyDao, BuildingSupplyService buildingSupplyService, FieldSupplyService fieldSupplyService, FieldSupplyDao fieldSupplyDao) {
+    final GameEventService gameEventService;
+    final GameEventDao gameEventDao;
+
+    public GameService(BuildingNorthService buildingNorthService, FieldNorthService fieldNorthService, GoodsNorthService goodsNorthService, BuildingEastService buildingEastService, FieldEastService fieldEastService, GoodsEastService goodsEastService, BuildingWestService buildingWestService, FieldWestService fieldWestService, GoodsWestService goodsWestService, BuildingSouthService buildingSouthService, FieldSouthService fieldSouthService, GoodsSouthService goodsSouthService, BuildingCentralService buildingCentralService, FieldCentralService fieldCentralService, GoodsCentralService goodsCentralService, FieldNorthDao fieldNorthDao, FieldEastDao fieldEastDao, FieldCentralDao fieldCentralDao, FieldSouthDao fieldSouthDao, FieldWestDao fieldWestDao, BuildingCentralDao buildingCentralDao, BuildingEastDao buildingEastDao, BuildingNorthDao buildingNorthDao, BuildingSouthDao buildingSouthDao, BuildingWestDao buildingWestDao, GoodsCentralDao goodsCentralDao, GoodsEastDao goodsEastDao, GoodsNorthDao goodsNorthDao, GoodsSouthDao goodsSouthDao, GoodsWestDao goodsWestDao, PlantsDao plantsDao, BuildingDao buildingDao, AnimalDao animalDao, FieldDao fieldDao, BuildingService buildingService, BuildingAvailableService availableBuildingService, AvailableBuildingDao availableBuildingDao, VilageService vilageService, AnimalsService animalsService, FieldService fieldService, PlantService plantService, GoodsAvailableService goodsAvailableService, GoodsAvailableDao goodsAvailableDao, BuildingSupplyDao buildingSupplyDao, BuildingSupplyService buildingSupplyService, FieldSupplyService fieldSupplyService, FieldSupplyDao fieldSupplyDao, GameEventService gameEventService, GameEventDao gameEventDao) {
         this.buildingNorthService = buildingNorthService;
         this.fieldNorthService = fieldNorthService;
         this.goodsNorthService = goodsNorthService;
@@ -112,16 +119,22 @@ public class GameService implements GameMetod {
         this.plantsDao = plantsDao;
         this.buildingDao = buildingDao;
         this.animalDao = animalDao;
+        this.fieldDao = fieldDao;
         this.buildingService = buildingService;
         this.availableBuildingService = availableBuildingService;
         this.availableBuildingDao = availableBuildingDao;
         this.vilageService = vilageService;
+        this.animalsService = animalsService;
+        this.fieldService = fieldService;
+        this.plantService = plantService;
         this.goodsAvailableService = goodsAvailableService;
         this.goodsAvailableDao = goodsAvailableDao;
         this.buildingSupplyDao = buildingSupplyDao;
         this.buildingSupplyService = buildingSupplyService;
         this.fieldSupplyService = fieldSupplyService;
         this.fieldSupplyDao = fieldSupplyDao;
+        this.gameEventService = gameEventService;
+        this.gameEventDao = gameEventDao;
     }
 
     public GameModel model;
@@ -848,7 +861,8 @@ public class GameService implements GameMetod {
 
         if (gameModel.getLocationId() == 1) {
             String name = gameModel.getBuildingName();
-            BuildingsEntity buildings = buildingDao.findByName(name);
+            BuildingsEntity buildings = buildingDao.findFirstByName(name);
+            ;
             if (!buildings.getName().equals("Brak nowego budynku")) {
                 if (buildings.getAvailableAnimal() == 0) {
                     buildingNorthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
@@ -899,7 +913,7 @@ public class GameService implements GameMetod {
             String name = gameModel.getBuildingName();
             if (name != null) {
                 if (!name.equals("Brak nowego budynku")) {
-                    BuildingsEntity buildings = buildingDao.findByName(name);
+                    BuildingsEntity buildings = buildingDao.findFirstByName(name);
                     if (buildings.getAvailableAnimal() == 0) {
                         buildingEastService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
                     } else {
@@ -948,7 +962,8 @@ public class GameService implements GameMetod {
             String name = gameModel.getBuildingName();
             if (name != null) {
                 if (!name.equals("Brak nowego budynku")) {
-                    BuildingsEntity buildings = buildingDao.findByName(name);
+                    BuildingsEntity buildings = buildingDao.findFirstByName(name);
+                    ;
                     if (buildings.getAvailableAnimal() == 0) {
                         buildingCentralService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
                     } else {
@@ -998,7 +1013,8 @@ public class GameService implements GameMetod {
             String name = gameModel.getBuildingName();
             if (name != null) {
                 if (!name.equals("Brak nowego budynku")) {
-                    BuildingsEntity buildings = buildingDao.findByName(name);
+                    BuildingsEntity buildings = buildingDao.findFirstByName(name);
+                    ;
                     if (buildings.getAvailableAnimal() == 0) {
                         buildingSouthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
                     } else {
@@ -1048,7 +1064,7 @@ public class GameService implements GameMetod {
             String name = gameModel.getBuildingName();
             if (name != null) {
                 if (!name.equals("Brak nowego budynku")) {
-                    BuildingsEntity buildings = buildingDao.findByName(name);
+                    BuildingsEntity buildings = buildingDao.findFirstByName(name);
                     if (buildings.getAvailableAnimal() == 0) {
                         buildingWestService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType());
                     } else {
@@ -1125,7 +1141,7 @@ public class GameService implements GameMetod {
         if ((nameOfbuilding == "Brak nowego budynku")) {
             costOfBuilding = BigDecimal.valueOf(0);
         } else {
-            BuildingsEntity buildings = buildingDao.findByName(nameOfbuilding);
+            BuildingsEntity buildings = buildingDao.findFirstByName(nameOfbuilding);
             costOfBuilding = toZero(buildings.getCostOfBuilding());
         }
         gameModel.setCostOfBuilding(costOfBuilding);
@@ -1244,8 +1260,8 @@ public class GameService implements GameMetod {
 
             if (gameModel.getLocationId() == 1) {
                 String name = gameModel.getAnimalInBuilding();
-                BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyService.getAllData().get(0);
-                if (name != null & buildingsSupplyEntity!=null) {
+                BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyDao.findFirstByOrderByIdDesc();
+                if (name != null & buildingsSupplyEntity != null) {
                     String nameOfBuilding = buildingsSupplyEntity.getName();
                     BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
                     buildingNorthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
@@ -1255,7 +1271,7 @@ public class GameService implements GameMetod {
             } else if (gameModel.getLocationId() == 2) {
                 String name = gameModel.getAnimalInBuilding();
                 BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyDao.findFirstByOrderByIdDesc();
-                if (name != null & buildingsSupplyEntity!=null) {
+                if (name != null & buildingsSupplyEntity != null) {
                     String nameOfBuilding = buildingsSupplyEntity.getName();
                     BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
                     buildingEastService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
@@ -1265,7 +1281,7 @@ public class GameService implements GameMetod {
             } else if (gameModel.getLocationId() == 3) {
                 String name = gameModel.getAnimalInBuilding();
                 BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyDao.findFirstByOrderByIdDesc();
-                if (name != null & buildingsSupplyEntity!=null) {
+                if (name != null & buildingsSupplyEntity != null) {
                     String nameOfBuilding = buildingsSupplyEntity.getName();
                     BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
                     buildingCentralService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
@@ -1275,7 +1291,7 @@ public class GameService implements GameMetod {
             } else if (gameModel.getLocationId() == 4) {
                 String name = gameModel.getAnimalInBuilding();
                 BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyDao.findFirstByOrderByIdDesc();
-                if (name != null & buildingsSupplyEntity!=null) {
+                if (name != null & buildingsSupplyEntity != null) {
                     String nameOfBuilding = buildingsSupplyEntity.getName();
                     BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
                     buildingSouthService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
@@ -1285,7 +1301,7 @@ public class GameService implements GameMetod {
             } else if (gameModel.getLocationId() == 5) {
                 String name = gameModel.getAnimalInBuilding();
                 BuildingsSupplyEntity buildingsSupplyEntity = buildingSupplyDao.findFirstByOrderByIdDesc();
-                if (name != null & buildingsSupplyEntity!=null ) {
+                if (name != null & buildingsSupplyEntity != null) {
                     String nameOfBuilding = buildingsSupplyEntity.getName();
                     BuildingsEntity buildings = buildingDao.findByName(nameOfBuilding);
                     buildingWestService.save(buildings.getName(), buildings.getProducts1(), buildings.getProducts2(), buildings.getMoneyProfit1(), buildings.getMoneyProfit2(), buildings.getCostOfBuilding(), buildings.getRequirements1(), buildings.getRequirements2(), buildings.getSuistenance(), buildings.getValueOfSuistenance(), buildings.getInfo(), buildings.getNumberOfAnimal(), buildings.getPlaceForGoods(), buildings.getSpecialFor(), 1, buildings.getType(), name);
@@ -1482,6 +1498,258 @@ public class GameService implements GameMetod {
 
 
         }
+    }
+
+    @Override
+    public void createBuildingTable() {
+
+        List<BuildingsEntity> buildingsEntities = buildingService.getAllData();
+        if (buildingsEntities != null) {
+            buildingDao.deleteAll();
+        }
+
+        buildingService.save("Brak nowego budynku", null, null, null, null, BigDecimal.valueOf(0.0), null, null, null, null, "nie dodaje niczego", null, null, null, 0, 2);
+        buildingService.save("Kurnik", null, null, null, null, BigDecimal.valueOf(40.0), null, null, null, null, "umożliwia hodowle kur lub kaczek", null, 100, null, 1, 2);
+        buildingService.save("Gęsiarnia", null, null, null, null, BigDecimal.valueOf(40.0), null, null, null, null, "umożliwia hodowle kur lub gęsi lub kaczek", null, 50, null, 1, 2);
+        buildingService.save("Królikarnia", null, null, null, null, BigDecimal.valueOf(20.0), null, null, null, null, "umożliwia hodowle królików", null, 100, null, 1, 2);
+        buildingService.save("Zagroda", null, null, null, null, BigDecimal.valueOf(60.0), "pasterka", null, null, null, "umożliwia hodowle kuz, owiec lub osłów", null, 100, null, 1, 2);
+        buildingService.save("Chlew", null, null, null, null, BigDecimal.valueOf(60.0), "dom sołtysa", "pasterka", null, null, "umożliwia hodowle świń", null, 100, null, 1, 2);
+        buildingService.save("Stajnia", null, null, null, null, BigDecimal.valueOf(200.0), "kasztel", "dwór", null, null, "umożliwia hodowle krów", null, 100, null, 1, 2);
+        buildingService.save("Stadnina", null, null, null, null, BigDecimal.valueOf(300.0), "zamek", "pałac", null, null, "umożliwia hodowle koni", null, 20, null, 1, 2);
+        buildingService.save("Staw", "Ryby", null, null, null, BigDecimal.valueOf(400.0), null, null, null, null, "umożliwia hodowle ryb", null, null, null, 0, 2);
+        buildingService.save("Gnojownik", null, null, null, null, BigDecimal.valueOf(50.0), "stajnia", "chlew", null, null, "podwojenie plonu wybranej rośliny", null, null, null, 0, 2);
+        buildingService.save("Droga", null, null, null, null, BigDecimal.valueOf(25.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, null, null, 0, 2);
+        buildingService.save("Drogowskazy", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, null, null, 0, 2);
+        buildingService.save("Słupy graniczne", null, null, null, null, BigDecimal.valueOf(100.0), "drogowskazy", null, null, null, "dodaje jedno miejsce handlowe", null, null, null, 0, 2);
+        buildingService.save("Kapliczka", null, null, null, null, BigDecimal.valueOf(150.0), null, null, null, null, "raz na poziom można pominąć wydarzenie", null, null, null, 0, 2);
+        buildingService.save("Studnia", null, null, null, null, BigDecimal.valueOf(30.0), null, null, null, null, "zaopatrzenie w wodę podczas suszy", null, null, null, 0, 2);
+        buildingService.save("Mała stadnina", null, null, null, null, BigDecimal.valueOf(150.0), null, null, null, null, "umożliwia hodowle dzikich koni", 20, 10, "Wschód", 1, 2);
+    }
+
+    @Override
+    public void createLocationBuildingTable() {
+
+        List<BuildingsEntityNorth> buildingsEntities = buildingNorthService.getAllData();
+        if (buildingsEntities != null) {
+            buildingNorthDao.deleteAll();
+        }
+
+        buildingNorthService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingNorthService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingNorthService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+
+        List<BuildingsEntityEast> buildingsEastEntities = buildingEastService.getAllData();
+        if (buildingsEastEntities != null) {
+            buildingEastDao.deleteAll();
+        }
+
+        buildingEastService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingEastService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingEastService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingEastService.save("Mała stadnina", null, null, null, null, BigDecimal.valueOf(150.0), null, null, null, null, "umożliwia hodowle dzikich koni", 10, null, "Wschód", 1, 2, "Mustang");
+
+        List<BuildingsEntityCentral> buildingsCentralEntities = buildingCentralService.getAllData();
+        if (buildingsCentralEntities != null) {
+            buildingCentralDao.deleteAll();
+        }
+
+        buildingCentralService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingCentralService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingCentralService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+
+        List<BuildingsEntitySouth> buildingsSouthEntities = buildingSouthService.getAllData();
+        if (buildingsSouthEntities != null) {
+            buildingSouthDao.deleteAll();
+        }
+
+        buildingSouthService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingSouthService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingSouthService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+
+        List<BuildingsEntityWest> buildingsWestEntities = buildingWestService.getAllData();
+        if (buildingsWestEntities != null) {
+            buildingWestDao.deleteAll();
+        }
+
+        buildingWestService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingWestService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+        buildingWestService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 1, 2, null);
+
+
+    }
+
+    @Override
+    public void createAnimalTable() {
+
+        List<AnimalsEntity> animalsEntities = animalsService.getAllData();
+        if (animalsEntities != null) {
+            animalDao.deleteAll();
+        }
+
+        animalsService.save("Kury", "Jaja", null, BigDecimal.valueOf(1.0), BigDecimal.valueOf(25.0), BigDecimal.valueOf(1.0), "Kurnik", "Zboże", 27.5, null, null, "sprzedaż jaj wymaga składu", null, 2);
+        animalsService.save("Kaczki", null, null, BigDecimal.valueOf(4.5), null, BigDecimal.valueOf(1.5), "staw, tama lub rzeka oraz kurnik", null, null, null, null, null, null, 2);
+        animalsService.save("Króliki", null, null, BigDecimal.valueOf(1.5), null, BigDecimal.valueOf(1.5), "królikarnia", "Łąka", 9.0, null, null, null, null, 2);
+        animalsService.save("Gęsi", "Pierze", null, BigDecimal.valueOf(2.5), BigDecimal.valueOf(2.4), BigDecimal.valueOf(2.5), "staw, tama lub rzeka oraz kurnik", "Zboże", 22.8, null, null, "ostzrzeżenie przed bandytami", null, 2);
+        animalsService.save("Kozy", null, null, BigDecimal.valueOf(15.0), null, BigDecimal.valueOf(15.0), "Zagroda", "Łąka", 15.0, null, null, null, null, 2);
+        animalsService.save("Owce", "Wełna", null, BigDecimal.valueOf(20.0), BigDecimal.valueOf(7.5), BigDecimal.valueOf(20.00), "Zagroda", "Łąka", 30.0, null, null, null, null, 2);
+        animalsService.save("Świnie", null, null, BigDecimal.valueOf(75.0), null, BigDecimal.valueOf(75.0), "Chlew", "Zboże", 87.5, null, null, null, null, 2);
+        animalsService.save("Krowy", null, null, BigDecimal.valueOf(90.0), null, BigDecimal.valueOf(90.0), "Stajnia", "Łąka", 30.0, null, null, "+10 do plonów jeśli jest gnojownik", null, 2);
+        animalsService.save("Konie", null, null, BigDecimal.valueOf(150.0), null, BigDecimal.valueOf(150.0), "Stadnina", "Łąka", 8.0, "Owies", 20.0, "+25% do plonów", null, 2);
+        animalsService.save("Ryby", null, null, BigDecimal.valueOf(10.0), null, BigDecimal.valueOf(10.0), "Staw, Tama lub Rzeka", null, null, null, null, null, null, 2);
+        animalsService.save("Pszczoły", null, null, null, null, BigDecimal.valueOf(4.0), "Chatka pszczelarza", null, null, null, null, null, null, 2);
+        animalsService.save("Jeleń", null, null, BigDecimal.valueOf(120.0), null, null, "Zagroda leśna", "Łąka", 30.0, null, null, null, "Północ", 2);
+        animalsService.save("Osioł", null, null, BigDecimal.valueOf(120.0), null, BigDecimal.valueOf(120.0), "Zagroda", "Łąka", 36.5, null, null, "Dodaje 3 miejsca handlowe", "Zachód", 2);
+        animalsService.save("Zwierzęta futerkowe", "Futra", null, BigDecimal.valueOf(200.0), null, BigDecimal.valueOf(60.0), "Zagroda", "Kury", 100.0, null, null, null, null, 2);
+        animalsService.save("Jedwabniki", "Nić jedwabna", null, BigDecimal.valueOf(200.0), null, BigDecimal.valueOf(60.0), "Las", "Las", 10.0, null, null, null, null, 2);
+        animalsService.save("Mustang", null, null, BigDecimal.valueOf(75.0), null, BigDecimal.valueOf(150.0), "Mała stadnina", "Łąka", 8.0, "Owies", 20.0, "+25% do plonów", "Wschód", 2);
+
+    }
+
+    @Override
+    public void createLocationFieldTable() {
+
+        List<FieldCentralEntity> fieldCentralEntities = fieldCentralService.getAllData();
+        if (fieldCentralEntities != null) {
+            fieldCentralDao.deleteAll();
+        }
+
+        fieldCentralService.save("Pole", BigDecimal.valueOf(1350.0), 27, "Można je obsiać roślinami", "Pszenica jara");
+        fieldCentralService.save("Łąka", BigDecimal.valueOf(1350.0), 27, "Podstawa do hodowli zwierząt", null);
+
+        List<FieldEastEntity> fieldEastEntities = fieldEastService.getAllData();
+        if (fieldEastEntities != null) {
+            fieldEastDao.deleteAll();
+        }
+
+        fieldEastService.save("Pole", BigDecimal.valueOf(1350.0), 27, "Można je obsiać roślinami", "Owies");
+        fieldEastService.save("Łąka", BigDecimal.valueOf(1350.0), 27, "Podstawa do hodowli zwierząt", null);
+
+        List<FieldNorthEntity> fieldNorthEntities = fieldNorthService.getAllData();
+        if (fieldNorthEntities != null) {
+            fieldNorthDao.deleteAll();
+        }
+
+        fieldNorthService.save("Pole", BigDecimal.valueOf(1350.0), 27, "Można je obsiać roślinami", "Pszenica ozima");
+        fieldNorthService.save("Łąka", BigDecimal.valueOf(1350.0), 27, "Podstawa do hodowli zwierząt", null);
+
+        List<FieldSouthEntity> fieldSouthEntities = fieldSouthService.getAllData();
+        if (fieldSouthEntities != null) {
+            fieldSouthDao.deleteAll();
+        }
+
+        fieldSouthService.save("Pole", BigDecimal.valueOf(1350.0), 27, "Można je obsiać roślinami", "Jęczmień");
+        fieldSouthService.save("Łąka", BigDecimal.valueOf(1350.0), 27, "Podstawa do hodowli zwierząt", null);
+
+        List<FieldWestEntity> fieldWestEntities = fieldWestService.getAllData();
+        if (fieldWestEntities != null) {
+            fieldWestDao.deleteAll();
+        }
+
+        fieldWestService.save("Pole", BigDecimal.valueOf(1350.0), 27, "Można je obsiać roślinami", "Żyto");
+        fieldWestService.save("Łąka", BigDecimal.valueOf(1350.0), 27, "Podstawa do hodowli zwierząt", null);
+
+    }
+
+    @Override
+    public void createFieldTable() {
+
+        List<FieldsEntity> fieldsEntities = fieldService.getAllData();
+        if (fieldsEntities != null) {
+            fieldDao.deleteAll();
+        }
+
+        fieldService.save("Pole", BigDecimal.valueOf(50), 1, "Można je obsiać roślinami");
+        fieldService.save("Łąka", BigDecimal.valueOf(50), 1, "Podstawa do hodowli zwierząt");
+    }
+
+    @Override
+    public void createPlantTable() {
+
+        List<PlantsEntity> plantsEntities = plantService.getAllData();
+        if (plantsEntities != null) {
+            plantsDao.deleteAll();
+        }
+
+        plantService.save("Owies", "Owies", BigDecimal.valueOf(0.125), 3.4, BigDecimal.valueOf(0.1), null, "Zboże służące jako pasza dla koni", null, null, "Zboże");
+        plantService.save("Jęczmień", "Jęczmień", BigDecimal.valueOf(0.57), 4.0, BigDecimal.valueOf(0.1), null, "odporne na zarazy", null, null, "Zboże");
+        plantService.save("Żyto", "Żyto", BigDecimal.valueOf(0.54), 6.25, BigDecimal.valueOf(0.1), null, "Służy do produkcji piwa i mąki", null, null, "Zboże");
+        plantService.save("Pszenica jara", "Pszenica jara", BigDecimal.valueOf(0.64), 5.0, BigDecimal.valueOf(0.1), null, "Służy do produkcji mąki", null, null, "Zboże");
+        plantService.save("Pszenica ozima", "Pszenica ozima", BigDecimal.valueOf(0.58), 4.5, BigDecimal.valueOf(0.1), null, "Odporna na zimno", null, null, "Zboże");
+
+
+    }
+
+    @Override
+    public void createLocationGoods() {
+
+        List<GoodsCentralEntities> goodsCentralEntities = goodsCentralService.getAllData();
+        if (goodsCentralEntities != null) {
+            goodsCentralDao.deleteAll();
+        }
+
+        goodsCentralService.save("Pszenica jara", 1, 1);
+
+        List<GoodsEastEntities> goodsEastEntities = goodsEastService.getAllData();
+        if (goodsEastEntities != null) {
+            goodsEastDao.deleteAll();
+        }
+
+        goodsEastService.save("Owies", 1, 1);
+        goodsEastService.save("Mustang", 1, 2);
+
+        List<GoodsNorthEntities> goodsNorthEntities = goodsNorthService.getAllData();
+        if (goodsNorthEntities != null) {
+            goodsNorthDao.deleteAll();
+        }
+
+        goodsNorthService.save("Pszenica ozima", 1, 1);
+
+        List<GoodsSouthEntities> goodsSouthEntities = goodsSouthService.getAllData();
+        if (goodsSouthEntities != null) {
+            goodsSouthDao.deleteAll();
+        }
+
+        goodsSouthService.save("Jęczmień", 1, 1);
+
+        List<GoodsWestEntities> goodsWestEntities = goodsWestService.getAllData();
+        if (goodsWestEntities != null) {
+            goodsWestDao.deleteAll();
+        }
+
+        goodsWestService.save("Żyto", 1, 1);
+
+
+    }
+
+    @Override
+    public void createEventTable() {
+
+        List<GameEventEntity> event = gameEventService.getAllData();
+        if (event != null) {
+            gameEventDao.deleteAll();
+        }
+
+        gameEventService.save("Ciepłe lato", "Lato tego roku było bardzo piękne");
+        gameEventService.save("Zbiegły koń", "Koń przebiegł przez waszą wieś");
+        gameEventService.save("Koński apetyt", "Wasze konie zjadły tyle ile zawsze");
+        gameEventService.save("Sądny dzień", "Wioskowy sędzia wydał sprawiedliwy wyrok");
+        gameEventService.save("Ujadające psy", "Psy oszczekały wieśniaka");
+        gameEventService.save("Dziecięce zabawy", "Dzieci lubią bawić się na łące");
+        gameEventService.save("Zimowe opowieści", "Starszy wioski opowiada w zimie wspaniałe historie");
+        gameEventService.save("Ocielenie", "Krowa miała jedno ciele");
+        gameEventService.save("Fetor", "Wasz gnojownik bardzo śmierdzi");
+        gameEventService.save("Gliniane naczynia", "Wasze naczynia są przepiękne");
+        gameEventService.save("Stokrotki", "W wiosce na trawniku rosną stokrotki");
+        gameEventService.save("Złoże granitu", "w okolicy odnajdujesz złożę granitu");
+        gameEventService.save("Obserwacja", "Waszą wioskę obserwują bandyci");
+        gameEventService.save("Prawo ciążenia", "Wioskowy głupek mówi że jabłka spadają pod wpływem grawitacji ");
+        gameEventService.save("Golenie", "Rolnik pierdnął podczas golenia zacinając się przy tym");
+        gameEventService.save("Miauczące koty", "Koty w marcu strasznie się darły");
+        gameEventService.save("Dominacja w wiosce", "Kogut pogonił psa");
+        gameEventService.save("Sianokosy", "Udało wam się zebrać wspaniałe siono");
+        gameEventService.save("Kwoka", "Kwoka siadła na jajkach");
+
+
     }
 
 

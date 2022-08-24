@@ -1,20 +1,9 @@
 package gtruty.sanescobar.controller;
 
 
-import gtruty.sanescobar.dao.BuildingDao;
-import gtruty.sanescobar.dao.BuildingSupplyDao;
-import gtruty.sanescobar.dao.GoodsAvailableDao;
-import gtruty.sanescobar.dao.startlocation.BuildingNorthDao;
-import gtruty.sanescobar.dao.startlocation.FieldNorthDao;
-import gtruty.sanescobar.entities.GoodsAvailableEntities;
-import gtruty.sanescobar.entities.PlaceOfStart.BuildingsEntityNorth;
-import gtruty.sanescobar.entities.PlaceOfStart.FieldNorthEntity;
-import gtruty.sanescobar.entities.VilageEntity;
 import gtruty.sanescobar.model.GameModel;
-import gtruty.sanescobar.service.*;
-import gtruty.sanescobar.service.location.BuildingNorthService;
-import gtruty.sanescobar.service.location.FieldNorthService;
-import gtruty.sanescobar.service.location.GoodsNorthService;
+import gtruty.sanescobar.service.GameService;
+import gtruty.sanescobar.service.VilageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.List;
 
 
 @Controller
@@ -43,14 +30,13 @@ public class GameNextTurnController {
 
         gameService.addNewBuilding(gameModel, model);
         gameService.addSupplyedBuilding(gameModel);
-        gameService.addFields(gameModel);
         gameService.sumBuying(gameModel);
-        gameService.supplyedField(model);
-        gameService.addSupplyedField(gameModel);
         gameService.addNewGoods(gameModel);
+        gameService.addSupplyedField(gameModel);
+        gameService.addFields(gameModel);
+        gameService.supplyedField(model);
         gameService.startVilageLoaded(gameModel, model);
         gameService.totalArea(gameModel);
-        gameService.gameIncome(gameModel);
         gameService.agrarSystem(gameModel);
         gameService.totalMerchant(gameModel);
         gameService.typeOfVilage(gameModel);
@@ -59,7 +45,7 @@ public class GameNextTurnController {
         gameService.availableToBuyFirstField(gameModel, model);
         gameService.availableGoodsToSell(gameModel);
         gameService.deleteDoubleGoods(gameModel, model);
-
+        gameService.gameIncome(gameModel);
 
 
         if (gameService.getModel() == null)

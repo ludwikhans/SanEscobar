@@ -36,7 +36,7 @@ public class EventController {
         List<GameEventEntity> events = eventService.getAllData();
         Random random = new Random();
         int i = random.nextInt(events.size()) + 1;
-        GameEventEntity gameEvent = gameEventDao.findById(i);
+        GameEventEntity gameEvent = gameEventDao.getRandomEvent();
         gameModel.processEvent(gameEvent);
         model.addAttribute("game", gameModel);
         model.addAttribute("event", gameEvent);
