@@ -30,8 +30,8 @@ public class FieldServiceImpl implements FieldService {
 
     @Override
     public List<FieldsEntity> getAllData() {
-        var field = fieldDao.findAll();
-        return (List<FieldsEntity>) field;
+
+        return (List<FieldsEntity>)   fieldDao.findAll();
     }
 
 

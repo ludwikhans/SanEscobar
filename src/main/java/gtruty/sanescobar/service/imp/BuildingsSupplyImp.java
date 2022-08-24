@@ -26,8 +26,8 @@ public class BuildingsSupplyImp implements BuildingSupplyService {
 
     @Override
     public List<BuildingsSupplyEntity> getAllData() {
-        var supplyBuilding = buildingSupplyDao.findAll();
-        return (List<BuildingsSupplyEntity>) supplyBuilding;
+
+        return (List<BuildingsSupplyEntity>)     buildingSupplyDao.findAll();
     }
 
     @Override

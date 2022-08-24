@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,7 +35,7 @@ public class BuildingSouthServiceImpl implements BuildingSouthService {
 
     @Override
     public List<BuildingsEntitySouth> getAllData() {
-        var buildingSouth = buildingSouthDao.findAll();
-        return (List<BuildingsEntitySouth>) buildingSouth;
+
+        return (List<BuildingsEntitySouth>)    buildingSouthDao.findAll();
     }
 }

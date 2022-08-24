@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,7 +39,7 @@ public class BuildingEastServiceImpl implements BuildingEastService {
 
     @Override
     public List<BuildingsEntityEast> getAllData() {
-        var buildingEast = buildingEastDao.findAll();
-        return (List<BuildingsEntityEast>) buildingEast;
+
+        return (List<BuildingsEntityEast>) buildingEastDao.findAll();
     }
 }

@@ -30,8 +30,8 @@ public class GoodsCentralServiceImpl implements GoodsCentralService {
 
     @Override
     public List<GoodsCentralEntities> getAllData() {
-        var goodsCentral = goodsCentralDao.findAll();
-        return (List<GoodsCentralEntities>) goodsCentral;
+
+        return (List<GoodsCentralEntities>)       goodsCentralDao.findAll();
     }
 
 

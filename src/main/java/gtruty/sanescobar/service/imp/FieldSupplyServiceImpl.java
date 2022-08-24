@@ -35,8 +35,8 @@ public class FieldSupplyServiceImpl implements FieldSupplyService {
 
     @Override
     public List<FieldsSupplyEntity> getAllData() {
-        var fieldSup = fieldSupplyDao.findAll();
-        return (List<FieldsSupplyEntity>) fieldSup;
+
+        return (List<FieldsSupplyEntity>)  fieldSupplyDao.findAll();
     }
 
 

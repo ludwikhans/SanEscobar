@@ -30,8 +30,8 @@ public class FieldCentralServiceImpl implements FieldCentralService {
 
     @Override
     public List<FieldCentralEntity> getAllData() {
-        var fieldCentral = fieldCentralDao.findAll();
-        return (List<FieldCentralEntity>) fieldCentral;
+
+        return (List<FieldCentralEntity>)    fieldCentralDao.findAll();
     }
 
 

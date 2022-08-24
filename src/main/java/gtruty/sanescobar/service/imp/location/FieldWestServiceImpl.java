@@ -30,8 +30,8 @@ public class FieldWestServiceImpl implements FieldWestService {
 
     @Override
     public List<FieldWestEntity> getAllData() {
-        var fieldWest = fieldWestDao.findAll();
-        return (List<FieldWestEntity>) fieldWest;
+
+        return (List<FieldWestEntity>)      fieldWestDao.findAll();
     }
 
 

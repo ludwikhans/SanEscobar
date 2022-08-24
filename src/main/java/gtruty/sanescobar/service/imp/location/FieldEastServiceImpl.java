@@ -32,7 +32,7 @@ public class FieldEastServiceImpl implements FieldEastService {
 
     @Override
     public List<FieldEastEntity> getAllData() {
-        var fieldEast = fieldEastDao.findAll();
-        return (List<FieldEastEntity>) fieldEast;
+
+        return (List<FieldEastEntity>)  fieldEastDao.findAll();
     }
 }

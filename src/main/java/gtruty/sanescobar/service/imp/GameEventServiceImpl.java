@@ -30,8 +30,8 @@ public class GameEventServiceImpl implements GameEventService {
 
     @Override
     public List<GameEventEntity> getAllData() {
-        var event = gameEventDao.findAll();
-        return (List<GameEventEntity>) event;
+
+        return (List<GameEventEntity>)     gameEventDao.findAll();
     }
 
 

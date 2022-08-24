@@ -32,7 +32,7 @@ public class FieldNorthServiceImpl implements FieldNorthService {
 
     @Override
     public List<FieldNorthEntity> getAllData() {
-        var fieldNorth = fieldNorthDao.findAll();
-        return (List<FieldNorthEntity>) fieldNorth;
+
+        return (List<FieldNorthEntity>)    fieldNorthDao.findAll();
     }
 }

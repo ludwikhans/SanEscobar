@@ -23,8 +23,8 @@ public class BuildingsAvailableImp implements BuildingAvailableService {
 
     @Override
     public List<BuildingsAvailableEntity> getAllData() {
-        var availableBuilding = availableBuildingDao.findAll();
-        return (List<BuildingsAvailableEntity>) availableBuilding;
+
+        return (List<BuildingsAvailableEntity>)   availableBuildingDao.findAll();
     }
 
     @Override

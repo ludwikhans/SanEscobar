@@ -30,8 +30,8 @@ public class GoodsSouthServiceImpl implements GoodsSouthService {
 
     @Override
     public List<GoodsSouthEntities> getAllData() {
-        var goodsSouth = goodsSouthDao.findAll();
-        return (List<GoodsSouthEntities>) goodsSouth;
+
+        return (List<GoodsSouthEntities>)   goodsSouthDao.findAll();
     }
 
 

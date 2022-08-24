@@ -28,7 +28,7 @@ plantsDao.save(plantsEntity);
 
     @Override
     public List<PlantsEntity> getAllData() {
-        var plant = plantsDao.findAll();
-        return (List<PlantsEntity>) plant;
+
+        return (List<PlantsEntity>)  plantsDao.findAll();
     }
 }

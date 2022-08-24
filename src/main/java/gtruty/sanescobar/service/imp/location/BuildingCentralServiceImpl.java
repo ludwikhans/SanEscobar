@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,7 +39,6 @@ public class BuildingCentralServiceImpl implements BuildingCentralService {
 
     @Override
     public List<BuildingsEntityCentral> getAllData() {
-        var buildingCentral = buildingCentralDao.findAll();
-        return (List<BuildingsEntityCentral>) buildingCentral;
+        return (List<BuildingsEntityCentral>)buildingCentralDao.findAll();
     }
 }

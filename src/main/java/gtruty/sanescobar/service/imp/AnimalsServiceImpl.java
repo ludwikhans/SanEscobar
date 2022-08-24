@@ -27,7 +27,7 @@ animalDao.save(animalsEntity);
 
     @Override
     public List<AnimalsEntity> getAllData() {
-        var animal = animalDao.findAll();
-        return (List<AnimalsEntity>) animal;
+
+        return (List<AnimalsEntity>)    animalDao.findAll();
     }
 }

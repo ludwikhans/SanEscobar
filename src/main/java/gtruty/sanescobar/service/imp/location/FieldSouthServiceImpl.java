@@ -31,8 +31,8 @@ public class FieldSouthServiceImpl implements FieldSouthService {
 
     @Override
     public List<FieldSouthEntity> getAllData() {
-        var fieldSouth = fieldSouthDao.findAll();
-        return (List<FieldSouthEntity>) fieldSouth;
+
+        return (List<FieldSouthEntity>)      fieldSouthDao.findAll();
     }
 
 

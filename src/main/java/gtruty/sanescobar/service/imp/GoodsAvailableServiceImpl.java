@@ -30,8 +30,8 @@ public class GoodsAvailableServiceImpl implements GoodsAvailableService {
 
     @Override
     public List<GoodsAvailableEntities> getAllData() {
-        var goodsAvailable = goodsAvailableDao.findAll();
-        return (List<GoodsAvailableEntities>) goodsAvailable;
+
+        return (List<GoodsAvailableEntities>)   goodsAvailableDao.findAll();
     }
 
 
