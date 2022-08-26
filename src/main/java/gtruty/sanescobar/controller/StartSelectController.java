@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
-@Controller
+@Controller("/selectVilage")
 public class StartSelectController {
 
     @Autowired
     VilageService vilageService;
 
-    @GetMapping("/selectVilage")
+    @GetMapping
     public String startPage(Model model) {
         VilageModel vilage = new VilageModel("", 0L);
         model.addAttribute("vilage", vilage);
         return "selectVilage";
     }
 
-    @PostMapping("/selectVilage")
+    @PostMapping
     public String saveVilage(@ModelAttribute("vilage") VilageModel vilage) {
         vilageService.save(vilage.getName(), vilage.getLocationId());
         return "redirect:/gameView";
