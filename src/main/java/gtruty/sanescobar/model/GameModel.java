@@ -33,7 +33,34 @@ public class GameModel {
     private String animalInBuilding ;
     private String plantInFields;
 
-
+    public GameModel(int turnNumber, BigDecimal startMoney, BigDecimal availableMoney, int area, String agrarsystem, int merchant, int usingMerchant, int unoccupiedMerchant, BigDecimal incomFromFields, BigDecimal incomFromBuilding, BigDecimal incomFromAnimal, BigDecimal incomFromOwnedBuilding, BigDecimal totalIncome, String typeOfVilage, int fieldArea, String vilageName, Long locationId, String goodsName, String buildingName, int fieldsToBuy, BigDecimal costOfFields, BigDecimal costOfBuilding, BigDecimal sumOfCost, String eventInfo, String animalInBuilding, String plantInFields) {
+        this.turnNumber = turnNumber;
+        this.startMoney = startMoney;
+        this.availableMoney = availableMoney;
+        this.area = area;
+        this.agrarsystem = agrarsystem;
+        this.merchant = merchant;
+        this.usingMerchant = usingMerchant;
+        this.unoccupiedMerchant = unoccupiedMerchant;
+        this.incomFromFields = incomFromFields;
+        this.incomFromBuilding = incomFromBuilding;
+        this.incomFromAnimal = incomFromAnimal;
+        this.incomFromOwnedBuilding = incomFromOwnedBuilding;
+        this.totalIncome = totalIncome;
+        this.typeOfVilage = typeOfVilage;
+        this.fieldArea = fieldArea;
+        this.vilageName = vilageName;
+        this.locationId = locationId;
+        this.goodsName = goodsName;
+        this.buildingName = buildingName;
+        this.fieldsToBuy = fieldsToBuy;
+        this.costOfFields = costOfFields;
+        this.costOfBuilding = costOfBuilding;
+        this.sumOfCost = sumOfCost;
+        this.eventInfo = eventInfo;
+        this.animalInBuilding = animalInBuilding;
+        this.plantInFields = plantInFields;
+    }
 
     public void setIncomFromFields(BigDecimal incomFromFields) {
         this.incomFromFields = incomFromFields;

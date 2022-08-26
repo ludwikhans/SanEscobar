@@ -37,6 +37,7 @@ public class GameViewController {
     @GetMapping("/gameView")
     public String startPage(Model model, @ModelAttribute("game") GameModel gameModel) {
         VilageEntity vilage = vilageService.getAnyVilage();
+        gameService.restart(gameModel);
         gameService.saveVilage(gameModel);
         gameService.createBuildingTable();
         gameService.createLocationBuildingTable();
@@ -55,9 +56,6 @@ public class GameViewController {
         gameService.startMoney(gameModel);
         gameService.availableToBuyFirstBuilding(gameModel, model);
         gameService.availableToBuyFirstField(gameModel, model);
-
-
-
 
         return "gameView";
     }

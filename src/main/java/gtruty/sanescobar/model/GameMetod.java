@@ -70,4 +70,6 @@ public interface GameMetod {
     void createLocationGoods();
 
     void createEventTable();
+
+    void restart(GameModel gameModel);
 }

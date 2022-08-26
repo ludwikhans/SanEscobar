@@ -1510,21 +1510,21 @@ public class GameService implements GameMetod {
         }
 
         buildingService.save("Brak nowego budynku", null, null, null, null, BigDecimal.valueOf(0.0), null, null, null, null, "nie dodaje niczego", null, null, null, 0, 2);
-        buildingService.save("Kurnik", null, null, null, null, BigDecimal.valueOf(40.0), null, null, null, null, "umożliwia hodowle kur lub kaczek", null, 100, null, 1, 2);
-        buildingService.save("Gęsiarnia", null, null, null, null, BigDecimal.valueOf(40.0), null, null, null, null, "umożliwia hodowle kur lub gęsi lub kaczek", null, 50, null, 1, 2);
-        buildingService.save("Królikarnia", null, null, null, null, BigDecimal.valueOf(20.0), null, null, null, null, "umożliwia hodowle królików", null, 100, null, 1, 2);
-        buildingService.save("Zagroda", null, null, null, null, BigDecimal.valueOf(60.0), "pasterka", null, null, null, "umożliwia hodowle kuz, owiec lub osłów", null, 100, null, 1, 2);
-        buildingService.save("Chlew", null, null, null, null, BigDecimal.valueOf(60.0), "dom sołtysa", "pasterka", null, null, "umożliwia hodowle świń", null, 100, null, 1, 2);
-        buildingService.save("Stajnia", null, null, null, null, BigDecimal.valueOf(200.0), "kasztel", "dwór", null, null, "umożliwia hodowle krów", null, 100, null, 1, 2);
-        buildingService.save("Stadnina", null, null, null, null, BigDecimal.valueOf(300.0), "zamek", "pałac", null, null, "umożliwia hodowle koni", null, 20, null, 1, 2);
+        buildingService.save("Kurnik", null, null, null, null, BigDecimal.valueOf(40.0), null, null, null, null, "umożliwia hodowle kur lub kaczek", 100, null, null, 1, 2);
+        buildingService.save("Gęsiarnia", null, null, null, null, BigDecimal.valueOf(40.0), null, null, null, null, "umożliwia hodowle kur lub gęsi lub kaczek", 50, null, null, 1, 2);
+        buildingService.save("Królikarnia", null, null, null, null, BigDecimal.valueOf(20.0), null, null, null, null, "umożliwia hodowle królików", 100, null, null, 1, 2);
+        buildingService.save("Zagroda", null, null, null, null, BigDecimal.valueOf(60.0), "pasterka", null, null, null, "umożliwia hodowle kuz, owiec lub osłów", 100, null, null, 1, 2);
+        buildingService.save("Chlew", null, null, null, null, BigDecimal.valueOf(60.0), "dom sołtysa", "pasterka", null, null, "umożliwia hodowle świń", 100, null, null, 1, 2);
+        buildingService.save("Stajnia", null, null, null, null, BigDecimal.valueOf(200.0), "kasztel", "dwór", null, null, "umożliwia hodowle krów", 100, null, null, 1, 2);
+        buildingService.save("Stadnina", null, null, null, null, BigDecimal.valueOf(300.0), "zamek", "pałac", null, null, "umożliwia hodowle koni", 20, null, null, 1, 2);
         buildingService.save("Staw", "Ryby", null, null, null, BigDecimal.valueOf(400.0), null, null, null, null, "umożliwia hodowle ryb", null, null, null, 0, 2);
         buildingService.save("Gnojownik", null, null, null, null, BigDecimal.valueOf(50.0), "stajnia", "chlew", null, null, "podwojenie plonu wybranej rośliny", null, null, null, 0, 2);
-        buildingService.save("Droga", null, null, null, null, BigDecimal.valueOf(25.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, null, null, 0, 2);
-        buildingService.save("Drogowskazy", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, null, null, 0, 2);
-        buildingService.save("Słupy graniczne", null, null, null, null, BigDecimal.valueOf(100.0), "drogowskazy", null, null, null, "dodaje jedno miejsce handlowe", null, null, null, 0, 2);
+        buildingService.save("Droga", null, null, null, null, BigDecimal.valueOf(25.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 0, 2);
+        buildingService.save("Drogowskazy", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 0, 2);
+        buildingService.save("Słupy graniczne", null, null, null, null, BigDecimal.valueOf(100.0), "drogowskazy", null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 0, 2);
         buildingService.save("Kapliczka", null, null, null, null, BigDecimal.valueOf(150.0), null, null, null, null, "raz na poziom można pominąć wydarzenie", null, null, null, 0, 2);
         buildingService.save("Studnia", null, null, null, null, BigDecimal.valueOf(30.0), null, null, null, null, "zaopatrzenie w wodę podczas suszy", null, null, null, 0, 2);
-        buildingService.save("Mała stadnina", null, null, null, null, BigDecimal.valueOf(150.0), null, null, null, null, "umożliwia hodowle dzikich koni", 20, 10, "Wschód", 1, 2);
+        buildingService.save("Mała stadnina", null, null, null, null, BigDecimal.valueOf(150.0), null, null, null, null, "umożliwia hodowle dzikich koni", 10, null, "Wschód", 1, 2);
     }
 
     @Override
@@ -1751,6 +1751,37 @@ public class GameService implements GameMetod {
         gameEventService.save("Kwoka", "Kwoka siadła na jajkach");
 
 
+    }
+
+    @Override
+    public void restart(GameModel gameModel) {
+        GameModel restartGame = new GameModel();
+        gameModel.setTurnNumber(restartGame.getTurnNumber());
+        gameModel.setStartMoney(restartGame.getStartMoney());
+        gameModel.setAvailableMoney(restartGame.getAvailableMoney());
+        gameModel.setArea(restartGame.getArea());
+        gameModel.setAgrarsystem(restartGame.getAgrarsystem());
+        gameModel.setMerchant(restartGame.getMerchant());
+        gameModel.setUsingMerchant(restartGame.getUsingMerchant());
+        gameModel.setUnoccupiedMerchant(restartGame.getUnoccupiedMerchant());
+        gameModel.setIncomFromFields(restartGame.getIncomFromFields());
+        gameModel.setIncomFromBuilding(restartGame.getIncomFromBuilding());
+        gameModel.setIncomFromAnimal(restartGame.getIncomFromAnimal());
+        gameModel.setIncomFromOwnedBuilding(restartGame.getIncomFromOwnedBuilding());
+        gameModel.setTotalIncome(restartGame.getTotalIncome());
+        gameModel.setTypeOfVilage(restartGame.getTypeOfVilage());
+        gameModel.setFieldArea(restartGame.getFieldArea());
+        gameModel.setVilageName(restartGame.getVilageName());
+        gameModel.setLocationId(restartGame.getLocationId());
+        gameModel.setGoodsName(restartGame.getGoodsName());
+        gameModel.setBuildingName(restartGame.getBuildingName());
+        gameModel.setFieldsToBuy(restartGame.getFieldsToBuy());
+        gameModel.setCostOfFields(restartGame.getCostOfFields());
+        gameModel.setCostOfBuilding(restartGame.getCostOfBuilding());
+        gameModel.setSumOfCost(restartGame.getSumOfCost());
+        gameModel.setEventInfo(restartGame.getEventInfo());
+        gameModel.setAnimalInBuilding(restartGame.getAnimalInBuilding());
+        gameModel.setPlantInFields(restartGame.getPlantInFields());
     }
 
 
