@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-@PropertySource("classpath:db.properties")
+/*@PropertySource("classpath:db.properties")*/
 public class SanEscobarApplication implements WebMvcConfigurer {
 
 
