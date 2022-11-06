@@ -1525,6 +1525,86 @@ public class GameService implements GameMetod {
         buildingService.save("Kapliczka", null, null, null, null, BigDecimal.valueOf(150.0), null, null, null, null, "raz na poziom można pominąć wydarzenie", null, null, null, 0, 2);
         buildingService.save("Studnia", null, null, null, null, BigDecimal.valueOf(30.0), null, null, null, null, "zaopatrzenie w wodę podczas suszy", null, null, null, 0, 2);
         buildingService.save("Mała stadnina", null, null, null, null, BigDecimal.valueOf(150.0), null, null, null, null, "umożliwia hodowle dzikich koni", 10, null, "Wschód", 1, 2);
+        buildingService.save("Pasterka", null, null, null, null, BigDecimal.valueOf(60.0), null, null, null, null, "umożliwia budowe zagrody lub chlewu", null, null, null, 0, 2);
+        buildingService.save("Leśniczówka", "Drewno", null, BigDecimal.valueOf(150.0), null, BigDecimal.valueOf(400.0), null, null, "Las", 10.0, "dostarcza drewno", null, null, null, 0, 2);
+        buildingService.save("Myśliczówka", "Mięso", null, BigDecimal.valueOf(125.0), null, BigDecimal.valueOf(450.0), null, null, "Las", 100.0, "dostarcza dziczyzne", null, null, null, 0, 2);
+        buildingService.save("Rybaczówka na rzece", "Ryby", null, BigDecimal.valueOf(10.0), null, BigDecimal.valueOf(200.0), "Rzeka", null, "Las", 100.0, "dostarcza ryby", null, null, null, 0, 2);
+        buildingService.save("Rybaczówka na stawie", "Ryby", null, BigDecimal.valueOf(10.0), null, BigDecimal.valueOf(200.0), "Staw", null, "Las", 100.0, "dostarcza ryby", null, null, null, 0, 2);
+        buildingService.save("Rybaczówka na jeziorze", "Ryby", null, BigDecimal.valueOf(10.0), null, BigDecimal.valueOf(200.0), "Jezioro", "Tama", "Las", 100.0, "dostarcza ryby", null, null, null, 0, 2);
+        buildingService.save("Skład", null, null, null, null, BigDecimal.valueOf(50.0), null, null, null, null, "dodaje jedno miejsce handlowe", null, 1, null, 0, 2);
+        buildingService.save("Chatka pszczelarza", "Miód", "Wosk", BigDecimal.valueOf(10.0), BigDecimal.valueOf(0.25), BigDecimal.valueOf(20.0), null, null, null, null, "umożliwia zbiór produktów pszczelich", null, null, null, 0, 2);
+        buildingService.save("Dom Sołtysa", null, null, null, null, BigDecimal.valueOf(200.0), null, null, "Pole", 162.0, "umożliwia stawianie budynków folwarcznych", null, null, null, 0, 2);
+        buildingService.save("Stragan", null, null, null, null, BigDecimal.valueOf(200.0), "Dom Sołtysa", null, null, null, "dodaje trzy miejsca handlowe", null, 3, null, 0, 2);
+        buildingService.save("Karawana", null, null, null, null, BigDecimal.valueOf(400.0), "Stragan", null, null, null, "dodaje trzy miejsca handlowe", null, 3, null, 0, 2);
+        buildingService.save("Kasztel", null, null, BigDecimal.valueOf(125.0), null, BigDecimal.valueOf(3000.0), null, null, "Pole", 288.0, "zostajesz opiekunem mniejszych wiosek, które przynoszą ci zyski", null, null, null, 0, 2);
+        buildingService.save("Dwór", null, null, null, null, BigDecimal.valueOf(2000.0), null, null, "Pole", 288.0, "dodaje 5 miejsc handlowych", null, 5, null, 0, 2);
+        buildingService.save("Palisada", null, null, null, null, BigDecimal.valueOf(1000.0), null, null, null, null, "ochrona przed bandytami", null, null, null, 0, 2);
+        buildingService.save("Palisada", null, null, null, null, BigDecimal.valueOf(1000.0), null, null, null, null, "ochrona przed bandytami", null, null, null, 0, 2);
+        buildingService.save("Mleczarnia z krowiego mleka", "Mleko krowie", null, BigDecimal.valueOf(360.0), null, BigDecimal.valueOf(600.0), null, null, "Krowy", 30.0, "umożliwia sprzedaż mleka", null, null, null, 0, 2);
+        buildingService.save("Mleczarnia z koziego mleka", "Mleko kozie", null, BigDecimal.valueOf(240.0), null, BigDecimal.valueOf(600.0), null, null, "Kozy", 100.0, "umożliwia sprzedaż mleka", null, null, null, 0, 2);
+        buildingService.save("Mleczarnia z owczego mleka", "Mleko owcze", null, BigDecimal.valueOf(240.0), null, BigDecimal.valueOf(600.0), null, null, "Owce", 100.0, "umożliwia sprzedaż mleka", null, null, null, 0, 2);
+        buildingService.save("Serownia z krowiego mleka", "Ser", null, BigDecimal.valueOf(450.0), null, BigDecimal.valueOf(800.0), "Mleko krowie", null, null, null, "umożliwia sprzedaż sera", null, null, null, 0, 2);
+        buildingService.save("Serownia z koziego mleka", "Ser", null, BigDecimal.valueOf(300.0), null, BigDecimal.valueOf(800.0), "Mleko kozie", null, null, null, "umożliwia sprzedaż sera", null, null, null, 0, 2);
+        buildingService.save("Serownia z owczego mleka", "Ser", null, BigDecimal.valueOf(300.0), null, BigDecimal.valueOf(800.0), "Mleko owcze", null, null, null, "umożliwia sprzedaż sera", null, null, null, 0, 2);
+        buildingService.save("Pierwsza rozbudowa serowni z krowiego mleka", "Śmietana", null, BigDecimal.valueOf(90.0), null, BigDecimal.valueOf(400.0), "Serownia z krowiego mleka", null, null, null, "umożliwia dodatkową sprzedaż śmietany", null, null, null, 0, 2);
+        buildingService.save("Pierwsza rozbudowa serowni z koziego mleka", "Śmietana", null, BigDecimal.valueOf(75.0), null, BigDecimal.valueOf(400.0), "Serownia z koziego mleka", null, null, null, "umożliwia dodatkową sprzedaż śmietany", null, null, null, 0, 2);
+        buildingService.save("Pierwsza rozbudowa serowni z owczego mleka", "Śmietana", null, BigDecimal.valueOf(75.0), null, BigDecimal.valueOf(400.0), "Serownia z owczego mleka", null, null, null, "umożliwia dodatkową sprzedaż śmietany", null, null, null, 0, 2);
+        buildingService.save("Druga rozbudowa serowni z krowiego mleka", "Masło", null, BigDecimal.valueOf(110.0), null, BigDecimal.valueOf(200.0), "Pierwsza rozbudowa serowni z krowiego mleka", null, null, null, "umożliwia dodatkową sprzedaż masła", null, null, null, 0, 2);
+        buildingService.save("Druga rozbudowa serowni z koziego mleka", "Masło", null, BigDecimal.valueOf(90.0), null, BigDecimal.valueOf(200.0), "Pierwsza rozbudowa serowni z koziego mleka", null, null, null, "umożliwia dodatkową sprzedaż masła", null, null, null, 0, 2);
+        buildingService.save("Druga rozbudowa serowni z owczego mleka", "Masło", null, BigDecimal.valueOf(90.0), null, BigDecimal.valueOf(200.0), "Pierwsza rozbudowa serowni z owczego mleka", null, null, null, "umożliwia dodatkową sprzedaż masła", null, null, null, 0, 2);
+        buildingService.save("Węglarnia", "Węgiel", null, BigDecimal.valueOf(160.0), null, BigDecimal.valueOf(600.0), "Leśniczówka", null, null, null, "umożliwia produkcję węgla z drewna", null, null, null, 0, 2);
+        buildingService.save("Tartak", "Deski", null, BigDecimal.valueOf(200.0), null, BigDecimal.valueOf(600.0), "Leśniczówka", null, null, null, "umożliwia produkcję desek z drewna", null, null, null, 0, 2);
+        buildingService.save("Stolarnia", "Meble", null, BigDecimal.valueOf(250.0), null, BigDecimal.valueOf(800.0), "Tartak", null, null, null, "umożliwia produkcję mebli z desek", null, null, null, 0, 2);
+        buildingService.save("Ubojnia drobiu", "Mięso", null, BigDecimal.valueOf(2.5), null, BigDecimal.valueOf(40.0), "Kurnik", "Gęsiarnia", null, null, "umożliwia produkcję mięsa z kur, kaczek lub gęsi", null, null, null, 0, 2);
+        buildingService.save("Ubojnia królików", "Mięso", null, BigDecimal.valueOf(2.5), null, BigDecimal.valueOf(40.0), "Królikarnia", null, null, null, "umożliwia produkcję mięsa z królików", null, null, null, 0, 2);
+        buildingService.save("Mała rzeźnia", "Mięso", null, BigDecimal.valueOf(35.0), null, BigDecimal.valueOf(140.0), "Zagroda", "Chlew", null, null, "umożliwia produkcję mięsa z kuz, owiec, osłów lub świń", null, null, null, 0, 2);
+        buildingService.save("Duża rzeźnia", "Mięso", null, BigDecimal.valueOf(180.0), null, BigDecimal.valueOf(700.0), "Stajnia", "Stadnina", null, null, "umożliwia produkcję mięsa z krów lub koni", null, null, null, 0, 2);
+        buildingService.save("Rzeźnia ranczera", "Mięso", null, BigDecimal.valueOf(180.0), null, BigDecimal.valueOf(700.0), "Mała stadnina", null, null, null, "umożliwia produkcję mięsa z dzikich koni", null, null, null, 0, 2);
+        buildingService.save("Rzeźnia jeleni", "Mięso", null, BigDecimal.valueOf(180.0), null, BigDecimal.valueOf(700.0), "Zagroda leśna", null, null, null, "umożliwia produkcję mięsa z jeleni", null, null, null, 0, 2);
+        buildingService.save("Garbarnia", "Skóry", null, BigDecimal.valueOf(25.0), null, BigDecimal.valueOf(200.0), "Mała rzeźnia", "Duża rzeźnia", null, null, "umożliwia produkcję skór oprócz samego mięsa", null, null, null, 0, 2);
+        buildingService.save("Warsztat szewca", "Buty", null, BigDecimal.valueOf(80.0), null, BigDecimal.valueOf(400.0), "Garbarnia", null, null, null, "umożliwia produkcję butów", null, null, null, 0, 2);
+        buildingService.save("Warsztat skórzanago krawca", "Skórzane ubrania", null, BigDecimal.valueOf(150.0), null, BigDecimal.valueOf(600.0), "Garbarnia", null, null, null, "umożliwia produkcję skórzanych ubrań", null, null, null, 0, 2);
+        buildingService.save("Rymarz", "Siodła", null, BigDecimal.valueOf(40.0), null, BigDecimal.valueOf(350.0), "Garbarnia", null, null, null, "umożliwia produkcję siodeł", null, null, null, 0, 2);
+        buildingService.save("Zagroda leśna", null, null, null, null, BigDecimal.valueOf(60.0), null, null, "Las", 10.0, "umożliwia hodowle jeleni", 100, null, "Północ", 1, 2);
+        buildingService.save("Las", null, null, null, null, BigDecimal.valueOf(1000.0), null, null, null, null, "zakup 10 ha lasu", null, null, "Północ", 0, 2);
+        buildingService.save("Papiernia", "Papier", null, BigDecimal.valueOf(250.0), null, BigDecimal.valueOf(600.0), "Leśniczówka", null, null, null, "umożliwia produkcje papieru", null, null, "Północ", 0, 2);
+        buildingService.save("Lichwiarz", null, null, BigDecimal.valueOf(40.0), null, BigDecimal.valueOf(120.0), null, null, null, null, "umożliwia pożyczanie pięniędzy na procent", null, null, "Południe", 0, 2);
+        buildingService.save("Bednarka", "Beczki", null, BigDecimal.valueOf(250.0), null, BigDecimal.valueOf(800.0), "Tartak", null, null, null, "umożliwia produkcje beczek", null, null, "Południe", 0, 2);
+        buildingService.save("Winnica", "Wino", null, BigDecimal.valueOf(625.0), null, BigDecimal.valueOf(4000.0), "Bednarka", null, "Winorośl", 5.0, "umożliwia produkcje win", null, null, "Południe", 0, 2);
+        buildingService.save("Kopalnia rud żelaza", "Ruda żelaza", null, BigDecimal.valueOf(150.0), null, BigDecimal.valueOf(1000.0), null, null, null, null, "umożliwia wydobycie rud żelaza", null, null, "Wschód", 0, 2);
+        buildingService.save("Huta stali", "Stal", null, BigDecimal.valueOf(1500.0), null, BigDecimal.valueOf(4000.0), null, null, "Węglarnia", 6.0, "umożliwia produkcje stali", null, null, "Wschód", 0, 2);
+        buildingService.save("Poborca podatkowy", null, null, BigDecimal.valueOf(50.0), null, BigDecimal.valueOf(120.0), "Droga", null, null, null, "pobiera opłatę od kupców", null, null, "Zachód", 0, 2);
+        buildingService.save("Dom gońca", null, null, BigDecimal.valueOf(50.0), null, BigDecimal.valueOf(150.0), "Droga", null, null, null, "pobiera przenosi wiadomości pomiędzy miastami", null, null, "Centrum", 0, 2);
+        buildingService.save("Melioracja", null, null, null, null, BigDecimal.valueOf(600.0), null, null, null, null, "odporność upraw na susze", null, null, "Centrum", 0, 2);
+        buildingService.save("Cukrownia", "Cukier", null, BigDecimal.valueOf(200.0), null, BigDecimal.valueOf(600.0), null, null, "Trzcina cukrowa", 10.0, "umożliwia produkcje cukru", null, null, "Centrum", 0, 2);
+
+
+
+
+
+
+    /*    (67, 'kopalnia gliny', 'glina', null, 10.0, null, 60.0, 'złoże gliny', null, null, null,
+                'umożliwia wydobycie gliny', null, null, null,0,2),
+        (68, 'garncaria', 'garnki', null, 40.0, null, 300.0, null, null, null, null, 'umożliwia produkcje garnków', null,
+                null, null,0,2),
+        (69, 'cegielnia', 'cegły', null, 60.0, null, 400.0, null, null, null, null, 'umożliwia produkcje cegieł', null,
+                null, null,0,2),
+        (70, 'kamieniołom marmuru', 'marmur', null, 150.0, null, 350.0, 'złoże marmuru', null, null, null,
+                'umożliwia wydobycie marmuru', null, null, null,0,2),
+        (71, 'kamieniołom wapienia', 'wapień', null, 100.0, null, 350.0, 'złoże wapienia', null, null, null,
+                'umożliwia wydobycie wapienia', null, null, null,0,2),
+        (72, 'kamieniołom granitu', 'granit', null, 100.0, null, 350.0, 'złoże granitu', null, null, null,
+                'umożliwia wydobycie granitu', null, null, null,0,2),
+        (73, 'kopalnia złota', 'złoto', null, 1000.0, null, 4000.0, 'złoże złota', null, null, null,
+                'umożliwia wydobycie złota', null, null, null,0,2),
+        (74, 'kopalnia diamentów', 'diamenty', null, 1000.0, null, 4000.0, 'złoże diamentów', null, null, null,
+                'umożliwia wydobycie diamentów', null, null, null,0,2),
+        (75, 'sklep z przyprawami', null, null, 1000.0, null, 4000.0, 'przyprawy', null, null, null,
+                'umożliwia sprzedaż przypraw', null, null, null,0,2),
+        (76, 'mennica', 'złote monety', null, 2000.0, null, 6000.0, 'zkopalnia złota', null, null, null,
+                'umożliwia wybijanie monet', null, null, null,0,2),
+        (77, 'jubiler', 'biżuteria', null, 3000.0, null, 10000.0, 'kopalnia złota', 'kopalnia diamentów', null, null,
+                'umożliwia produkcje biżuterii', null, null, null,0,2),*/
     }
 
     @Override
